@@ -30,7 +30,7 @@ export default function RootLayout({
     // bg - [#F7F4ED]
     <ViewTransitions>
       <html lang="en">
-        <body suppressHydrationWarning={true} className={`${vollkorn.className} overflow-y-hidden h-screen flex-between flex-col  `}>
+        <body suppressHydrationWarning={true} className={`${vollkorn.className}  h-screen flex-between flex-col  `}>
           <Header />
           <div className="mobile">
             {children}
