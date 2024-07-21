@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <div className="flex-between  ">
-      <div >
+    <div className="flex-between  sm:py-[126px] py-[85px] ">
+      <div>
         <p className="lg:text-9xl md:text-8xl text-7xl  text-[#242424] leading-[0.9] tracking-tight">
           Human <br /> stories & ideas
         </p>
@@ -18,7 +18,6 @@ export default function Home() {
         <Button variant={'green'} className="sohne md:hidden flex font-bold rounded-full text-lg shadow-lg">
           Start reading
         </Button>
-
       </div>
       <div className="absolute  md:right-0  -right-20   lg:flex hidden ">
         <Image
