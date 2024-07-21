@@ -9,21 +9,20 @@ import { PiStarFourFill } from "react-icons/pi";
 const Herosection = () => {
     return (
         <main className='border border-t-0 border-l-0 border-r-0 border-black'>
-            <div className='  flex-between mobile_right '>
-                <section className='flex flex-col justify-between  h-[75vh] '>
-                    <p className=' text-7xl'>Support human stories</p>
+            <div className='flex-between  mobile_right'>
+                <section className='flex flex-col justify-between md:h-[75vh]  '>
+                    <p className=' md:text-7xl text-5xl'>Support human stories</p>
                     <section className=' space-y-10'>
-                        <p className='sohne text-gray-500 w-2/3'>Become a member to read without limits or ads, fund great writers, and join a global community of people who care about high-quality storytelling.</p>
+                        <p className='sohne md:text-lg text-base text-gray-500 w-2/3'>Become a member to read without limits or ads, fund great writers, and join a global community of people who care about high-quality storytelling.</p>
                         <div className=' flex-start gap-4'>
-                            <Button className=' sohne md:flex hidden font-bold rounded-full  '>Get started</Button>
-                            <Button variant={'outline'} className='border border-black sohne md:flex hidden font-bold rounded-full  bg-[#F7F4ED]'>View plans</Button>
+                            <Button className=' sohne  font-bold rounded-full  '>Get started</Button>
+                            <Button variant={'outline'} className='border border-black sohne  font-bold rounded-full  bg-[#F7F4ED]'>View plans</Button>
                         </div>
                     </section>
                 </section>
-                <section className="select-none border border-t-0 border-b-0 border-r-0 border-black ">
+                <section className="select-none border border-t-0 border-b-0 md:border-r-0 border-black ">
                     <Image width={600} height={600} src={`https://miro.medium.com/v2/1*pNQWumUtMEZnyCtz3o1MUQ.png`} alt={`image`} />
                     <section className=' p-8'>
-
                         <div className='flex mb-3'>
                             <span className="sohne flex-center gap-1 text-sm  bg-yellow-400 py-[5px] px-3 rounded-full   "><PiStarFourFill size={10} />Member-only story</span>
                         </div>

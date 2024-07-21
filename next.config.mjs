@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['www.medium.com'],
+        // domains: ['www.medium.com'],
         remotePatterns: [
             {
                 protocol: 'https',
@@ -11,8 +11,6 @@ const nextConfig = {
 
     },
 
-    fastRefresh: true,
-    concurrentFeatures: true,
 
 };
 

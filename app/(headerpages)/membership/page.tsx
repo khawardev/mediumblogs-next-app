@@ -8,7 +8,7 @@ const Membership = () => {
         <main>
             <Herosection />
             <Whymembership />
-            <Sayings />
+            {/* <Sayings /> */}
         </main>
     );
 };
