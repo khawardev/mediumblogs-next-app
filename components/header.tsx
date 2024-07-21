@@ -15,7 +15,7 @@ const header = () => {
             <Link className="sohne font-bold text-sm" href="">Write</Link>
             <Link className="sohne font-bold text-sm" href="">Sign in</Link>
           </li>
-          <Button size={'sm'} className="sohne font-bold rounded-full">
+          <Button size={'sm'} className="sohne font-bold rounded-full shadow-2xl">
             Get started
           </Button>
         </ul>

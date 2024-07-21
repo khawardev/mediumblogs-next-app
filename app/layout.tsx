@@ -27,9 +27,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    // bg - [#F7F4ED]
     <ViewTransitions>
       <html lang="en">
-        <body className={`${vollkorn.className} h-screen flex-between flex-col bg-[#F7F4ED] `}>
+        <body suppressHydrationWarning={true} className={`${vollkorn.className} overflow-y-hidden h-screen flex-between flex-col  `}>
           <Header />
           <div className="mobile">
             {children}
