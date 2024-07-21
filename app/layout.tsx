@@ -1,13 +1,18 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { ViewTransitions } from 'next-view-transitions'
-import { Alegreya } from 'next/font/google'
+import { Alegreya, Vollkorn } from 'next/font/google'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 
 const alegreya = Alegreya({
   subsets: ['latin'],
   display: 'swap',
+})
+const vollkorn = Vollkorn({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: "--font-vollkorn",
 })
 
 
@@ -24,12 +29,13 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en">
-        <body className={`${alegreya.className} sm:w-10/12 m-auto px-5 `}>
+        <body className={`${vollkorn.className} h-screen flex-between flex-col bg-[#F7F4ED] `}>
           <Header />
-          {children}
+          <div className="mobile">
+            {children}
+          </div>
+          <hr className="border border-t-black" />
           <Footer />
-
-
         </body>
       </html>
     </ViewTransitions>
