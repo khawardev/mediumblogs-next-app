@@ -1,0 +1,47 @@
+[
+  {
+    "membershipTag": "Member-only story",
+    "imgUrl": "https://miro.medium.com/v2/1*pNQWumUtMEZnyCtz3o1MUQ.png",
+    "title": "Don’t Just Set Goals. Build Systems",
+    "authorImg": "https://miro.medium.com/v2/resize:fill:96:96/1*yv-ddW3o0_o8ezwtCIuHhA.png",
+    "authorName": "Kurtis Pykes",
+    "authorProfession": "Auther of Don’t Just Set Goals. Build Systems",
+    "color": "gray"
+  },
+  {
+    "membershipTag": "Member-only story",
+    "imgUrl": "https://miro.medium.com/v2/1*OS4qPxwyLNLmrLh--c7T8Q.png",
+    "title": "Henrietta Lacks, Subjectivity, & The Medical Exploitation of Women",
+    "authorImg": "https://miro.medium.com/v2/resize:fill:96:96/1*UIl_8xj70gocPLKnaCUyEw.png",
+    "authorName": "Kai Wong",
+    "authorProfession": "Writer for Cultured",
+    "color": "orange"
+  },
+  {
+    "membershipTag": "Member-only story",
+    "imgUrl": "https://miro.medium.com/v2/1*JUbZ8AzmwT5QX0jPfKv5xQ.png",
+    "title": "Storytelling with Design: How to persuade your team with narrative",
+    "authorImg": "https://miro.medium.com/v2/resize:fill:96:96/1*Co8_hA9zxB6qiiNIu6Rkpw.png",
+    "authorName": "Marlon Weems",
+    "authorProfession": "Auther of The Journeyman Unfiltered Podcast",
+    "color": "purple"
+  },
+  {
+    "membershipTag": "Member-only story",
+    "imgUrl": "https://miro.medium.com/v2/1*YhmNsow7HNTf0Wu5raYD8A.png",
+    "title": "Henrietta Lacks, Subjectivity, & The Medical Exploitation of Women",
+    "authorImg": "https://miro.medium.com/v2/resize:fill:96:96/1*U9Cqjqu1M4aRLy9M9gzauA.png",
+    "authorName": "Quintessa Williams",
+    "authorProfession": "Writer for Data-Informed UX Design",
+    "color": "green"
+  },
+  {
+    "membershipTag": "Member-only story",
+    "imgUrl": "https://miro.medium.com/v2/1*oMqS4RsY_6zk4vzus6K-AQ.png",
+    "title": "How Starting an Investment Firm Almost Landed Me in a Federal Prison",
+    "authorImg": "https://miro.medium.com/v2/resize:fill:96:96/1*Co8_hA9zxB6qiiNIu6Rkpw.png",
+    "authorName": "Kai Wong",
+    "authorProfession": "Auther for The Journeyman Unfiltered",
+    "color": "blue"
+  }
+]

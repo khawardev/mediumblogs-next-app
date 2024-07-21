@@ -8,9 +8,11 @@ const nextConfig = {
                 hostname: '**',
             },
         ],
+
     },
 
-
+    fastRefresh: true,
+    concurrentFeatures: true,
 
 };
 

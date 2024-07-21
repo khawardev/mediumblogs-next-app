@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("dots.css");
 
 @font-face {
   font-family: "sohne";
@@ -10,17 +8,30 @@
   font-family: "sohne_bold";
   src: url("../public/assets/fonts/TestSöhne-Dreiviertelfett.otf");
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+p {
+  font-size: 1.4rem;
+}
 
 .sohne_bold {
   font-family: "sohne_bold";
-  @apply tracking-tight font-bold;
+  @apply font-bold;
 }
 .sohne {
   font-family: "sohne";
   @apply font-bold;
 }
-.mobile {
+.about_button {
+  @apply py-24 w-full px-12 text-6xl rounded-none flex-between;
+}
+.mobile_center {
   @apply sm:w-10/12 m-auto sm:px-0 px-4;
+}
+.mobile_right {
+  @apply sm:w-11/12  ml-auto  sm:px-0 px-4;
 }
 .black_btn {
   @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
