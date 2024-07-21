@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <div className="flex-between  sm:py-[126px] py-[96px] ">
+    <div className="flex-between  sm:py-[126px] py-[100px] ">
       <div>
         <p className="lg:text-9xl md:text-8xl text-7xl  text-[#242424] leading-[0.9] tracking-tight">
           Human <br /> stories & ideas
