@@ -1,17 +1,16 @@
+import tailwindcss from 'tailwindcss-highlights';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        // domains: ['www.medium.com'],
         remotePatterns: [
             {
                 protocol: 'https',
                 hostname: '**',
             },
         ],
-
     },
-
-
+    plugins: [tailwindcss],
 };
 
 export default nextConfig;

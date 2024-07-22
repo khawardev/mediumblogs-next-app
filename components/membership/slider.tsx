@@ -22,22 +22,22 @@ const Slider = () => {
     }, [currentIndex, data.length]);
 
     return (
-        <div >
+        <div  >
             {data.map((item, slideIndex) => (
                 <div key={slideIndex} style={{
                     opacity: currentIndex === slideIndex ? opacity : 0,
                     transition: 'opacity 0.2s ease-in-out',
-                    width: '100%',
+
                 }} className="select-none ">
                     {currentIndex === slideIndex && (
-                        <main >
-                            <Image width={1000} height={1000} src={item.imgUrl} alt={item.title} />
-                            <section className=' p-6'>
+                        <main className='relative' >
+                            <Image className=' ' width={1000} height={1000} src={item.imgUrl} alt={item.title} />
+                            <section className=' p-6  '>
                                 <div className='flex mb-3'>
                                     <span className="sohne flex-center gap-1 text-sm  bg-yellow-400 py-[5px] px-3 rounded-full   "><PiStarFourFill size={10} />{item.membershipTag}</span>
                                 </div>
-                                <div >
-                                    <h2 className=' lg:text-3xl text-3xl py-5 lg:h-[150px] h-[200px]'>{item.title}</h2>
+                                <div className='lg:h-[170px] h-[200px]'>
+                                    <h2 className=' lg:text-3xl text-3xl py-5 '>{item.title}</h2>
                                 </div>
                                 <div className=" flex items-start gap-4 text-sm  ">
                                     <Image width={50} height={50} src={item.authorImg} alt={item.authorName} className="author-img" />

@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Medium Member",
+    "pkg": "5 usd /month or 60 usd /year",
+    "pros": [
+      "Read member-only stories",
+      "Support writers you read most",
+      "Earn money for your writing",
+      "Listen to audio narrations",
+      "Read offline with the Medium app",
+      "Access our Mastodon community",
+      "Connect your custom domain",
+      "Create your own publications"
+    ]
+  },
+  {
+    "title": "Friend of Medium",
+    "pkg": "15 usd/month or 180 usd/year",
+    "pros": [
+      "All Medium member benefits",
+      "Give 4x more to the writers you read",
+      "Share stories and drive more earnings ",
+      "Customize app icon"
+    ]
+  }
+]
