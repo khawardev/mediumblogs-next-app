@@ -4,6 +4,7 @@
 import data from '@/data/membership.json'; // Adjust the path based on your file structure
 import { useState, useEffect } from 'react';
 import { PiStarFourFill } from "react-icons/pi";
+import Image from 'next/image';
 
 const Slider = () => {
     const [currentIndex, setCurrentIndex] = useState<number>(0);
@@ -15,34 +16,38 @@ const Slider = () => {
             setTimeout(() => {
                 setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
                 setOpacity(1); // Start the fade-in effect
-            }, 500); // Adjust the duration to match your transition duration
-        }, 5000);
+            }, 350); // Adjust the duration to match your transition duration
+        }, 3000);
         return () => clearInterval(sliderInterval);
     }, [currentIndex, data.length]);
 
     return (
-        <div>
+        <div >
             {data.map((item, slideIndex) => (
                 <div key={slideIndex} style={{
                     opacity: currentIndex === slideIndex ? opacity : 0,
-                    transition: 'opacity 0.5s ease-in-out',
+                    transition: 'opacity 0.2s ease-in-out',
+                    width: '100%',
                 }} className="select-none ">
                     {currentIndex === slideIndex && (
-                        <>
-
-                            <img src={item.imgUrl} alt={item.title} className="mb-2" />
-                            <div className='flex mb-3'>
-                                <span className="sohne flex-center gap-1 text-sm  bg-yellow-400 py-[5px] px-3 rounded-full   "><PiStarFourFill size={10} />{item.membershipTag}</span>
-                            </div>
-                            <h2 className=' text-3xl mb-5'>{item.title}</h2>
-                            <div className=" flex items-center gap-4 text-sm ">
-                                <img src={item.authorImg} alt={item.authorName} className="author-img" />
-                                <div className="">
-                                    <p className='sohne_bold text-sm '>{item.authorName}</p>
-                                    <p className='sohne text-sm '>{item.authorProfession}</p>
+                        <main >
+                            <Image width={1000} height={1000} src={item.imgUrl} alt={item.title} />
+                            <section className=' p-6'>
+                                <div className='flex mb-3'>
+                                    <span className="sohne flex-center gap-1 text-sm  bg-yellow-400 py-[5px] px-3 rounded-full   "><PiStarFourFill size={10} />{item.membershipTag}</span>
                                 </div>
-                            </div>
-                        </>
+                                <div >
+                                    <h2 className=' lg:text-3xl text-3xl py-5 lg:h-[150px] h-[200px]'>{item.title}</h2>
+                                </div>
+                                <div className=" flex items-start gap-4 text-sm  ">
+                                    <Image width={50} height={50} src={item.authorImg} alt={item.authorName} className="author-img" />
+                                    <div >
+                                        <p className='sohne_bold text-sm '>{item.authorName}</p>
+                                        <p className='sohne text-sm '>{item.authorProfession}</p>
+                                    </div>
+                                </div>
+                            </section>
+                        </main>
                     )}
                 </div>
             ))}

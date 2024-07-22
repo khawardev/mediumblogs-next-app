@@ -13,7 +13,7 @@ const Membership = () => {
             <Sayings />
             <Plans />
                 <section className="mobile_center py-28 text-center   ">
-                <p className=" md:text-7xl text-6xl mb-7">Unlock a world of wisdom</p>
+                <p className=" md:text-7xl text-5xl mb-7">Unlock a world of wisdom</p>
                     <Button className=' sohne  font-bold rounded-full   text-base '>Get started</Button>
                 </section>
 

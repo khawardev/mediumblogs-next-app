@@ -10,7 +10,7 @@ const Plans = () => {
     return (
         <main className="border border-r-0 border-t-0 border-l-0 border-black">
             <div className="mobile_center xl:flex gap-36 py-28 lg:space-y-0 space-y-14 ">
-                <p className=" text-6xl ">Membership <br /> plans</p>
+                <p className=" lg:text-6xl text-5xl ">Membership <br /> plans</p>
                 <section className=" xl:w-[60%]  space-y-14 ">
                     <section className="text-center">
                         <p className="text-2xl sohne">Be part of a better internet.</p>

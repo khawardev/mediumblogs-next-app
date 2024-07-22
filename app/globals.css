@@ -25,7 +25,7 @@ p {
   @apply font-bold;
 }
 .about_button {
-  @apply py-24 w-full px-12 text-6xl rounded-none flex-between;
+  @apply lg:py-24 py-14 w-full lg:px-12 lg:text-6xl text-3xl rounded-none flex-between;
 }
 .mobile_center {
   @apply sm:w-10/12 m-auto sm:px-0 px-4;
