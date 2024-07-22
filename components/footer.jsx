@@ -3,7 +3,7 @@ import Link from "next/link"
 
 const footer = () => {
   return (
-    <div className=" border  py-5 border-t-black w-full border-b-0 border-l-0 border-r-0   ">
+    <div className="   py-5  border border-r-0 border-b-0 border-l-0 border-black   ">
       <div className="mobile_center   md:flex  gap-7  whitespace-nowrap  ">
         <div className="md:flex-center md:flex hidden gap-7 ">
           <Link className="sohne font-bold text-sm" href="">Press</Link>

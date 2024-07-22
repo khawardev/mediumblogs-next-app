@@ -27,7 +27,7 @@ const about = () => {
             <section className=" bg-[#181817]  ">
                 <Button variant={'white'} className="about_button border-t-white border border-l-0 border-r-0    ">Start reading <IoArrowForwardOutline /> </Button>
                 <Button variant={'white'} className="about_button">Start writing <IoArrowForwardOutline /> </Button>
-                <Button variant={'white'} className="about_button ">Become member <IoArrowForwardOutline /></Button>
+                <Button variant={'white'} className="about_button   border-b-0 ">Become member <IoArrowForwardOutline /></Button>
             </section>
         </main>
     )
