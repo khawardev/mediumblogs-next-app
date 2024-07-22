@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { DialogButton } from "@/shadcn/dialog"
+import { PopoverButton } from "@/shadcn/popover"
 import Link from "next/link"
 
 const header = () => {
@@ -19,9 +20,12 @@ const header = () => {
             <DialogButton title='Sign in' content='Welcome back.' />
             {/* <DialogButton title='Write' content='Join Medium.' /> */}
           </li>
-          <Button size={'sm'} className="sohne font-bold rounded-full ">
+          <Button className="sohne font-bold rounded-full ">
             Get started
           </Button>
+          <div className=" md:block block ">
+            <PopoverButton />
+          </div>
         </ul>
       </div>
 
