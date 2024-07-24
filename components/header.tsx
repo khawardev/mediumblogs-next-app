@@ -1,9 +1,15 @@
+'use client'
 import { Button } from "@/components/ui/button"
 import { DialogButton } from "@/shadcn/dialog"
 import { PopoverButton } from "@/shadcn/popover"
+import { signIn, signOut, useSession } from "next-auth/react"
+import Image from "next/image"
 import Link from "next/link"
 
-const header = () => {
+const Header = () => {
+  const { data: session } = useSession()
+  console.log(session);
+
   return (
     <div className="z-50 fixed  bg-[#F7F4ED] border border-t-0 border-l-0 border-r-0 border-b-black w-full ">
       <div className="mobile_center py-5  flex-between ">
@@ -16,16 +22,35 @@ const header = () => {
           <li className="md:flex-center md:flex hidden gap-7">
             <Link className="sohne font-bold text-sm" href="/about">Our story</Link>
             <Link className="sohne font-bold text-sm" href="/membership">Membership</Link>
-            <DialogButton title='Write' content='Create an account to start writing.' />
-            <DialogButton title='Sign in' content='Welcome back.' />
+            {!session  &&
+              <>
+                <DialogButton title='Write' content='Create an account to start writing.' />
+                <DialogButton title='Sign in' content='Welcome back.' />
+              </>
+            }
+
             {/* <DialogButton title='Write' content='Join Medium.' /> */}
           </li>
-          <Button className="sohne font-bold rounded-full ">
-            Get started
-          </Button>
-          <div className=" md:block block ">
+
+          {session && session.user ?
+            <>
+              <Button variant={'destructive'} onClick={() => signOut()} className="sohne font-bold rounded-full  ">
+                Sign out
+              </Button>
+              <Image className=" rounded-full" width={40} height={40} src={session.user.image || ''} alt={session.user.name || ''} />
+            </>
+
+            :
+            <Button onClick={() => signIn('google')} className="sohne font-bold rounded-full ">
+              Get started
+            </Button>
+          }
+
+          {/* <Button variant={'outline'} onClick={() => signIn("google")}>Sign in using google</Button> */}
+          {/* <div className=" md:block block ">
             <PopoverButton />
-          </div>
+          </div>  */}
+
         </ul>
       </div>
 
@@ -33,6 +58,6 @@ const header = () => {
   )
 }
 
-export default header
+export default Header
 
 

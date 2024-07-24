@@ -1,5 +1,3 @@
-import tailwindcss from 'tailwindcss-highlights';
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
@@ -10,7 +8,6 @@ const nextConfig = {
             },
         ],
     },
-    plugins: [tailwindcss],
 };
 
 export default nextConfig;

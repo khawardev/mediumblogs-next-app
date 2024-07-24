@@ -4,7 +4,7 @@ import { ViewTransitions } from 'next-view-transitions'
 import { Alegreya, Vollkorn } from 'next/font/google'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
-
+import  AuthProvider  from "@/lib/AuthProvider";
 const alegreya = Alegreya({
   subsets: ['latin'],
   display: 'swap',
@@ -27,8 +27,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ViewTransitions>
-      <html lang="en">
+    // <ViewTransitions> </ViewTransitions>
+
+
+    <html lang="en">
+      <AuthProvider >
         <body className={`${vollkorn.className}  bg-[#F7F4ED]`}>
           <Header />
           <div className=" pt-[77px]  pb-0">
@@ -36,7 +39,12 @@ export default function RootLayout({
           </div>
           <Footer />
         </body>
-      </html>
-    </ViewTransitions>
+      </AuthProvider >
+    </html>
+    // <html lang="en">
+    //   <AuthProvider>
+    //     <body className={vollkorn.className}>{children}</body>
+    //   </AuthProvider>
+    // </html>
   );
 }
