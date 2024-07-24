@@ -4,9 +4,11 @@ import {
   text,
   primaryKey,
   integer,
+  boolean,
 } from "drizzle-orm/pg-core";
 import { AdapterAccount } from "next-auth/adapters";
 import crypto from "crypto";
+import { relations, sql } from "drizzle-orm";
 
 
 export const users = pgTable("user", {
@@ -63,3 +65,34 @@ export const verificationTokens = pgTable(
     }),
   })
 );
+
+
+
+export const story = pgTable("story", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  content: text("content"),
+  topics: text("topics")
+    .array()
+    .default(sql`'{}'::text[]`),
+  userId: text("userId")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  publish: boolean("publish").default(false),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export const userRelations = relations(users, ({ many }) => ({
+  stories: many(story), // A user can have many stories
+}));
+
+export const storyRelations = relations(story, ({ one }) => ({
+  user: one(users), // A story belongs to one user
+}));
+
+
+
+
+
+
