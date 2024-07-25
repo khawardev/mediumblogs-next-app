@@ -35,29 +35,50 @@ export function PopoverButton() {
     }
     return (
         <Popover>
-            <PopoverTrigger asChild>
-                <Button variant={'outline'} size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#F7F4ED]'>
-                    {data && data.user && <Image className="rounded-full" src={data?.user.image ?? ''} width={40} height={40} alt={data?.user.name ?? ''} />}
-                </Button>
-            </PopoverTrigger>
+            {status !== 'authenticated' &&
+                <div className=" md:hidden block">
+                    <PopoverTrigger asChild>
+                        <Button variant={'outline'} size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#F7F4ED]'>
+                            <BiMenu />
+                        </Button>
+                    </PopoverTrigger>
+
+                </div>
+            }
+            {data && data.user &&
+                <PopoverTrigger asChild>
+                    <Button variant={'outline'} size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#F7F4ED]'>
+                        <Image className="rounded-full" src={data.user.image ?? ''} width={40} height={40} alt={data.user.name ?? ''} />
+                    </Button>
+                </PopoverTrigger>
+            }
             <PopoverContent ref={popoverRef}>
                 <ul className="flex-center flex-col  sohne font-bold gap-5  ">
-                    <li className="md:flex-center flex flex-col  gap-7">
-                        <Link className="sohne font-bold text-sm" href="/about">Our story</Link>
-                        <Link className="sohne font-bold text-sm" href="/membership">Membership</Link>
+                    <li className="md:flex-center flex flex-col  gap-2">
+                        <Button variant={'outline'} className="gap-1 sohne font-bold rounded-full flex-center">
+                            <Link className="sohne font-bold text-sm" href="/about">Our story</Link>
+                        </Button>
+                        <Button variant={'outline'} className="gap-1 sohne font-bold rounded-full flex-center">
+                            <Link className="sohne font-bold text-sm" href="/membership">Membership</Link>
+                        </Button>
+
+                        {/* <Link className="sohne font-bold text-sm" href="/membership">Membership</Link> */}
                         {/* <DialogButton   title='Write' content='Create an account to start writing.' /> */}
                         {/* <DialogButton  title='Sign in' content='Welcome back.' /> */}
                     </li>
-                    <Button
-                        onClick={(e) => {
-                            e.preventDefault();
-                            signOut();
-                        }}
-                        variant={'destructive'}
-                        className="gap-1 sohne font-bold rounded-full flex-center"
-                    >
-                        Sign out <IoIosLogOut stroke-width={0.8} size={16} />
-                    </Button>
+                    {status === 'authenticated' &&
+                        <Button
+                            onClick={(e) => {
+                                e.preventDefault();
+                                signOut();
+                            }}
+                            variant={'destructive'}
+                            className="gap-1 sohne font-bold rounded-full flex-center"
+                        >
+                            Sign out <IoIosLogOut stroke-width={0.8} size={16} />
+                        </Button>
+                    }
+
 
                 </ul>
             </PopoverContent>
