@@ -8,15 +8,22 @@ import {
 import { DialogButton } from "@/shadcn/dialog"
 import Link from "next/link"
 import { BiMenu } from "react-icons/bi"
-import  { useRef } from "react"
+import { useRef } from "react"
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
+import { LogOut } from "lucide-react";
+import { PiSignOutBold } from "react-icons/pi";
+import { LiaSignOutAltSolid } from "react-icons/lia";
+import { IoIosLogOut } from "react-icons/io";
+
 interface DialogButtonProps {
     title: string;
     content: string;
     onClick?: () => void; // Add onClick as an optional prop
 }
-export function PopoverButton () {
+export function PopoverButton() {
     const popoverRef = useRef<HTMLDivElement>(null)
-
+    const { data, status } = useSession()
     const handleLinkClick = () => {
         const popoverElement = popoverRef.current
         if (popoverElement) {
@@ -30,7 +37,7 @@ export function PopoverButton () {
         <Popover>
             <PopoverTrigger asChild>
                 <Button variant={'outline'} size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#F7F4ED]'>
-                    <BiMenu />
+                    {data && data.user && <Image className="rounded-full" src={data?.user.image ?? ''} width={40} height={40} alt={data?.user.name ?? ''} />}
                 </Button>
             </PopoverTrigger>
             <PopoverContent ref={popoverRef}>
@@ -38,12 +45,20 @@ export function PopoverButton () {
                     <li className="md:flex-center flex flex-col  gap-7">
                         <Link className="sohne font-bold text-sm" href="/about">Our story</Link>
                         <Link className="sohne font-bold text-sm" href="/membership">Membership</Link>
-                        <DialogButton   title='Write' content='Create an account to start writing.' />
-                        <DialogButton  title='Sign in' content='Welcome back.' />
+                        {/* <DialogButton   title='Write' content='Create an account to start writing.' /> */}
+                        {/* <DialogButton  title='Sign in' content='Welcome back.' /> */}
                     </li>
-                    <Button size={'sm'} className="sohne font-bold rounded-full ">
-                        Get started
+                    <Button
+                        onClick={(e) => {
+                            e.preventDefault();
+                            signOut();
+                        }}
+                        variant={'destructive'}
+                        className="gap-1 sohne font-bold rounded-full flex-center"
+                    >
+                        Sign out <IoIosLogOut stroke-width={0.8} size={16} />
                     </Button>
+
                 </ul>
             </PopoverContent>
         </Popover>

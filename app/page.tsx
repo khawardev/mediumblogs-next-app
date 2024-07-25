@@ -3,9 +3,13 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { signIn, signOut, useSession } from "next-auth/react"
+import Link from "next/link";
+import { DialogButton } from "@/shadcn/dialog";
 
 export default function Home() {
-  const { data: session } = useSession()
+  const { data, status } = useSession()
+  console.log(data);
+  console.log(status);
 
   return (
     <main className="flex-between h-[615px] mobile_right">
@@ -16,7 +20,7 @@ export default function Home() {
         <p className="sohne text-[#242424] md:text-2xl text-xl mb-10 md:mt-0 mt-6">
           A place to read, write, and deepen your understanding
         </p>
-      
+
         {/* {session && session.user ?
           <>
             {session.user.email} <Image className=" rounded-full" width={50} height={50} src={session.user.image || ''} alt={session.user.name || ''} />
@@ -31,16 +35,27 @@ export default function Home() {
           </Button>
         } */}
 
+        {status === 'authenticated' ?
+          <>
+            <Button size={'lg'} className="sohne md:flex hidden font-bold rounded-full text-lg ">
+              <Link href={'/blogs'}> Start reading</Link>
+            </Button>
+            <Button size={'lg'} variant={'green'} className="sohne md:hidden flex font-bold rounded-full text-lg">
+              <Link href={'/blogs'}> Start reading</Link>
+            </Button>
+          </>
+          :
+          <>
+            <Button size={'lg'} className="sohne md:flex hidden font-bold rounded-full text-lg ">
+              <DialogButton title='Start Reading' content='Create an account to start reading.' />
+            </Button>
+            <Button size={'lg'} variant={'green'} className="sohne md:hidden flex font-bold rounded-full text-lg">
+              <DialogButton title='Start Reading' content='Create an account to start reading.' />
+            </Button>
+          </>
+        }
 
 
-       <Button size={'lg'} className="sohne md:flex hidden font-bold rounded-full text-lg ">
-          Start reading
-        </Button>
-
-
-        <Button size={'lg'} variant={'green'} className="sohne md:hidden flex font-bold rounded-full text-lg">
-          Start reading
-        </Button> 
       </section>
       <section className="  lg:flex hidden ">
         <Image

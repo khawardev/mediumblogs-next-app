@@ -13,16 +13,17 @@ import Link from "next/link"
 import Mediumicon from '@/public/medium-icon.svg'
 import Image from "next/image"
 import { signIn } from "next-auth/react"
+import { FcGoogle } from "react-icons/fc"
 
 export function DialogButton({ title, content }: { title: string, content: string }) {
 
     return (
         <Dialog >
             <DialogTrigger asChild>
-                <Link className="sohne font-bold text-sm" href="">{title}</Link>
+                <Link className="sohne font-bold flex-center gap-1" href="">{title}</Link>
             </DialogTrigger>
             <DialogContent className=" flex-center text-center flex-col  ">
-               
+
                 <Image
                     src={Mediumicon}
                     alt="medium svg"
@@ -36,13 +37,11 @@ export function DialogButton({ title, content }: { title: string, content: strin
                 </DialogDescription>
 
                 <DialogTitle className=" text-3xl ">{content}</DialogTitle>
-                <Button onClick={() => signIn("google")} variant={'outline'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#F7F4ED]'>
-                    <Image
-                        src={`https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png`}
-                        alt="medium svg"
-                        width={20}
-                        height={20}
-                    />
+                <Button onClick={(e) => {
+                    e.preventDefault();
+                    signIn('google', { callbackUrl: 'http://localhost:3000' || 'https://mediumblogs.vercel.app' })
+                }} variant={'outline'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#F7F4ED]'>
+                    <FcGoogle size={20} />
                     Sign in with google
                 </Button>
                 <DialogDescription className="flex-center text-center sohne ">
