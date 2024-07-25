@@ -38,20 +38,18 @@ export default function Home() {
         {status === 'authenticated' ?
           <>
             <Button size={'lg'} className="sohne md:flex hidden font-bold rounded-full text-lg ">
-              <Link href={'/blogs'}> Start reading</Link>
+              <Link href={'/blogs'}> Start Reading</Link>
             </Button>
             <Button size={'lg'} variant={'green'} className="sohne md:hidden flex font-bold rounded-full text-lg">
-              <Link href={'/blogs'}> Start reading</Link>
+              <Link href={'/blogs'}> Start Reading</Link>
             </Button>
           </>
           :
           <>
-            <Button size={'lg'} className="sohne md:flex hidden font-bold rounded-full text-lg ">
-              <DialogButton title='Start Reading' content='Create an account to start reading.' />
-            </Button>
-            <Button size={'lg'} variant={'green'} className="sohne md:hidden flex font-bold rounded-full text-lg">
-              <DialogButton title='Start Reading' content='Create an account to start reading.' />
-            </Button>
+            <DialogButton size={'lg'} title='Start Reading' className={'sohne md:flex hidden font-bold rounded-full text-lg '} content='Create an account to start writing.' />
+            <DialogButton size={'lg'} variant={'green'} title='Start Reading' className={'sohne md:hidden flex font-bold rounded-full text-lg'} content='Create an account to start reading.' />
+            
+            
           </>
         }
 

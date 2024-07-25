@@ -14,13 +14,22 @@ import Mediumicon from '@/public/medium-icon.svg'
 import Image from "next/image"
 import { signIn } from "next-auth/react"
 import { FcGoogle } from "react-icons/fc"
+interface DialogButtonProps {
+    title: string;
+    content: string;
+    size?: "default" | "sm" | "lg" | "icon" | "sign";
+    variant?: string;
+    className?: string;
 
-export function DialogButton({ title, content }: { title: string, content: string }) {
+}
+export function DialogButton({ size, className, title, content }:  DialogButtonProps) {
 
     return (
         <Dialog >
             <DialogTrigger asChild>
-                <Link className="sohne font-bold flex-center gap-1" href="">{title}</Link>
+                <Button size={size} className={className}>
+                    {title !== 'Sign in' ? title : <><FcGoogle />{title}</>}
+                </Button>
             </DialogTrigger>
             <DialogContent className=" flex-center text-center flex-col  ">
 

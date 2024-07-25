@@ -59,9 +59,7 @@ const Header = () => {
             <li className="flex-center sohne  md:gap-7 gap-3">
               <Link className="md:block hidden  font-bold text-sm" href="/about">Our story</Link>
               <Link className="md:block hidden   font-bold text-sm" href="/membership">Membership</Link>
-              <Button className="flex-center gap-1  font-bold rounded-full  ">
-                <FcGoogle /> <DialogButton title='Sign in' content='Create an account to start writing.' />
-              </Button>
+              <DialogButton className='flex-center gap-1 font-bold rounded-full ' title='Sign in' content='Create an account to start writing.' />
               <PopoverButton />
             </li>
           }

@@ -61,10 +61,6 @@ export function PopoverButton() {
                         <Button variant={'outline'} className="gap-1 sohne font-bold rounded-full flex-center">
                             <Link className="sohne font-bold text-sm" href="/membership">Membership</Link>
                         </Button>
-
-                        {/* <Link className="sohne font-bold text-sm" href="/membership">Membership</Link> */}
-                        {/* <DialogButton   title='Write' content='Create an account to start writing.' /> */}
-                        {/* <DialogButton  title='Sign in' content='Welcome back.' /> */}
                     </li>
                     {status === 'authenticated' &&
                         <Button
