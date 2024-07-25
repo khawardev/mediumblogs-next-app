@@ -5,8 +5,8 @@ export const CreateStory = async () => {
   
   let newStory;
     try {
-        const user: any = await getUser();
-        console.log('users email are' , user);
+         newStory  = await getUser();
+        console.log("users email are", newStory);
         
   } catch (error) {}
 };

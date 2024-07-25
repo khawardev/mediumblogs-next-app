@@ -44,11 +44,11 @@ export function DialogButton({ size, className, title, content }:  DialogButtonP
                 <DialogDescription className="flex-center text-center sohne ">
                     Sign in to get personalized story recommendations, follow authors and topics you love, and interact with stories.
                 </DialogDescription>
-
+                {/* , {callbackUrl: 'http://localhost:3000' || 'https://mediumblogs.vercel.app' } */}
                 <DialogTitle className=" text-3xl ">{content}</DialogTitle>
                 <Button onClick={(e) => {
                     e.preventDefault();
-                    signIn('google', { callbackUrl: 'http://localhost:3000' || 'https://mediumblogs.vercel.app' })
+                    signIn('google'), { callbackUrl: 'http://localhost:3000' || 'https://mediumblogs.vercel.app' }
                 }} variant={'outline'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#F7F4ED]'>
                     <FcGoogle size={20} />
                     Sign in with google

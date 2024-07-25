@@ -20,21 +20,6 @@ export default function Home() {
         <p className="sohne text-[#242424] md:text-2xl text-xl mb-10 md:mt-0 mt-6">
           A place to read, write, and deepen your understanding
         </p>
-
-        {/* {session && session.user ?
-          <>
-            {session.user.email} <Image className=" rounded-full" width={50} height={50} src={session.user.image || ''} alt={session.user.name || ''} />
-            <Button variant={'destructive'} onClick={() => signOut()} className="sohne md:flex hidden font-bold rounded-full text-lg ">
-              Sign out
-            </Button>
-          </>
-
-          :
-          <Button onClick={() => signIn("google")} className="sohne md:flex hidden font-bold rounded-full text-lg ">
-            Sign in
-          </Button>
-        } */}
-
         {status === 'authenticated' ?
           <>
             <Link href={'/blogs'}>
@@ -45,10 +30,10 @@ export default function Home() {
           </>
           :
           <>
-            <DialogButton size={'lg'} title='Start Reading' className={'sohne md:flex hidden font-bold rounded-full text-lg '} content='Create an account to start writing.' />
+
+            <DialogButton size={'lg'} title='Start Reading' className={'sohne  font-bold rounded-full text-lg '} content='Create an account to start writing.' />
           </>
         }
-
 
       </section>
       <section className="  lg:flex hidden ">

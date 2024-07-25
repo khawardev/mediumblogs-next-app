@@ -13,13 +13,19 @@ export const getUser = async () => {
     };
   }
 
+  if (!user || !user.email) {
+    return {
+      error: "User schema is not defined correctly",
+    };
+  }
+
   let userDetails;
   try {
     userDetails = await db.query.user.findFirst({
-      where: eq(user?.email, session?.user.email),
+      where: eq(user.email, session.user.email),
     });
 
-    console.log("User details:", userDetails);  // Log user details for debugging
+    console.log("User details:", userDetails); // Log user details for debugging
 
     if (!userDetails) {
       return {
@@ -27,7 +33,7 @@ export const getUser = async () => {
       };
     }
   } catch (error) {
-    console.error("Error in fetching user:", error);  // Log error for debugging
+    console.error("Error in fetching user:", error); // Log error for debugging
     return {
       error: "Error in fetching user",
     };

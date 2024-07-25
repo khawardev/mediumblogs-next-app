@@ -35,23 +35,24 @@ export function PopoverButton() {
     }
     return (
         <Popover>
-            {status !== 'authenticated' &&
-                <div className=" md:hidden block">
-                    <PopoverTrigger asChild>
-                        <Button variant={'outline'} size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#F7F4ED]'>
-                            <BiMenu />
-                        </Button>
-                    </PopoverTrigger>
-
-                </div>
-            }
-            {data && data.user &&
+            {status === 'authenticated' ?
+                <>
+                    {data && data.user &&
+                        <PopoverTrigger asChild>
+                            <Button variant={'outline'} size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#F7F4ED]'>
+                                <Image className="rounded-full" src={data.user.image ?? ''} width={40} height={40} alt={data.user.name ?? ''} />
+                            </Button>
+                        </PopoverTrigger>
+                    }
+                </>
+                :
                 <PopoverTrigger asChild>
                     <Button variant={'outline'} size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#F7F4ED]'>
-                        <Image className="rounded-full" src={data.user.image ?? ''} width={40} height={40} alt={data.user.name ?? ''} />
+                        <BiMenu />
                     </Button>
                 </PopoverTrigger>
             }
+
             <PopoverContent ref={popoverRef}>
                 <ul className="flex-center flex-col  sohne font-bold gap-5  ">
                     <li className="md:flex-center flex flex-col  gap-2">
@@ -65,7 +66,6 @@ export function PopoverButton() {
                                 Membership
                             </Button>
                         </Link>
-                        
                     </li>
                     {status === 'authenticated' &&
                         <Button

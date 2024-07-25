@@ -60,7 +60,9 @@ const Header = () => {
               <Link className="md:block hidden  font-bold text-sm" href="/about">Our story</Link>
               <Link className="md:block hidden   font-bold text-sm" href="/membership">Membership</Link>
               <DialogButton className='flex-center gap-1 font-bold rounded-full ' title='Sign in' content='Create an account to start writing.' />
+              <div className=" md:hidden block">
               <PopoverButton />
+              </div>
             </li>
           }
 
