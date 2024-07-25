@@ -12,7 +12,7 @@ export default function Home() {
   console.log(status);
 
   return (
-    <main className="flex-between h-[615px] mobile_right">
+    <main className="flex-between md:h-[615px] h-[555px] mobile_right">
       <section>
         <p className="lg:text-9xl md:text-8xl text-7xl  text-[#242424] leading-[0.9] tracking-tight">
           Human <br /> stories & ideas
