@@ -55,12 +55,17 @@ export function PopoverButton() {
             <PopoverContent ref={popoverRef}>
                 <ul className="flex-center flex-col  sohne font-bold gap-5  ">
                     <li className="md:flex-center flex flex-col  gap-2">
-                        <Button variant={'outline'} className="gap-1 sohne font-bold rounded-full flex-center">
-                            <Link className="sohne font-bold text-sm" href="/about">Our story</Link>
-                        </Button>
-                        <Button variant={'outline'} className="gap-1 sohne font-bold rounded-full flex-center">
-                            <Link className="sohne font-bold text-sm" href="/membership">Membership</Link>
-                        </Button>
+                        <Link className="sohne text-sm  " href="/about">
+                            <Button variant={'outline'} className=" font-bold rounded-full w-full ">
+                                Our story
+                            </Button>
+                        </Link>
+                        <Link className="sohne text-sm  " href="/membership">
+                            <Button variant={'outline'} className=" font-bold rounded-full w-full ">
+                                Membership
+                            </Button>
+                        </Link>
+                        
                     </li>
                     {status === 'authenticated' &&
                         <Button
