@@ -15,11 +15,11 @@ const NavbarStory = ( { storyID, currentUserName }: { storyID: string, currentUs
           <Link href={'/'} >
             <Mediumsvg />
           </Link>
-          <p className=" text-sm ">Draft in {currentUserName}</p>
+          <p className=" text-sm sm:block hidden ">Draft in {currentUserName}</p>
           <p className=" text-sm sohne_bold  ">{saving ? 'Saved' : 'Saving...'}</p>
           
        </section>
-        <Button variant="green" size="sm" >Publish</Button>
+        <Button variant="green" size="sm" className=" sohne_bold" >Publish</Button>
       </section>
 
 
