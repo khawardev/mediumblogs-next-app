@@ -39,7 +39,7 @@ export function PopoverButton() {
                 <>
                     {data && data.user &&
                         <PopoverTrigger asChild>
-                            <Button variant={'outline'} size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#F7F4ED]'>
+                            <Button size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border sohne text-md  font-bold rounded-full  bg-[#F7F4ED]'>
                                 <Image className="rounded-full" src={data.user.image ?? ''} width={40} height={40} alt={data.user.name ?? ''} />
                             </Button>
                         </PopoverTrigger>

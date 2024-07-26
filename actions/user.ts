@@ -1,43 +1,41 @@
 "use server";
 import db from "@/db/drizzle";
 import { user } from "@/db/schema";
-import { getAuthSession } from "@/lib/auth";
+import { authOption, getAuthSession } from "@/lib/auth";
 import { eq } from "drizzle-orm";
-
+import { getServerSession } from "next-auth";
 export const getUser = async () => {
-  const session = await getAuthSession();
+  // const session = await getAuthSession();
+  // console.log("--- session log --- ", session);
+  const session: any = await getServerSession(authOption);
+  // console.log(session.user.email);
 
   if (!session) {
     return {
       error: "Session not found",
     };
   }
-
-  if (!user || !user.email) {
-    return {
-      error: "User schema is not defined correctly",
-    };
-  }
-
+  
   let userDetails;
   try {
     userDetails = await db.query.user.findFirst({
-      where: eq(user.email, session.user.email),
+      where: eq(user?.email, session?.user.email),
     });
 
-    console.log("User details:", userDetails); // Log user details for debugging
+    console.log('userDetails user.ts', userDetails);
+    
 
+
+    
     if (!userDetails) {
       return {
         error: "User details not found",
       };
     }
   } catch (error) {
-    console.error("Error in fetching user:", error); // Log error for debugging
     return {
-      error: "Error in fetching user",
+      error: `Error in fetching user: ${error}`,
     };
   }
-
   return userDetails;
 };

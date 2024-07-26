@@ -20,7 +20,7 @@ export const user = pgTable("user", {
   image: text("image"),
 });
 
-export const accounts = pgTable(
+export const account = pgTable(
   "account",
   {
     userId: text("userId")
@@ -44,7 +44,7 @@ export const accounts = pgTable(
   })
 );
 
-export const sessions = pgTable("session", {
+export const session = pgTable("session", {
   sessionToken: text("sessionToken").primaryKey(),
   userId: text("userId")
     .notNull()
@@ -52,7 +52,7 @@ export const sessions = pgTable("session", {
   expires: timestamp("expires", { mode: "date" }).notNull(),
 });
 
-export const verificationTokens = pgTable(
+export const verificationToken = pgTable(
   "verificationToken",
   {
     identifier: text("identifier").notNull(),

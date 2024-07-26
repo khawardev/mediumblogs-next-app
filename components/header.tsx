@@ -12,12 +12,23 @@ import { CiSearch } from "react-icons/ci";
 import { FcGoogle } from "react-icons/fc";
 import { GoBell } from "react-icons/go";
 import { CreateStory } from "@/actions/story"
+import { eq } from "drizzle-orm"
+import { user } from "@/db/schema"
+import db from "@/db/drizzle"
+import { useToast } from "@/components/ui/use-toast"
 
 const Header = () => {
+  const { toast } = useToast()
+
   const { data, status } = useSession()
   const MakeNewStory = async () => {
     const res = await CreateStory();
-    console.log(res);
+    if (res?.error) {
+      toast({
+        title: res?.error,
+      })
+    }
+    
 
   }
 
@@ -61,7 +72,7 @@ const Header = () => {
               <Link className="md:block hidden   font-bold text-sm" href="/membership">Membership</Link>
               <DialogButton className='flex-center gap-1 font-bold rounded-full ' title='Sign in' content='Create an account to start writing.' />
               <div className=" md:hidden block">
-              <PopoverButton />
+                <PopoverButton />
               </div>
             </li>
           }

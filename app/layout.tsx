@@ -5,6 +5,8 @@ import { Alegreya, Vollkorn } from 'next/font/google'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import  AuthProvider  from "@/lib/AuthProvider";
+import { Toaster } from "@/components/ui/toaster"
+
 const alegreya = Alegreya({
   subsets: ['latin'],
   display: 'swap',
@@ -36,6 +38,7 @@ export default function RootLayout({
           <Header />
           <div className=" pt-[77px]  pb-0">
             {children}
+            <Toaster/>
           </div>
           <Footer />
         </body>
