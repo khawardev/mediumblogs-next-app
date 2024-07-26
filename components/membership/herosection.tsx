@@ -15,7 +15,7 @@ const Herosection = () => {
                             <p className='sohne text-lg  text-gray-500 lg:w-2/3 sm:w-4/5  '>Become a member to read without limits or ads, fund great writers, and join a global community of people who care about high-quality storytelling.</p>
                             <div className=' flex-start gap-4'>
                                 <Button className=' sohne  font-bold rounded-full  '>Get started</Button>
-                                <Button variant={'outline'} className='border border-black sohne  font-bold rounded-full  bg-[#F7F4ED]'>View plans</Button>
+                                <Button variant={'outline'} className='border border-black sohne  font-bold rounded-full  bg-[#FFFFFF]'>View plans</Button>
                             </div>
                         </section>
                     </section>

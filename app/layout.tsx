@@ -4,8 +4,9 @@ import { ViewTransitions } from 'next-view-transitions'
 import { Alegreya, Vollkorn } from 'next/font/google'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
-import  AuthProvider  from "@/lib/AuthProvider";
+import AuthProvider from "@/lib/AuthProvider";
 import { Toaster } from "@/components/ui/toaster"
+import PathnameProvider from "@/components/pathnameProvider";
 
 const alegreya = Alegreya({
   subsets: ['latin'],
@@ -28,26 +29,23 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const path = <PathnameProvider url={'/about'} />
+  console.log('path ------ ',path);
+
   return (
     // <ViewTransitions> </ViewTransitions>
-
-
     <html lang="en">
       <AuthProvider >
-        <body className={`${vollkorn.className}  bg-[#F7F4ED]`}>
+        <body className={`${vollkorn.className}  bg-[#FFFFFF]`}>
           <Header />
           <div className=" pt-[77px]  pb-0">
             {children}
-            <Toaster/>
+            <Toaster />
           </div>
-          <Footer />
+          {path && <Footer />}
         </body>
       </AuthProvider >
     </html>
-    // <html lang="en">
-    //   <AuthProvider>
-    //     <body className={vollkorn.className}>{children}</body>
-    //   </AuthProvider>
-    // </html>
   );
 }

@@ -22,7 +22,7 @@ interface DialogButtonProps {
     className?: string;
 
 }
-export function DialogButton({ size, className, title, content }:  DialogButtonProps) {
+export function DialogButton({ size, className, title, content }: DialogButtonProps) {
 
     return (
         <Dialog >
@@ -49,7 +49,7 @@ export function DialogButton({ size, className, title, content }:  DialogButtonP
                 <Button onClick={(e) => {
                     e.preventDefault();
                     signIn('google'), { callbackUrl: 'http://localhost:3000' || 'https://mediumblogs.vercel.app' }
-                }} variant={'outline'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#F7F4ED]'>
+                }} variant={'outline'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#FFFFFF]'>
                     <FcGoogle size={20} />
                     Sign in with google
                 </Button>

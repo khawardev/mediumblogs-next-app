@@ -39,7 +39,7 @@ export function PopoverButton() {
                 <>
                     {data && data.user &&
                         <PopoverTrigger asChild>
-                            <Button size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border sohne text-md  font-bold rounded-full  bg-[#F7F4ED]'>
+                            <Button size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border sohne text-md  font-bold rounded-full  bg-[#FFFFFF]'>
                                 <Image className="rounded-full" src={data.user.image ?? ''} width={40} height={40} alt={data.user.name ?? ''} />
                             </Button>
                         </PopoverTrigger>
@@ -47,7 +47,7 @@ export function PopoverButton() {
                 </>
                 :
                 <PopoverTrigger asChild>
-                    <Button variant={'outline'} size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#F7F4ED]'>
+                    <Button variant={'outline'} size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#FFFFFF]'>
                         <BiMenu />
                     </Button>
                 </PopoverTrigger>
@@ -76,7 +76,7 @@ export function PopoverButton() {
                             variant={'destructive'}
                             className="gap-1 sohne font-bold rounded-full flex-center"
                         >
-                            Sign out <IoIosLogOut stroke-width={0.8} size={16} />
+                            Sign out <IoIosLogOut  size={16} />
                         </Button>
                     }
 

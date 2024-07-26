@@ -16,7 +16,8 @@ const NewStory = ({ storyID, storyContent }: Props) => {
         if (typeof window !== 'undefined' && contentEditableRef.current) {
             const editor = new mediumEditor(contentEditableRef.current, {
                 toolbar: {
-                    buttons: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'anchor', 'quote', 'bold', 'italic', 'underline', 'orderedList', 'unorderedList', 'justifyLeft', 'justifyRight', 'justifyCenter', 'justifyFull', 'removeFormat'],
+                    // buttons: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'anchor', 'quote', 'bold', 'italic', 'underline', 'orderedList', 'unorderedList', 'justifyLeft', 'justifyRight', 'justifyCenter', 'justifyFull', 'removeFormat'],
+                    buttons: ['h1', 'h4', 'anchor', 'quote', 'bold', 'italic', 'underline'],
                 }
             });
 
@@ -27,7 +28,7 @@ const NewStory = ({ storyID, storyContent }: Props) => {
     }, []);
 
     return (
-        <main className="md:w-11/12 m-auto py-10">
+        <main className="md:w-11/12 m-auto md:py-10 py-5">
             <section id="container">
                 <section
                     id="editable"
@@ -39,7 +40,7 @@ const NewStory = ({ storyID, storyContent }: Props) => {
                         <div dangerouslySetInnerHTML={{ __html: storyContent }} />
                     ) : (
                         <div>
-                            <h1 className="text-4xl" data-h1-placeholder="New Story title">Title</h1>
+                            <h1 data-h1-placeholder="New Story title">Title</h1>
                             <p data-p-placeholder="New Story content">Tell Your Story</p>
                         </div>
                     )}

@@ -15,6 +15,29 @@
 p {
   font-size: 1.4rem;
 }
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+h4 {
+    font-size: 1.40em;
+}
+
+h5 {
+    font-size: 1em;
+}
+
+h6 {
+    font-size: 0.875em;
+}
 
 .sohne_bold {
   font-family: "sohne_bold";
