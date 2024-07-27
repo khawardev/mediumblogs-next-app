@@ -9,11 +9,9 @@ const StoryID = async ({ params }: { params: { storyId: string } }) => {
     const user: any = await getUser();
 
     return (
-        <div className="sm:w-9/12 m-auto sm:px-0 px-4  md:py-10 py-5">
+        <div className="sm:w-9/12 m-auto sm:px-0 px-4  md:py-10 py-5 ">
             <NavbarStory storyID={params?.storyId} currentUserName={user?.name || ''} />
-
             <NewStory storyID={params?.storyId} storyContent={story?.content || ''}  />
-
         </div>
     )
 }

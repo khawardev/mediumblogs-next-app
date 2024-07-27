@@ -6,7 +6,6 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import AuthProvider from "@/lib/AuthProvider";
 import { Toaster } from "@/components/ui/toaster"
-import PathnameProvider from "@/components/pathnameProvider";
 
 const alegreya = Alegreya({
   subsets: ['latin'],
@@ -30,9 +29,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const path = <PathnameProvider url={'/about'} />
-  console.log('path ------ ',path);
-
   return (
     // <ViewTransitions> </ViewTransitions>
     <html lang="en">
@@ -43,7 +39,7 @@ export default function RootLayout({
             {children}
             <Toaster />
           </div>
-          {path && <Footer />}
+          <Footer />
         </body>
       </AuthProvider >
     </html>

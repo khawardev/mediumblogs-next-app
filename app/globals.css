@@ -1,4 +1,5 @@
-@import url("dots.css");
+@import url("../public/assets/styles/dots.css");
+@import url("../public/assets/styles/story.css");
 
 @font-face {
   font-family: "sohne";
@@ -8,37 +9,16 @@
   font-family: "sohne_bold";
   src: url("../public/assets/fonts/TestSöhne-Dreiviertelfett.otf");
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-p {
-  font-size: 1.4rem;
-}
-h1 {
-    font-size: 2em;
-}
 
-h2 {
-    font-size: 1.75em;
+p:empty:not(:focus)::before {
+  content: attr(data-p-placeholder);
+  opacity: 0.3;
 }
-
-h3 {
-    font-size: 1.5em;
-}
-
-h4 {
-    font-size: 1.40em;
-}
-
-h5 {
-    font-size: 1em;
-}
-
-h6 {
-    font-size: 0.875em;
-}
-
 .sohne_bold {
   font-family: "sohne_bold";
   @apply font-bold;
@@ -60,13 +40,6 @@ h6 {
   @apply md:w-11/12   md:ml-auto md:px-0 px-4;
 }
 
-.black_btn {
-  @apply rounded-full border border-black bg-black py-1.5 px-5 text-white transition-all hover:bg-white hover:text-black text-center text-sm  flex items-center justify-center;
-}
-
-.outline_btn {
-  @apply transition-all ease-in text-[15px] hover:bg-gray-100 cursor-pointer px-2 py-[3px] rounded-full hover:border hover:border-gray-800 border border-transparent;
-}
 
 .glassmorphism {
   @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;
@@ -156,4 +129,39 @@ h6 {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+
+
+
+p {
+  font-size: 1.4rem;
+} 
+
+ h1 {
+    font-size: 2em;
+}
+
+h1:empty:not(:focus)::before {
+  content: attr(data-h1-placeholder);
+  opacity: 0.3;
+}
+h2 {
+    font-size: 1.75em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+h4 {
+    font-size: 1.40em;
+}
+
+h5 {
+    font-size: 1em;
+}
+
+h6 {
+    font-size: 0.875em;
 }

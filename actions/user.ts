@@ -22,10 +22,6 @@ export const getUser = async () => {
       where: eq(user?.email, session?.user.email),
     });
 
-    console.log('userDetails user.ts', userDetails);
-    
-
-
     
     if (!userDetails) {
       return {
