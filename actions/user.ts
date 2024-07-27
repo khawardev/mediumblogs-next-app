@@ -5,10 +5,7 @@ import { authOption, getAuthSession } from "@/lib/auth";
 import { eq } from "drizzle-orm";
 import { getServerSession } from "next-auth";
 export const getUser = async () => {
-  // const session = await getAuthSession();
-  // console.log("--- session log --- ", session);
   const session: any = await getServerSession(authOption);
-  // console.log(session.user.email);
 
   if (!session) {
     return {

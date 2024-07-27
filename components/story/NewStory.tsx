@@ -101,7 +101,9 @@ const NewStory = ({ storyID, storyContent }: Props) => {
 
     const handleFileChange = (e: any) => {
         const file = e.target.files?.[0];
-        if (!file) {
+        console.log('file --- ' , file);
+        
+        if (file) {
             setTools(true);
             const imageUrl = URL.createObjectURL(file)
             if (typeof window !== 'undefined') {
@@ -125,7 +127,7 @@ const NewStory = ({ storyID, storyContent }: Props) => {
 
 
     return (
-        <main className="md:w-11/12 m-auto md:py-10 py-5 h-[540px]  ">
+        <main className="md:w-11/12 md:px-10  m-auto py-[100px] ">
             <section id="container">
                 <section
                     id="editable"
@@ -144,21 +146,22 @@ const NewStory = ({ storyID, storyContent }: Props) => {
                 </section>
             </section>
 
-            {/* <Button id="tooltip" onClick={() => setTools(!tools)} variant={'outline'} size={'icon'}>
-                <Plus className={`duration-300 ease-linear ${tools ? "rotate-90" : ""}`}/>
-            </Button> */}
+           
 
             <div
-                className={`z-10   ${buttonPosition.top === 0 ? 'hidden' : ' absolute'} `}
-                style={{ top: buttonPosition.top, left: '60px' }}
+                className={`z-10 bg-[#FFFFFF]  button-container ${buttonPosition.top === 0 ? 'hidden' : ' absolute'} `}
+                style={{ top: buttonPosition.top }}
             >
                 <Button className="  rounded-full" id="tooltip" onClick={() => setTools(!tools)} variant={'outline'} size={'iconsm'}>
-                    <Plus size={20} className={`duration-150 ease-linear ${tools ? "rotate-45" : ""}`} />
+                    <Plus size={20} className={`  duration-150 ease-linear ${tools ? "rotate-45" : ""}`} />
                 </Button>
             </div>
 
-            <div className="flex ">
-                <span onClick={() => fileRef.current?.click()} className={`border   rounded-full block p-2 ${tools ? 'scale-100 visible' : 'scale-0 invisible'} ease-linear duration-150 cursor-pointer`}>
+            <div
+                className={`z-10 flex absolute  button-container bg-[#FFFFFF]`}
+                style={{ top: buttonPosition.top + 50 }}
+            >
+                <span onClick={() => fileRef?.current?.click()} className={` border rounded-full p-2 ${tools ? 'scale-100  visible' : 'scale-0 invisible'} ease-linear duration-150 cursor-pointer`}>
                     <Image size={20} className=" opacity-60 text-green-800" />
                     <input
                         type="file"

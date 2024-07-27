@@ -14,11 +14,26 @@
 @tailwind components;
 @tailwind utilities;
 
-
-p:empty:not(:focus)::before {
-  content: attr(data-p-placeholder);
-  opacity: 0.3;
+.button-container {
+  left: 200px; /* Default value */
 }
+@media (max-width: 968px) {
+  .button-container {
+    left: 100px; /* Adjust as needed for smaller screens */
+  }
+}
+@media (max-width: 768px) {
+  .button-container {
+    left: 20px; /* Adjust as needed for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .button-container {
+    left: 10px; /* Adjust as needed for extra small screens */
+  }
+}
+
 .sohne_bold {
   font-family: "sohne_bold";
   @apply font-bold;
@@ -40,9 +55,8 @@ p:empty:not(:focus)::before {
   @apply md:w-11/12   md:ml-auto md:px-0 px-4;
 }
 
-
 .glassmorphism {
-  @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;
+  @apply rounded-xl    bg-[#FFFFFF]/30 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;
 }
 
 .prompt_card {
@@ -131,15 +145,12 @@ p:empty:not(:focus)::before {
   }
 }
 
-
-
-
- p {
+p {
   font-size: 1.4rem;
-}  
+}
 
 h1 {
-    font-size: 2.4em;
+  font-size: 2.4em;
 }
 h1:empty:not(:focus)::before {
   content: attr(data-h1-placeholder);
@@ -150,21 +161,21 @@ p:empty:not(:focus)::before {
   opacity: 0.3;
 }
 h2 {
-    font-size: 1.75em;
+  font-size: 1.75em;
 }
 
 h3 {
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 
 h4 {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 
 h5 {
-    font-size: 1em;
+  font-size: 1em;
 }
 
 h6 {
-    font-size: 0.875em;
+  font-size: 0.875em;
 }
