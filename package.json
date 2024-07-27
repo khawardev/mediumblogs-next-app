@@ -21,6 +21,7 @@
     "crypto": "^1.0.1",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.32.1",
+    "jotai": "^2.9.1",
     "lucide-react": "^0.408.0",
     "medium-editor": "^5.23.3",
     "next": "14.2.5",

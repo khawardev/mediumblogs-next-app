@@ -3,10 +3,11 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import Mediumsvg from "../mediumsvg";
 import { useState } from "react";
+import { savingAtom } from "@/context/atom";
+import { useAtom } from "jotai";
 
 const NavbarStory = ( { storyID, currentUserName }: { storyID: string, currentUserName: string }) => {
-  const [saving, setSaving] = useState<boolean>(true)
-
+  const [saving, setSaving] = useAtom(savingAtom);
  
   return (
     <main  >
@@ -16,7 +17,7 @@ const NavbarStory = ( { storyID, currentUserName }: { storyID: string, currentUs
             <Mediumsvg />
           </Link>
           <p className=" text-sm sm:block hidden ">Draft in {currentUserName}</p>
-          <p className=" text-sm sohne_bold  ">{saving ? 'Saved' : 'Saving...'}</p>
+          <p className=" text-sm sohne_bold  ">{saving ? 'Saving...' : 'Saved'}</p>
           
        </section>
         <Button variant="green" size="sm" className=" sohne_bold" >Publish</Button>

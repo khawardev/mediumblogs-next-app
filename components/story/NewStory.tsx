@@ -1,8 +1,15 @@
 'use client';
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import mediumEditor from 'medium-editor';
 import 'medium-editor/dist/css/medium-editor.css';
 import 'medium-editor/dist/css/themes/default.css';
+import { updateStory } from "@/actions/story";
+import { useAtom } from "jotai";
+import { savingAtom } from "@/context/atom";
+import { Button } from "../ui/button";
+import { Image, Plus } from "lucide-react";
+import { createRoot } from 'react-dom/client';
+import ImageComp from "./ImageComp";
 
 interface Props {
     storyID: string;
@@ -10,11 +17,77 @@ interface Props {
 }
 
 const NewStory = ({ storyID, storyContent }: Props) => {
-    const contentEditableRef = useRef<HTMLDivElement | null>(null);
+    const [saving, setSaving] = useAtom(savingAtom);
+    const [tools, setTools] = useState(false);
+    const [buttonPosition, setButtonPosition] = useState({ top: 0, left: 0 });
+
+
+
+
+    const contentEditRef = useRef<HTMLDivElement | null>(null);
+    const fileRef = useRef<HTMLInputElement | null>(null);
+
+    function debounce<T extends (...args: any[]) => any>(
+        func: T,
+        delay: number
+    ): (...args: Parameters<T>) => void {
+        let timeoutId: ReturnType<typeof setTimeout>;
+        return function (this: ThisParameterType<T>, ...args: Parameters<T>) {
+            clearTimeout(timeoutId); // Explicitly cast timeoutId to number
+            timeoutId = setTimeout(() => {
+                func.apply(this, args) as any; // Explicitly cast func to T(...args);
+            }, delay);
+        }
+
+    }
+
+    const handleSave = async () => {
+        const content = contentEditRef.current?.innerHTML;
+        setSaving(true);
+        try {
+            const update = await updateStory(storyID, content);
+            console.log('update --- ', update);
+
+        } catch (error) {
+            console.log('error in saving')
+        }
+        setSaving(false);
+    }
+    const debounceHandle = useRef<any>(
+        debounce(() => {
+            handleSave();
+        }, 3000)
+    ).current;
+
+
+    const getPosition = () => {
+        let y = 0;
+        const isSupport = typeof window.getSelection !== 'undefined';
+
+        if (isSupport) {
+            const range = window.getSelection()?.getRangeAt(0);
+            const rect = range?.getBoundingClientRect();
+            if (rect) {
+                y = rect.top;
+            }
+        }
+        return { y };
+
+
+    }
 
     useEffect(() => {
-        if (typeof window !== 'undefined' && contentEditableRef.current) {
-            const editor = new mediumEditor(contentEditableRef.current, {
+        const handleInput = () => {
+            const { y } = getPosition();
+            setButtonPosition({ top: y, left: 0 });
+            debounceHandle();
+        }
+        contentEditRef.current?.addEventListener("input", handleInput)
+    }, []);
+
+    useEffect(() => {
+        if (typeof window !== 'undefined' && contentEditRef.current) {
+            const editor = new mediumEditor(contentEditRef.current, {
                 toolbar: {
                     buttons: ['h1', 'h4', 'bold', 'underline', 'italic', 'anchor', 'quote'],
                 }
@@ -26,12 +99,37 @@ const NewStory = ({ storyID, storyContent }: Props) => {
         }
     }, []);
 
+    const handleFileChange = (e: any) => {
+        const file = e.target.files?.[0];
+        if (!file) {
+            setTools(true);
+            const imageUrl = URL.createObjectURL(file)
+            if (typeof window !== 'undefined') {
+                const divWrapper = document.createElement('div');
+                const root = createRoot(divWrapper)
+                root.render(
+                    <ImageComp 
+                        imageUrl={imageUrl}
+                        file={file}
+                        handleSave={debounceHandle}
+
+                    />
+                )
+            }
+           
+        }
+    }
+
+
+
+
+
     return (
         <main className="md:w-11/12 m-auto md:py-10 py-5 h-[540px]  ">
             <section id="container">
                 <section
                     id="editable"
-                    ref={contentEditableRef}
+                    ref={contentEditRef}
                     contentEditable
                     className="outline-none focus:outline-none"
                 >
@@ -45,6 +143,36 @@ const NewStory = ({ storyID, storyContent }: Props) => {
                     )}
                 </section>
             </section>
+
+            {/* <Button id="tooltip" onClick={() => setTools(!tools)} variant={'outline'} size={'icon'}>
+                <Plus className={`duration-300 ease-linear ${tools ? "rotate-90" : ""}`}/>
+            </Button> */}
+
+            <div
+                className={`z-10   ${buttonPosition.top === 0 ? 'hidden' : ' absolute'} `}
+                style={{ top: buttonPosition.top, left: '60px' }}
+            >
+                <Button className="  rounded-full" id="tooltip" onClick={() => setTools(!tools)} variant={'outline'} size={'iconsm'}>
+                    <Plus size={20} className={`duration-150 ease-linear ${tools ? "rotate-45" : ""}`} />
+                </Button>
+            </div>
+
+            <div className="flex ">
+                <span onClick={() => fileRef.current?.click()} className={`border   rounded-full block p-2 ${tools ? 'scale-100 visible' : 'scale-0 invisible'} ease-linear duration-150 cursor-pointer`}>
+                    <Image size={20} className=" opacity-60 text-green-800" />
+                    <input
+                        type="file"
+                        accept="image/*"
+                        style={{ display: 'none' }}
+                        ref={fileRef}
+                        onChange={handleFileChange}
+                    />
+                </span>
+            </div>
+
+
+
+
         </main>
     );
 }
