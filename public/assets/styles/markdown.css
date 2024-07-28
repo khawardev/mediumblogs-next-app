@@ -1,0 +1,177 @@
+.markdown-body h1 a,
+.markdown-body h2 a,
+.markdown-body h3 a,
+.markdown-body p a {
+  /* color: rgb(56, 56, 255); */
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+/* .markdown-body h1 a:hover,
+.markdown-body h2 a:hover,
+.markdown-body h3 a:hover,
+.markdown-body p a:hover {
+  color: #2800c8; 
+} */
+.markdown-body p {
+  font-size: 1.2em;
+}
+.markdown-body h1 {
+  font-size: 3em;
+}
+
+.markdown-body h2 {
+  font-size: 2em;
+}
+
+.markdown-body h3 {
+  font-size: 1.6em;
+}
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3 {
+  font-family: "sohne";
+  font-weight: bold;
+}
+.markdown-body h1 strong,
+.markdown-body h2 strong,
+.markdown-body h3 strong {
+  font-family: "sohne_bold";
+}
+
+.markdown-body h1 strong u,
+.markdown-body h2 strong u,
+.markdown-body h3 strong u {
+  text-decoration: underline !important;
+}
+
+.markdown-body h1 u,
+.markdown-body h2 u,
+.markdown-body h3 u {
+  text-decoration: underline !important;
+}
+
+.markdown-body code {
+  border-radius: 0.375rem; /* rounded-md */
+  background-color: #e5e5e5; /* bg-stone-200 */
+  padding: 0.25rem 0.375rem;
+  font-family: monospace; /* font-mono */
+  font-weight: 500; /* font-medium */
+  /* font-size: 1.3em; */
+}
+/* Base style for the ul element */
+.markdown-body ul {
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+/* Style for li elements in ul */
+.markdown-body ul li {
+  margin-bottom: 10px; /* Add some space between list items */
+}
+
+/* Style for p elements inside li in ul */
+.markdown-body ul li p {
+  display: flex; /* Use flexbox to align items */
+  align-items: center; /* Vertically center the items */
+  margin: 0; /* Remove default margin */
+  font-size: 1.3em;
+  color: #333; /* Set the text color */
+}
+
+/* Specific style for li elements containing checkboxes in ul */
+.markdown-body ul li p input[type="checkbox"] {
+  margin-right: 15px; /* Add space between checkbox and text */
+  margin-left: 20px;
+}
+
+/* Style for checked input elements in ul */
+.markdown-body ul li p input[type="checkbox"]:checked {
+  background-color: #007bff; /* Background color for checked checkboxes */
+}
+
+/* Style for disabled input elements in ul */
+.markdown-body ul li p input[type="checkbox"]:disabled {
+  cursor: not-allowed; /* Change cursor to indicate disabled state */
+  opacity: 0.6; /* Reduce opacity to indicate disabled state */
+}
+
+/* Style for li elements not containing checkboxes (using disc style) in ul */
+.markdown-body ul li:not(:has(input[type="checkbox"])) {
+  list-style-type: disc; /* Use disc bullets */
+  padding-left: 10px; /* Add padding to the left for indentation */
+  margin-left: 40px;
+}
+
+/* Base style for the ol element */
+.markdown-body ol {
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+  list-style-type: decimal; /* Default ordered list numbering */
+}
+
+/* Style for li elements in ol */
+.markdown-body ol li {
+  margin-bottom: 10px; /* Add some space between list items */
+  padding-left: 10px; /* Add padding to the left for indentation */
+  margin-left: 40px;
+  font-size: 1.3em;
+}
+
+/* Base style for the blockquote element */
+.markdown-body blockquote {
+  border-left: 4px solid #161616; /* Add a left border to indicate the quote */
+  margin: 20px 0; /* Add some margin around the blockquote */
+  padding: 10px 20px; /* Add padding inside the blockquote */
+  background-color: #f9f9f9; /* Light background color */
+  color: #555; /* Text color */
+  font-style: italic;
+}
+
+/* Style for the p element inside blockquote */
+.markdown-body blockquote p {
+  margin: 0; /* Remove default margin */
+  font-size: 1.2em; /* Increase the font size slightly */
+  color: #333; /* Set the text color */
+}
+
+/* Base style for the pre element */
+.markdown-body pre {
+  background-color: #f5f5f5; /* Light gray background */
+  padding: 15px; /* Add padding inside the pre element */
+  margin: 20px 0; /* Add some margin around the pre element */
+  border-radius: 5px; /* Rounded corners */
+  overflow-x: auto; /* Horizontal scroll for long code lines */
+  font-size: 1em; /* Set font size */
+  line-height: 1.5; /* Set line height for readability */
+  border: #e6e6e6 solid 1px;
+}
+
+/* Base style for the code element inside pre */
+.markdown-body pre code {
+  color: #000000; /* Text color for code */
+  background-color: transparent; /* Transparent background */
+  padding: 0; /* Remove padding */
+  font-family: "fira code"; /* Monospaced font */
+  font-size: 1em; /* Ensure font size is consistent with pre */
+}
+
+/* Optional: Add some custom styling for syntax highlighting (example) */
+.markdown-body pre code .keyword {
+  color: #007bff; /* Color for keywords */
+}
+
+.markdown-body pre code .string {
+  color: #28a745; /* Color for strings */
+}
+
+.markdown-body pre code .comment {
+  color: #6c757d; /* Color for comments */
+}
+
+/* Style for the image inside a p element */
+.markdown-body p img {
+  border-radius: 7px; /* Make the image rounded */
+  /* width: 100%;  */
+  height: auto; /* Maintain the aspect ratio */
+  display: block; /* Remove the inline nature of the image */
+}

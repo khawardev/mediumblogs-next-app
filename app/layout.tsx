@@ -6,6 +6,7 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import AuthProvider from "@/lib/AuthProvider";
 import { Toaster } from "@/components/ui/toaster"
+import { ThemeModeScript } from "flowbite-react";
 
 const alegreya = Alegreya({
   subsets: ['latin'],
@@ -31,8 +32,11 @@ export default function RootLayout({
 
   return (
     // <ViewTransitions> </ViewTransitions>
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <AuthProvider >
+        <head>
+        <ThemeModeScript />
+      </head>
         <body className={`${vollkorn.className}  bg-[#FFFFFF]`}>
           <Header />
           <div className=" pt-[77px]  pb-0">
