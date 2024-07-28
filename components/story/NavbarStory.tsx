@@ -6,6 +6,10 @@ import { useState } from "react";
 import { savingAtom } from "@/context/atom";
 import { useAtom } from "jotai";
 import { Spinner } from "flowbite-react";
+import { publishNewStory } from "@/actions/story";
+import { toast } from "../ui/use-toast";
+import StoryTags from "./StoryTags";
+import { StoryTagsDialog } from "@/shadcn/StoryTagsDialog";
 
 
 export const svg = () => {
@@ -30,9 +34,24 @@ export const svg = () => {
 
 const NavbarStory = ({ storyID, currentUserName }: { storyID: string, currentUserName: string }) => {
   const [saving, setSaving] = useAtom(savingAtom);
-  // bg - [#FFFFFF]
+  const [Showtags, setShowtags] = useState(false);
+
+
+  // const publishStory = async () => {
+  //   try {
+  //     const res = await publishNewStory(storyID, topics);
+  //     if (res?.error) {
+  //       toast({
+  //         title: res?.error,
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.log('error in publishing the story')
+  //   }
+  // }
+
   return (
-    <main className=" bg-[#FFFFFF] pt-10  sohne  " >
+    <main className="  pt-10  sohne  " >
       <section className="flex-between gap-4 font-bold    ">
         <section className="flex-center  gap-4 ">
           <Link href={'/'} >
@@ -49,10 +68,11 @@ const NavbarStory = ({ storyID, currentUserName }: { storyID: string, currentUse
           </p>
 
         </section>
-        <Button variant="green" size="sm" className=" sohne_bold" >Publish</Button>
+        <StoryTagsDialog />
+        {/* <Button onClick={() => (setShowtags(true))} variant="green" size="sm" className=" sohne_bold" >Publish</Button> */}
       </section>
 
-
+      {/* {Showtags && <StoryTags storyID={storyID} publishStory={publishStory} username={currentUserName} setShowtags={setShowtags} />} */}
 
     </main>
   )

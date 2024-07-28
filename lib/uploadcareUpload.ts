@@ -8,12 +8,14 @@ export const handleUploadcare = async (file: any) => {
   let result;
   try {
     if (file) {
-      const client = new UploadClient({ publicKey: "ededdc7b4b0cd2b2245a" });
+      const client = new UploadClient({
+        publicKey: process.env.UPLOADCARE_PUBLICKEY as string,
+      });
       const uploadedFile = await client.uploadFile(file);
     }
     const uploadcareSimpleAuthSchema = new UploadcareSimpleAuthSchema({
-      publicKey: "ededdc7b4b0cd2b2245a",
-      secretKey: "4e820c3f151aab9028df",
+      publicKey: process.env.UPLOADCARE_PUBLICKEY as string,
+      secretKey: process.env.UPLOADCARE_SECRETKEY as string,
     });
     result = await listOfFiles({}, { authSchema: uploadcareSimpleAuthSchema });
   } catch (error) {

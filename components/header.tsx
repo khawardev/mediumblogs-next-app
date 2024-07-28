@@ -1,6 +1,6 @@
 'use client'
 import { Button } from "@/components/ui/button"
-import { DialogButton } from "@/shadcn/dialog"
+import { DialogButton } from "@/shadcn/Authdialog"
 import { PopoverButton } from "@/shadcn/popover"
 import { Bell, SquarePen } from "lucide-react"
 import { signIn, signOut, useSession } from "next-auth/react"

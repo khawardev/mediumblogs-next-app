@@ -2,7 +2,7 @@
 import MarkdownToHtml from "@/components/markdownToHtml";
 import { Editor } from "novel-lightweight";
 import { useEffect, useRef, useState } from "react";
-import { handleUploadcare } from "@/actions/uploadcareUpload";
+import { handleUploadcare } from "@/lib/uploadcareUpload";
 import '@/public/assets/styles/markdown.css';
 import { useAtom } from "jotai";
 import { savingAtom } from "@/context/atom";

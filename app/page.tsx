@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { signIn, signOut, useSession } from "next-auth/react"
 import Link from "next/link";
-import { DialogButton } from "@/shadcn/dialog";
+import { DialogButton } from "@/shadcn/Authdialog";
 
 export default function Home() {
   const { data, status } = useSession()

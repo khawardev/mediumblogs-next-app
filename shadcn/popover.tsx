@@ -5,7 +5,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-import { DialogButton } from "@/shadcn/dialog"
+import { DialogButton } from "@/shadcn/Authdialog"
 import Link from "next/link"
 import { BiMenu } from "react-icons/bi"
 import { useRef } from "react"
@@ -76,7 +76,7 @@ export function PopoverButton() {
                             variant={'destructive'}
                             className="gap-1 sohne font-bold rounded-full flex-center"
                         >
-                            Sign out <IoIosLogOut  size={16} />
+                            Sign out <IoIosLogOut size={16} />
                         </Button>
                     }
 

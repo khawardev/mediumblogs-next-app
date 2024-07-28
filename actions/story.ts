@@ -44,7 +44,6 @@ export const getStorybyId = async (id: string, pubish: boolean) => {
 };
 
 export const updateStory = async (storyID: string, content: any) => {
-  
   if (!storyID) {
     return {
       error: "Please Fill all fields",
@@ -78,5 +77,42 @@ export const updateStory = async (storyID: string, content: any) => {
 
   revalidatePath(`/p/${storyID}`);
 
-  return {result: updatedStory};
+  return { result: updatedStory };
+};
+
+// publish New Story
+
+export const publishNewStory = async (storyID: string, topics: string[]) => {
+  if (!storyID || !topics?.length) {
+    return {
+      error: "Please provide complete Information",
+    };
+  }
+  const Story = await db.query.story.findFirst({
+    where: eq(story?.id, storyID),
+  });
+  if (!Story) {
+    return {
+      error: "story not exists",
+    };
+  }
+  let updatedStory;
+  try {
+    updatedStory = await db
+      .update(story)
+      .set({ topics, publish: true })
+      .where(eq(story?.id, storyID))
+      .returning();
+    if (!updatedStory.length) {
+      return {
+        error: "story not updated",
+      };
+    }
+  } catch (error) {
+    return {
+      error: "story not updated",
+    };
+  }
+
+  redirect(`/published/${updatedStory?.[0].id}`);
 };
