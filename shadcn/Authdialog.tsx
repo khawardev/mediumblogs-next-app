@@ -8,7 +8,7 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/Authdialog"
 import Link from "next/link"
 import Mediumicon from '@/public/medium-icon.svg'
 import Image from "next/image"
@@ -40,15 +40,15 @@ export function DialogButton({ size, className, title, content }: DialogButtonPr
                     height={50}
                 />
 
-                <DialogHeader className=" text-xl  sohne_bold">Login to continue</DialogHeader>
+                <DialogHeader className=" text-xl  sohne_bold ">Login to continue</DialogHeader>
                 <DialogDescription className="flex-center text-center sohne ">
                     Sign in to get personalized story recommendations, follow authors and topics you love, and interact with stories.
                 </DialogDescription>
                 {/* , {callbackUrl: 'http://localhost:3000' || 'https://mediumblogs.vercel.app' } */}
-                <DialogTitle className=" text-3xl ">{content}</DialogTitle>
+                <DialogTitle className=" text-3xl  ">{content}</DialogTitle>
                 <Button onClick={(e) => {
                     e.preventDefault();
-                    signIn('google'), { callbackUrl: 'http://localhost:3000' || 'https://mediumblogs.vercel.app' }
+                    signIn('google')
                 }} variant={'outline'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#FFFFFF]'>
                     <FcGoogle size={20} />
                     Sign in with google

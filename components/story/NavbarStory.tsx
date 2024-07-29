@@ -9,7 +9,7 @@ import { Spinner } from "flowbite-react";
 import { publishNewStory } from "@/actions/story";
 import { toast } from "../ui/use-toast";
 import StoryTags from "./StoryTags";
-import { StoryTagsDialog } from "@/shadcn/StoryTagsDialog";
+import { StoryShadcnDialog } from "@/shadcn/StoryShadcnDialog";
 
 
 export const svg = () => {
@@ -68,8 +68,9 @@ const NavbarStory = ({ storyID, currentUserName }: { storyID: string, currentUse
           </p>
 
         </section>
-        <StoryTagsDialog />
-        {/* <Button onClick={() => (setShowtags(true))} variant="green" size="sm" className=" sohne_bold" >Publish</Button> */}
+        <div>
+          <StoryShadcnDialog title="Publish" className=" h-9 px-5 py-2  border hover:border-[#1A8917] hover:text-white hover:bg-[#1A8917]   sohne_bold" />
+        </div>
       </section>
 
       {/* {Showtags && <StoryTags storyID={storyID} publishStory={publishStory} username={currentUserName} setShowtags={setShowtags} />} */}

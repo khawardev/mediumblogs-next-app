@@ -32,11 +32,11 @@ export default function RootLayout({
 
   return (
     // <ViewTransitions> </ViewTransitions>
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" >
       <AuthProvider >
         <head>
-        <ThemeModeScript />
-      </head>
+          <ThemeModeScript />
+        </head>
         <body className={`${vollkorn.className}  bg-[#FFFFFF]`}>
           <Header />
           <div className=" pt-[77px]  pb-0">
