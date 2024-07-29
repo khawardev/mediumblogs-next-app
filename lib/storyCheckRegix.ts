@@ -71,7 +71,7 @@ export const extractAndValidateContent = (htmlContent: any) => {
     heading: removeEmStrongTags(firstValidHeading),
     paragraph: firstValidParagraph
       ? removeEmStrongTags(firstValidParagraph)
-      : "No Description Availaible !!",
+      : "No Description Availaible",
     imageUrl: firstImageUrl
       ? firstImageUrl
       : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637",
