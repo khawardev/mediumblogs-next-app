@@ -9,7 +9,7 @@ import { savingAtom } from "@/context/atom";
 import { Button } from "@/components/ui/button";
 import { Image, Plus } from "lucide-react";
 import { createRoot } from 'react-dom/client';
-import ImageComp from "@/components/story/ImageComp";
+import ImageComp from "@/unused/ImageComp";
 
 interface Props {
     storyID: string;

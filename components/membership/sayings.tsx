@@ -7,8 +7,8 @@ const Sayings = () => {
             <div className="mobile_center lg:flex gap-[105px] py-28 lg:space-y-0 space-y-14">
                 <p className=" lg:text-6xl text-5xl">What members <br /> are saying</p>
                 <section className=" lg:w-1/2 md:space-y-22 space-y-20 ">
-                    {data.map((item, Index) => (
-                          <section key={Index} className="lg:flex lg:items-start lg:justify-center gap-5 lg:space-y-0 space-y-5 ">
+                    {data?.map((item, Index) => (
+                        <section key={Index} className="lg:flex lg:items-start lg:justify-center gap-5 lg:space-y-0 space-y-5 ">
                             <Image width={65} height={65} className="rounded-full border " alt="img" src={item.imgurl} />
                             <div>
 

@@ -1,20 +1,12 @@
 'use client'
-import { Button } from "@/components/ui/button"
 import { DialogButton } from "@/shadcn/Authdialog"
 import { PopoverButton } from "@/shadcn/popover"
-import { Bell, SquarePen } from "lucide-react"
-import { signIn, signOut, useSession } from "next-auth/react"
-import Image from "next/image"
+import { SquarePen } from "lucide-react"
+import { useSession } from "next-auth/react"
 import Link from "next/link"
-import { Input } from "@/components/ui/input"
 import { CiSearch } from "react-icons/ci";
-
-import { FcGoogle } from "react-icons/fc";
 import { GoBell } from "react-icons/go";
 import { CreateStory } from "@/actions/story"
-import { eq } from "drizzle-orm"
-import { user } from "@/db/schema"
-import db from "@/db/drizzle"
 import { useToast } from "@/components/ui/use-toast"
 
 const Header = () => {
@@ -28,8 +20,6 @@ const Header = () => {
         title: res?.error,
       })
     }
-
-
   }
 
   return (

@@ -10,6 +10,7 @@ export const CreateStory = async () => {
   try {
     const dbuser: any = await getUser();
     newStory = await db.insert(story).values({ userId: dbuser.id }).returning();
+
     if (!newStory.length) {
       return {
         error: "story not created",
@@ -80,9 +81,9 @@ export const updateStory = async (storyID: string, content: any) => {
   return { result: updatedStory };
 };
 
-// publish New Story
+// publish Story
 
-export const publishNewStory = async (storyID: string, topics: string[]) => {
+export const publishStory = async (storyID: string, topics: string[]) => {
   if (!storyID || !topics?.length) {
     return {
       error: "Please provide complete Information",

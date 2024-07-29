@@ -1,5 +1,5 @@
 'use client'
-import MarkdownToHtml from "@/components/markdownToHtml";
+import MarkdownToHtml from "@/lib/markdownToHtml";
 import { Editor } from "novel-lightweight";
 import { useEffect, useRef, useState } from "react";
 import { handleUploadcare } from "@/lib/uploadcareUpload";
@@ -31,7 +31,6 @@ export default function AddNewStory({ storyID, storyContent }: Props) {
         setSaving(true);
         try {
             const update = await updateStory(storyID, data);
-            console.log('update --- ', update);
             setSaving(false);
         } catch (error) {
             console.log('error in saving')

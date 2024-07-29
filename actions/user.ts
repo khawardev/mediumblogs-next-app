@@ -12,14 +12,33 @@ export const getUser = async () => {
       error: "Session not found",
     };
   }
-  
+
   let userDetails;
   try {
     userDetails = await db.query.user.findFirst({
       where: eq(user?.email, session?.user.email),
     });
 
-    
+    if (!userDetails) {
+      return {
+        error: "User details not found",
+      };
+    }
+  } catch (error) {
+    return {
+      error: `Error in fetching user: ${error}`,
+    };
+  }
+  return userDetails;
+};
+
+export const getUserbyID = async (userID: string) => {
+  let userDetails;
+  try {
+    userDetails = await db.query.user.findFirst({
+      where: eq(user?.id, userID),
+    });
+
     if (!userDetails) {
       return {
         error: "User details not found",

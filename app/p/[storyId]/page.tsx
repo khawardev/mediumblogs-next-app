@@ -7,7 +7,6 @@ import React from 'react'
 const StoryID = async ({ params }: { params: { storyId: string } }) => {
     const story: any = await getStorybyId(params?.storyId, false);
     const user: any = await getUser();
-    console.log('story content : ', story?.content);
 
     return (
         <div className="sm:w-9/12 m-auto">

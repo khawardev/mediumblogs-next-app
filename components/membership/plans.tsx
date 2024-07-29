@@ -16,7 +16,7 @@ const Plans = () => {
                         <p className="text-2xl sohne">Get 20% off membership for a limited time.</p>
                     </section>
                     <section className="md:flex gap-10 sohne md:space-y-0 space-y-10">
-                        {plans.map((plan, index) => (
+                        {plans?.map((plan, index) => (
                             <CardWithForm key={index}>
                                 <section className="p-8 space-y-8">
                                     <div className="space-y-5 flex flex-col text-center border-b pb-5">
@@ -36,7 +36,7 @@ const Plans = () => {
                                         </Button>
                                     </div>
                                     <ul className="flex flex-col items-start space-y-4 text-gray-700">
-                                        {plan.pros.map((pro, i) => (
+                                        {plan.pros?.map((pro, i) => (
                                             <li key={i} className="flex items-center gap-3">
                                                 <MdOutlineCheck className="self-center text-green-600" />
                                                 {pro}

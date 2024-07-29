@@ -23,7 +23,7 @@ const Slider = () => {
 
     return (
         <div  >
-            {data.map((item, slideIndex) => (
+            {data?.map((item, slideIndex) => (
                 <div key={slideIndex} style={{
                     opacity: currentIndex === slideIndex ? opacity : 0,
                     transition: 'opacity 0.2s ease-in-out',

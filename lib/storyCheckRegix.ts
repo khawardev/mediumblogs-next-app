@@ -60,12 +60,6 @@ export const extractAndValidateContent = (htmlContent: any) => {
   if (!firstValidHeading) {
     return { error: "No valid headings found" };
   }
-  //   if (!firstValidParagraph) {
-  //     return { error: "No valid paragraphs found" };
-  //   }
-  //   if (!firstImageUrl) {
-  //     return { error: "No images found" };
-  //   }
 
   return {
     heading: removeEmStrongTags(firstValidHeading),
