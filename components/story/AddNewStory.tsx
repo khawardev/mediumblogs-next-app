@@ -13,7 +13,7 @@ interface Props {
     storyContent: string;
 }
 
-export default function NewStory({ storyID, storyContent }: Props) {
+export default function AddNewStory({ storyID, storyContent }: Props) {
     const [markdownContent, setmarkdownContent] = useState('');
     const [saving, setSaving] = useAtom(savingAtom);
     const [data, setData] = useState("");

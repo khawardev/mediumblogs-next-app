@@ -2,9 +2,9 @@
 'use client'
 import { useState } from 'react';
 import { X } from "lucide-react"
-import { toast } from './ui/use-toast';
+import { toast } from '../ui/use-toast';
 
-const InputWithClearButton = () => {
+const TagsInput = () => {
 
     const [inputValues, setInputValues] = useState<string[]>([]);
     const [currentInput, setCurrentInput] = useState<string>('');
@@ -63,6 +63,6 @@ const InputWithClearButton = () => {
     );
 };
 
-export default InputWithClearButton;
+export default TagsInput;
 
 

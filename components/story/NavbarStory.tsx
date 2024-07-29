@@ -9,7 +9,8 @@ import { Spinner } from "flowbite-react";
 import { publishNewStory } from "@/actions/story";
 import { toast } from "../ui/use-toast";
 import StoryTags from "./StoryTags";
-import { StoryShadcnDialog } from "@/shadcn/StoryShadcnDialog";
+import { StoryShadcnDialog } from "@/components/story/StoryShadcnDialog";
+import { extractAndValidateContent } from "@/lib/storyCheckRegix";
 
 
 export const svg = () => {
@@ -32,7 +33,7 @@ export const svg = () => {
 }
 
 
-const NavbarStory = ({ storyID, currentUserName }: { storyID: string, currentUserName: string }) => {
+const NavbarStory = ({ storyID, currentUserName, storyContent }: { storyID: string, currentUserName: string, storyContent: string }) => {
   const [saving, setSaving] = useAtom(savingAtom);
   const [Showtags, setShowtags] = useState(false);
 
@@ -68,9 +69,11 @@ const NavbarStory = ({ storyID, currentUserName }: { storyID: string, currentUse
           </p>
 
         </section>
-        <div>
-          <StoryShadcnDialog title="Publish" className=" h-9 px-5 py-2  border hover:border-[#1A8917] hover:text-white hover:bg-[#1A8917]   sohne_bold" />
-        </div>
+        {/* <StoryShadcnDialog storyID={storyID} publishStory={publishStory} username={currentUserName} setShowtags={setShowtags} title="Publish" className=" h-9 px-5 py-2  border hover:border-[#1A8917] hover:text-white hover:bg-[#1A8917]   sohne_bold" /> */}
+
+
+        <StoryShadcnDialog storyContent={storyContent} storyID={storyID} username={currentUserName} setShowtags={setShowtags} title="Publish" className=" h-9 px-5 py-2  border hover:border-[#1A8917] hover:text-white hover:bg-[#1A8917]   sohne_bold" />
+
       </section>
 
       {/* {Showtags && <StoryTags storyID={storyID} publishStory={publishStory} username={currentUserName} setShowtags={setShowtags} />} */}
