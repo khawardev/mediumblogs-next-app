@@ -27,7 +27,6 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
     const [favStatus, setFavStatus] = useState<any>(null);
     const CheckRegix: any = storyCheckRegix(publishedStory?.content);
     const PublishedRegix: any = checkPublishedRegix(publishedStory?.content);
-
     useEffect(() => {
         const fetchData = async () => {
             setClapCount(await ClapCount(publishedStory?.id));
@@ -41,7 +40,7 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
 
     return (
         <div className='  mobile_center_contract md:my-14 my-8 text-[#242424]  '>
-            <div className="  md:text-[45px] leading-[45px] text-4xl sohne_bold md:mb-10 mb-8" dangerouslySetInnerHTML={{ __html: CheckRegix?.heading || '' }} />
+            <div className="  md:text-[45px] leading-[42px] text-4xl sohne_bold md:mb-10 mb-8" dangerouslySetInnerHTML={{ __html: CheckRegix?.heading || '' }} />
 
             <section className='flex items-center justify-start gap-3 sohne mb-8 '>
                 <Button size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border sohne text-md  font-bold rounded-full  bg-[#FFFFFF]'>

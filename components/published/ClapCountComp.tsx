@@ -1,7 +1,8 @@
 "use client";
-import { ClapCountByUser, getClapCount, updateClapStoryCount, updateCommentOrReplyCount } from "@/actions/claps";
+import { getClapCountByUser, getClapsCountByStory, updateClapStoryCount, updateCommentOrReplyCount } from "@/actions/claps";
 import { useEffect, useState } from "react";
 import { useToast } from "../ui/use-toast";
+import { getUser } from "@/actions/user";
 
 
 export const clappedIcon = () => {
@@ -44,20 +45,19 @@ type ClapCountCompProps = {
 };
 const ClapCountComp = ({ clapCount, storyId, userClaps, commentId, type }: ClapCountCompProps) => {
     const [clapByUser, setClapByUser] = useState<any>(0);
-    const [currentClap, setCurrentClap] = useState<any>(0);
+    const [allClaps, setAllClaps] = useState<any>(0);
     const { toast } = useToast()
-    console.log(clapByUser, '------------ setUserClaps');
 
     useEffect(() => {
         const fetchClapCount = async () => {
-            const result = await getClapCount(storyId);
-            const UserClaps = await ClapCountByUser(storyId);
+            const ClapsCountByStory = await getClapsCountByStory(storyId);
+            const ClapsCountByUser = await getClapCountByUser(storyId);
 
-            if (result.error) {
-                console.log(result.error);
+            if (ClapsCountByStory.error) {
+                console.log(ClapsCountByStory.error);
             } else {
-                setCurrentClap(result.clapCount);
-                setClapByUser(UserClaps);
+                setAllClaps(ClapsCountByStory?.clapCount);
+                setClapByUser(ClapsCountByUser?.clapCount);
             }
         };
 
@@ -67,22 +67,30 @@ const ClapCountComp = ({ clapCount, storyId, userClaps, commentId, type }: ClapC
 
 
     const clapStoryOrComment = async () => {
+
+        const user: any = await getUser();
+        if (!user) {
+            toast({
+                title: 'Please Login to continue',
+            })
+            return;
+        }
         if (clapByUser >= 50) {
             toast({
-                title: 'Claps are at max level',
+                title: 'Max 50 claps are allowed',
             })
+            return;
         }
-        setCurrentClap((prev: any) => prev + 1);
+        setAllClaps((prev: any) => prev + 1);
         try {
             if (!commentId) {
                 await updateClapStoryCount(storyId);
-                // setCurrentClap(clap);
             } else {
                 await updateCommentOrReplyCount(storyId, commentId, type);
             }
         } catch (error) {
             console.log("Error while clapping story or comment or reply");
-            setCurrentClap((prev: any) => prev - 1);
+            setAllClaps((prev: any) => prev - 1);
             setClapByUser((prev: any) => prev - 1);
         }
     };
@@ -90,13 +98,13 @@ const ClapCountComp = ({ clapCount, storyId, userClaps, commentId, type }: ClapC
     return (
         <section className="flex-center gap-1">
             <button onClick={(e) => { e.preventDefault(); clapStoryOrComment() }}>
-                {currentClap > 0 ? (
+                {clapByUser > 0 ? (
                     clappedIcon()
                 ) : (
                     clapIcon()
                 )}
             </button>
-            <p className="text-sm text-slate-400">{currentClap}</p>
+            <p className="text-sm text-slate-400">{allClaps}</p>
         </section>
     );
 };

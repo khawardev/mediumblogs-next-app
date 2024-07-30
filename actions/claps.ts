@@ -147,7 +147,7 @@ export const updateCommentOrReplyCount = async (
   return claps?.[0];
 };
 
-export const getClapCount = async (storyId: string) => {
+export const getClapCountByUser = async (storyId: string) => {
   const user: any = await getUser();
 
   try {
@@ -155,6 +155,27 @@ export const getClapCount = async (storyId: string) => {
       where: and(
         eq(clap.storyId, storyId),
         eq(clap.userId, user.id),
+        isNull(clap.commentId),
+        isNull(clap.replyId)
+      ),
+    });
+
+    if (clapped) {
+      return { clapCount: clapped.clapCount };
+    } else {
+      return { clapCount: 0 };
+    }
+  } catch (error) {
+    console.log(error);
+    return { error: "clap not found" };
+  }
+};
+
+export const getClapsCountByStory = async (storyId: string) => {
+  try {
+    const clapped = await db.query.clap.findFirst({
+      where: and(
+        eq(clap.storyId, storyId),
         isNull(clap.commentId),
         isNull(clap.replyId)
       ),
