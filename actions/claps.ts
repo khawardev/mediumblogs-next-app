@@ -173,7 +173,7 @@ export const getClapCountByUser = async (storyId: string) => {
 
 export const getClapsCountByStory = async (storyId: string) => {
   try {
-    const clapped = await db.query.clap.findFirst({
+    const claps: any = await db.query.clap.findMany({
       where: and(
         eq(clap.storyId, storyId),
         isNull(clap.commentId),
@@ -181,13 +181,14 @@ export const getClapsCountByStory = async (storyId: string) => {
       ),
     });
 
-    if (clapped) {
-      return { clapCount: clapped.clapCount };
-    } else {
-      return { clapCount: 0 };
-    }
+    const totalClapCount = claps.reduce(
+      (accumulator: any, clap: any) => accumulator + clap.clapCount,
+      0
+    );
+
+    return { clapCount: totalClapCount };
   } catch (error) {
     console.log(error);
-    return { error: "clap not found" };
+    return { error: "error fetching claps" };
   }
 };

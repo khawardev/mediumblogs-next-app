@@ -46,42 +46,44 @@ type ClapCountCompProps = {
 const ClapCountComp = ({ clapCount, storyId, userClaps, commentId, type }: ClapCountCompProps) => {
     const [clapByUser, setClapByUser] = useState<any>(0);
     const [allClaps, setAllClaps] = useState<any>(0);
+    const [currentUser, setCurrentUser] = useState<any>(0);
     const { toast } = useToast()
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
     useEffect(() => {
         const fetchClapCount = async () => {
             const ClapsCountByStory = await getClapsCountByStory(storyId);
-            const ClapsCountByUser = await getClapCountByUser(storyId);
-
-            if (ClapsCountByStory.error) {
-                console.log(ClapsCountByStory.error);
-            } else {
-                setAllClaps(ClapsCountByStory?.clapCount);
-                setClapByUser(ClapsCountByUser?.clapCount);
-            }
+            const user: any = await getUser();
+            setAllClaps(ClapsCountByStory?.clapCount);
+            setCurrentUser(user?.id);
         };
-
         fetchClapCount();
-    }, [storyId]);
-
+    }, []);
+    useEffect(() => {
+        const fetchClapCount = async () => {
+            const ClapsCountByUser = await getClapCountByUser(storyId);
+            setClapByUser(ClapsCountByUser?.clapCount);
+        };
+        fetchClapCount();
+    }, [allClaps]);
 
 
     const clapStoryOrComment = async () => {
-
-        const user: any = await getUser();
-        if (!user) {
+        if (!currentUser) {
             toast({
                 title: 'Please Login to continue',
             })
             return;
         }
-        if (clapByUser >= 50) {
+        if (clapByUser >= 8) {
             toast({
                 title: 'Max 50 claps are allowed',
             })
             return;
         }
         setAllClaps((prev: any) => prev + 1);
+        setIsButtonDisabled(true);
+
         try {
             if (!commentId) {
                 await updateClapStoryCount(storyId);
@@ -89,22 +91,32 @@ const ClapCountComp = ({ clapCount, storyId, userClaps, commentId, type }: ClapC
                 await updateCommentOrReplyCount(storyId, commentId, type);
             }
         } catch (error) {
-            console.log("Error while clapping story or comment or reply");
-            setAllClaps((prev: any) => prev - 1);
-            setClapByUser((prev: any) => prev - 1);
+            // setAllClaps((prev: any) => prev - 1);
+            // setClapByUser((prev: any) => prev - 1);
+            toast({
+                title: 'Error while clapping story or comment or reply',
+            })
         }
+        setTimeout(() => {
+            setIsButtonDisabled(false);
+        }, 1000);
     };
 
     return (
         <section className="flex-center gap-1">
-            <button onClick={(e) => { e.preventDefault(); clapStoryOrComment() }}>
-                {clapByUser > 0 ? (
-                    clappedIcon()
-                ) : (
-                    clapIcon()
-                )}
-            </button>
-            <p className="text-sm text-slate-400">{allClaps}</p>
+            {!allClaps ? 'loading claps' :
+                <>
+                    <button disabled={isButtonDisabled} onClick={(e) => { e.preventDefault(); clapStoryOrComment() }}>
+                        {clapByUser > 0 ? (
+                            clappedIcon()
+                        ) : (
+                            clapIcon()
+                        )}
+                    </button>
+                    <p className="text-sm text-slate-400">{allClaps}</p>
+                </>
+            }
+
         </section>
     );
 };
