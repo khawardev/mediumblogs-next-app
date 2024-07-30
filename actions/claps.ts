@@ -10,6 +10,8 @@ export const ClapCount = async (storyId: string, commentId?: string) => {
   if (!storyId) {
     return { error: "dont have clap storyId" };
   }
+  console.log(storyId, "clapCount");
+
   try {
     if (commentId) {
       const response = await db
@@ -77,8 +79,7 @@ export const updateClapStoryCount = async (storyId: string) => {
 
   let claps;
   try {
-    const story: any = await getStorybyId(storyId, true);
-
+    await getStorybyId(storyId, true);
     const clapped = await db.query.clap.findFirst({
       where: and(
         eq(clap.storyId, storyId),
@@ -96,7 +97,6 @@ export const updateClapStoryCount = async (storyId: string) => {
     } else {
       const data: any = { userId: user.id, clapCount: 1, storyId };
       claps = await db.insert(clap).values(data).returning();
-      console.log(claps, "elseelseelseelse");
     }
   } catch (error) {
     console.log(error);
@@ -145,4 +145,28 @@ export const updateCommentOrReplyCount = async (
     return { error: "clap not updated" };
   }
   return claps?.[0];
+};
+
+export const getClapCount = async (storyId: string) => {
+  const user: any = await getUser();
+
+  try {
+    const clapped = await db.query.clap.findFirst({
+      where: and(
+        eq(clap.storyId, storyId),
+        eq(clap.userId, user.id),
+        isNull(clap.commentId),
+        isNull(clap.replyId)
+      ),
+    });
+
+    if (clapped) {
+      return { clapCount: clapped.clapCount };
+    } else {
+      return { clapCount: 0 };
+    }
+  } catch (error) {
+    console.log(error);
+    return { error: "clap not found" };
+  }
 };

@@ -124,7 +124,7 @@ export const commentRelations = relations(comment, ({ one, many }) => ({
     fields: [comment.storyId],
     references: [story.id],
   }),
-  comment: many(comment), // A comment can have multiple comments
+  // comment: many(comment), // A comment can have multiple comments
   reply: many(reply), // A comment can have multiple replys
   clap: many(clap), // A comment can have multiple claps
 }));

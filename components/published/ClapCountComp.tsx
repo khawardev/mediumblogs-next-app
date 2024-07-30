@@ -1,6 +1,6 @@
 "use client";
-import { updateClapStoryCount, updateCommentOrReplyCount } from "@/actions/claps";
-import { useState } from "react";
+import { ClapCountByUser, getClapCount, updateClapStoryCount, updateCommentOrReplyCount } from "@/actions/claps";
+import { useEffect, useState } from "react";
 import { useToast } from "../ui/use-toast";
 
 
@@ -43,11 +43,28 @@ type ClapCountCompProps = {
     type?: string,
 };
 const ClapCountComp = ({ clapCount, storyId, userClaps, commentId, type }: ClapCountCompProps) => {
-    const [clapByUser, setClapByUser] = useState<any>(userClaps);
-    const [currentClap, setCurrentClap] = useState<any>(clapCount);
+    const [clapByUser, setClapByUser] = useState<any>(0);
+    const [currentClap, setCurrentClap] = useState<any>(0);
     const { toast } = useToast()
-    console.log(currentClap, 'clapCountclapCountclapCountclapCount');
-    console.log(clapByUser, 'userClapsuserClapsuserClaps');
+    console.log(clapByUser, '------------ setUserClaps');
+
+    useEffect(() => {
+        const fetchClapCount = async () => {
+            const result = await getClapCount(storyId);
+            const UserClaps = await ClapCountByUser(storyId);
+
+            if (result.error) {
+                console.log(result.error);
+            } else {
+                setCurrentClap(result.clapCount);
+                setClapByUser(UserClaps);
+            }
+        };
+
+        fetchClapCount();
+    }, [storyId]);
+
+
 
     const clapStoryOrComment = async () => {
         if (clapByUser >= 50) {
@@ -55,10 +72,11 @@ const ClapCountComp = ({ clapCount, storyId, userClaps, commentId, type }: ClapC
                 title: 'Claps are at max level',
             })
         }
-        setCurrentClap((prevClaps: any) => prevClaps + 1);
+        setCurrentClap((prev: any) => prev + 1);
         try {
             if (!commentId) {
                 await updateClapStoryCount(storyId);
+                // setCurrentClap(clap);
             } else {
                 await updateCommentOrReplyCount(storyId, commentId, type);
             }
