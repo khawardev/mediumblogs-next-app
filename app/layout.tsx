@@ -4,7 +4,7 @@ import { ViewTransitions } from 'next-view-transitions'
 import { Alegreya, Vollkorn } from 'next/font/google'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
-import AuthProvider from "@/lib/AuthProvider";
+import AuthProvider from "@/extras/AuthProvider";
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeModeScript } from "flowbite-react";
 
@@ -37,7 +37,7 @@ export default function RootLayout({
         <head>
           <ThemeModeScript />
         </head>
-        <body className={`${vollkorn.className}  bg-[#FFFFFF]`}>
+        <body className={`${alegreya.className}  bg-[#FFFFFF]`}>
           <Header />
           <div className=" pt-[77px]  pb-0">
             {children}

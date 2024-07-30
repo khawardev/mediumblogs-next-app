@@ -1,4 +1,4 @@
-export const extractAndValidateContent = (htmlContent: any) => {
+export const storyCheckRegix = (htmlContent: any) => {
   const parser = new DOMParser();
   const doc = parser.parseFromString(htmlContent, "text/html");
   const removeEmStrongTags = (htmlContent: any) => {

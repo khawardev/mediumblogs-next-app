@@ -97,7 +97,7 @@ export const storyRelations = relations(story, ({ one, many }) => ({
   }), // A story belongs to one user
   comment: many(comment), // A story can have multiple comments
   clap: many(clap), // A story can have multiple claps
-  save: many(save), 
+  save: many(save),
 }));
 
 // comments
@@ -161,7 +161,7 @@ export const clap = pgTable("clap", {
   id: text("id")
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  content: text("content").notNull(),
+  // content: text("content"),
   userId: text("userId")
     .notNull()
     .references(() => user.id, { onDelete: "cascade" }),
@@ -174,10 +174,9 @@ export const clap = pgTable("clap", {
   storyId: text("storyId")
     .notNull()
     .references(() => story.id, { onDelete: "cascade" }),
-  clapcount: integer("clapCount").default(0),
+  clapCount: integer("clapCount").default(0),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
-
 
 export const clapRelations = relations(clap, ({ one, many }) => ({
   auther: one(user, {
@@ -199,8 +198,6 @@ export const clapRelations = relations(clap, ({ one, many }) => ({
   // comment: many(comment),
 }));
 
-
-
 //save
 export const save = pgTable("save", {
   id: text("id")
@@ -215,7 +212,6 @@ export const save = pgTable("save", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 
-
 export const saveRelations = relations(save, ({ one, many }) => ({
   auther: one(user, {
     fields: [save.userId],
@@ -227,7 +223,6 @@ export const saveRelations = relations(save, ({ one, many }) => ({
   }),
   // comment: many(comment),
 }));
-
 
 // topics
 export const topics = pgTable("topics", {
@@ -242,4 +237,3 @@ export const topics = pgTable("topics", {
     .references(() => user.id, { onDelete: "cascade" }),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
-

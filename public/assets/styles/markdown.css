@@ -13,18 +13,18 @@
   color: #2800c8; 
 } */
 .markdown-body p {
-  font-size: 1.2em;
+  font-size: 1.3em;
 }
 .markdown-body h1 {
-  font-size: 3em;
+  @apply text-3xl leading-[40px] md:text-4xl;
 }
 
 .markdown-body h2 {
-  font-size: 2em;
+  @apply text-2xl leading-[30px] md:text-3xl;
 }
 
 .markdown-body h3 {
-  font-size: 1.6em;
+  @apply text-xl leading-[20px] md:text-2xl;
 }
 .markdown-body h1,
 .markdown-body h2,

@@ -11,7 +11,7 @@ import {
     DialogTrigger,
 } from "@/components/ui/Storydialog"
 import Image from "next/image"
-import { extractAndValidateContent } from '@/lib/storyCheckRegix';
+import { storyCheckRegix } from '@/lib/storyCheckRegix';
 import { TopicsAtom } from '@/context/atom';
 import { useAtom } from 'jotai';
 interface DialogButtonProps {
@@ -46,26 +46,10 @@ export const svg = () => {
 }
 export function StoryShadcnDialog({ className, title, storyID, username, storyContent, setShowtags }: DialogButtonProps) {
 
-    const result = extractAndValidateContent(storyContent);
+    const result: any = storyCheckRegix(storyContent);
     const [topics, setTopics] = useAtom(TopicsAtom);
-    console.log('result --- ', result);
-
     const [publishing, setPublishing] = useState(false);
-    // useEffect(() => {
-    //     const fetchStorybyID = async () => {
-    //         const res: any = await getStorybyId(storyID, false);
-    //         console.log('Response from getStorybyId --- : ', res);
-    //         if (res?.error) {
-    //             toast({
-    //                 title: res?.error,
-    //             });
-    //         }
-    //         // else {
-    //         //     const data = await contentFormate();
-    //         // }
-    //     };
-    // }, []);
-
+    console.log(result, 'resultresultresultresult');
 
     const publishStoryFunc = async () => {
         setPublishing(true)
@@ -89,12 +73,12 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
         <section >
             <Dialog>
 
-                {result?.error === 'No valid headings found' ?
-                    ''
-                    :
-                    <DialogTrigger asChild>
-                        <Button size={'sm'} className={className} variant={'outline'}  >{title}</Button>
-                    </DialogTrigger>
+                {!result?.error &&
+                    <>
+                        <DialogTrigger asChild>
+                            <Button size={'sm'} className={className} variant={'outline'}  >{title}</Button>
+                        </DialogTrigger>
+                    </>
                 }
 
 
@@ -103,16 +87,13 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
                         <section className=" w-full  space-y-2" >
                             <p className=" text-xl sohne_bold">Story Preview</p>
                             <Image className=" w-full border border-gray-400 rounded-lg" src={result?.imageUrl} alt="" width={1000} height={1000} />
-                            {/* <Image className=" w-full" src={fallbackurl} alt="" width={340} height={300} /> */}
                             <div className='line-clamp-1'>
                                 <div className="markdown-body sohne_bold " dangerouslySetInnerHTML={{ __html: result?.heading || '' }} />
                             </div>
-                            {/* <p className=" text-xl sohne_bold ">{result?.heading}</p> */}
                             <hr />
                             <div className=' line-clamp-2'>
                                 <DialogDescription className="markdown-body" dangerouslySetInnerHTML={{ __html: result?.paragraph || '' }} />
                             </div>
-                            {/* <DialogDescription>{result?.paragraph}</DialogDescription> */}
                             <hr className=" space-y-2" />
                             <div className=" md:block hidden">
                                 <DialogDescription><span className=" sohne_bold">Note:</span> Changes here will affect how your story appears in public places like Medium homepage and in subscribers inboxes not the contents of the story itself.</DialogDescription>

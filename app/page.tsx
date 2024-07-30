@@ -5,7 +5,13 @@ import { Button } from "@/components/ui/button";
 import { signIn, signOut, useSession } from "next-auth/react"
 import Link from "next/link";
 import { DialogButton } from "@/shadcn/Authdialog";
+import { Vollkorn } from 'next/font/google'
 
+const vollkorn = Vollkorn({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: "--font-vollkorn",
+})
 export default function Home() {
   const { data, status } = useSession()
   console.log(data);
@@ -14,7 +20,7 @@ export default function Home() {
   return (
     <main className="flex-between md:h-[615px] h-[560px] mobile_right">
       <section>
-        <p className="lg:text-9xl md:text-8xl text-7xl  text-[#242424] leading-[0.9] tracking-tight">
+        <p className={` ${vollkorn.className} lg:text-9xl md:text-8xl text-7xl  text-[#242424] leading-[0.9] tracking-tight`}>
           Human <br /> stories & ideas
         </p>
         <p className="sohne text-[#242424] md:text-2xl text-xl mb-10 md:mt-0 mt-6">
