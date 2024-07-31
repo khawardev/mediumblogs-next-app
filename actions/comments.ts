@@ -53,3 +53,27 @@ export const addStoryComment = async (
   }
   revalidatePath(`/published/${storyId}`);
 };
+
+export const getAllComments = async (storyId: string) => {
+  if (!storyId) {
+    return { error: "Something is missing" };
+  }
+  let comments;
+  try {
+    comments = await db.query.comment.findMany({
+      where: eq(comment.storyId, storyId),
+      with: {
+        clap: true,
+        auther: true,
+        reply: { with: { clap: true } },
+      },
+    });
+    if (!comments.length) {
+      return { error: "No Comment Found" };
+    }
+  } catch (error) {
+    return { error: "Error Getting Comment By Story" };
+  }
+  revalidatePath(`/published/${storyId}`);
+  return comments;
+};

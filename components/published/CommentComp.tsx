@@ -109,10 +109,7 @@ export default function Component({ username, userImage, storyId }: props) {
 
 
                         <section className="space-y-6  ">
-
-                            <MultiComments comment={comment} />
-
-
+                            <MultiComments loading={loading} storyId={storyId} />
                         </section>
 
                     </div>
