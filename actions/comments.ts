@@ -3,6 +3,9 @@
 import db from "@/db/drizzle";
 import { comment } from "@/db/schema";
 import { count, eq } from "drizzle-orm";
+import { getUser } from "./user";
+import { getStorybyId } from "./story";
+import { revalidatePath } from "next/cache";
 
 export const NumberofComments = async (storyId: string) => {
   try {
@@ -15,4 +18,38 @@ export const NumberofComments = async (storyId: string) => {
   } catch (error) {
     return { error: "Something went wrong" };
   }
+};
+
+export const addStoryComment = async (
+  storyId: string,
+  content: string,
+  commentId?: string
+) => {
+  const user: any = await getUser();
+  if (!storyId || !content) {
+    return { error: "Something is missing" };
+  }
+  let comments;
+  try {
+    await getStorybyId(storyId, true);
+    if (!commentId) {
+      const data: any = {
+        userId: user.id,
+        storyId,
+        content,
+      };
+      comments = await db.insert(comment).values(data).returning();
+      console.log(comments, "comments ---");
+    } else {
+      const data: any = {
+        userId: user.id,
+        commentId,
+        content,
+      };
+      comments = await db.insert(comment).values(data).returning();
+    }
+  } catch (error) {
+    return { error: "Something went wrong" };
+  }
+  revalidatePath(`/published/${storyId}`);
 };

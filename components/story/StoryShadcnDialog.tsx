@@ -14,42 +14,25 @@ import Image from "next/image"
 import { storyCheckRegix } from '@/lib/storyCheckRegix';
 import { TopicsAtom } from '@/context/atom';
 import { useAtom } from 'jotai';
+import LoadingIcon from '../loadingIcon';
+
 interface DialogButtonProps {
     title: string;
     size?: "default" | "sm" | "lg" | "icon" | "sign";
     variant?: string;
     className?: string;
     storyID: string,
-    // publishStory: (topics: string) => void,
     username: string,
     setShowtags: React.Dispatch<React.SetStateAction<boolean>>;
     storyContent: string | null,
 }
 
-export const svg = () => {
-    return (
-        <svg className="animate-spin h-3 w-3" viewBox="0 0 24 24">
-            <circle
-                className="opacity-10"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="1"
-            ></circle>
-            <path
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-            ></path>
-        </svg>
-    );
-}
+
 export function StoryShadcnDialog({ className, title, storyID, username, storyContent, setShowtags }: DialogButtonProps) {
 
     const result: any = storyCheckRegix(storyContent);
     const [topics, setTopics] = useAtom(TopicsAtom);
     const [publishing, setPublishing] = useState(false);
-    console.log(result, 'resultresultresultresult');
 
     const publishStoryFunc = async () => {
         setPublishing(true)
@@ -109,7 +92,7 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
                             <Button onClick={publishStoryFunc} variant="green" size="sm" className="  sohne_bold" >
                                 {publishing ? <div className=" flex-center gap-2">
                                     Publishing
-                                    {svg()}
+                                    <LoadingIcon />
                                 </div> : 'Publish Now'
                                 }
                             </Button>

@@ -1,7 +1,7 @@
 'use client'
+
 import { ClapCount, ClapCountByUser, getClapsCountByStory } from '@/actions/claps';
 import { getUser } from '@/actions/user';
-import { NumberofComments } from '@/actions/comments';
 import { checkFav } from '@/actions/favorite';
 import Image from 'next/image';
 import { Button } from '../ui/button';
@@ -20,32 +20,36 @@ type props = {
 };
 const PublishedStory = ({ publishedStory, username, userImage }: props) => {
 
+    // const noOfComments: any = await NumberofComments(publishedStory?.id);
+    // const currentUser: any = await getUser();
+    // const clapCount: any = await ClapCount(publishedStory?.id);
+    // const userClaps: any = await ClapCountByUser(publishedStory?.id);
+    // const favStatus: any = await checkFav(publishedStory?.id);
+    // const allClaps: any = await getClapsCountByStory(publishedStory?.id);
 
     const [clapCount, setClapCount] = useState<any>(null);
     const [userClaps, setUserClaps] = useState<any>(null);
-    const [noOfComments, setNoOfComments] = useState<any>(null);
+
     const [favStatus, setFavStatus] = useState<any>(null);
     const [currentUser, setCurrentUser] = useState<any>(null);
     const [allClaps, setAllClaps] = useState<any>(0);
     const CheckRegix: any = storyCheckRegix(publishedStory?.content);
     const PublishedRegix: any = checkPublishedRegix(publishedStory?.content);
 
-
     useEffect(() => {
         const fetchData = async () => {
             setClapCount(await ClapCount(publishedStory?.id));
             setUserClaps(await ClapCountByUser(publishedStory?.id));
             setCurrentUser(await getUser());
-            setNoOfComments(await NumberofComments(publishedStory?.id));
+            // setNoOfComments(await NumberofComments(publishedStory?.id));
             setFavStatus(await checkFav(publishedStory?.id));
             setAllClaps(await getClapsCountByStory(publishedStory?.id));
-
         };
         fetchData();
     }, []);
 
     return (
-        <div className='  mobile_center_contract md:my-14 my-8 text-[#242424]  '>
+        <div className='mobile_center_contract md:my-14 my-8 text-[#242424]  '>
             <div className="  md:text-[45px] leading-[42px] text-4xl sohne_bold mb-8" dangerouslySetInnerHTML={{ __html: CheckRegix?.heading || '' }} />
 
             <section className='flex items-center justify-start gap-3 sohne mb-8 '>
@@ -62,11 +66,11 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
                 <div className='flex-center space-x-6'>
                     {/* clapCount={clapCount} */}
                     {/* userClaps={userClaps}  */}
-                    {!allClaps ? 'loading claps ...' :
+                    {!allClaps ? 'claps ...' :
                         <ClapComp allClapsCount={allClaps?.clapCount} currentUser={currentUser?.id} storyId={publishedStory?.id} />
                     }
+                    <CommentComp storyId={publishedStory?.id} username={currentUser?.name} userImage={currentUser?.image} />
 
-                    <CommentComp noOfComments={noOfComments} username={currentUser?.name} userImage={currentUser?.image} />
 
 
 
