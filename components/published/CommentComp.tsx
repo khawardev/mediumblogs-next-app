@@ -84,7 +84,7 @@ export default function Component({ username, userImage, storyId }: props) {
                     </div>
 
                     <div className=" space-y-6 py-4  ">
-                        <section className="border rounded-lg p-3 ">
+                        <section>
                             <section className="flex items-center gap-4">
                                 <Avatar className="w-10 h-10 border">
                                     <AvatarImage src={userImage} />
@@ -107,6 +107,7 @@ export default function Component({ username, userImage, storyId }: props) {
                             </div>
                         </section>
 
+                        <hr />
 
                         <section className="space-y-6  ">
                             <MultiComments loading={loading} storyId={storyId} />
