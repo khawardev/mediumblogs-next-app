@@ -28,7 +28,7 @@ export default function Component({ noOfComments, username, userImage }: props) 
                     </svg>
                 </button>
             </SheetTrigger>
-            <SheetContent side="right" className="overflow-y-auto sohne md:w-[400px] w-[370px] bg-background shadow-lg">
+            <SheetContent side="right" className="overflow-y-auto sohne md:w-[400px] w-[355px] bg-background shadow-lg">
                 <div className="flex h-full flex-col">
                     <div className="flex items-center justify-between border-b  py-4">
                         <h3 className="text-lg font-semibold sohne_bold">Responses • 2</h3>
