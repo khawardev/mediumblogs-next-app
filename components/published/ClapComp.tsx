@@ -37,28 +37,24 @@ export const clapIcon = () => {
 }
 
 type ClapCountCompProps = {
-    clapCount: any;
-    userClaps: any;
+    // clapCount: any;
+    // userClaps: any;
+
     storyId: any;
+    currentUser: string,
+    allClapsCount: string,
+
     commentId?: string,
     type?: string,
-};
-const ClapCountComp = ({ clapCount, storyId, userClaps, commentId, type }: ClapCountCompProps) => {
-    const [clapByUser, setClapByUser] = useState<any>(0);
-    const [allClaps, setAllClaps] = useState<any>(0);
-    const [currentUser, setCurrentUser] = useState<any>(0);
-    const { toast } = useToast()
-    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
-    useEffect(() => {
-        const fetchClapCount = async () => {
-            const ClapsCountByStory = await getClapsCountByStory(storyId);
-            const user: any = await getUser();
-            setAllClaps(ClapsCountByStory?.clapCount);
-            setCurrentUser(user?.id);
-        };
-        fetchClapCount();
-    }, []);
+};
+const ClapCountComp = ({ allClapsCount, currentUser, storyId, commentId, type }: ClapCountCompProps) => {
+    const [clapByUser, setClapByUser] = useState<any>(0);
+    const [allClaps, setAllClaps] = useState<any>(allClapsCount);
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+    const { toast } = useToast()
+
+
     useEffect(() => {
         const fetchClapCount = async () => {
             const ClapsCountByUser = await getClapCountByUser(storyId);
@@ -75,9 +71,9 @@ const ClapCountComp = ({ clapCount, storyId, userClaps, commentId, type }: ClapC
             })
             return;
         }
-        if (clapByUser >= 8) {
+        if (clapByUser >= 20) {
             toast({
-                title: 'Max 50 claps are allowed',
+                title: 'Max 20 claps are allowed',
             })
             return;
         }
@@ -87,6 +83,7 @@ const ClapCountComp = ({ clapCount, storyId, userClaps, commentId, type }: ClapC
         try {
             if (!commentId) {
                 await updateClapStoryCount(storyId);
+                setIsButtonDisabled(false);
             } else {
                 await updateCommentOrReplyCount(storyId, commentId, type);
             }
@@ -97,26 +94,19 @@ const ClapCountComp = ({ clapCount, storyId, userClaps, commentId, type }: ClapC
                 title: 'Error while clapping story or comment or reply',
             })
         }
-        setTimeout(() => {
-            setIsButtonDisabled(false);
-        }, 1000);
+
     };
 
     return (
         <section className="flex-center gap-1">
-            {!allClaps ? 'loading claps' :
-                <>
-                    <button disabled={isButtonDisabled} onClick={(e) => { e.preventDefault(); clapStoryOrComment() }}>
-                        {clapByUser > 0 ? (
-                            clappedIcon()
-                        ) : (
-                            clapIcon()
-                        )}
-                    </button>
-                    <p className="text-sm text-slate-400">{allClaps}</p>
-                </>
-            }
-
+            <button disabled={isButtonDisabled} onClick={(e) => { e.preventDefault(); clapStoryOrComment() }}>
+                {clapByUser > 0 ? (
+                    clappedIcon()
+                ) : (
+                    clapIcon()
+                )}
+            </button>
+            <p className="text-sm text-slate-400">{allClaps}</p>
         </section>
     );
 };

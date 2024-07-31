@@ -1,5 +1,5 @@
 'use client'
-import { ClapCount, ClapCountByUser } from '@/actions/claps';
+import { ClapCount, ClapCountByUser, getClapsCountByStory } from '@/actions/claps';
 import { getUser } from '@/actions/user';
 import { NumberofComments } from '@/actions/comments';
 import { checkFav } from '@/actions/favorite';
@@ -8,8 +8,9 @@ import { Button } from '../ui/button';
 import '@/public/assets/styles/markdown.css'
 import { storyCheckRegix } from '@/lib/storyCheckRegix';
 import { checkPublishedRegix } from '@/lib/checkPublishedRegix';
-import ClapCountComp from './ClapCountComp'
+import ClapCountComp from './ClapComp'
 import { useEffect, useState } from 'react';
+import CommentDrawer from '@/components/published/commentDrawer';
 type props = {
     publishedStory: any,
     username?: string,
@@ -22,11 +23,14 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
 
     const [clapCount, setClapCount] = useState<any>(null);
     const [userClaps, setUserClaps] = useState<any>(null);
-    const [currentUser, setCurrentUser] = useState<any>(null);
     const [noOfComments, setNoOfComments] = useState<any>(null);
     const [favStatus, setFavStatus] = useState<any>(null);
+    const [currentUser, setCurrentUser] = useState<any>(null);
+    const [allClaps, setAllClaps] = useState<any>(0);
     const CheckRegix: any = storyCheckRegix(publishedStory?.content);
     const PublishedRegix: any = checkPublishedRegix(publishedStory?.content);
+
+
     useEffect(() => {
         const fetchData = async () => {
             setClapCount(await ClapCount(publishedStory?.id));
@@ -34,6 +38,8 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
             setCurrentUser(await getUser());
             setNoOfComments(await NumberofComments(publishedStory?.id));
             setFavStatus(await checkFav(publishedStory?.id));
+            setAllClaps(await getClapsCountByStory(publishedStory?.id));
+
         };
         fetchData();
     }, []);
@@ -53,8 +59,17 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
             </section>
             <hr />
             <section className='flex-between py-4 sohne'>
-                <div className='flex-center space-x-4'>
-                    <ClapCountComp clapCount={clapCount} storyId={publishedStory?.id} userClaps={userClaps} />
+                <div className='flex-center space-x-6'>
+                    {/* clapCount={clapCount} */}
+                    {/* userClaps={userClaps}  */}
+                    {!allClaps ? 'loading claps ...' :
+                        <ClapCountComp allClapsCount={allClaps?.clapCount} currentUser={currentUser?.id} storyId={publishedStory?.id} />
+                    }
+
+                    <CommentDrawer />
+
+
+
                 </div>
                 <div className='flex-center  space-x-3'>
                     {/* <p >Claps</p> */}
