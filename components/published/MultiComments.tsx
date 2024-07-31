@@ -60,7 +60,7 @@ const MultiComments = ({ storyId, loading }: props) => {
                                 <div className="font-semibold">{comment?.auther?.name}</div>
                                 <div className="text-xs text-muted-foreground">{calculateDaysAgo(comment?.createdAt)} days ago</div>
                             </div>
-                            <div>{comment?.content}</div>
+                            <div className="break-words break-all">{comment?.content}</div>
                             <section className=" mt-2 flex-between">
                                 <section className="flex gap-3">
                                     <svg width="24" height="24" viewBox="0 0 24 24" aria-label="clap">
