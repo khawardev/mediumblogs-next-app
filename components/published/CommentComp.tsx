@@ -4,7 +4,21 @@ import { Button } from "@/components/ui/button"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Textarea } from "@/components/ui/textarea"
 
-export default function Component() {
+
+type props = {
+    noOfComments: string,
+    username: string,
+    userImage: string,
+}
+
+export default function Component({ noOfComments, username, userImage }: props) {
+
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0'); // Pad month with leading zero
+    const day = String(today.getDate()).padStart(2, '0');
+
+    const formattedDate = `${month} ${day} ${year}`;
     return (
         <Sheet>
             <SheetTrigger asChild>
@@ -14,22 +28,22 @@ export default function Component() {
                     </svg>
                 </button>
             </SheetTrigger>
-            <SheetContent side="right" className=" sohne w-[400px] bg-background shadow-lg">
+            <SheetContent side="right" className="overflow-y-auto sohne w-[400px] bg-background shadow-lg">
                 <div className="flex h-full flex-col">
                     <div className="flex items-center justify-between border-b  py-4">
                         <h3 className="text-lg font-semibold sohne_bold">Responses • 2</h3>
                     </div>
 
                     <div className=" space-y-6 py-4  ">
-                        <div className="">
+                        <section className="border rounded-lg p-3 ">
                             <section className="flex items-center gap-4">
                                 <Avatar className="w-10 h-10 border">
-                                    <AvatarImage src="/placeholder-user.jpg" />
+                                    <AvatarImage src={userImage} />
                                     <AvatarFallback>AC</AvatarFallback>
                                 </Avatar>
                                 <section>
-                                    <div className="font-bold sohne_bold">John Doe</div>
-                                    <div className="text-xs text-muted-foreground">Jul 30 2024</div>
+                                    <div className="font-bold sohne_bold">{username}</div>
+                                    <div className="text-xs text-muted-foreground">{formattedDate}</div>
                                 </section>
                             </section>
                             <div className=" my-3">
@@ -39,10 +53,10 @@ export default function Component() {
                                 <Button className=" font-bold border-none  " size={'sm'} variant={'outline'}>Cancel</Button>
                                 <Button className=" font-bold " size={'sm'} variant="green">Respond</Button>
                             </div>
-                        </div>
+                        </section>
 
 
-                        <section className="space-y-6 overflow-y-auto ">
+                        <section className="space-y-6  ">
 
                             <div className="flex items-start gap-4 text-sm">
                                 <Avatar className="w-10 h-10 border">
@@ -77,6 +91,7 @@ export default function Component() {
                                     </section>
                                 </div>
                             </div>
+
 
                         </section>
 

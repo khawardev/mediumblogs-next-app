@@ -8,9 +8,9 @@ import { Button } from '../ui/button';
 import '@/public/assets/styles/markdown.css'
 import { storyCheckRegix } from '@/lib/storyCheckRegix';
 import { checkPublishedRegix } from '@/lib/checkPublishedRegix';
-import ClapCountComp from './ClapComp'
+import ClapComp from './ClapComp'
 import { useEffect, useState } from 'react';
-import CommentDrawer from '@/components/published/commentDrawer';
+import CommentComp from '@/components/published/CommentComp';
 type props = {
     publishedStory: any,
     username?: string,
@@ -63,10 +63,10 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
                     {/* clapCount={clapCount} */}
                     {/* userClaps={userClaps}  */}
                     {!allClaps ? 'loading claps ...' :
-                        <ClapCountComp allClapsCount={allClaps?.clapCount} currentUser={currentUser?.id} storyId={publishedStory?.id} />
+                        <ClapComp allClapsCount={allClaps?.clapCount} currentUser={currentUser?.id} storyId={publishedStory?.id} />
                     }
 
-                    <CommentDrawer />
+                    <CommentComp noOfComments={noOfComments} username={currentUser?.name} userImage={currentUser?.image} />
 
 
 
