@@ -2,7 +2,7 @@
 import { getUser } from "./user";
 import db from "@/db/drizzle";
 import { story, user } from "@/db/schema";
-import { and, eq } from "drizzle-orm";
+import { and, arrayContains, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 export const CreateStory = async () => {
@@ -117,3 +117,54 @@ export const publishStory = async (storyID: string, topics: string[]) => {
 
   redirect(`/published/${updatedStory?.[0].id}`);
 };
+
+export const getAllStories = async (tag: string) => {
+  let stories;
+  try {
+    if (tag) {
+      stories = await db.query.story.findMany({
+        where: arrayContains(story.topics, [tag]),
+        with: { auther: true },
+      });
+    } else {
+      stories = await db.query.story.findMany({
+        with: { auther: true },
+      });
+    }
+
+    if (!stories?.length) {
+      return { error: "Error on getting stories" };
+    }
+  } catch (error) {
+    return { error: "Error on getting stories" };
+  }
+  return stories;
+};
+
+// limited stories
+// export const getLimitedStories = async (tag: string) => {
+//   let stories;
+//   try {
+//     if (tag) {
+//       stories = await db.query.story.findMany({
+//         where: arrayContains(story.topics, [tag]),
+//         limit: 4,
+//         offset: 0,
+//         with: { author: true },
+//       });
+//     } else {
+//       stories = await db.query.story.findMany({
+//         limit: 4,
+//         offset: 0,
+//         with: { author: true },
+//       });
+//     }
+
+//     if (!stories?.length) {
+//       return { error: "Error on getting stories" };
+//     }
+//   } catch (error) {
+//     return { error: "Error on getting stories" };
+//   }
+//   return stories;
+// };
