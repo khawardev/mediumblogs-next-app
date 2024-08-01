@@ -1,5 +1,5 @@
 "use client";
-import { getCommentClapCountByUser, updateCommentOrReplyCount } from "@/actions/claps";
+import { ClapCountByUser, getCommentClapCountByUser, updateCommentOrReplyCount } from "@/actions/claps";
 import { useEffect, useState } from "react";
 import { useToast } from "../ui/use-toast";
 import ClapIcons from "@/components/ClapIcons";
@@ -31,7 +31,6 @@ const CommentClapComp = ({ totalCommentClaps, storyId, type, commentId }: ClapCo
 
 
     const clapStoryOrComment = async () => {
-
         if (clapByUser >= 20) {
             toast({
                 title: 'Max 20 claps are allowed',
@@ -42,10 +41,8 @@ const CommentClapComp = ({ totalCommentClaps, storyId, type, commentId }: ClapCo
         setIsButtonDisabled(true);
 
         try {
-            if (commentId) {
-                await updateCommentOrReplyCount(storyId, commentId, type);
-                setIsButtonDisabled(false);
-            }
+            await updateCommentOrReplyCount(storyId, commentId, type);
+            setIsButtonDisabled(false);
 
         } catch (error) {
             // setAllClaps((prev: any) => prev - 1);

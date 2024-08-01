@@ -10,10 +10,12 @@ import { CgSpinner } from "react-icons/cg";
 type props = {
     storyId: string,
     loading?: boolean
+    noOfComments: number
+
 }
 
 
-const MultiComments = ({ storyId, loading }: props) => {
+const MultiComments = ({ noOfComments, storyId, loading }: props) => {
     const { toast } = useToast()
     const [comments, setComments] = useState<any>();
 
@@ -46,36 +48,41 @@ const MultiComments = ({ storyId, loading }: props) => {
 
     return (
         <>
-            {!comments ?
-
+            {noOfComments === 0 ?
                 <div className="py-40 flex items-center justify-center">
-                    <CgSpinner className="animate-spin" size={24} />
+                    No comment Availaible
                 </div>
-
                 :
-                <>
-                    {comments?.slice().reverse().map((comment: any, index: number) => {
-                        const clapCounts = comment?.clap?.map((clap: any) => clap?.clapCount);
-                        const totalClaps = clapCounts?.reduce((acc: any, curr: number) => acc + curr, 0);
+                !comments ?
+                    <div className="py-40 flex items-center justify-center">
+                        <CgSpinner className="animate-spin" size={24} />
+                    </div>
 
-                        return (
-                            <div key={index} className="flex   gap-4 text-sm">
-                                <Avatar className="w-10 h-10 border">
-                                    <AvatarImage src={comment?.auther?.image} />
-                                    <AvatarFallback>AC</AvatarFallback>
-                                </Avatar>
-                                <div className=" flex w-full flex-col gap-2">
-                                    <div className="flex items-center gap-2">
-                                        <div className="font-semibold">{comment?.auther?.name}</div>
-                                        <div className="text-xs text-muted-foreground">{calculateDaysAgo(comment?.createdAt)} days ago</div>
+                    :
+                    <>
+                        {comments?.slice().reverse().map((comment: any, index: number) => {
+                            const clapCounts = comment?.clap?.map((clap: any) => clap?.clapCount);
+                            const totalClaps = clapCounts?.reduce((acc: any, curr: number) => acc + curr, 0);
+
+                            return (
+                                <div key={index} className="flex   gap-4 text-sm">
+                                    <Avatar className="w-10 h-10 border">
+                                        <AvatarImage src={comment?.auther?.image} />
+                                        <AvatarFallback>AC</AvatarFallback>
+                                    </Avatar>
+                                    <div className=" flex w-full flex-col gap-2">
+                                        <div className="flex items-center gap-2">
+                                            <div className="font-semibold">{comment?.auther?.name}</div>
+                                            <div className="text-xs text-muted-foreground">{calculateDaysAgo(comment?.createdAt)} days ago</div>
+                                        </div>
+                                        <div className="break-words break-all">{comment?.content}</div>
+                                        <UserEngagement comment={comment} totalCommentClaps={totalClaps} />
                                     </div>
-                                    <div className="break-words break-all">{comment?.content}</div>
-                                    <UserEngagement comment={comment} totalCommentClaps={totalClaps} />
                                 </div>
-                            </div>
-                        );
-                    })}
-                </>
+                            );
+                        })}
+                    </>
+
             }
         </>
 

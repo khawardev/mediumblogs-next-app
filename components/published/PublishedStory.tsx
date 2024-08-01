@@ -29,7 +29,6 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
 
     const [clapCount, setClapCount] = useState<any>(null);
     const [userClaps, setUserClaps] = useState<any>(null);
-
     const [favStatus, setFavStatus] = useState<any>(null);
     const [currentUser, setCurrentUser] = useState<any>(null);
     const [allClaps, setAllClaps] = useState<any>(0);
@@ -69,6 +68,7 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
                     {!allClaps ? 'claps ...' :
                         <ClapComp allClapsCount={allClaps?.clapCount} currentUser={currentUser?.id} storyId={publishedStory?.id} />
                     }
+
                     <CommentComp currentUser={currentUser?.id} storyId={publishedStory?.id} username={currentUser?.name} userImage={currentUser?.image} />
 
 

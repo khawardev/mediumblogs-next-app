@@ -140,10 +140,12 @@ export const updateCommentOrReplyCount = async (
         ...(type === "commentId" ? { commentId: id } : { replyId: id }),
       };
       claps = await db.insert(clap).values(data).returning();
+      console.log(claps, "Comments Claps ------ ======= ");
     }
   } catch (error) {
     return { error: "clap not updated" };
   }
+
   return claps?.[0];
 };
 
