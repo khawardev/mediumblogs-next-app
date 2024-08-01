@@ -3,10 +3,10 @@ import { Sheet, SheetTrigger, SheetContent, SheetClose } from "@/components/ui/s
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Textarea } from "@/components/ui/textarea"
-import MultiComments from "./MultiComments"
+import MultiComments from "@/components/published/comments/MultiComments"
 import { useEffect, useState } from "react"
 import { addStoryComment } from "@/actions/comments"
-import { useToast } from "../ui/use-toast"
+import { useToast } from "@/components/ui/use-toast"
 import { NumberofComments } from '@/actions/comments';
 import { MdOutlineErrorOutline } from "react-icons/md"
 import { IoMdArrowForward } from "react-icons/io"
@@ -33,7 +33,7 @@ export default function Component({ currentUser, username, userImage, storyId }:
 
     const [content, setContent] = useState<string>('')
     const [loading, setloading] = useState<boolean>(false)
-    const [comment, setcomment] = useState<any>()
+    // const [comment, setcomment] = useState<any>()
     const [noOfComments, setNoOfComments] = useState<any>(0);
     const AddComments = async () => {
         setloading(true)
@@ -47,10 +47,10 @@ export default function Component({ currentUser, username, userImage, storyId }:
                 return;
             } else {
                 setContent('')
-                setcomment(comment)
+                // setcomment(comment)
                 setloading(false)
                 toast({
-                    title: 'comment addded',
+                    title: 'comment added',
                 })
             }
 
@@ -134,7 +134,7 @@ export default function Component({ currentUser, username, userImage, storyId }:
                             <hr />
 
                             <section className="space-y-6  ">
-                                <MultiComments noOfComments={noOfComments} loading={loading} storyId={storyId} />
+                                <MultiComments userImage={userImage} username={username} noOfComments={noOfComments} loading={loading} storyId={storyId} />
                             </section>
 
                         </div>

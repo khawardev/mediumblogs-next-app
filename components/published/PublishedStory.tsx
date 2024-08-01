@@ -10,14 +10,14 @@ import { storyCheckRegix } from '@/lib/storyCheckRegix';
 import { checkPublishedRegix } from '@/lib/checkPublishedRegix';
 import ClapComp from './ClapComp'
 import { useEffect, useState } from 'react';
-import CommentComp from '@/components/published/CommentComp';
+import CommentComp from '@/components/published/comments/CommentComp';
+
 type props = {
     publishedStory: any,
     username?: string,
     userImage?: string,
-
-
 };
+
 const PublishedStory = ({ publishedStory, username, userImage }: props) => {
 
     // const noOfComments: any = await NumberofComments(publishedStory?.id);

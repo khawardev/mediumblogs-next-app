@@ -1,7 +1,7 @@
 "use server";
 
 import db from "@/db/drizzle";
-import { comment } from "@/db/schema";
+import { comment, reply } from "@/db/schema";
 import { count, eq } from "drizzle-orm";
 import { getUser } from "./user";
 import { getStorybyId } from "./story";
@@ -39,14 +39,13 @@ export const addStoryComment = async (
         content,
       };
       comments = await db.insert(comment).values(data).returning();
-      console.log(comments, "comments ---");
     } else {
       const data: any = {
         userId: user.id,
         commentId,
         content,
       };
-      comments = await db.insert(comment).values(data).returning();
+      comments = await db.insert(reply).values(data).returning();
     }
   } catch (error) {
     return { error: "Something went wrong" };

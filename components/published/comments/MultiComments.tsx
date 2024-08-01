@@ -1,23 +1,33 @@
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { useEffect, useState } from "react"
 import { getAllComments } from "@/actions/comments";
-import { useToast } from "../ui/use-toast";
-import UserEngagement from "./UserEngagement";
+import { useToast } from "../../ui/use-toast";
+import UserEngagement from "../replies/UserEngagement";
 import { CgSpinner } from "react-icons/cg";
+import { useAtom } from "jotai";
+import { savingReplyAtom } from "@/context/atom";
 
 
-
+export const CalculateDaysAgo = (createdAt: any) => {
+    const currentDate = new Date();
+    const createdDate = new Date(createdAt);
+    const timeDifference: number = currentDate.getTime() - createdDate.getTime();
+    const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    return daysAgo;
+}
 type props = {
     storyId: string,
     loading?: boolean
     noOfComments: number
-
+    userImage?: string;
+    username?: string
 }
 
 
-const MultiComments = ({ noOfComments, storyId, loading }: props) => {
+const MultiComments = ({ noOfComments, storyId, loading, userImage, username }: props) => {
     const { toast } = useToast()
     const [comments, setComments] = useState<any>();
+    const [replySaving, setReplySaving] = useAtom(savingReplyAtom);
 
     useEffect(() => {
         const fetchcomments = async () => {
@@ -35,16 +45,7 @@ const MultiComments = ({ noOfComments, storyId, loading }: props) => {
             }
         }
         fetchcomments()
-    }, [loading === false]);
-
-
-    const calculateDaysAgo = (createdAt: Date) => {
-        const currentDate = new Date();
-        const createdDate = new Date(createdAt);
-        const timeDifference: number = currentDate.getTime() - createdDate.getTime();
-        const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-        return daysAgo;
-    };
+    }, [loading === false, replySaving === false]);
 
     return (
         <>
@@ -54,10 +55,9 @@ const MultiComments = ({ noOfComments, storyId, loading }: props) => {
                 </div>
                 :
                 !comments ?
-                    <div className="py-40 flex items-center justify-center">
+                    <div className="md:py-40 py-32 flex items-center justify-center">
                         <CgSpinner className="animate-spin" size={24} />
                     </div>
-
                     :
                     <>
                         {comments?.slice().reverse().map((comment: any, index: number) => {
@@ -73,10 +73,10 @@ const MultiComments = ({ noOfComments, storyId, loading }: props) => {
                                     <div className=" flex w-full flex-col gap-2">
                                         <div className="flex items-center gap-2">
                                             <div className="font-semibold">{comment?.auther?.name}</div>
-                                            <div className="text-xs text-muted-foreground">{calculateDaysAgo(comment?.createdAt)} days ago</div>
+                                            <div className="text-xs text-muted-foreground">{CalculateDaysAgo(comment?.createdAt)} days ago</div>
                                         </div>
                                         <div className="break-words break-all">{comment?.content}</div>
-                                        <UserEngagement comment={comment} totalCommentClaps={totalClaps} />
+                                        <UserEngagement userImage={userImage} username={username} comment={comment} totalCommentClaps={totalClaps} />
                                     </div>
                                 </div>
                             );

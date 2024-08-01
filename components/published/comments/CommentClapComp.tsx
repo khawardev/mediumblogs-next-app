@@ -1,7 +1,7 @@
 "use client";
 import { ClapCountByUser, getCommentClapCountByUser, updateCommentOrReplyCount } from "@/actions/claps";
 import { useEffect, useState } from "react";
-import { useToast } from "../ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 import ClapIcons from "@/components/ClapIcons";
 
 type ClapCountCompProps = {
