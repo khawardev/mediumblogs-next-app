@@ -11,6 +11,8 @@ import { checkPublishedRegix } from '@/lib/checkPublishedRegix';
 import ClapComp from './ClapComp'
 import { useEffect, useState } from 'react';
 import CommentComp from '@/components/published/comments/CommentComp';
+import FavComp from './favorite/FavComp';
+import ShareComp from './share/ShareComp';
 
 type props = {
     publishedStory: any,
@@ -29,7 +31,6 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
 
     const [clapCount, setClapCount] = useState<any>(null);
     const [userClaps, setUserClaps] = useState<any>(null);
-    const [favStatus, setFavStatus] = useState<any>(null);
     const [currentUser, setCurrentUser] = useState<any>(null);
     const [allClaps, setAllClaps] = useState<any>(0);
     const CheckRegix: any = storyCheckRegix(publishedStory?.content);
@@ -40,8 +41,6 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
             setClapCount(await ClapCount(publishedStory?.id));
             setUserClaps(await ClapCountByUser(publishedStory?.id));
             setCurrentUser(await getUser());
-            // setNoOfComments(await NumberofComments(publishedStory?.id));
-            setFavStatus(await checkFav(publishedStory?.id));
             setAllClaps(await getClapsCountByStory(publishedStory?.id));
         };
         fetchData();
@@ -62,24 +61,16 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
             </section>
             <hr />
             <section className='flex-between py-4 sohne'>
-                <div className='flex-center space-x-5'>
-                    {/* clapCount={clapCount} */}
-                    {/* userClaps={userClaps}  */}
+                <div className='flex-center space-x-4'>
                     {!allClaps ? 'claps ...' :
                         <ClapComp allClapsCount={allClaps?.clapCount} currentUser={currentUser?.id} storyId={publishedStory?.id} />
                     }
-
                     <CommentComp currentUser={currentUser?.id} storyId={publishedStory?.id} username={currentUser?.name} userImage={currentUser?.image} />
-
-
-
-
                 </div>
                 <div className='flex-center  space-x-3'>
-                    {/* <p >Claps</p> */}
-                    {/* <p>comments</p> */}
-                    {/* <p >Claps</p> */}
-                    <p>comments</p>
+                    <FavComp storyId={publishedStory?.id} />
+
+                    <ShareComp />
                 </div>
             </section>
             <hr />

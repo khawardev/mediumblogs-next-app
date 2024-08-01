@@ -72,7 +72,7 @@ const MultiComments = ({ noOfComments, storyId, loading, userImage, username }: 
                                     </Avatar>
                                     <div className=" flex w-full flex-col gap-2">
                                         <div className="flex items-center gap-2">
-                                            <div className="font-semibold">{comment?.auther?.name}</div>
+                                            <div className="font-bold sohne_bold">{comment?.auther?.name}</div>
                                             <div className="text-xs text-muted-foreground">{CalculateDaysAgo(comment?.createdAt)} days ago</div>
                                         </div>
                                         <div className="break-words break-all">{comment?.content}</div>

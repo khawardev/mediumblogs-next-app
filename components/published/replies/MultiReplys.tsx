@@ -45,7 +45,7 @@ const MultiReplys = ({ replies }: any) => {
                             </Avatar>
                             <div className="flex w-full flex-col gap-2">
                                 <div className="flex items-center gap-2">
-                                    <div className="font-semibold">{userDetail?.name}</div>
+                                    <div className="font-bold sohne_bold">{userDetail?.name}</div>
                                     <div className="text-xs text-muted-foreground">
                                         {CalculateDaysAgo(reply?.createdAt)} days ago
                                     </div>

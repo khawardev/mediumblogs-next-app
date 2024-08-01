@@ -1,5 +1,5 @@
 export const clappedIcon = () => {
-    return <svg width="24" height="24" viewBox="0 0 24 24" aria-label="clap">
+    return <svg width="25" height="25" viewBox="0 0 24 24" aria-label="clap">
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -15,9 +15,9 @@ export const clappedIcon = () => {
 export const clapIcon = () => {
     return <svg
         className="opacity-60"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
+        width="25"
+        height="25"
+        viewBox="0 0 25 25"
         aria-label="clap"
     >
         <path
