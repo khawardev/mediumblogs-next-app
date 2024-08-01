@@ -14,7 +14,8 @@ import Image from "next/image"
 import { storyCheckRegix } from '@/lib/storyCheckRegix';
 import { TopicsAtom } from '@/context/atom';
 import { useAtom } from 'jotai';
-import LoadingIcon from '../loadingIcon';
+// import LoadingIcon from '../loadingIcon';
+import { CgSpinner } from "react-icons/cg";
 
 interface DialogButtonProps {
     title: string;
@@ -92,7 +93,7 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
                             <Button onClick={publishStoryFunc} variant="green" size="sm" className="  sohne_bold" >
                                 {publishing ? <div className=" flex-center gap-2">
                                     Publishing
-                                    <LoadingIcon />
+                                    <CgSpinner className="animate-spin" size={20} />
                                 </div> : 'Publish Now'
                                 }
                             </Button>

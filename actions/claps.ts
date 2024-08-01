@@ -147,7 +147,7 @@ export const updateCommentOrReplyCount = async (
   return claps?.[0];
 };
 
-export const getClapCountByUser = async (storyId: string) => {
+export const getStoryClapCountByUser = async (storyId: string) => {
   const user: any = await getUser();
 
   try {
@@ -190,5 +190,32 @@ export const getClapsCountByStory = async (storyId: string) => {
   } catch (error) {
     console.log(error);
     return { error: "error fetching claps" };
+  }
+};
+
+export const getCommentClapCountByUser = async (
+  storyId: string,
+  commentId: string
+) => {
+  const user: any = await getUser();
+
+  try {
+    const clapped = await db.query.clap.findFirst({
+      where: and(
+        eq(clap.storyId, storyId),
+        eq(clap.userId, user.id),
+        eq(clap.commentId, commentId),
+        isNull(clap.replyId)
+      ),
+    });
+
+    if (clapped) {
+      return { clapCount: clapped.clapCount };
+    } else {
+      return { clapCount: 0 };
+    }
+  } catch (error) {
+    console.log(error);
+    return { error: "clap not found" };
   }
 };

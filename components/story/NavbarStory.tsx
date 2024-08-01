@@ -5,7 +5,7 @@ import { useState } from "react";
 import { savingAtom } from "@/context/atom";
 import { useAtom } from "jotai";
 import { StoryShadcnDialog } from "@/components/story/StoryShadcnDialog";
-import LoadingIcon from "../loadingIcon";
+import { CgSpinner } from "react-icons/cg";
 
 const NavbarStory = ({ storyID, currentUserName, storyContent }: { storyID: string, currentUserName: string, storyContent: string }) => {
   const [saving, setSaving] = useAtom(savingAtom);
@@ -22,7 +22,7 @@ const NavbarStory = ({ storyID, currentUserName, storyContent }: { storyID: stri
           <p className=" text-sm sohne_bold  ">{saving ?
             <div className=" flex-center gap-2">
               Saving
-              <LoadingIcon />
+              <CgSpinner className="animate-spin" size={20} />
             </div> :
             'Saved'
           }

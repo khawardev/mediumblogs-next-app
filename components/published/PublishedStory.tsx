@@ -63,13 +63,13 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
             </section>
             <hr />
             <section className='flex-between py-4 sohne'>
-                <div className='flex-center space-x-6'>
+                <div className='flex-center space-x-5'>
                     {/* clapCount={clapCount} */}
                     {/* userClaps={userClaps}  */}
                     {!allClaps ? 'claps ...' :
                         <ClapComp allClapsCount={allClaps?.clapCount} currentUser={currentUser?.id} storyId={publishedStory?.id} />
                     }
-                    <CommentComp storyId={publishedStory?.id} username={currentUser?.name} userImage={currentUser?.image} />
+                    <CommentComp currentUser={currentUser?.id} storyId={publishedStory?.id} username={currentUser?.name} userImage={currentUser?.image} />
 
 
 
