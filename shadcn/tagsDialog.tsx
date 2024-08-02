@@ -19,17 +19,17 @@ export default function AddTagsDialog({ allTopics }: any) {
         setSelectedAllTopics([])
     }, []);
 
-
-
     const AdduserTags = async () => {
         setloading(true)
         const res = await addRemoveTags(selectedTopics);
-        console.log(res, 'tags reposnse');
         if (res?.error) {
             toast({ title: res.error });
         }
         setloading(false)
         setSelectedAllTopics([])
+        toast({
+            title: 'Tags added',
+        })
     };
     return (
         <Dialog>

@@ -1,10 +1,9 @@
 'use client'
 import Link from "next/link"
 import { usePathname } from 'next/navigation'
-const Footer =  () => {
-  const pathname = usePathname()
-  const path = pathname.startsWith('/p') ? false : true;
-
+const Footer = () => {
+  const pathname = usePathname();
+  const path = pathname.startsWith('/p') || pathname.startsWith('/blogs') ? false : true;
 
   return (
     path && (
