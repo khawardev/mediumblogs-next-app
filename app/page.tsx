@@ -1,7 +1,6 @@
 'use client'
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { signIn, signOut, useSession } from "next-auth/react"
+import { useSession } from "next-auth/react"
 import Link from "next/link";
 import { DialogButton } from "@/shadcn/Authdialog";
 import { Vollkorn } from 'next/font/google'
@@ -17,12 +16,10 @@ export default function Home() {
   const { status } = useSession()
   const words = ["ideas", "concepts", "theories"];
   return (
-
-
     <main className="flex-between md:h-[615px] h-[560px] mobile_right">
       <section>
         <p className={` ${vollkorn.className} lg:text-[110px]  md:text-8xl text-7xl  text-[#242424] leading-[0.9] tracking-tight`}>
-          Human <br /> stories & <FlipWords words={words} />
+          Human <br /> stories & <br className=" sm:hidden block" /> <FlipWords words={words} />
         </p>
         <p className="sohne text-[#242424] md:text-2xl text-xl mb-10 md:mt-0 mt-6">
           A place to read, write, and deepen your understanding

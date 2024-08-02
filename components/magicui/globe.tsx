@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useRef } from "react";
 import createGlobe, { COBEOptions } from "cobe";
 import { useSpring } from "react-spring";
-
 import { cn } from "@/lib/utils";
 
 const GLOBE_CONFIG: COBEOptions = {
@@ -20,7 +19,7 @@ const GLOBE_CONFIG: COBEOptions = {
   baseColor: [1, 1, 1],
   // markerColor: [21 / 255, 129 / 255, 18 / 255],
   // markerColor: [251 / 255, 100 / 255, 21 / 255],
-  markerColor: [95 / 255, 191 / 255, 96 / 255], // Updated to lighter green
+  markerColor: [95 / 255, 190 / 220, 96 / 255], // Updated to lighter green
 
   glowColor: [1, 1, 1],
   markers: [

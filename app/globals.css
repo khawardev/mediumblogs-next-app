@@ -160,6 +160,19 @@ h2 {
 h3 {
   font-size: 1.6em;
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+}
+
+/* Hide scrollbar for Firefox */
+.scrollbar-hide {
+  scrollbar-width: none;
+}
 .about_button {
   @apply lg:py-24 py-14 w-full lg:px-12 lg:text-6xl text-3xl rounded-none flex-between;
 }
@@ -174,6 +187,9 @@ h3 {
 }
 .mobile_center_contract {
   @apply lg:w-5/12 sm:w-7/12 mx-auto sm:px-0 px-4;
+}
+.mobile_center_less_contract {
+  @apply lg:w-9/12 sm:w-11/12 mx-auto sm:px-0 px-4;
 }
 .glassmorphism {
   @apply rounded-xl    bg-[#FFFFFF]/30 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;

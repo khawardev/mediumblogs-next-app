@@ -1,26 +1,32 @@
 import { getAllStories } from "@/actions/story";
-import { SelectedTopics } from "@/actions/topics";
+import { getAllTopics, SelectedTopics } from "@/actions/topics";
 import GetStories from "@/components/blogs/GetStories";
 import Topics from "@/components/blogs/Topics";
 import AddTagsDialog from "@/shadcn/tagsDialog";
 
 const Blogs = async ({ searchParams }: { searchParams: { tag: string } }) => {
-
-  // const allTopics = await getUniqueTopics();
   // const limitedStories = await getLimitedStories(searchParams?.tag);
+  const allTopics = await getAllTopics();
   const getSelectedTopics = await SelectedTopics();
   const stories = await getAllStories(searchParams?.tag);
-  console.log(getSelectedTopics, "stories");
   return (
-    <div className="w-full max-w-6xl mx-auto px-6">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.5fr] gap-20 justify-between">
-        <div className="py-8">
-          <AddTagsDialog />
-          {/* <Topics userTags={getSelectedTopics} /> */}
-          {/* <GetStories stories={stories} /> */}
-        </div>
-        {/* <Sidebar stories={limitedStories} /> */}
-      </div>
+    <div className=" mobile_center_less_contract md:py-12 py-8">
+      <section className=" grid grid-cols-4 w-full gap-20">
+        <section className=" md:col-span-3 col-span-4">
+          <section className=" " >
+            <Topics allTopics={allTopics} userTags={getSelectedTopics} />
+          </section>
+          <section className="md:py-10 py-6">
+            <p>Stories</p>
+            {/* <GetStories stories={stories} /> */}
+          </section>
+        </section>
+        <section className="col-span-1 md:block hidden">
+
+          <p>Side bar</p>
+          {/* <Sidebar stories={limitedStories} /> */}
+        </section>
+      </section>
     </div>
   );
 }

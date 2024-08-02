@@ -6,7 +6,7 @@ import { getUser } from "./user";
 import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 
-export const getUniqueTopics = async () => {
+export const getAllTopics = async () => {
   try {
     const allStoryTopics = await db
       .select({ topics: story.topics })
