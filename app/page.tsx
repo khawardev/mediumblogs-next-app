@@ -1,11 +1,11 @@
-'use client';
-/* eslint-disable jsx-a11y/alt-text */
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { signIn, signOut, useSession } from "next-auth/react"
+// import { signIn, signOut, useSession } from "next-auth/react"
 import Link from "next/link";
 import { DialogButton } from "@/shadcn/Authdialog";
 import { Vollkorn } from 'next/font/google'
+import { FlipWords } from "@/components/ui/flip-words";
+import { GlobeDemo } from "@/shadcn/Globe";
 
 const vollkorn = Vollkorn({
   subsets: ['latin'],
@@ -13,15 +13,13 @@ const vollkorn = Vollkorn({
   variable: "--font-vollkorn",
 })
 export default function Home() {
-  const { data, status } = useSession()
-  console.log(data);
-  console.log(status);
-
+  // const { status } = useSession()
+  const words = ["ideas", "concepts", "theories"];
   return (
     <main className="flex-between md:h-[615px] h-[560px] mobile_right">
-      <section>
-        <p className={` ${vollkorn.className} lg:text-9xl md:text-8xl text-7xl  text-[#242424] leading-[0.9] tracking-tight`}>
-          Human <br /> stories & ideas
+      {/* <section>
+        <p className={` ${vollkorn.className}  md:text-8xl text-7xl  text-[#242424] leading-[0.9] tracking-tight`}>
+          Human <br /> stories & <FlipWords words={words} />
         </p>
         <p className="sohne text-[#242424] md:text-2xl text-xl mb-10 md:mt-0 mt-6">
           A place to read, write, and deepen your understanding
@@ -41,16 +39,18 @@ export default function Home() {
           </>
         }
 
-      </section>
+      </section> */}
+      <GlobeDemo />
       <section className="  lg:flex hidden ">
-        <Image
+        {/* <Globe /> */}
+        {/* <Image
           alt="medium hero image"
           src={"https://miro.medium.com/v2/format:webp/4*SdjkdS98aKH76I8eD0_qjw.png"}
           width={450}
           height={450}
           placeholder="blur"
           blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA..."
-        />
+        /> */}
       </section>
     </main>
   );
