@@ -30,7 +30,7 @@ const WordsCarousel = ({ allTopics }: any) => {
             </button>
             <section
                 ref={sliderRef}
-                className="md:w-full w-[240px]  flex overflow-x-auto space-x-2 scrollbar-hide "
+                className="sm:w-full w-[240px]   flex justify-start overflow-x-auto space-x-2 scrollbar-hide "
                 style={{
 
                     scrollSnapType: "x mandatory",

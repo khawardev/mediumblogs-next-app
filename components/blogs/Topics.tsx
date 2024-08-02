@@ -7,32 +7,15 @@ import WordsCarousel from "./WordsCarousel";
 
 const Topics = ({ userTags, allTopics }: any) => {
     const { status } = useSession()
-    console.log(userTags, 'statusstatus');
     return (
         <>
             {status === 'authenticated' ?
                 <>
-                    <section className=" flex-center gap-2">
+                    <section className=" flex items-center justify-start gap-2">
                         <AddTagsDialog allTopics={allTopics} />
+                        <WordsCarousel allTopics={userTags} />
 
-                        {/* {userTags.length > 0 && (
-                            userTags.length > 10 ? (
-                                <WordsCarousel allTopics={userTags} />
-                            ) : (
-                                <section className="flex-center space-x-3 w-full text-sm">
-                                    {userTags.map((userTag: any, index: number) => (
-                                        <Link
-                                            key={index}
-                                            href={`/?tag=${encodeURIComponent(userTag.value)}`}
-                                            className="sohne font-bold border bg-gray-100 rounded-full py-1 px-4"
-                                        >
-                                            {userTag.value}
-                                        </Link>
-                                    ))}
-                                </section>
-                            )
-                        )} */}
-                        <WordsCarousel allTopics={allTopics} />
+
 
                     </section>
 
@@ -40,23 +23,7 @@ const Topics = ({ userTags, allTopics }: any) => {
                 :
                 <>
                     <section>
-                        {allTopics.length > 10 ? (
-                            <WordsCarousel allTopics={allTopics} />
-
-                        ) : (
-                            <section className="flex-center space-x-3 w-full  text-sm">
-                                {allTopics.map((allTopic: any, index: number) => (
-                                    <Link
-                                        key={index}
-                                        href={`/?tag=${encodeURIComponent(allTopic.value)}`}
-                                        className="sohne font-bold border bg-gray-100 rounded-full py-1 px-4"
-                                    >
-                                        {allTopic.value}
-                                    </Link>
-                                ))}
-                            </section>
-
-                        )}
+                        <WordsCarousel allTopics={allTopics} />
                     </section>
                 </>
             }

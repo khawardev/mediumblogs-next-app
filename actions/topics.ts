@@ -65,5 +65,5 @@ export const addRemoveTags = async (tags: any) => {
   } catch (error) {
     return { error: "tags not updated" };
   }
-  redirect("/");
+  redirect("/blogs");
 };

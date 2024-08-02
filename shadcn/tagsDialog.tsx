@@ -1,20 +1,40 @@
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { MultiSelect } from "react-multi-select-component";
 import { Plus } from "lucide-react"
+import { useToast } from "@/components/ui/use-toast"
+import { CgSpinner } from "react-icons/cg";
+import { addRemoveTags } from "@/actions/topics"
 
 export default function AddTagsDialog({ allTopics }: any) {
-    const [selected, setSelected] = useState([]);
-    const placeholder = [{ label: 'Multiple selected ...', value: 'multiple' }];
+    const { toast } = useToast()
+    const [selectedAllTopics, setSelectedAllTopics] = useState([]);
+    const [selectedTopics, setSelectedTopics] = useState([]);
+    const [loading, setloading] = useState<boolean>(false)
 
+    useEffect(() => {
+        setSelectedAllTopics([])
+    }, []);
+
+
+
+    const AdduserTags = async () => {
+        setloading(true)
+        const res = await addRemoveTags(selectedTopics);
+        console.log(res, 'tags reposnse');
+        if (res?.error) {
+            toast({ title: res.error });
+        }
+        setloading(false)
+        setSelectedAllTopics([])
+    };
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button className=" sohne w-full " variant={'green'} size={'iconxs'}><Plus size={'20'} /></Button>
-                {/* <button className="p-2"><Plus /></button> */}
+                <Button className=" sohne " variant={'green'} size={'iconxs'}><Plus size={'20'} /></Button>
             </DialogTrigger>
             <DialogContent className=" sohne font-bold">
                 <DialogHeader>
@@ -26,14 +46,18 @@ export default function AddTagsDialog({ allTopics }: any) {
 
                         <MultiSelect
                             options={allTopics}
-                            value={selected?.length <= 3 ? selected : placeholder}
-                            onChange={setSelected}
+                            value={selectedAllTopics?.length <= 3 ? selectedAllTopics : []}
+                            onChange={(selected: any) => {
+                                setSelectedAllTopics(selected);
+                                const stringValues = selected.map((val: any) => val.value);
+                                setSelectedTopics(stringValues);
+                            }}
                             labelledBy="Select"
                         />
                     </div>
-                    {selected?.length > 0 &&
+                    {selectedAllTopics?.length > 0 &&
                         <div className="flex flex-wrap gap-2">
-                            {selected?.map((item: any, index: number) => (
+                            {selectedAllTopics?.map((item: any, index: number) => (
                                 <div key={index}>
                                     <p className="py-1 px-4 border  bg-gray-100 rounded-full">{item.label}</p>
                                 </div>
@@ -42,13 +66,16 @@ export default function AddTagsDialog({ allTopics }: any) {
                     }
                 </div>
                 <DialogFooter>
-                    {selected?.length > 0 &&
+                    {selectedAllTopics?.length > 0 &&
                         <Button
                             variant={'green'}
                             type="submit"
-                            className="font-bold"
+                            className="font-bold flex-center gap-1"
+                            onClick={AdduserTags}
                         >
-                            Add Tags
+                            {loading ? <>Adding Tags <CgSpinner className="animate-spin" size={20} /></> : 'Add Tags'}
+
+
                         </Button>
                     }
                 </DialogFooter>

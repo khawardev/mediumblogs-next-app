@@ -48,7 +48,12 @@ export function DialogButton({ size, className, title, content }: DialogButtonPr
                 <DialogTitle className=" text-3xl  ">{content}</DialogTitle>
                 <Button onClick={(e) => {
                     e.preventDefault();
-                    signIn('google'), { callbackUrl: 'http://localhost:3000' || 'https://mediumblogs.vercel.app' }
+                    // signIn('google', {
+                    //     callbackUrl: process.env.NODE_ENV === 'development'
+                    //         ? 'http://localhost:3000'
+                    //         : 'https://mediumblogs.vercel.app'
+                    // });
+                    signIn('google')
                 }} variant={'outline'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#FFFFFF]'>
                     <FcGoogle size={20} />
                     Sign in with google
