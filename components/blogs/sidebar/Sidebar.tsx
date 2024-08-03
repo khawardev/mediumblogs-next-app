@@ -6,7 +6,7 @@ import Ads from "./Ads";
 const Sidebar = ({ stories }: any) => {
     return (
         <div>
-            <h3 className="font-semibold">Staff Picks</h3>
+            <h3 className="font-semibold text-xl sohne_bold">Staff Picks</h3>
             <div>
                 {stories?.map((story: any, index: number) => (
                     <SidebarStories key={index} story={story} />

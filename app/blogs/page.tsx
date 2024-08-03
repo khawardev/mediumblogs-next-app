@@ -16,7 +16,7 @@ const Blogs = async ({ searchParams }: { searchParams: { tag: string } }) => {
     <div className=" mobile_center_less_contract md:py-12 py-8">
       <section className=" grid grid-cols-4 w-full gap-20">
         <section className=" md:col-span-3 col-span-4">
-          <section className="border-b" >
+          <section className="border-b pb-3" >
             <Topics allTopics={allTopics} userTags={getSelectedTopics} />
           </section>
           <hr />
@@ -25,7 +25,6 @@ const Blogs = async ({ searchParams }: { searchParams: { tag: string } }) => {
           </section>
         </section>
         <section className="col-span-1 md:block hidden">
-          <p>Side bar</p>
           <Sidebar stories={limitedStories} />
         </section>
       </section>

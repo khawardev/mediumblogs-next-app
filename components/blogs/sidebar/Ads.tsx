@@ -3,8 +3,8 @@ import React from "react";
 
 const Ads = () => {
     return (
-        <div className="border my-10 p-4 rounded-lg bg-blue-200">
-            <h3 className="text-lg font-semibold">Writing on Medium</h3>
+        <div className="border my-10 p-4 rounded-lg bg-blue-200 sohne">
+            <h3 className="text-lg font-semibold sohne_bold">Writing on Medium</h3>
             <ul className="space-y-2 mt-4">
                 <li>
                     <Link className="text-sm" href="#">
