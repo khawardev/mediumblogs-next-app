@@ -24,13 +24,13 @@ const WordsCarousel = ({ allTopics }: any) => {
     };
 
     return (
-        <div className="flex-between w-full text-sm ">
+        <div className="flex-between w-full ">
             <button onClick={scrollLeft} >
                 <IoIosArrowBack className=" text-gray-300 hover:text-gray-500 transition-all ease-in" size={'22'} />
             </button>
             <section
                 ref={sliderRef}
-                className="sm:w-full w-[240px]   flex justify-start overflow-x-auto space-x-2 scrollbar-hide "
+                className="sm:w-full w-[250px] text-sm   flex justify-start overflow-x-auto space-x-2 scrollbar-hide "
                 style={{
 
                     scrollSnapType: "x mandatory",
@@ -41,7 +41,7 @@ const WordsCarousel = ({ allTopics }: any) => {
                     <Link
                         key={index}
                         href={`/?tag/${allTopic.value}`}
-                        className="sohne font-bold bg-gray-100 border rounded-full py-1 px-4  "
+                        className="sohne font-bold border  bg-gray-100 transition-all ease-in  rounded-full  py-1 px-4  "
                         style={{
                             scrollSnapAlign: "start", // Align each item to start at the beginning of the container
                             flexShrink: 0, // Prevent items from shrinking

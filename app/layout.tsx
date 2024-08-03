@@ -31,7 +31,7 @@ export default function RootLayout({
 }>) {
 
   return (
-    // <ViewTransitions> </ViewTransitions>
+    // <ViewTransitions>
     <html lang="en" >
       <AuthProvider >
         <head>
@@ -47,5 +47,6 @@ export default function RootLayout({
         </body>
       </AuthProvider >
     </html>
+    // </ViewTransitions >
   );
 }

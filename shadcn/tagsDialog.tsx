@@ -34,7 +34,7 @@ export default function AddTagsDialog({ allTopics }: any) {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button className=" sohne " variant={'green'} size={'iconxs'}><Plus size={'20'} /></Button>
+                <button className="p-1 hover:border border hover:bg-gray-100 rounded-md transition-all duration-75 cursor-pointer" ><Plus size={'20'} /></button>
             </DialogTrigger>
             <DialogContent className=" sohne font-bold">
                 <DialogHeader>

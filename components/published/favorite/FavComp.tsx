@@ -8,18 +8,21 @@ import { GoDotFill } from "react-icons/go";
 const FavComp = ({ storyId }: any) => {
     const [favStatus, setFavStatus] = useState<any>();
     const [loading, setloading] = useState<boolean>(false);
+    // setFavStatus(await checkFav(storyId));
+
     const FavStory = async () => {
         setloading(true)
         await addToFav(storyId);
+        setFavStatus(await checkFav(storyId));
+        setloading(false)
     };
 
     useEffect(() => {
         const fetchData = async () => {
             setFavStatus(await checkFav(storyId));
-            setloading(false)
         };
         fetchData();
-    }, [loading]);
+    }, []);
 
 
     return (

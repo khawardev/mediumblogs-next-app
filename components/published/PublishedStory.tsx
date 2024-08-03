@@ -69,7 +69,6 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
                 </div>
                 <div className='flex-center  space-x-3'>
                     <FavComp storyId={publishedStory?.id} />
-
                     <ShareComp />
                 </div>
             </section>

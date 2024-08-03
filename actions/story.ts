@@ -142,29 +142,29 @@ export const getAllStories = async (tag: string) => {
 };
 
 // limited stories
-// export const getLimitedStories = async (tag: string) => {
-//   let stories;
-//   try {
-//     if (tag) {
-//       stories = await db.query.story.findMany({
-//         where: arrayContains(story.topics, [tag]),
-//         limit: 4,
-//         offset: 0,
-//         with: { author: true },
-//       });
-//     } else {
-//       stories = await db.query.story.findMany({
-//         limit: 4,
-//         offset: 0,
-//         with: { author: true },
-//       });
-//     }
+export const getLimitedStories = async (tag: string) => {
+  let stories;
+  try {
+    if (tag) {
+      stories = await db.query.story.findMany({
+        where: arrayContains(story.topics, [tag]),
+        limit: 4,
+        offset: 0,
+        with: { auther: true },
+      });
+    } else {
+      stories = await db.query.story.findMany({
+        limit: 4,
+        offset: 0,
+        with: { auther: true },
+      });
+    }
 
-//     if (!stories?.length) {
-//       return { error: "Error on getting stories" };
-//     }
-//   } catch (error) {
-//     return { error: "Error on getting stories" };
-//   }
-//   return stories;
-// };
+    if (!stories?.length) {
+      return { error: "Error on getting stories" };
+    }
+  } catch (error) {
+    return { error: "Error on getting stories" };
+  }
+  return stories;
+};

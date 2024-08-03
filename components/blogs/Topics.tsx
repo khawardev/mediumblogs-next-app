@@ -14,9 +14,6 @@ const Topics = ({ userTags, allTopics }: any) => {
                     <section className=" flex items-center justify-start gap-2">
                         <AddTagsDialog allTopics={allTopics} />
                         <WordsCarousel allTopics={userTags} />
-
-
-
                     </section>
 
                 </>
