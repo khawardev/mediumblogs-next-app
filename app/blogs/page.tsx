@@ -22,7 +22,7 @@ const Blogs = ({ searchParams }: { searchParams: { tag: string } }) => {
       setStories(await getAllStories(searchParams?.tag));
     };
     getData();
-  }, []);
+  }, [searchParams?.tag]);
 
 
 

@@ -78,7 +78,6 @@ const StoryDetails = ({ story }: any) => {
                             <ShareComp />
                         </div>
                     </section>
-
                 </section>
                 <section className="md:w-[30%] w-[50%] flex flex-row-reverse   " >
                     <Image className=" rounded border  w-full  sohne " src={result?.imageUrl} quality={100} alt="blog image" width={200} height={200} />
