@@ -57,7 +57,7 @@ const CommentClapComp = ({ totalCommentClaps, storyId, type, commentId }: ClapCo
             <button disabled={isButtonDisabled} onClick={(e) => { e.preventDefault(); clapStoryOrComment() }}>
                 <ClapIcons clapByUser={clapByUser} />
             </button>
-            <p className="text-sm text-slate-400">{allClaps}</p>
+            <p className="text-sm text-slate-400 sohne font-bold">{allClaps}</p>
         </section>
     );
 };

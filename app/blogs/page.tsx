@@ -14,17 +14,17 @@ const Blogs = async ({ searchParams }: { searchParams: { tag: string } }) => {
   const stories = await getAllStories(searchParams?.tag);
   return (
     <div className=" mobile_center_less_contract md:py-12 py-8">
-      <section className=" grid grid-cols-4 w-full gap-20">
-        <section className=" md:col-span-3 col-span-4">
-          <section className="border-b pb-3" >
+      <section className=" grid grid-cols-7 w-full gap-20">
+        <section className=" md:col-span-5 col-span-7">
+          <section className="" >
             <Topics allTopics={allTopics} userTags={getSelectedTopics} />
           </section>
-          <hr />
-          <section className="md:py-10 py-6">
+          <div className="divider"><span className=" sohne_bold">Stories</span></div>
+          <section >
             <GetStories stories={stories} />
           </section>
         </section>
-        <section className="col-span-1 md:block hidden">
+        <section className="col-span-2 md:block hidden">
           <Sidebar stories={limitedStories} />
         </section>
       </section>

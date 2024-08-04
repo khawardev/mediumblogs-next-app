@@ -19,7 +19,7 @@ const NavbarStory = ({ storyID, currentUserName, storyContent }: { storyID: stri
             <Mediumsvg />
           </Link>
           <p className=" text-sm sm:block hidden ">Draft in {currentUserName}</p>
-          <p className=" text-sm sohne_bold  ">{saving ?
+          <p className=" text-sm sohne font-bold  ">{saving ?
             <div className=" flex-center gap-2">
               Saving
               <CgSpinner className="animate-spin" size={20} />

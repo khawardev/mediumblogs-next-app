@@ -50,7 +50,7 @@ const MultiComments = ({ noOfComments, storyId, loading, userImage, username }: 
     return (
         <>
             {noOfComments === 0 ?
-                <div className="py-40 flex items-center justify-center">
+                <div className="py-40 sohne font-bold flex items-center justify-center">
                     No comment Availaible
                 </div>
                 :
@@ -66,16 +66,16 @@ const MultiComments = ({ noOfComments, storyId, loading, userImage, username }: 
 
                             return (
                                 <div key={index} className="flex   gap-4 text-sm">
-                                    <Avatar className="w-10 h-10 border">
+                                    <Avatar className="w-10 h-10 border sohne font-bold">
                                         <AvatarImage src={comment?.auther?.image} />
                                         <AvatarFallback>AC</AvatarFallback>
                                     </Avatar>
                                     <div className=" flex w-full flex-col gap-2">
                                         <div className="flex items-center gap-2">
-                                            <div className="font-bold sohne_bold">{comment?.auther?.name}</div>
-                                            <div className="text-xs text-muted-foreground">{CalculateDaysAgo(comment?.createdAt)} days ago</div>
+                                            <div className=" sohne font-bold">{comment?.auther?.name}</div>
+                                            <div className="text-xs text-muted-foreground sohne font-bold">{CalculateDaysAgo(comment?.createdAt)} days ago</div>
                                         </div>
-                                        <div className="break-words break-all">{comment?.content}</div>
+                                        <div className="break-words break-all sohne font-bold">{comment?.content}</div>
                                         <UserEngagement userImage={userImage} username={username} comment={comment} totalCommentClaps={totalClaps} />
                                     </div>
                                 </div>

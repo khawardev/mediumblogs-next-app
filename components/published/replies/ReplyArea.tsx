@@ -50,24 +50,24 @@ const ReplyArea = ({ commentId, setShowReplyArea, userImage, username, storyId }
     return (
         <div className='mt-2'>
             <section className="mt-2 flex items-center gap-4">
-                <Avatar className="w-10 h-10 border">
+                <Avatar className="w-10 h-10 border sohne font-bold">
                     <AvatarImage src={userImage} />
                     <AvatarFallback>AC</AvatarFallback>
                 </Avatar>
                 {/* {username} */}
                 <section>
-                    <div className="font-bold sohne_bold">{username}</div>
-                    <div className="text-xs text-muted-foreground">{date()}</div>
+                    <div className=" sohne font-bold ">{username}</div>
+                    <div className="text-xs text-muted-foreground sohne font-bold ">{date()}</div>
                 </section>
             </section>
             <div className=" my-3">
-                <Textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="Write your reply..." className="resize-none " />
+                <Textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="Write your reply..." className="resize-none sohne font-bold" />
             </div>
             <div className="flex flex-row-reverse gap-1 ">
-                <Button onClick={AddReplies} className=" font-bold flex-center gap-1 " size={'sm'} variant="green">
+                <Button onClick={AddReplies} className="flex-center gap-1 sohne font-bold" size={'sm'} variant="green">
                     {replySaving ? <>Respond <CgSpinner className="animate-spin" size={20} /></> : 'Respond'}
                 </Button>
-                <Button onClick={() => { setShowReplyArea(false); setContent('') }} className=" font-bold border-none  " size={'sm'} variant={'outline'}>Cancel</Button>
+                <Button onClick={() => { setShowReplyArea(false); setContent('') }} className=" d border-none sohne font-bold " size={'sm'} variant={'outline'}>Cancel</Button>
             </div>
 
         </div>

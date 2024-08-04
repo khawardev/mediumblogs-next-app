@@ -148,13 +148,13 @@ export const getLimitedStories = async (tag: string) => {
     if (tag) {
       stories = await db.query.story.findMany({
         where: arrayContains(story.topics, [tag]),
-        limit: 4,
+        limit: 3,
         offset: 0,
         with: { auther: true },
       });
     } else {
       stories = await db.query.story.findMany({
-        limit: 4,
+        limit: 3,
         offset: 0,
         with: { auther: true },
       });

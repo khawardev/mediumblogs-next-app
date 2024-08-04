@@ -37,7 +37,7 @@ export default function RootLayout({
         <head>
           <ThemeModeScript />
         </head>
-        <body className={`${alegreya.className}  bg-[#FFFFFF]`}>
+        <body className={`  bg-[#FFFFFF]`}>
           <Header />
           <div className=" pt-[77px]  pb-0">
             {children}

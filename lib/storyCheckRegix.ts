@@ -1,6 +1,7 @@
 export const storyCheckRegix = (htmlContent: any) => {
   const parser = new DOMParser();
   const doc = parser.parseFromString(htmlContent, "text/html");
+
   const removeEmStrongTags = (htmlContent: any) => {
     return htmlContent.replace(/<\/?em>/g, "").replace(/<\/?strong>/g, "");
   };
@@ -20,6 +21,7 @@ export const storyCheckRegix = (htmlContent: any) => {
     "<h3>",
     "<h3><em>",
   ];
+
   const validParagraphFormats = [
     "<p><strong>",
     "<p><em><strong>",
@@ -42,6 +44,11 @@ export const storyCheckRegix = (htmlContent: any) => {
   let firstValidParagraph = null;
   const paragraphs = Array.from(doc.querySelectorAll("p"));
   for (const paragraph of paragraphs) {
+    // Skip paragraphs that contain images
+    if (paragraph.querySelector("img")) {
+      continue;
+    }
+
     const outerHTML = paragraph.outerHTML;
     if (validParagraphFormats.some((format) => outerHTML.startsWith(format))) {
       firstValidParagraph = paragraph.innerHTML;
@@ -65,7 +72,7 @@ export const storyCheckRegix = (htmlContent: any) => {
     heading: removeEmStrongTags(firstValidHeading),
     paragraph: firstValidParagraph
       ? removeEmStrongTags(firstValidParagraph)
-      : "No Description Availaible",
+      : "No Description Available",
     imageUrl: firstImageUrl
       ? firstImageUrl
       : "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637",

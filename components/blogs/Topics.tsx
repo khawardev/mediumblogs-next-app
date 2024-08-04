@@ -11,19 +11,26 @@ const Topics = ({ userTags, allTopics }: any) => {
         <>
             {status === 'authenticated' ?
                 <>
-                    <section className=" flex items-center justify-start gap-2">
+                    <section className=" flex items-center justify-start gap-3">
                         <AddTagsDialog allTopics={allTopics} />
-
-
-
-
-
-
-
-
-
-
-                        <WordsCarousel allTopics={userTags} />
+                        {userTags.length <= 10 ?
+                            <div className="flex justify-start space-x-2 text-sm ">
+                                {userTags.map((allTopic: any, index: number) => (
+                                    <Link
+                                        key={index}
+                                        href={`/?tag/${allTopic.value}`}
+                                        className="sohne font-bold border bg-gray-100 transition-all ease-in  rounded-full  py-1 px-4  "
+                                        style={{
+                                            scrollSnapAlign: "start", // Align each item to start at the beginning of the container
+                                            flexShrink: 0, // Prevent items from shrinking
+                                        }}
+                                    >
+                                        {allTopic.value}
+                                    </Link>
+                                ))}
+                            </div>
+                            : <WordsCarousel allTopics={userTags} />
+                        }
                     </section>
 
                 </>

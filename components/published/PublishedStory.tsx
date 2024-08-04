@@ -56,12 +56,12 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
                 </Button>
                 <div>
                     <p className='  text-gray-800 sohne_bold'>{username}</p>
-                    <p className=' text-sm text-gray-500'>Published on {' '}{new Date(publishedStory?.createdAt).toDateString().split(' ')?.slice(1, 4).join(' ')}</p>
+                    <p className=' text-sm text-gray-500 sohne font-bold'>Published on {' '}{new Date(publishedStory?.createdAt).toDateString().split(' ')?.slice(1, 4).join(' ')}</p>
                 </div>
             </section>
             <hr />
             <section className='flex-between py-4 sohne'>
-                <div className='flex-center space-x-4'>
+                <div className='flex-center space-x-4 '>
                     {!allClaps ? 'claps ...' :
                         <ClapComp allClapsCount={allClaps?.clapCount} currentUser={currentUser?.id} storyId={publishedStory?.id} />
                     }

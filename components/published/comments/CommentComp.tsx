@@ -86,7 +86,7 @@ export default function Component({ currentUser, username, userImage, storyId }:
                         </svg>
                     </button>
 
-                    <p className="text-sm text-slate-400">{noOfComments}</p>
+                    <p className="text-sm text-slate-400 sohne font-bold">{noOfComments}</p>
                 </div>
             </SheetTrigger>
 
@@ -97,7 +97,7 @@ export default function Component({ currentUser, username, userImage, storyId }:
                     <div >
                         <div className='  py-56 justify-center items-center flex flex-col gap-3'>
                             <MdOutlineErrorOutline size={130} className=' mb-3  opacity-10' />
-                            <span className=' font-bold  ' > Please Login to continue </span>
+                            <span className=' sohne font-bold ' > Please Login to continue </span>
                         </div>
                     </div>
 
@@ -110,24 +110,24 @@ export default function Component({ currentUser, username, userImage, storyId }:
                         <div className=" space-y-6 py-4  ">
                             <section>
                                 <section className="flex items-center gap-4">
-                                    <Avatar className="w-10 h-10 border">
+                                    <Avatar className="w-10 h-10 border sohne font-bold">
                                         <AvatarImage src={userImage} />
                                         <AvatarFallback>AC</AvatarFallback>
                                     </Avatar>
                                     {/* {username} */}
                                     <section>
                                         <div className="font-bold sohne_bold">{username}</div>
-                                        <div className="text-xs text-muted-foreground">{date()}</div>
+                                        <div className="text-xs text-muted-foreground sohne font-bold">{date()}</div>
                                     </section>
                                 </section>
                                 <div className=" my-3">
-                                    <Textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="Write your comment..." className="resize-none " />
+                                    <Textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="Write your comment..." className="resize-none sohne font-bold" />
                                 </div>
                                 <div className="flex flex-row-reverse gap-1 ">
-                                    <Button onClick={AddComments} className=" font-bold flex-center gap-1 " size={'sm'} variant="green">
-                                        {loading ? <>Respond <CgSpinner className="animate-spin" size={20} /></> : 'Respond'}
+                                    <Button onClick={AddComments} className=" sohne font-bold flex-center gap-1 " size={'sm'} variant="green">
+                                        {loading ? <>Respond <CgSpinner className="animate-spin " size={20} /></> : 'Respond'}
                                     </Button>
-                                    <Button onClick={() => setContent('')} className=" font-bold border-none  " size={'sm'} variant={'outline'}>Cancel</Button>
+                                    <Button onClick={() => setContent('')} className=" sohne font-bold border-none  " size={'sm'} variant={'outline'}>Cancel</Button>
                                 </div>
                             </section>
 

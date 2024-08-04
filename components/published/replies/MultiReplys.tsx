@@ -45,12 +45,12 @@ const MultiReplys = ({ replies }: any) => {
                             </Avatar>
                             <div className="flex w-full flex-col gap-2">
                                 <div className="flex items-center gap-2">
-                                    <div className="font-bold sohne_bold">{userDetail?.name}</div>
-                                    <div className="text-xs text-muted-foreground">
+                                    <div className="font-bold sohne">{userDetail?.name}</div>
+                                    <div className="text-xs text-muted-foreground sohne font-bold">
                                         {CalculateDaysAgo(reply?.createdAt)} days ago
                                     </div>
                                 </div>
-                                <div className="break-words break-all">{reply?.content}</div>
+                                <div className="break-words break-all sohne font-bold">{reply?.content}</div>
                             </div>
                         </div>
                     );

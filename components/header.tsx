@@ -23,7 +23,7 @@ const Header = () => {
   }
 
   return (
-    <div className="z-50 fixed  bg-[#FFFFFF] border border-t-0 border-l-0 border-r-0 border-b-black w-full ">
+    <div className="z-50 fixed   bg-[#FFFFFF] border border-t-0 border-l-0 border-r-0 border-b-black w-full ">
       <div className="mobile_center py-5  flex-between ">
         <section className=" flex-center space-x-7">
           <Link href={'/'} >
@@ -43,12 +43,12 @@ const Header = () => {
         </section>
 
 
-        <ul className="flex-center  sohne font-bold gap-5  ">
+        <ul className="flex-center  gap-5  ">
           {status === 'authenticated' ?
             <div className="flex-center md:space-x-7 space-x-4">
-              <button onClick={MakeNewStory} className="flex-center gap-2 text-gray-500 ">
+              <button onClick={MakeNewStory} className="flex-center gap-2   text-gray-500 ">
                 <SquarePen strokeWidth={1.25} size={20} className=" " />
-                <p className=" text-base ">Write</p>
+                <p className=" text-base  font-bold  sohne">Write</p>
               </button>
               <button>
                 <GoBell size={21} className="text-gray-500 " />

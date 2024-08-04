@@ -40,13 +40,13 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
         try {
 
             const res: any = await publishStory(storyID, topics);
-            setTopics([''])
             if (res?.error) {
                 toast({
                     title: res?.error,
                 });
             }
             setPublishing(false)
+            setTopics([''])
         } catch (error) {
             console.log('error in publishing the story')
         }
@@ -76,11 +76,11 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
                             </div>
                             <hr />
                             <div className=' line-clamp-2'>
-                                <DialogDescription className="markdown-body" dangerouslySetInnerHTML={{ __html: result?.paragraph || '' }} />
+                                <p className="markdown-body sohne text-muted-foreground  text-sm" dangerouslySetInnerHTML={{ __html: result?.paragraph || '' }} />
                             </div>
                             <hr className=" space-y-2" />
                             <div className=" md:block hidden">
-                                <DialogDescription><span className=" sohne_bold">Note:</span> Changes here will affect how your story appears in public places like Medium homepage and in subscribers inboxes not the contents of the story itself.</DialogDescription>
+                                <p className='sohne text-muted-foreground  text-sm'><span className=" sohne_bold">Note:</span> Changes here will affect how your story appears in public places like Medium homepage and in subscribers inboxes not the contents of the story itself.</p>
                             </div>
                         </section>
                         <section className=" w-full  space-y-2" >
@@ -90,7 +90,7 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
                             <TagsInput />
 
                             <DialogDescription className="md:block hidden ">Learn more about what happens to your post when you publish.</DialogDescription>
-                            <Button onClick={publishStoryFunc} variant="green" size="sm" className="  sohne_bold" >
+                            <Button disabled={!topics?.length} onClick={publishStoryFunc} variant="green" size="sm" className="  sohne font-bold  tracking-wider" >
                                 {publishing ? <div className=" flex-center gap-2">
                                     Publishing
                                     <CgSpinner className="animate-spin" size={20} />

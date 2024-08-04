@@ -1,1 +1,79 @@
+.about_button {
+  @apply lg:py-24 py-14 w-full lg:px-12 lg:text-6xl text-3xl rounded-none flex-between;
+}
+.mobile_center {
+  @apply sm:w-10/12 m-auto sm:px-0 px-4;
+}
+.mobile_right {
+  @apply sm:w-11/12  ml-auto  sm:px-0 px-4;
+}
+.mobile_right_center {
+  @apply md:w-11/12   md:ml-auto md:px-0 px-4;
+}
+.mobile_center_contract {
+  @apply lg:w-5/12 sm:w-7/12 mx-auto sm:px-0 px-4;
+}
+.mobile_center_less_contract {
+  @apply lg:w-9/12 sm:w-11/12 mx-auto sm:px-0 px-4;
+}
+.glassmorphism {
+  @apply rounded-xl    bg-[#FFFFFF]/30 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;
+}
 
+.prompt_card {
+  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+}
+
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-start {
+  @apply flex justify-start items-start;
+}
+
+.flex-end {
+  @apply flex justify-end items-center;
+}
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+}
+
+/* Hide scrollbar for Firefox */
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 13px;
+  height: 13px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8b8b8b;
+  border-radius: 120px;
+  border: 3px solid #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #707070;
+}
+
+::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}

@@ -3,28 +3,28 @@ import React from "react";
 
 const Ads = () => {
     return (
-        <div className="border my-10 p-4 rounded-lg bg-blue-200 sohne">
+        <div className="border my-10 p-5 rounded-lg bg-blue-200 sohne">
             <h3 className="text-lg font-semibold sohne_bold">Writing on Medium</h3>
-            <ul className="space-y-2 mt-4">
+            <ul className="space-y-3 pt-6 pb-7">
                 <li>
-                    <Link className="text-sm" href="#">
+                    <Link className="sohne font-semibold" href="#">
                         New Writer FAQ
                     </Link>
                 </li>
                 <li>
-                    <Link className="text-sm" href="#">
+                    <Link className="sohne font-semibold" href="#">
                         Expert writing advice
                     </Link>
                 </li>
                 <li>
-                    <Link className="text-sm" href="#">
+                    <Link className="sohne font-semibold" href="#">
                         Grow your readership
                     </Link>
                 </li>
-                <button className="mt-4 rounded-full text-xs bg-green-500 text-white p-2">
-                    Start writing
-                </button>
             </ul>
+            <button className=" rounded-full text-[14px]  tracking-wide sohne font-semibold bg-black text-white p-[6px] px-4">
+                Start writing
+            </button>
         </div>
     );
 };
