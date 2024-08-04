@@ -14,6 +14,7 @@ import Mediumicon from '@/public/medium-icon.svg'
 import Image from "next/image"
 import { signIn } from "next-auth/react"
 import { FcGoogle } from "react-icons/fc"
+import { Vollkorn } from "next/font/google"
 interface DialogButtonProps {
     title: string;
     content: string;
@@ -22,6 +23,12 @@ interface DialogButtonProps {
     className?: string;
 
 }
+
+const vollkorn = Vollkorn({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: "--font-vollkorn",
+})
 export function DialogButton({ size, className, title, content }: DialogButtonProps) {
 
     return (
@@ -45,7 +52,7 @@ export function DialogButton({ size, className, title, content }: DialogButtonPr
                     Sign in to get personalized story recommendations, follow authors and topics you love, and interact with stories.
                 </DialogDescription>
                 {/* , {callbackUrl: 'http://localhost:3000' || 'https://mediumblogs.vercel.app' } */}
-                <DialogTitle className=" text-3xl  ">{content}</DialogTitle>
+                <DialogTitle className={`text-3xl ${vollkorn.className}`}>{content}</DialogTitle>
                 <Button onClick={(e) => {
                     e.preventDefault();
                     // signIn('google', {

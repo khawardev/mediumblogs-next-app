@@ -40,7 +40,7 @@ const WordsCarousel = ({ allTopics }: any) => {
                 {allTopics.map((allTopic: any, index: number) => (
                     <Link
                         key={index}
-                        href={`/?tag/${allTopic.value}`}
+                        href={`/blogs/?tag/${allTopic.value}`}
                         className="sohne font-bold border  bg-gray-100 transition-all ease-in  rounded-full  py-1 px-4  "
                         style={{
                             scrollSnapAlign: "start", // Align each item to start at the beginning of the container

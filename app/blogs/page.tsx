@@ -11,7 +11,11 @@ const Blogs = async ({ searchParams }: { searchParams: { tag: string } }) => {
   const limitedStories = await getLimitedStories(searchParams?.tag);
   const allTopics = await getAllTopics();
   const getSelectedTopics = await SelectedTopics();
+  console.log(searchParams?.tag, 'searchParams?.tag');
   const stories = await getAllStories(searchParams?.tag);
+
+  console.log(stories, 'stories blogs');
+
   return (
     <div className=" mobile_center_less_contract md:py-12 py-8">
       <section className=" grid grid-cols-7 w-full gap-20">

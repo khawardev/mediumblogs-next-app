@@ -128,6 +128,7 @@ export const getAllStories = async (tag: string) => {
       });
     } else {
       stories = await db.query.story.findMany({
+        where: eq(story.publish, true),
         with: { auther: true },
       });
     }

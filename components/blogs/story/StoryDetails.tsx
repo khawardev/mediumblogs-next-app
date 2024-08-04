@@ -20,7 +20,7 @@ const StoryDetails = ({ story }: any) => {
 
     // onClick = {() => router.push(`/published/${story?.id}`)}
     return (
-        <main className="    sm:px-4 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75 ">
+        <main className="    sm:px-5 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75 ">
             <main className="flex-between  gap-10 " onClick={() => router.push(`/published/${story?.id}`)}>
                 <section className=" space-y-5 w-full" >
                     <div className="space-y-3   " >
@@ -49,7 +49,7 @@ const StoryDetails = ({ story }: any) => {
                                     <>
                                         <Link
                                             key={index}
-                                            href={`/?tag/${tag}`}
+                                            href={`/blogs/?tag/${tag}`}
                                             className="sohne font-bold border  bg-gray-100 transition-all ease-in  rounded-full  py-1 px-4  "
                                         >
                                             {tag}
