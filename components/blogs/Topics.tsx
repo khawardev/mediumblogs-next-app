@@ -2,7 +2,7 @@
 import AddTagsDialog from "@/shadcn/tagsDialog";
 import { Plus } from "lucide-react";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
+import { Link } from 'next-view-transitions'
 import WordsCarousel from "./WordsCarousel";
 
 const Topics = ({ userTags, allTopics }: any) => {

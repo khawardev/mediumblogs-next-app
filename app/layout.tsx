@@ -31,22 +31,22 @@ export default function RootLayout({
 }>) {
 
   return (
-    // <ViewTransitions>
-    <html lang="en" >
-      <AuthProvider >
-        <head>
-          <ThemeModeScript />
-        </head>
-        <body className={`  bg-[#FFFFFF]`}>
-          <Header />
-          <div className=" pt-[77px]  pb-0">
-            {children}
-            <Toaster />
-          </div>
-          <Footer />
-        </body>
-      </AuthProvider >
-    </html>
-    // </ViewTransitions >
+    <ViewTransitions>
+      <html lang="en" >
+        <AuthProvider >
+          <head>
+            <ThemeModeScript />
+          </head>
+          <body className={`  bg-[#FFFFFF]`}>
+            <Header />
+            <div className=" pt-[77px]  pb-0">
+              {children}
+              <Toaster />
+            </div>
+            <Footer />
+          </body>
+        </AuthProvider >
+      </html>
+    </ViewTransitions >
   );
 }

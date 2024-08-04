@@ -4,7 +4,7 @@ import { storyCheckRegix } from "@/lib/storyCheckRegix";
 import Image from "next/image";
 import { useEffect } from "react";
 import { useRouter } from 'next/navigation'
-import Link from "next/link";
+import { Link } from 'next-view-transitions'
 import FavComp from "@/components/published/favorite/FavComp";
 import ShareComp from "@/components/published/share/ShareComp";
 
@@ -20,7 +20,7 @@ const StoryDetails = ({ story }: any) => {
 
     // onClick = {() => router.push(`/published/${story?.id}`)}
     return (
-        <main className="    sm:px-5 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75 ">
+        <main className="sm:px-5 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75 ">
             <main className="flex-between  gap-10 " onClick={() => router.push(`/published/${story?.id}`)}>
                 <section className=" space-y-5 w-full" >
                     <div className="space-y-3   " >

@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import Link from "next/link";
+import { Link } from 'next-view-transitions'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { Button } from "../ui/button";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
