@@ -1,3 +1,4 @@
+'use client'
 import { getAllStories, getLimitedStories } from "@/actions/story";
 import { getAllTopics, SelectedTopics } from "@/actions/topics";
 import GetStories from "@/components/blogs/story/GetStories";
@@ -6,15 +7,24 @@ import AddTagsDialog from "@/shadcn/tagsDialog";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import Image from "next/image";
 import Sidebar from "@/components/blogs/sidebar/Sidebar";
+import { useEffect, useState } from "react";
 
-const Blogs = async ({ searchParams }: { searchParams: { tag: string } }) => {
-  const limitedStories = await getLimitedStories(searchParams?.tag);
-  const allTopics = await getAllTopics();
-  const getSelectedTopics = await SelectedTopics();
-  console.log(searchParams?.tag, 'searchParams?.tag');
-  const stories = await getAllStories(searchParams?.tag);
+const Blogs = ({ searchParams }: { searchParams: { tag: string } }) => {
+  const [limitedStories, setlimitedStories] = useState<any>([]);
+  const [allTopics, setallTopics] = useState<any>([]);
+  const [getSelectedTopics, setgetSelectedTopics] = useState<any>([]);
+  const [stories, setStories] = useState<any>([]);
+  useEffect(() => {
+    const getData = async () => {
+      setlimitedStories(await getLimitedStories(searchParams?.tag));
+      setallTopics(await getAllTopics());
+      setgetSelectedTopics(await SelectedTopics());
+      setStories(await getAllStories(searchParams?.tag));
+    };
+    getData();
+  }, []);
 
-  console.log(stories, 'stories blogs');
+
 
   return (
     <div className=" mobile_center_less_contract md:py-12 py-8">
@@ -23,7 +33,9 @@ const Blogs = async ({ searchParams }: { searchParams: { tag: string } }) => {
           <section className="" >
             <Topics allTopics={allTopics} userTags={getSelectedTopics} />
           </section>
-          <div className="divider"><span className=" sohne_bold">Stories</span></div>
+          <div className="md:block hidden">
+            <div className="divider "><span className=" sohne_bold">Stories</span></div>
+          </div>
           <section >
             <GetStories stories={stories} />
           </section>

@@ -9,8 +9,6 @@ import FavComp from "@/components/published/favorite/FavComp";
 import ShareComp from "@/components/published/share/ShareComp";
 
 const StoryDetails = ({ story }: any) => {
-    // const tags = ['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6', 'tag7', 'tag8', 'tag9', 'tag10'];
-    // const [result, setResult] = useState();
     const router = useRouter()
     const result: any = storyCheckRegix(story?.content);
 

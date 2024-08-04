@@ -23,11 +23,7 @@
   src: url("../public/assets/fonts/Medium/source_serif_pro_400_normal.woff")
     format("woff");
 }
-@font-face {
-  font-family: "serif_code";
-  src: url("../public/assets/fonts/Medium/source_code_pro_400_normal.woff")
-    format("woff");
-}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
