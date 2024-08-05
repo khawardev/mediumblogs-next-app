@@ -32,13 +32,13 @@ const Blogs = ({ searchParams }: { searchParams: { tag: string } }) => {
 
   return (
     <div className=" mobile_center_less_contract md:py-12 py-8">
-      <section className=" grid sm:grid-cols-7 w-full gap-20">
-        <main className="sm:col-span-5">
+      <section className=" grid md:grid-cols-7 w-full gap-20">
+        <main className="md:col-span-5">
           <section className="" >
             <Topics allTopics={allTopics} userTags={getSelectedTopics} />
           </section>
           <div className="md:block hidden">
-            <div className="divider "><span className=" sohne_bold">Stories</span></div>
+            <div className="divider "><span className=" text-muted-foreground sohne_bold">Stories</span></div>
           </div>
           <section >
             <GetStories stories={stories} />
