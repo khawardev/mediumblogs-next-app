@@ -53,12 +53,20 @@ const Header = () => {
                 <SquarePen strokeWidth={1.25} size={20} className=" " />
                 <p className=" text-base  font-bold  sohne">Write</p>
               </button>
-              <button className="sm:block hidden">
+              {/* <button className="sm:block hidden">
                 <GoBell size={21} className="text-gray-500 " />
-              </button>
-              <Link href="/blogs">
-                <Button className="sohne font-bold  flex-center gap-2" variant={'green'} size={'icon'}><FaMedium size={'20'} /></Button>
-              </Link>
+              </button> */}
+              <div className=" sm:hidden block">
+                <Link href="/blogs">
+                  <Button className="sohne font-bold  flex-center gap-2" variant={'green'} size={'icon'}><FaMedium size={'20'} /></Button>
+                </Link>
+              </div>
+              <div className=" sm:block hidden ">
+                <Link href="/blogs">
+                  <Button className="sohne font-bold  flex-center gap-2" variant={'green'} size={'sm'}><FaMedium size={'20'} />Blogs</Button>
+                </Link>
+              </div>
+
               <PopoverButton />
             </div>
 
