@@ -16,7 +16,7 @@ const NavbarStory = ({ storyID, currentUserName, storyContent }: { storyID: stri
       <section className="flex-between gap-4 font-bold    ">
         <section className="flex-center  gap-4 ">
           <Link href={'/'} >
-            <Mediumsvg />
+            <Mediumsvg clasName="" size={25} />
           </Link>
           <p className=" text-sm sm:block hidden ">Draft in {currentUserName}</p>
           <p className=" text-sm sohne font-bold  ">{saving ?

@@ -8,24 +8,26 @@ import { Plus } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 import { CgSpinner } from "react-icons/cg";
 import { addRemoveTags } from "@/actions/topics"
+import { useAtom } from "jotai"
+import { savingTagsAtom } from "@/context/atom"
 
 export default function AddTagsDialog({ allTopics }: any) {
     const { toast } = useToast()
     const [selectedAllTopics, setSelectedAllTopics] = useState([]);
     const [selectedTopics, setSelectedTopics] = useState([]);
-    const [loading, setloading] = useState<boolean>(false)
+    const [savingTags, setsavingTags] = useAtom(savingTagsAtom)
 
     useEffect(() => {
         setSelectedAllTopics([])
     }, []);
 
     const AdduserTags = async () => {
-        setloading(true)
+        setsavingTags(true)
         const res = await addRemoveTags(selectedTopics);
         if (res?.error) {
             toast({ title: res.error });
         }
-        setloading(false)
+        setsavingTags(false)
         setSelectedAllTopics([])
         toast({
             title: 'Tags added',
@@ -73,7 +75,7 @@ export default function AddTagsDialog({ allTopics }: any) {
                             className="font-bold flex-center gap-1"
                             onClick={AdduserTags}
                         >
-                            {loading ? <>Adding Tags <CgSpinner className="animate-spin" size={20} /></> : 'Add Tags'}
+                            {savingTags ? <>Adding Tags <CgSpinner className="animate-spin" size={20} /></> : 'Add Tags'}
 
 
                         </Button>

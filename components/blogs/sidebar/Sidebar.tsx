@@ -6,7 +6,7 @@ import Ads from "./Ads";
 const Sidebar = ({ stories }: any) => {
     return (
         <div className=" select-none">
-            {stories && <>
+            {stories?.length >= 3 && <>
                 <h3 className="font-semibold text-xl sohne_bold mb-5">Staff Picks</h3>
                 <div className=" space-y-4 mb-4">
                     {stories?.map((story: any, index: number) => (

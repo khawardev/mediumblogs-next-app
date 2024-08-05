@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from 'next-view-transitions'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { Button } from "../ui/button";
@@ -22,7 +22,11 @@ const WordsCarousel = ({ allTopics }: any) => {
             });
         }
     };
+    const [currentTag, setCurrentTag] = useState('');
 
+    const handleClick = (tag: any) => {
+        setCurrentTag((prevTag) => (prevTag === tag ? '' : tag));
+    };
     return (
         <div className="flex-between w-full ">
             <button onClick={scrollLeft} >
@@ -37,17 +41,18 @@ const WordsCarousel = ({ allTopics }: any) => {
                     overflowX: "auto",
                     WebkitOverflowScrolling: "touch",
                 }}>
-                {allTopics.map((allTopic: any, index: number) => (
+                {allTopics.map((userTag: any, index: number) => (
                     <Link
                         key={index}
-                        href={`/blogs/?tag/${allTopic.value}`}
-                        className="sohne font-bold border  bg-gray-100 transition-all ease-in  rounded-full  py-1 px-4  "
+                        href={currentTag === userTag.value ? `/blogs` : `/blogs/?tag=${userTag.value}`}
+                        onClick={() => handleClick(userTag.value)}
+                        className={` ${currentTag === userTag.value ? ' border-2 border-green-500' : ' border'}  sohne font-bold  bg-gray-100 transition-all ease-in  rounded-full  py-1 px-4  `}
                         style={{
                             scrollSnapAlign: "start", // Align each item to start at the beginning of the container
                             flexShrink: 0, // Prevent items from shrinking
                         }}
                     >
-                        {allTopic.value}
+                        {userTag.value}
                     </Link>
                 ))}
             </section>

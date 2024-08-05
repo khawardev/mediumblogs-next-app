@@ -37,7 +37,7 @@ export default function RootLayout({
           <head>
             <ThemeModeScript />
           </head>
-          <body className={`  bg-[#FFFFFF]`}>
+          <body className={` relative bg-[#FFFFFF]`}>
             <Header />
             <div className=" pt-[77px]  pb-0">
               {children}

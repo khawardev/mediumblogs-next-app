@@ -8,6 +8,8 @@ import { CiSearch } from "react-icons/ci";
 import { GoBell } from "react-icons/go";
 import { CreateStory } from "@/actions/story"
 import { useToast } from "@/components/ui/use-toast"
+import { FaMedium } from "react-icons/fa6"
+import { Button } from "./ui/button"
 
 const Header = () => {
   const { toast } = useToast()
@@ -23,7 +25,7 @@ const Header = () => {
   }
 
   return (
-    <div className="z-50 fixed   bg-[#FFFFFF] border border-t-0 border-l-0 border-r-0 border-b-black w-full ">
+    <div className=" z-40 fixed   bg-[#FFFFFF] border border-t-0 border-l-0 border-r-0 border-b-black w-full ">
       <div className="mobile_center py-5  flex-between ">
         <section className=" flex-center space-x-7">
           <Link href={'/'} >
@@ -46,13 +48,17 @@ const Header = () => {
         <ul className="flex-center  gap-5  ">
           {status === 'authenticated' ?
             <div className="flex-center md:space-x-7 space-x-4">
+
               <button onClick={MakeNewStory} className="flex-center gap-2   text-gray-500 ">
                 <SquarePen strokeWidth={1.25} size={20} className=" " />
                 <p className=" text-base  font-bold  sohne">Write</p>
               </button>
-              <button>
+              <button className="sm:block hidden">
                 <GoBell size={21} className="text-gray-500 " />
               </button>
+              <Link href="/blogs">
+                <Button className="sohne font-bold  flex-center gap-2" variant={'green'} size={'icon'}><FaMedium size={'20'} /></Button>
+              </Link>
               <PopoverButton />
             </div>
 

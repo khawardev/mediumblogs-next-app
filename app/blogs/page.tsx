@@ -8,12 +8,16 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import Image from "next/image";
 import Sidebar from "@/components/blogs/sidebar/Sidebar";
 import { useEffect, useState } from "react";
+import { savingTagsAtom } from "@/context/atom";
+import { useAtom } from "jotai";
 
 const Blogs = ({ searchParams }: { searchParams: { tag: string } }) => {
   const [limitedStories, setlimitedStories] = useState<any>([]);
   const [allTopics, setallTopics] = useState<any>([]);
   const [getSelectedTopics, setgetSelectedTopics] = useState<any>([]);
   const [stories, setStories] = useState<any>([]);
+  const [savingTags] = useAtom(savingTagsAtom)
+
   useEffect(() => {
     const getData = async () => {
       setlimitedStories(await getLimitedStories(searchParams?.tag));
@@ -22,14 +26,14 @@ const Blogs = ({ searchParams }: { searchParams: { tag: string } }) => {
       setStories(await getAllStories(searchParams?.tag));
     };
     getData();
-  }, [searchParams?.tag]);
+  }, [searchParams?.tag, savingTags]);
 
 
 
   return (
     <div className=" mobile_center_less_contract md:py-12 py-8">
-      <section className=" grid grid-cols-7 w-full gap-20">
-        <section className=" md:col-span-5 col-span-7">
+      <section className=" grid sm:grid-cols-7 w-full gap-20">
+        <main className="sm:col-span-5">
           <section className="" >
             <Topics allTopics={allTopics} userTags={getSelectedTopics} />
           </section>
@@ -39,10 +43,10 @@ const Blogs = ({ searchParams }: { searchParams: { tag: string } }) => {
           <section >
             <GetStories stories={stories} />
           </section>
-        </section>
-        <section className="col-span-2 md:block hidden">
+        </main>
+        <main className="col-span-2 md:block hidden">
           <Sidebar stories={limitedStories} />
-        </section>
+        </main>
       </section>
     </div>
   );
