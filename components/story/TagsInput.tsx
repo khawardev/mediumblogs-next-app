@@ -44,7 +44,7 @@ const TagsInput = () => {
             />
             <div className="flex flex-wrap items-center  mt-2  ">
                 {topics?.map((value, index) => (
-                    <div key={index} className=" mr-1 my-1 flex-center py-[2px] px-3 bg-gray-200 rounded-full ">
+                    <div key={index} className=" mr-1 my-1 flex-center  py-[2px] px-3 bg-gray-200 rounded-full ">
                         <p className="mr-2 ">{value}</p>
                         <button
                             onClick={() => handleDelete(index)}
