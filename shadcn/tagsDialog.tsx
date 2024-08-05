@@ -48,7 +48,7 @@ export default function AddTagsDialog({ allTopics }: any) {
 
                         <MultiSelect
                             options={allTopics}
-                            value={selectedAllTopics?.length <= 3 ? selectedAllTopics : []}
+                            value={selectedAllTopics?.length <= 5 ? selectedAllTopics : []}
                             onChange={(selected: any) => {
                                 setSelectedAllTopics(selected);
                                 const stringValues = selected.map((val: any) => val.value);

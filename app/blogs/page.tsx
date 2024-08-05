@@ -40,6 +40,10 @@ const Blogs = ({ searchParams }: { searchParams: { tag: string } }) => {
           <div className="md:block hidden">
             <div className="divider "><span className=" text-muted-foreground sohne_bold">Stories</span></div>
           </div>
+          <div className="md:hidden block  my-5">
+            <hr />
+          </div>
+
           <section >
             <GetStories stories={stories} />
           </section>

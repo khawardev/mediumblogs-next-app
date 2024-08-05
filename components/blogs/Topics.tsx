@@ -19,7 +19,7 @@ const Topics = ({ userTags, allTopics }: any) => {
                 <>
                     <section className=" flex items-center justify-start gap-3">
                         <AddTagsDialog allTopics={allTopics} />
-                        {userTags.length <= 10 ?
+                        {userTags.length <= 3 ?
                             <div className="flex justify-start space-x-2 text-sm ">
                                 {userTags.map((userTag: any, index: number) => (
                                     <Link
