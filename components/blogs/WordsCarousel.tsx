@@ -46,7 +46,7 @@ const WordsCarousel = ({ allTopics }: any) => {
                         key={index}
                         href={currentTag === userTag.value ? `/blogs` : `/blogs/?tag=${userTag.value}`}
                         onClick={() => handleClick(userTag.value)}
-                        className={` ${currentTag === userTag.value ? ' border-2 border-green-500' : ' border'}  sohne font-bold  border-green-200  bg-green-100 transition-all ease-in  rounded-full  py-1 px-4  `}
+                        className={` ${currentTag === userTag.value ? ' border  bg-gray-100 text-black ' : ' border border-green-500 text-white  bg-green-600'}  sohne_bold font-bold    transition-all ease-in  rounded-full  py-1 px-4  `}
                         style={{
                             scrollSnapAlign: "start", // Align each item to start at the beginning of the container
                             flexShrink: 0, // Prevent items from shrinking
