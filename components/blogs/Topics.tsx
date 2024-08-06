@@ -61,13 +61,14 @@ const Topics = ({ userTags, allTopics }: any) => {
                             ) : (
                                 <WordsCarousel allTopics={userTags} />
                             )}
-
-
-
                         </div>
-                        <div className="sm:hidden block">
-                            <WordsCarousel allTopics={userTags} />
-                        </div>
+                        {userTags.length <= 8 && (
+                            <>
+                                <div className="sm:hidden block">
+                                    <WordsCarousel allTopics={userTags} />
+                                </div>
+                            </>
+                        )}
                     </section>
 
                 </>
