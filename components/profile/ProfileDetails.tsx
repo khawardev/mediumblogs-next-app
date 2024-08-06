@@ -51,7 +51,7 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
                     ) : (
                         <>
                             {savedStories.map((story: any, index: number) => (
-                                <StoryDetails key={index} story={story} />
+                                <StoryDetails auther={story.auther} key={index} story={story.story} />
                             ))}
                         </>
                     )

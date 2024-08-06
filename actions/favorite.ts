@@ -3,7 +3,7 @@
 import { and, eq } from "drizzle-orm";
 import { getUser } from "./user";
 import db from "@/db/drizzle";
-import { save } from "@/db/schema";
+import { save, story } from "@/db/schema";
 import { getStorybyId } from "./story";
 import { revalidatePath } from "next/cache";
 
@@ -44,4 +44,27 @@ export const addToFav = async (storyId: string) => {
     return { error: "Not added in Favorite" };
   }
   revalidatePath(`/published/${storyId}`);
+};
+
+export const getFavStoriesByUserId = async (userId: string) => {
+  if (!userId) {
+    return { error: "User ID is required" };
+  }
+
+  try {
+    // Find all favorite entries for the given user
+    const favEntries = await db.query.save.findMany({
+      where: eq(save.userId, userId),
+      with: { story: true, auther: true }, // Include related story details
+    });
+
+    if (!favEntries.length) {
+      return { error: "No favorite stories found for this user" };
+    }
+
+    return favEntries;
+  } catch (error) {
+    console.error("Error retrieving favorite stories:", error);
+    return { error: "Error retrieving favorite stories" };
+  }
 };
