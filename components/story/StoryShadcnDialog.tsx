@@ -87,7 +87,7 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
                             <hr className=" md:hidden block" />
                             <p className=" text-base sohne font-bold ">Publishing to: <span className="sohne_bold">{username}</span></p>
                             <DialogDescription>Add or change topics (up to 5) so readers know what your story is about</DialogDescription>
-                            <TagsInput />
+                            <TagsInput publishing={publishing} />
 
                             <DialogDescription className="md:block hidden ">Learn more about what happens to your post when you publish.</DialogDescription>
                             <Button disabled={!topics?.length} onClick={publishStoryFunc} variant="green" size="sm" className="  sohne font-bold  tracking-wider" >

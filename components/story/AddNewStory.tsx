@@ -60,7 +60,7 @@ export default function AddNewStory({ storyID, storyContent }: Props) {
                     }
                     return "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637";
                 }}
-                className='w-full  shadow-none border-none rounded-none  '
+                className='w-full  shadow-none border-none rounded-none sohne  '
             />
             {/* )} */}
 

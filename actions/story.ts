@@ -25,6 +25,25 @@ export const CreateStory = async () => {
   redirect(`/p/${newStory[0].id}`);
 };
 
+export const getStoriesByUserId = async (userId: string, publish: boolean) => {
+  if (!userId) {
+    return { error: "User ID is required" };
+  }
+  let stories;
+  try {
+    stories = await db.query.story.findMany({
+      where: and(eq(story.userId, userId), eq(story.publish, publish)),
+    });
+
+    if (!stories || stories.length === 0) {
+      return { error: "No stories found for this user" };
+    }
+  } catch (error) {
+    return { error: "Error retrieving stories" };
+  }
+  return stories;
+};
+
 export const getStorybyId = async (id: string, pubish: boolean) => {
   if (!id) {
     return { error: "dont have story" };

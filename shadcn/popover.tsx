@@ -5,16 +5,16 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-import { DialogButton } from "@/shadcn/Authdialog"
 import Link from "next/link"
 import { BiMenu } from "react-icons/bi"
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
-import { LogOut } from "lucide-react";
-import { PiSignOutBold } from "react-icons/pi";
-import { LiaSignOutAltSolid } from "react-icons/lia";
 import { IoIosLogOut } from "react-icons/io";
+import { getUser } from "@/actions/user";
+import { CgProfile } from "react-icons/cg";
+import { MdOutlineArticle } from "react-icons/md";
+import { RiPriceTag3Line } from "react-icons/ri";
 
 interface DialogButtonProps {
     title: string;
@@ -22,26 +22,27 @@ interface DialogButtonProps {
     onClick?: () => void; // Add onClick as an optional prop
 }
 export function PopoverButton() {
+    const [userFromDb, setUsrfromDb] = useState<any>()
     const popoverRef = useRef<HTMLDivElement>(null)
     const { data, status } = useSession()
-    const handleLinkClick = () => {
-        const popoverElement = popoverRef.current
-        if (popoverElement) {
-            const trigger = document.querySelector('[data-state="open"]') as HTMLElement
-            if (trigger) {
-                trigger.click() // This will close the popover
-            }
+
+    useEffect(() => {
+        const fetchuser = async () => {
+            const userfromDb: any = await getUser();
+            setUsrfromDb(userfromDb);
         }
-    }
+        fetchuser();
+    }, []);
+
     return (
         <Popover>
             {status === 'authenticated' ?
                 <>
                     {data && data.user &&
                         <PopoverTrigger asChild>
-                            <Button size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border sohne text-md  font-bold rounded-full  bg-[#FFFFFF]'>
-                                <Image className="rounded-full" src={data.user.image ?? ''} width={40} height={40} alt={data.user.name ?? ''} />
-                            </Button>
+                            <button className=' whitespace-nowrap  flex-center gap-4  border sohne text-md  font-bold rounded-full  bg-[#FFFFFF]'>
+                                <Image className="rounded-full" src={data.user.image ?? ''} width={35} height={35} alt={data.user.name ?? ''} />
+                            </button>
                         </PopoverTrigger>
                     }
                 </>
@@ -56,15 +57,20 @@ export function PopoverButton() {
             <PopoverContent ref={popoverRef}>
                 <ul className="flex-center flex-col  sohne font-bold gap-5  ">
                     <li className="md:flex-center flex flex-col  gap-2">
+                        <Link className="sohne text-sm  " href={`/profile/${userFromDb?.id}`}>
+                            <button className="flex-center gap-1 py-1 text-sm w-full ">
+                                <CgProfile />My Profile
+                            </button>
+                        </Link>
                         <Link className="sohne text-sm  " href="/about">
-                            <Button variant={'outline'} className=" font-bold rounded-full w-full ">
-                                Our story
-                            </Button>
+                            <button className="flex-center gap-1 py-1 text-sm w-full ">
+                                <MdOutlineArticle /> Our story
+                            </button>
                         </Link>
                         <Link className="sohne text-sm  " href="/membership">
-                            <Button variant={'outline'} className=" font-bold rounded-full w-full ">
-                                Membership
-                            </Button>
+                            <button className="flex-center gap-1 py-1 text-sm w-full ">
+                                <RiPriceTag3Line /> Membership
+                            </button>
                         </Link>
                     </li>
                     {status === 'authenticated' &&

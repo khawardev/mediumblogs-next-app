@@ -5,7 +5,7 @@ import { toast } from '../ui/use-toast';
 import { useAtom } from 'jotai';
 import { TopicsAtom } from '@/context/atom';
 
-const TagsInput = () => {
+const TagsInput = ({ publishing }: any) => {
     const [topics, setTopics] = useAtom(TopicsAtom);
     const [currentInput, setCurrentInput] = useState<string>('');
 
@@ -35,6 +35,7 @@ const TagsInput = () => {
         <div className=" ">
 
             <input
+                disabled={publishing}
                 type="text"
                 value={currentInput}
                 onChange={handleChange}

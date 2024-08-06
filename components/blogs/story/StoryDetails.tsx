@@ -21,11 +21,11 @@ const StoryDetails = ({ story }: any) => {
                     <div className="sm:space-y-3  space-y-5  " onClick={() => router.push(`/published/${story?.id}`)}>
                         <section className=" flex  items-center gap-3">
                             <Avatar className="w-10 h-10 border sohne font-bold">
-                                <AvatarImage src={story?.auther.image} />
+                                <AvatarImage src={story?.auther?.image} />
                                 <AvatarFallback>AC</AvatarFallback>
                             </Avatar>
                             <div className=" leading-4">
-                                <p className=" sohne_bold whitespace-nowrap">{story?.auther.name}</p>
+                                <p className=" sohne_bold whitespace-nowrap">{story?.auther?.name}</p>
                                 <p className="sohne font-bold text-sm text-muted-foreground  ">{new Date(story?.createdAt).toDateString().split(' ')?.slice(1, 4).join(' ')}</p>
                             </div>
                         </section>

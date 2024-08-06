@@ -10,6 +10,7 @@ import { CreateStory } from "@/actions/story"
 import { useToast } from "@/components/ui/use-toast"
 import { FaMedium } from "react-icons/fa6"
 import { Button } from "./ui/button"
+import { useState } from "react"
 
 const Header = () => {
   const { toast } = useToast()
@@ -23,7 +24,16 @@ const Header = () => {
       })
     }
   }
+  const [inputValue, setInputValue] = useState<string>('');
 
+  const handleKeyPress = (e: any) => {
+    if (e.key === 'Enter') {
+      toast({
+        description: 'This feature will be available soon.',
+      });
+      setInputValue('');
+    }
+  };
   return (
     <div className=" z-40 fixed   bg-[#FFFFFF] border border-t-0 border-l-0 border-r-0 border-b-black w-full ">
       <div className="mobile_center py-5  flex-between ">
@@ -35,8 +45,11 @@ const Header = () => {
             <section className=" md:flex hidden py-[9px] px-3 bg-gray-100 rounded-full  items-center gap-2">
               <span><CiSearch size={20} /></span>
               <input
-                className="sohne border-0 text-sm focus:outline-none focus:ring-0  sohne font-bold    bg-gray-100"
+                className="sohne border-0 text-sm focus:outline-none focus:ring-0  bg-gray-100"
                 placeholder="Search"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyPress={handleKeyPress}
               />
             </section>
 
@@ -47,26 +60,16 @@ const Header = () => {
 
         <ul className="flex-center  gap-5  ">
           {status === 'authenticated' ?
-            <div className="flex-center md:space-x-7 space-x-4">
+            <div className="flex-center md:space-x-7 space-x-3">
 
-              <button onClick={MakeNewStory} className="flex-center gap-2   text-gray-500 ">
-                <SquarePen strokeWidth={1.25} size={20} className=" " />
-                <p className=" text-base  font-bold  sohne">Write</p>
+              <button onClick={MakeNewStory} className="flex-center gap-1   text-gray-500 ">
+                <SquarePen strokeWidth={1.25} size={18} />
+                <p className=" text-base   sohne">Write</p>
               </button>
-              {/* <button className="sm:block hidden">
-                <GoBell size={21} className="text-gray-500 " />
-              </button> */}
-              <div className=" sm:hidden block">
-                <Link href="/blogs">
-                  <Button className="sohne font-bold  flex-center gap-2" variant={'green'} size={'icon'}><FaMedium size={'20'} /></Button>
-                </Link>
-              </div>
-              <div className=" sm:block hidden ">
-                <Link href="/blogs">
-                  <Button className="sohne font-bold  flex-center gap-2" variant={'green'} size={'sm'}><FaMedium size={'20'} />Blogs</Button>
-                </Link>
-              </div>
-
+              <Link href="/blogs" className="flex-center gap-1 text-gray-500 ">
+                <FaMedium strokeWidth={1.25} size={20} />
+                <p className=" text-base  sohne">Blogs</p>
+              </Link>
               <PopoverButton />
             </div>
 
