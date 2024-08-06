@@ -36,7 +36,7 @@ export default function AddTagsDialog({ allTopics }: any) {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <button className="p-1 hover:border border hover:bg-gray-100 rounded-full transition-all duration-75 cursor-pointer" ><Plus size={'21'} />  </button>
+                <button className="p-1 hover:border border hover:bg-gray-100 rounded-full transition-all duration-75 cursor-pointer" ><Plus size={'15'} />  </button>
             </DialogTrigger>
             <DialogContent className=" sohne font-bold">
                 <DialogHeader>

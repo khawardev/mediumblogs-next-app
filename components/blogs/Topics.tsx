@@ -5,42 +5,66 @@ import { useSession } from "next-auth/react";
 import { Link } from 'next-view-transitions'
 import WordsCarousel from "./WordsCarousel";
 import { useState } from "react";
+import { FaMedium } from "react-icons/fa6";
 
 const Topics = ({ userTags, allTopics }: any) => {
     const { status } = useSession()
-    const [currentTag, setCurrentTag] = useState('');
+    // const [currentTag, setCurrentTag] = useState('');
+
+    // const handleClick = (tag: any) => {
+    //     setCurrentTag((prevTag) => (prevTag === tag ? '' : tag));
+    // };
+    const [currentTag, setCurrentTag] = useState("For You");
 
     const handleClick = (tag: any) => {
-        setCurrentTag((prevTag) => (prevTag === tag ? '' : tag));
+        setCurrentTag(tag);
     };
     return (
         <>
             {status === 'authenticated' &&
                 <>
-                    <section className=" flex items-center justify-start gap-3">
+                    {/* /?tag=${userTag.value}   */}
+                    <section className=" flex items-center justify-start gap-3 relative">
                         <AddTagsDialog allTopics={allTopics} />
-                        <div className="sm:block hidden">
-                            {userTags.length <= 3 ?
-                                <div className="flex justify-start space-x-2 text-sm ">
-                                    {userTags.map((userTag: any, index: number) => (
+                        <div className="sm:block hidden ">
+                            {userTags.length <= 8 ? (
+                                <>
+                                    <div className="flex justify-start space-x-1">
                                         <Link
-                                            key={index}
-                                            href={currentTag === userTag.value ? `/blogs` : `/blogs/?tag=${userTag.value}`}
-                                            onClick={() => handleClick(userTag.value)}
-                                            className={` ${currentTag === userTag.value ? ' border  bg-gray-100 text-black ' : ' border border-green-500 text-white  bg-green-600'}  sohne_bold font-bold    transition-all ease-in  rounded-full  py-1 px-4  `}
+                                            href="/blogs"
+                                            onClick={() => handleClick("For You")}
+                                            className={` ${currentTag === "For You" && 'underline opacity-100'} flex-center gap-1 opacity-50 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
                                             style={{
-                                                scrollSnapAlign: "start", // Align each item to start at the beginning of the container
-                                                flexShrink: 0, // Prevent items from shrinking
+                                                scrollSnapAlign: "start",
+                                                flexShrink: 0,
                                             }}
                                         >
-                                            {userTag.value}
+                                            <FaMedium strokeWidth={1.25} size={20} /> Blogs
                                         </Link>
-                                    ))}
-                                </div>
-                                : <WordsCarousel allTopics={userTags} />
-                            }
-                        </div>
 
+                                        {userTags.map((userTag: any, index: number) => (
+                                            <Link
+                                                key={index}
+                                                href={`/blogs/?tag=${userTag.value}`}
+                                                onClick={() => handleClick(userTag.value)}
+                                                className={` ${currentTag === userTag.value && 'underline opacity-100'} opacity-50 underline-offset-[19px] sm:decoration-2 decoration-1 sohne transition-all ease-in px-3`}
+                                                style={{
+                                                    scrollSnapAlign: "start",
+                                                    flexShrink: 0,
+                                                }}
+                                            >
+                                                {userTag.value}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </>
+                            ) : (
+                                <WordsCarousel allTopics={userTags} />
+                            )}
+
+
+
+                        </div>
                         <div className="sm:hidden block">
                             <WordsCarousel allTopics={userTags} />
                         </div>

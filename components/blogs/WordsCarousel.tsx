@@ -3,6 +3,7 @@ import { Link } from 'next-view-transitions'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { Button } from "../ui/button";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { FaMedium } from "react-icons/fa6";
 
 const WordsCarousel = ({ allTopics }: any) => {
     const sliderRef = useRef<HTMLDivElement>(null);
@@ -22,41 +23,63 @@ const WordsCarousel = ({ allTopics }: any) => {
             });
         }
     };
-    const [currentTag, setCurrentTag] = useState('');
+    // const [currentTag, setCurrentTag] = useState('');
+    // const handleClick = (tag: any) => {
+    //     setCurrentTag((prevTag) => (prevTag === tag ? '' : tag));
+    // };
+
+    const [currentTag, setCurrentTag] = useState("For You");
 
     const handleClick = (tag: any) => {
-        setCurrentTag((prevTag) => (prevTag === tag ? '' : tag));
+        setCurrentTag(tag);
     };
+
     return (
-        <div className="flex-between w-full ">
-            <button onClick={scrollLeft} >
+        <div className="flex-between  ">
+            <button onClick={scrollLeft} className=" sm:block hidden" >
                 <IoIosArrowBack className=" text-gray-300 hover:text-gray-500 transition-all ease-in" size={'22'} />
             </button>
             <section
                 ref={sliderRef}
-                className="sm:w-full w-[250px] text-sm   flex justify-start overflow-x-auto space-x-2 scrollbar-hide "
+                className=" realtive lg:w-[760px]   sm:w-[560px] w-[280px]  flex justify-start overflow-x-auto space-x-1 scrollbar-hide "
                 style={{
 
                     scrollSnapType: "x mandatory",
                     overflowX: "auto",
                     WebkitOverflowScrolling: "touch",
                 }}>
+                <Link
+                    href="/blogs"
+                    onClick={() => handleClick("For You")}
+                    className={` ${currentTag === "For You" && 'underline opacity-100'} flex-center gap-1 opacity-50 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
+                    style={{
+                        scrollSnapAlign: "start",
+                        flexShrink: 0,
+                    }}
+                >
+                    <FaMedium strokeWidth={1.25} size={20} /> Blogs
+                </Link>
                 {allTopics.map((userTag: any, index: number) => (
-                    <Link
-                        key={index}
-                        href={currentTag === userTag.value ? `/blogs` : `/blogs/?tag=${userTag.value}`}
-                        onClick={() => handleClick(userTag.value)}
-                        className={` ${currentTag === userTag.value ? ' border  bg-gray-100 text-black ' : ' border border-green-500 text-white  bg-green-600'}  sohne_bold font-bold    transition-all ease-in  rounded-full  py-1 px-4  `}
-                        style={{
-                            scrollSnapAlign: "start", // Align each item to start at the beginning of the container
-                            flexShrink: 0, // Prevent items from shrinking
-                        }}
-                    >
-                        {userTag.value}
-                    </Link>
+                    <>
+
+
+                        <Link
+                            key={index}
+                            href={`/blogs/?tag=${userTag.value}`}
+                            onClick={() => handleClick(userTag.value)}
+                            className={` ${currentTag === userTag.value && 'underline opacity-100'} opacity-50 underline-offset-[22px] sm:decoration-2 decoration-1  sohne transition-all ease-in   px-3  `}
+                            style={{
+                                scrollSnapAlign: "start", // Align each item to start at the beginning of the container
+                                flexShrink: 0, // Prevent items from shrinking
+                            }}
+                        >
+                            {userTag.value}
+                        </Link>
+                    </>
+
                 ))}
             </section>
-            <button onClick={scrollRight} >
+            <button onClick={scrollRight} className="sm:block hidden" >
                 <IoIosArrowForward className=" text-gray-300 hover:text-gray-500 transition-all ease-in" size={'22'} />
             </button>
         </div>

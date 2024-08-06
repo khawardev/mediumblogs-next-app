@@ -34,7 +34,7 @@ const StoryDetails = ({ story, auther }: any) => {
                             <div className="markdown-body sohne leading-5  text-muted-foreground line-clamp-2" dangerouslySetInnerHTML={{ __html: result?.paragraph || '' }} />
                         </section>
                     </div>
-                    <section className=" sm:flex hidden flex-between gap-2  w-full    text-sm ">
+                    <section className=" sm:flex hidden flex-between gap-2  w-full  text-sm  ">
                         <StoryTags story={story} limit={2} />
                         <div className="flex-center gap-2 ">
                             <FavComp storyId={story?.id} />

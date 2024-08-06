@@ -40,14 +40,14 @@ const StoryTags = ({ story, limit }: any) => {
                             key={index}
                             href={currentTag === tag ? `/blogs` : `/blogs/?tag=${tag}`}
                             onClick={() => handleClick(tag)}
-                            className={` ${currentTag === tag ? ' border  bg-green-500 text-white ' : ' border    bg-gray-100'} whitespace-nowrap  sohne font-bold    transition-all ease-in  rounded-full  py-1 px-4  `}
+                            className={` ${currentTag === tag ? ' border  bg-green-500 text-white ' : ' border    bg-gray-100'} whitespace-nowrap  sohne font-bold  opacity-65   transition-all ease-in  rounded-full  py-1 px-4  `}
                         >
                             {tag}
                         </Link>
                     </>
                 ))}
                 {story?.topics.length > limit && (
-                    <p className="py-1 px-4 border sohne font-bold  bg-gray-100 rounded-full">
+                    <p className="py-1 px-4 border sohne font-bold  bg-gray-100 rounded-full opacity-65">
                         +{story?.topics.length - limit}
                     </p>
                 )}
