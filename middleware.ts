@@ -11,7 +11,15 @@ export function middleware(request: NextRequest) {
     request.cookies.get("__Secure-next-auth.session-token");
 
   if (!authToken) {
-    // Redirect to home page if no auth token is present
     return NextResponse.redirect(new URL("/", request.url));
+  }
+  try {
+    const requestURL: any = new URL(request.url);
+    const refererURL: any = request.headers.get("referer");
+    if (refererURL.origin !== requestURL.origin) {
+      throw new Error("origin mismatch");
+    }
+  } catch {
+    NextResponse.redirect(new URL("/", request.url));
   }
 }
