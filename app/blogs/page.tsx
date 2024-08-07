@@ -10,20 +10,30 @@ import Sidebar from "@/components/blogs/sidebar/Sidebar";
 import { useEffect, useState } from "react";
 import { savingTagsAtom } from "@/context/atom";
 import { useAtom } from "jotai";
+import { useSwrStories } from "@/hooks/getSwrStories";
 
 const Blogs = ({ searchParams }: { searchParams: { tag: string } }) => {
+  const [savingTags] = useAtom(savingTagsAtom)
+  // const { limitedStories, allTopics, getSelectedTopics, stories } = useSwrStories(searchParams?.tag);
+
   const [limitedStories, setlimitedStories] = useState<any>([]);
   const [allTopics, setallTopics] = useState<any>([]);
   const [getSelectedTopics, setgetSelectedTopics] = useState<any>([]);
   const [stories, setStories] = useState<any>([]);
-  const [savingTags] = useAtom(savingTagsAtom)
 
   useEffect(() => {
     const getData = async () => {
       setlimitedStories(await getLimitedStories(searchParams?.tag));
       setallTopics(await getAllTopics());
       setgetSelectedTopics(await SelectedTopics());
-      setStories(await getAllStories(searchParams?.tag));
+      // const fetchedStories = await getAllStories(searchParams?.tag);
+      // const sortedStories = fetchedStories.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+      // setStories(sortedStories);
+
+      const fetchedStories = await getAllStories(searchParams?.tag);
+      const sortedStories = Array.isArray(fetchedStories) ? fetchedStories.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()) : [];
+      setStories(sortedStories);
+
     };
     getData();
   }, [searchParams?.tag, savingTags]);

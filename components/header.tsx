@@ -1,7 +1,7 @@
 'use client'
 import { DialogButton } from "@/shadcn/Authdialog"
 import { PopoverButton } from "@/shadcn/popover"
-import { SquarePen } from "lucide-react"
+import { Newspaper, SquarePen } from "lucide-react"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { CiSearch } from "react-icons/ci";
@@ -11,6 +11,7 @@ import { useToast } from "@/components/ui/use-toast"
 import { FaMedium } from "react-icons/fa6"
 import { Button } from "./ui/button"
 import { useState } from "react"
+import { MdOutlineArticle } from "react-icons/md"
 
 const Header = () => {
   const { toast } = useToast()
@@ -45,20 +46,18 @@ const Header = () => {
             <section className=" md:flex hidden py-[9px] px-3 bg-gray-100 rounded-full  items-center gap-2">
               <span><CiSearch size={20} /></span>
               <input
-                className="sohne border-0 text-sm focus:outline-none focus:ring-0  bg-gray-100"
+                className="sohne border-0 text-sm font-bold focus:outline-none focus:ring-0  bg-gray-100"
                 placeholder="Search"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
               />
             </section>
-
-
           }
         </section>
 
 
-        <ul className="flex-center  gap-5  ">
+        <ul className="flex-center  gap-5   ">
           {status === 'authenticated' ?
             <div className="flex-center md:space-x-7 space-x-3">
 
@@ -67,17 +66,16 @@ const Header = () => {
                 <p className=" text-base   sohne">Write</p>
               </button>
               <Link href="/blogs" className="flex-center gap-1 text-gray-500 ">
-                <FaMedium strokeWidth={1.25} size={20} />
-                <p className=" text-base  sohne">Blogs</p>
+                <Newspaper size={17} />
+                <p className=" text-base  sohne ">Blogs</p>
               </Link>
               <PopoverButton />
             </div>
-
             :
             <li className="flex-center sohne  md:gap-7 gap-3">
               <Link className="md:block hidden  font-bold text-sm" href="/about">Our story</Link>
               <Link className="md:block hidden   font-bold text-sm" href="/membership">Membership</Link>
-              <DialogButton className='flex-center gap-1 font-bold rounded-full ' title='Sign in' content='Create an account to start writing.' />
+              <DialogButton className='flex-center gap-1 font-bold rounded-full ' title='Sign in' content='Create an account to' />
               <div className=" md:hidden block">
                 <PopoverButton />
               </div>

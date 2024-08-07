@@ -1,8 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 @font-face {
   font-family: "serif_code";
   src: url("../fonts/Medium/source_code_pro_400_normal.woff") format("woff");
 }
-
 .markdown-body h1 a,
 .markdown-body h2 a,
 .markdown-body h3 a,
@@ -159,7 +159,7 @@
   color: #000000; /* Text color for code */
   background-color: transparent; /* Transparent background */
   padding: 0; /* Remove padding */
-  font-family: "fira code"; /* Monospaced font */
+  font-family: "JetBrains Mono", monospace;
   font-size: 1em; /* Ensure font size is consistent with pre */
 }
 

@@ -9,13 +9,7 @@ import { FaMedium } from "react-icons/fa6";
 
 const Topics = ({ userTags, allTopics }: any) => {
     const { status } = useSession()
-    // const [currentTag, setCurrentTag] = useState('');
-
-    // const handleClick = (tag: any) => {
-    //     setCurrentTag((prevTag) => (prevTag === tag ? '' : tag));
-    // };
     const [currentTag, setCurrentTag] = useState("For You");
-
     const handleClick = (tag: any) => {
         setCurrentTag(tag);
     };
@@ -23,31 +17,30 @@ const Topics = ({ userTags, allTopics }: any) => {
         <>
             {status === 'authenticated' &&
                 <>
-                    {/* /?tag=${userTag.value}   */}
-                    <section className=" flex items-center justify-start gap-3 relative">
+                    <section className=" flex items-center justify-start gap-3 relative text-sm  font-bold">
                         <AddTagsDialog allTopics={allTopics} />
                         <div className="sm:block hidden ">
-                            {userTags.length <= 8 ? (
+                            {userTags?.length <= 8 ? (
                                 <>
                                     <div className="flex justify-start space-x-1">
                                         <Link
                                             href="/blogs"
                                             onClick={() => handleClick("For You")}
-                                            className={` ${currentTag === "For You" && 'underline opacity-100'} flex-center gap-1 opacity-50 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
+                                            className={` ${currentTag === "For You" ? 'underline opacity-90' : 'opacity-50 '} flex-center gap-1 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
                                             style={{
                                                 scrollSnapAlign: "start",
                                                 flexShrink: 0,
                                             }}
                                         >
-                                            <FaMedium strokeWidth={1.25} size={20} /> Blogs
+                                            For You
                                         </Link>
 
-                                        {userTags.map((userTag: any, index: number) => (
+                                        {userTags?.map((userTag: any, index: number) => (
                                             <Link
                                                 key={index}
                                                 href={`/blogs/?tag=${userTag.value}`}
                                                 onClick={() => handleClick(userTag.value)}
-                                                className={` ${currentTag === userTag.value && 'underline opacity-100'} opacity-50 underline-offset-[19px] sm:decoration-2 decoration-1 sohne transition-all ease-in px-3`}
+                                                className={` ${currentTag === userTag.value ? 'underline opacity-90' : 'opacity-50 '}  underline-offset-[19px] sm:decoration-2 decoration-1 sohne transition-all ease-in px-3`}
                                                 style={{
                                                     scrollSnapAlign: "start",
                                                     flexShrink: 0,
@@ -62,7 +55,7 @@ const Topics = ({ userTags, allTopics }: any) => {
                                 <WordsCarousel allTopics={userTags} />
                             )}
                         </div>
-                        {userTags.length <= 8 && (
+                        {userTags?.length > 0 && (
                             <>
                                 <div className="sm:hidden block">
                                     <WordsCarousel allTopics={userTags} />

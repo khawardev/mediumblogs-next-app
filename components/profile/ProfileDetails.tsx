@@ -3,6 +3,7 @@
 import { useState } from "react";
 import StoryDetails from "@/components/blogs/story/StoryDetails";
 import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
 
 const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) => {
 
@@ -18,7 +19,7 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
                 return (
                     !Array.isArray(publishedStories) || publishedStories.length === 0 ? (
                         <div className=" flex-center h-[420px]">
-                            <p className=" text-3xl opacity-25 sohne_bold"> published is Empty </p>
+                            <p className=" text-3xl opacity-25 sohne_bold"> Published is Empty </p>
                         </div>
                     ) : (
                         <>
@@ -65,7 +66,7 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
         <div className="mobile_center_less_contract md:py-12 py-8">
             <section className="flex-between mb-9">
                 <p className="md:text-5xl text-3xl sohne_bold">Your Stories</p>
-                <Button className="sohne font-bold" variant={'green'} size='sm'>New Story +</Button>
+                <Button className="sohne font-bold flex-center gap-2" variant={'green'} size='sm'>New Story <Plus size={'15'} /></Button>
             </section>
 
             <section className="flex md:gap-10 gap-6 mb-[11px] sohne">

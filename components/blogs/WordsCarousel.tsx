@@ -51,15 +51,15 @@ const WordsCarousel = ({ allTopics }: any) => {
                 <Link
                     href="/blogs"
                     onClick={() => handleClick("For You")}
-                    className={` ${currentTag === "For You" && 'underline opacity-100'} flex-center gap-1 opacity-50 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
+                    className={` ${currentTag === "For You" ? 'underline opacity-90' : 'opacity-50 '} flex-center gap-1 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
                     style={{
                         scrollSnapAlign: "start",
                         flexShrink: 0,
                     }}
                 >
-                    <FaMedium strokeWidth={1.25} size={20} /> Blogs
+                    For you
                 </Link>
-                {allTopics.map((userTag: any, index: number) => (
+                {allTopics?.map((userTag: any, index: number) => (
                     <>
 
 
@@ -67,7 +67,7 @@ const WordsCarousel = ({ allTopics }: any) => {
                             key={index}
                             href={`/blogs/?tag=${userTag.value}`}
                             onClick={() => handleClick(userTag.value)}
-                            className={` ${currentTag === userTag.value && 'underline opacity-100'} opacity-50 underline-offset-[22px] sm:decoration-2 decoration-1  sohne transition-all ease-in   px-3  `}
+                            className={` ${currentTag === userTag.value ? 'underline opacity-90' : 'opacity-50 '} opacity-50 underline-offset-[22px] sm:decoration-2 decoration-1  sohne transition-all ease-in   px-3  `}
                             style={{
                                 scrollSnapAlign: "start", // Align each item to start at the beginning of the container
                                 flexShrink: 0, // Prevent items from shrinking

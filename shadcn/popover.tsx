@@ -15,6 +15,7 @@ import { getUser } from "@/actions/user";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineArticle } from "react-icons/md";
 import { RiPriceTag3Line } from "react-icons/ri";
+import { BookType, SendHorizontal, UserRoundPen } from "lucide-react";
 
 interface DialogButtonProps {
     title: string;
@@ -55,30 +56,26 @@ export function PopoverButton() {
             }
 
             <PopoverContent ref={popoverRef}>
-                <ul className="flex-center flex-col  sohne font-bold gap-5  ">
-                    <li className="md:flex-center flex flex-col  gap-2">
-                        <Link className="sohne text-sm  " href={`/profile/${userFromDb?.id}`}>
-                            <button className="flex-center gap-1 py-1 text-sm w-full ">
-                                <CgProfile />My Profile
-                            </button>
+                <ul className="flex-center flex-col sohne font-bold gap-3  ">
+                    <li className="flex flex-col gap-3">
+                        <Link className="flex items-center gap-1" href={`/profile/${userFromDb?.id}`}>
+                            <span className="text-sm">My Profile</span>
                         </Link>
-                        <Link className="sohne text-sm  " href="/about">
-                            <button className="flex-center gap-1 py-1 text-sm w-full ">
-                                <MdOutlineArticle /> Our story
-                            </button>
+                        <Link className="flex items-center gap-1" href="/about">
+                            <span className="text-sm">Our Story</span>
                         </Link>
-                        <Link className="sohne text-sm  " href="/membership">
-                            <button className="flex-center gap-1 py-1 text-sm w-full ">
-                                <RiPriceTag3Line /> Membership
-                            </button>
+                        <Link className="flex items-center gap-1" href="/membership">
+                            <span className="text-sm">Membership</span>
                         </Link>
                     </li>
+
                     {status === 'authenticated' &&
                         <Button
                             onClick={(e) => {
                                 e.preventDefault();
                                 signOut();
                             }}
+                            size={'sm'}
                             variant={'destructive'}
                             className="gap-1 sohne font-bold rounded-full flex-center"
                         >

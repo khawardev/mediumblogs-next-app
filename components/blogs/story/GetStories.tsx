@@ -12,7 +12,7 @@ const GetStories = ({ stories }: any) => {
                 </div>
             ))} */}
             <div >
-                {stories?.slice().reverse().map((story: any, index: number) => (
+                {stories?.map((story: any, index: number) => (
                     <StoryDetails key={index} story={story} />
                 ))}
             </div>
