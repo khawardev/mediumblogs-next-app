@@ -63,11 +63,11 @@ const Header = () => {
 
               <button onClick={MakeNewStory} className="flex-center gap-1   text-gray-500 ">
                 <SquarePen strokeWidth={1.25} size={18} />
-                <p className=" text-base   sohne">Write</p>
+                <p className=" text-base  font-bold  sohne">Write</p>
               </button>
               <Link href="/blogs" className="flex-center gap-1 text-gray-500 ">
                 <Newspaper size={17} />
-                <p className=" text-base  sohne ">Blogs</p>
+                <p className=" text-base  font-bold  sohne ">Blogs</p>
               </Link>
               <PopoverButton />
             </div>
