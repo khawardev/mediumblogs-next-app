@@ -2,7 +2,6 @@
 
 import { ClapCount, ClapCountByUser, getClapsCountByStory } from '@/actions/claps';
 import { getUser } from '@/actions/user';
-import { checkFav } from '@/actions/favorite';
 import Image from 'next/image';
 import { Button } from '../ui/button';
 import '@/public/assets/styles/markdown.css'
@@ -13,6 +12,7 @@ import { useEffect, useState } from 'react';
 import CommentComp from '@/components/published/comments/CommentComp';
 import FavComp from './favorite/FavComp';
 import ShareComp from './share/ShareComp';
+import { usePathname } from 'next/navigation';
 
 type props = {
     publishedStory: any,
@@ -28,6 +28,7 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
     // const userClaps: any = await ClapCountByUser(publishedStory?.id);
     // const favStatus: any = await checkFav(publishedStory?.id);
     // const allClaps: any = await getClapsCountByStory(publishedStory?.id);
+    const pathname = usePathname();
 
     const [clapCount, setClapCount] = useState<any>(null);
     const [userClaps, setUserClaps] = useState<any>(null);
@@ -69,7 +70,7 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
                 </div>
                 <div className='flex-center  space-x-3'>
                     <FavComp storyId={publishedStory?.id} />
-                    <ShareComp />
+                    <ShareComp pathname={pathname} />
                 </div>
             </section>
             <hr />

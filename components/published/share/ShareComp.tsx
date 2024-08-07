@@ -1,10 +1,8 @@
 "use client";
-import { usePathname } from "next/navigation";
 import React from "react";
 import { toast } from "@/components/ui/use-toast";
 
-const ShareComp = () => {
-    const pathname = usePathname();
+const ShareComp = ({ pathname }: any) => {
     return (
         <div className="relative">
             <button

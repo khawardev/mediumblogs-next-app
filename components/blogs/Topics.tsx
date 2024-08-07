@@ -6,13 +6,20 @@ import { Link } from 'next-view-transitions'
 import WordsCarousel from "./WordsCarousel";
 import { useState } from "react";
 import { FaMedium } from "react-icons/fa6";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Topics = ({ userTags, allTopics }: any) => {
     const { status } = useSession()
-    const [currentTag, setCurrentTag] = useState("For You");
-    const handleClick = (tag: any) => {
-        setCurrentTag(tag);
-    };
+    // const [currentTag, setCurrentTag] = useState("For You");
+    // const handleClick = (tag: any) => {
+    //     setCurrentTag(tag);
+    // };
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+    const queryString = searchParams.toString();
+    const fullUrl = `${pathname}?${queryString}`;
+
+    console.log('Full URL:', fullUrl);
     return (
         <>
             {status === 'authenticated' &&
@@ -25,8 +32,7 @@ const Topics = ({ userTags, allTopics }: any) => {
                                     <div className="flex justify-start space-x-1">
                                         <Link
                                             href="/blogs"
-                                            onClick={() => handleClick("For You")}
-                                            className={` ${currentTag === "For You" ? 'underline opacity-90' : 'opacity-50 '} flex-center gap-1 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
+                                            className={` ${fullUrl === "/blogs?" ? 'underline opacity-90 ' : 'opacity-50 '} flex-center gap-1 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
                                             style={{
                                                 scrollSnapAlign: "start",
                                                 flexShrink: 0,
@@ -39,8 +45,7 @@ const Topics = ({ userTags, allTopics }: any) => {
                                             <Link
                                                 key={index}
                                                 href={`/blogs/?tag=${userTag.value}`}
-                                                onClick={() => handleClick(userTag.value)}
-                                                className={` ${currentTag === userTag.value ? 'underline opacity-90' : 'opacity-50 '}  underline-offset-[19px] sm:decoration-2 decoration-1 sohne transition-all ease-in px-3`}
+                                                className={`${pathname === "/blogs" && searchParams.get('tag') === userTag.value ? 'underline opacity-90' : 'opacity-50'} underline-offset-[19px] sm:decoration-2 decoration-1 sohne transition-all ease-in px-3`}
                                                 style={{
                                                     scrollSnapAlign: "start",
                                                     flexShrink: 0,
@@ -48,6 +53,7 @@ const Topics = ({ userTags, allTopics }: any) => {
                                             >
                                                 {userTag.value}
                                             </Link>
+
                                         ))}
                                     </div>
                                 </>
