@@ -59,15 +59,15 @@ const Header = () => {
 
         <ul className="flex-center  gap-5   ">
           {status === 'authenticated' ?
-            <div className="flex-center md:space-x-7 space-x-3">
+            <div className="flex-center md:space-x-7 space-x-4 text-sm">
 
               <button onClick={MakeNewStory} className="flex-center gap-1   text-gray-500 ">
                 <SquarePen strokeWidth={1.25} size={18} />
-                <p className=" text-base  font-bold  sohne">Write</p>
+                <p className="  font-bold  sohne">Write</p>
               </button>
               <Link href="/blogs" className="flex-center gap-1 text-gray-500 ">
                 <Newspaper size={17} />
-                <p className=" text-base  font-bold  sohne ">Blogs</p>
+                <p className="  font-bold  sohne ">Blogs</p>
               </Link>
               <PopoverButton />
             </div>
