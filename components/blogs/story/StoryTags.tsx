@@ -1,16 +1,18 @@
 import Link from "next/link"
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const StoryTags = ({ story, limit }: any) => {
-
-    // useEffect(() => {
-
-    // }, []);
+    const router = useRouter();
     const [currentTag, setCurrentTag] = useState('');
-
-    const handleClick = (tag: any) => {
-        setCurrentTag((prevTag) => (prevTag === tag ? '' : tag));
+    const handleClick = (e: any, tag: any) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setCurrentTag(prevTag => (prevTag === tag ? '' : tag));
+        const href = currentTag === tag ? '/blogs' : `/blogs/?tag=${tag}`;
+        router.push(href);
     };
+
     return (
         <div className="flex-center gap-2">
             <div className="flex-center  gap-3  flex-nowrap">
@@ -19,8 +21,8 @@ const StoryTags = ({ story, limit }: any) => {
                         <Link
                             key={index}
                             href={currentTag === tag ? `/blogs` : `/blogs/?tag=${tag}`}
-                            onClick={() => handleClick(tag)}
-                            className={` ${currentTag === tag ? '   bg-green-600 text-white ' : ' border bg-gray-100'} whitespace-nowrap  sohne font-bold  opacity-65   transition-all ease-in  rounded-full  py-1 px-4  `}
+                            onClick={(e) => handleClick(e, tag)}
+                            className={` ${currentTag === tag ? '   bg-black text-white ' : ' border bg-gray-100 opacity-65'} whitespace-nowrap  sohne font-bold     transition-all ease-in  rounded-full  py-1 px-4  `}
                         >
                             {tag}
                         </Link>

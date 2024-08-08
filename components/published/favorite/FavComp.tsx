@@ -10,7 +10,9 @@ const FavComp = ({ storyId }: any) => {
     const [loading, setloading] = useState<boolean>(false);
     // setFavStatus(await checkFav(storyId));
 
-    const FavStory = async () => {
+    const FavStory = async (e: any) => {
+        e.preventDefault();
+        e.stopPropagation();
         setloading(true)
         await addToFav(storyId);
         setFavStatus(await checkFav(storyId));
@@ -31,7 +33,7 @@ const FavComp = ({ storyId }: any) => {
 
             {loading ? <CgSpinner className="animate-spin" size={20} /> :
 
-                <button className="flex items-center" onClick={FavStory}>
+                <button className="flex items-center" onClick={(e) => FavStory(e)}>
                     {favStatus ? (
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path

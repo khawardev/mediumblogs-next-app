@@ -7,7 +7,9 @@ const ShareComp = ({ pathname }: any) => {
         <div className="relative">
             <button
                 className="mt-2"
-                onClick={() => {
+                onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     navigator.clipboard.writeText(
                         `${process.env.NEXT_PUBLIC_URL}${pathname}`
                     );
