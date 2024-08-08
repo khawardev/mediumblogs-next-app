@@ -1,5 +1,6 @@
 import AnimateWrapper from "@/extras/AnimateWrapper"
 import StoryDetails from "./StoryDetails"
+import StoryDetailSkeleton from "@/components/skeletons/StoryDetailSkeleton"
 
 const GetStories = ({ stories }: any) => {
     return (
@@ -11,10 +12,29 @@ const GetStories = ({ stories }: any) => {
                     </AnimateWrapper>
                 </div>
             ))} */}
-            <div >
-                {stories?.map((story: any, index: number) => (
-                    <StoryDetails key={index} story={story} />
-                ))}
+            <div>
+
+                {stories.length > 0 ?
+                    stories?.map((story: any, index: number) => (
+                        <StoryDetails key={index} story={story} />
+                    )) :
+                    <>
+                        <StoryDetailSkeleton />
+                        <StoryDetailSkeleton />
+                        <StoryDetailSkeleton />
+                        <StoryDetailSkeleton />
+                        <StoryDetailSkeleton />
+                    </>
+                }
+
+
+
+
+
+
+
+
+
             </div>
 
 

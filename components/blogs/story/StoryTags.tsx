@@ -7,21 +7,16 @@ const StoryTags = ({ story, limit }: any) => {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
-
     const [currentTag, setCurrentTag] = useState("");
 
     const handleClick = (e: any, tag: any) => {
         e.preventDefault();
         e.stopPropagation();
-
         const newUrl = currentTag === tag ? "/blogs" : `/blogs/?tag=${tag}`;
         setCurrentTag(currentTag === tag ? "" : tag);
-
-        // Programmatically navigate to the new URL
         router.push(newUrl);
     };
 
-    // Update the currentTag based on the URL whenever the URL changes
     useEffect(() => {
         const tagParam = searchParams.get("tag");
         setCurrentTag(tagParam || "");

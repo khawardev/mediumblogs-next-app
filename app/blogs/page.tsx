@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 import { savingTagsAtom } from "@/context/atom";
 import { useAtom } from "jotai";
 import AddTagsDialog from "@/shadcn/tagsDialog";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import Image from "next/image";
 import { useSwrStories } from "@/hooks/getSwrStories";
 
