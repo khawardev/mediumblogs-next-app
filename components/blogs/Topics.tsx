@@ -10,16 +10,11 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Topics = ({ userTags, allTopics }: any) => {
     const { status } = useSession()
-    // const [currentTag, setCurrentTag] = useState("For You");
-    // const handleClick = (tag: any) => {
-    //     setCurrentTag(tag);
-    // };
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const queryString = searchParams.toString();
     const fullUrl = `${pathname}?${queryString}`;
 
-    console.log('Full URL:', fullUrl);
     return (
         <>
             {status === 'authenticated' &&

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import StoryDetails from "@/components/blogs/story/StoryDetails";
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { Plus, SquarePen } from "lucide-react";
 
 const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) => {
 
@@ -23,9 +23,23 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
                         </div>
                     ) : (
                         <>
-                            {publishedStories.map((story: any, index: number) => (
-                                <StoryDetails key={index} story={story} />
+                            {publishedStories?.map((story: any, index: number) => (
+                                <div key={index} className="flex">
+                                    <div >
+                                        <StoryDetails story={story} />
+                                    </div>
+                                    <section className=" w-[15%] bg-yellow-300 flex flex-col">
+                                        <Button variant={'green'} className="rounded-none flex-grow">
+                                            Edit
+                                        </Button>
+                                        <Button variant={'destructive'} className="rounded-none flex-grow">
+                                            Delete
+                                        </Button>
+                                    </section>
+                                </div>
+
                             ))}
+
                         </>
                     )
                 );
@@ -37,7 +51,7 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
                         </div>
                     ) : (
                         <>
-                            {draftStories.map((story: any, index: number) => (
+                            {draftStories?.map((story: any, index: number) => (
                                 <StoryDetails key={index} story={story} />
                             ))}
                         </>
@@ -51,7 +65,7 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
                         </div>
                     ) : (
                         <>
-                            {savedStories.map((story: any, index: number) => (
+                            {savedStories?.map((story: any, index: number) => (
                                 <StoryDetails auther={story.auther} key={index} story={story.story} />
                             ))}
                         </>
@@ -66,7 +80,7 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
         <div className="mobile_center_less_contract md:py-12 py-8">
             <section className="flex-between mb-9">
                 <p className="md:text-5xl text-3xl sohne_bold">Your Stories</p>
-                <Button className="sohne font-bold flex-center gap-2" variant={'green'} size='sm'>New Story <Plus size={'15'} /></Button>
+                <Button className="sohne font-bold flex-center gap-2" variant={'green'} size='sm'><SquarePen size={13} /> New Story </Button>
             </section>
 
             <section className="flex md:gap-10 gap-6 mb-[11px] sohne">
