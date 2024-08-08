@@ -40,27 +40,46 @@ export const storyCheckRegix = (htmlContent: any) => {
     }
   }
 
-  // Extract and validate the first paragraph
+  // Extract the first image URL and its next sibling if it's a valid paragraph or heading
   let firstValidParagraph = null;
-  const paragraphs = Array.from(doc.querySelectorAll("p"));
-  for (const paragraph of paragraphs) {
-    // Skip paragraphs that contain images
-    if (paragraph.querySelector("img")) {
-      continue;
-    }
-
-    const outerHTML = paragraph.outerHTML;
-    if (validParagraphFormats.some((format) => outerHTML.startsWith(format))) {
-      firstValidParagraph = paragraph.innerHTML;
-      break;
-    }
-  }
-
-  // Extract the first image URL
   let firstImageUrl = null;
   const images: any = Array.from(doc.querySelectorAll("p > img"));
   if (images.length > 0) {
     firstImageUrl = images[0].src;
+
+    const nextSibling = images[0].parentElement?.nextElementSibling;
+
+    if (
+      nextSibling &&
+      (nextSibling.tagName === "P" ||
+        ["H1", "H2", "H3"].includes(nextSibling.tagName))
+    ) {
+      const outerHTML = nextSibling.outerHTML;
+      if (
+        validParagraphFormats.some((format) => outerHTML.startsWith(format)) ||
+        validHeadingFormats.some((format) => outerHTML.startsWith(format))
+      ) {
+        firstValidParagraph = nextSibling.innerHTML;
+      }
+    }
+  }
+
+  // If no valid paragraph found after image, extract and validate the first paragraph not containing an image
+  if (!firstValidParagraph) {
+    const paragraphs = Array.from(doc.querySelectorAll("p"));
+    for (const paragraph of paragraphs) {
+      if (paragraph.querySelector("img")) {
+        continue;
+      }
+
+      const outerHTML = paragraph.outerHTML;
+      if (
+        validParagraphFormats.some((format) => outerHTML.startsWith(format))
+      ) {
+        firstValidParagraph = paragraph.innerHTML;
+        break;
+      }
+    }
   }
 
   // Check if valid content exists

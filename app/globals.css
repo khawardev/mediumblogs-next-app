@@ -15,6 +15,10 @@
   src: url("../public/assets/fonts/Medium/sohne_Extrabold.woff") format("woff");
 }
 @font-face {
+  font-family: "bulgery";
+  src: url("../public/assets/fonts/Medium/bulgerybold.woff2") format("woff");
+}
+@font-face {
   font-family: "sohne";
   src: url("../public/assets/fonts/Medium/sohne_normal.woff") format("woff");
 }
@@ -27,6 +31,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 .divider {
   display: flex;
   align-items: center;
@@ -77,7 +82,7 @@ h3 {
   }
   body {
     /* font-family: "sohne"; */
-    font-family: "serif_pro";
+    font-family: "bulgery";
     @apply bg-background text-foreground;
   }
 }

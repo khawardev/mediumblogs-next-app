@@ -3,13 +3,13 @@ import { getAllStories, getLimitedStories } from "@/actions/story";
 import { getAllTopics, SelectedTopics } from "@/actions/topics";
 import GetStories from "@/components/blogs/story/GetStories";
 import Topics from "@/components/blogs/Topics";
-import AddTagsDialog from "@/shadcn/tagsDialog";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import Image from "next/image";
 import Sidebar from "@/components/blogs/sidebar/Sidebar";
 import { useEffect, useState } from "react";
 import { savingTagsAtom } from "@/context/atom";
 import { useAtom } from "jotai";
+import AddTagsDialog from "@/shadcn/tagsDialog";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+import Image from "next/image";
 import { useSwrStories } from "@/hooks/getSwrStories";
 
 const Blogs = ({ searchParams }: { searchParams: { tag: string } }) => {
@@ -26,10 +26,6 @@ const Blogs = ({ searchParams }: { searchParams: { tag: string } }) => {
       setlimitedStories(await getLimitedStories(searchParams?.tag));
       setallTopics(await getAllTopics());
       setgetSelectedTopics(await SelectedTopics());
-      // const fetchedStories = await getAllStories(searchParams?.tag);
-      // const sortedStories = fetchedStories.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-      // setStories(sortedStories);
-
       const fetchedStories = await getAllStories(searchParams?.tag);
       const sortedStories = Array.isArray(fetchedStories) ? fetchedStories.sort((a: any, b: any) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()) : [];
       setStories(sortedStories);

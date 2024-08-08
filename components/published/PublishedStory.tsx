@@ -34,8 +34,9 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
     const [userClaps, setUserClaps] = useState<any>(null);
     const [currentUser, setCurrentUser] = useState<any>(null);
     const [allClaps, setAllClaps] = useState<any>(0);
-    const CheckRegix: any = storyCheckRegix(publishedStory?.content);
+    const GetElemntRegix: any = storyCheckRegix(publishedStory?.content);
     const PublishedRegix: any = checkPublishedRegix(publishedStory?.content);
+    console.log(PublishedRegix, 'PublishedRegixPublishedRegix');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -49,7 +50,7 @@ const PublishedStory = ({ publishedStory, username, userImage }: props) => {
 
     return (
         <div className='mobile_center_contract md:my-14 my-8 text-[#242424]  '>
-            <div className="  md:text-[45px] leading-[42px] text-4xl sohne_bold mb-8" dangerouslySetInnerHTML={{ __html: CheckRegix?.heading || '' }} />
+            <div className="  md:text-[45px] leading-[42px] text-4xl sohne_bold mb-8" dangerouslySetInnerHTML={{ __html: GetElemntRegix?.heading || '' }} />
 
             <section className='flex items-center justify-start gap-3 sohne mb-8 '>
                 <Button size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border sohne text-md  font-bold rounded-full  bg-[#FFFFFF]'>

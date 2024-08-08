@@ -49,7 +49,7 @@ const TagsInput = ({ publishing }: any) => {
                         <p className="mr-2 ">{value}</p>
                         <button
                             onClick={() => handleDelete(index)}
-                            className=" focus:outline-none"
+                            className={` focus:outline-none  ${publishing ? 'hidden' : 'block'} `}
                         >
                             <X size={12} />
                         </button>

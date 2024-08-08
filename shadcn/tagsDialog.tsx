@@ -70,12 +70,12 @@ export default function AddTagsDialog({ allTopics }: any) {
                 <DialogFooter>
                     {selectedAllTopics?.length > 0 &&
                         <Button
-                            variant={'green'}
+                            variant={'outline'}
                             type="submit"
-                            className="font-bold flex-center gap-1"
+                            className="font-bold  flex-center gap-1"
                             onClick={AdduserTags}
                         >
-                            {savingTags ? <>Adding Tags <CgSpinner className="animate-spin" size={20} /></> : 'Add Tags'}
+                            {savingTags ? <>Adding Tags <CgSpinner className="animate-spin hover:bg-[#1A8917]" size={20} /></> : 'Add Tags'}
 
 
                         </Button>
