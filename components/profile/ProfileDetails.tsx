@@ -4,6 +4,7 @@ import { useState } from "react";
 import StoryDetails from "@/components/blogs/story/StoryDetails";
 import { Button } from "@/components/ui/button";
 import { Plus, SquarePen } from "lucide-react";
+import { checkFav } from "@/actions/favorite";
 
 const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) => {
 
@@ -28,14 +29,14 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
                                     <div >
                                         <StoryDetails story={story} />
                                     </div>
-                                    <section className=" w-[15%] bg-yellow-300 flex flex-col">
+                                    {/* <section className=" w-[15%] bg-yellow-300 flex flex-col">
                                         <Button variant={'green'} className="rounded-none flex-grow">
                                             Edit
                                         </Button>
                                         <Button variant={'destructive'} className="rounded-none flex-grow">
                                             Delete
                                         </Button>
-                                    </section>
+                                    </section> */}
                                 </div>
 
                             ))}

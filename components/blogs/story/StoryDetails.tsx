@@ -6,11 +6,14 @@ import { useRouter } from 'next/navigation'
 import FavComp from "@/components/published/favorite/FavComp";
 import ShareComp from "@/components/published/share/ShareComp";
 import StoryTags from "./StoryTags";
+import { checkFav } from "@/actions/favorite";
 
 const StoryDetails = ({ story, auther, favStatus }: any) => {
     const router = useRouter()
     const result: any = storyCheckRegix(story?.content);
-
+    const checkFavFunc = async (storyId: string) => {
+        return await checkFav(storyId);
+    }
 
     return (
         <main className="sm:px-5 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75 " onClick={() => router.push(`/published/${story?.id}`)}>
@@ -35,7 +38,7 @@ const StoryDetails = ({ story, auther, favStatus }: any) => {
                     <section className=" sm:flex hidden flex-between gap-2  w-full  text-sm  " >
                         <StoryTags story={story} limit={2} />
                         <div className="flex-center gap-2 ">
-                            <FavComp favStatus={favStatus} storyId={story?.id} />
+                            <FavComp favStatus={checkFavFunc(story?.id)} storyId={story?.id} />
                             <ShareComp pathname={`/published/${story?.id}`} />
                         </div>
                     </section>
