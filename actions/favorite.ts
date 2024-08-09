@@ -52,10 +52,9 @@ export const getFavStoriesByUserId = async (userId: string) => {
   }
 
   try {
-    // Find all favorite entries for the given user
     const favEntries = await db.query.save.findMany({
       where: eq(save.userId, userId),
-      with: { story: true, auther: true }, // Include related story details
+      with: { story: true, auther: true },
     });
 
     if (!favEntries.length) {

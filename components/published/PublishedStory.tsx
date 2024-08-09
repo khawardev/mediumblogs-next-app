@@ -15,7 +15,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 const PublishedStory = ({ publishedStory, username, userImage, favStatus, noOfComments, currentUser, allClaps }: any) => {
     const pathname = usePathname();
     const GetElemntRegix: any = storyCheckRegix(publishedStory?.content);
-    const PublishedRegix: any = checkPublishedRegix(publishedStory?.content);
+    const publishedRegix: any = checkPublishedRegix(publishedStory?.content);
     useEffect(() => {
     }, []);
 
@@ -39,14 +39,14 @@ const PublishedStory = ({ publishedStory, username, userImage, favStatus, noOfCo
                         <CommentComp noOfComments={noOfComments} currentUser={currentUser?.id} storyId={publishedStory?.id} username={currentUser?.name} userImage={currentUser?.image} />
                     </div>
                     <div className='flex-center  space-x-3'>
-                        <FavComp storyId={publishedStory?.id} />
+                        <FavComp favStatus={favStatus} storyId={publishedStory?.id} />
                         <ShareComp pathname={pathname} />
                     </div>
                 </>
             </section>
             <hr />
             <section className=' my-6'>
-                <div className="markdown-body space-y-8 " dangerouslySetInnerHTML={{ __html: PublishedRegix }} />
+                <div className="markdown-body space-y-8 " dangerouslySetInnerHTML={{ __html: publishedRegix }} />
             </section>
             {/* <div className="markdown-body space-y-5 " dangerouslySetInnerHTML={{ __html: publishedStory?.content }} /> */}
         </div>

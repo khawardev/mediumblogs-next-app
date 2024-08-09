@@ -7,7 +7,6 @@ const page = async ({ params }: { params: { userId: string } }) => {
     const publishedStories: any = await getStoriesByUserId(params?.userId, true);
     const draftStories: any = await getStoriesByUserId(params?.userId, false); // Assuming drafts are fetched separately
     const savedStories: any = await getFavStoriesByUserId(params?.userId);
-    console.log(savedStories, 'savedStories');
 
     return (
         <ProfileDetails savedStories={savedStories} publishedStories={publishedStories} draftStories={draftStories} />
