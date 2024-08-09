@@ -10,6 +10,8 @@ import { useAtom } from "jotai";
 import AddTagsDialog from "@/shadcn/tagsDialog";
 import Image from "next/image";
 import { useSwrStories } from "@/hooks/getSwrStories";
+import TopicsSkeleton from "@/components/skeletons/TopicsSkeleton";
+import SidebarSkeleton from "@/components/skeletons/SidebarSkeleton";
 
 const Blogs = ({ searchParams }: { searchParams: { tag: string } }) => {
   const [savingTags] = useAtom(savingTagsAtom)
@@ -39,8 +41,12 @@ const Blogs = ({ searchParams }: { searchParams: { tag: string } }) => {
     <div className=" mobile_center_less_contract md:py-12 py-8 ">
       <section className=" grid md:grid-cols-7 w-full gap-20">
         <main className="md:col-span-5">
-          <section className=" mb-[13px] " >
-            <Topics allTopics={allTopics} userTags={getSelectedTopics} />
+          <section className=" mb-[13px] ">
+            {getSelectedTopics.length > 0 ?
+              <Topics allTopics={allTopics} userTags={getSelectedTopics} />
+              :
+              <TopicsSkeleton />
+            }
           </section>
           <hr />
           <section >
@@ -48,7 +54,11 @@ const Blogs = ({ searchParams }: { searchParams: { tag: string } }) => {
           </section>
         </main>
         <main className="col-span-2 md:block hidden">
-          <Sidebar stories={limitedStories} />
+          {limitedStories.length > 0 ?
+            <Sidebar stories={limitedStories} />
+            :
+            <SidebarSkeleton />
+          }
         </main>
       </section>
     </div>

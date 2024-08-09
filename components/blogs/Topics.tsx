@@ -9,7 +9,6 @@ import { FaMedium } from "react-icons/fa6";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Topics = ({ userTags, allTopics }: any) => {
-    const { status } = useSession()
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const queryString = searchParams.toString();
@@ -17,57 +16,52 @@ const Topics = ({ userTags, allTopics }: any) => {
 
     return (
         <>
-            {status === 'authenticated' &&
-                <>
-                    <section className=" flex items-center justify-start gap-3 relative text-sm  font-bold">
-                        <AddTagsDialog allTopics={allTopics} />
-                        <div className="sm:block hidden ">
-                            {userTags?.length <= 8 ? (
-                                <>
-                                    <div className="flex justify-start space-x-1">
-                                        <Link
-                                            href="/blogs"
-                                            className={` ${fullUrl === "/blogs?" ? 'underline opacity-90 ' : 'opacity-50 '} flex-center gap-1 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
-                                            style={{
-                                                scrollSnapAlign: "start",
-                                                flexShrink: 0,
-                                            }}
-                                        >
-                                            For You
-                                        </Link>
+            <section className=" flex items-center justify-start gap-3 relative text-sm  font-bold">
+                <AddTagsDialog allTopics={allTopics} />
+                <div className="sm:block hidden ">
+                    {userTags?.length <= 8 ? (
+                        <>
+                            <div className="flex justify-start space-x-1">
+                                <Link
+                                    href="/blogs"
+                                    className={` ${fullUrl === "/blogs?" ? 'underline opacity-90 ' : 'opacity-50 '} flex-center gap-1 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
+                                    style={{
+                                        scrollSnapAlign: "start",
+                                        flexShrink: 0,
+                                    }}
+                                >
+                                    For You
+                                </Link>
 
-                                        {userTags?.map((userTag: any, index: number) => (
-                                            <Link
-                                                key={index}
-                                                href={`/blogs/?tag=${userTag.value}`}
-                                                className={`${pathname === "/blogs" && searchParams.get('tag') === userTag.value ? 'underline opacity-90' : 'opacity-50'} underline-offset-[19px] sm:decoration-2 decoration-1 sohne transition-all ease-in px-3`}
-                                                style={{
-                                                    scrollSnapAlign: "start",
-                                                    flexShrink: 0,
-                                                }}
-                                            >
-                                                {userTag.value}
-                                            </Link>
+                                {userTags?.map((userTag: any, index: number) => (
+                                    <Link
+                                        key={index}
+                                        href={`/blogs/?tag=${userTag.value}`}
+                                        className={`${pathname === "/blogs" && searchParams.get('tag') === userTag.value ? 'underline opacity-90' : 'opacity-50'} underline-offset-[19px] sm:decoration-2 decoration-1 sohne transition-all ease-in px-3`}
+                                        style={{
+                                            scrollSnapAlign: "start",
+                                            flexShrink: 0,
+                                        }}
+                                    >
+                                        {userTag.value}
+                                    </Link>
 
-                                        ))}
-                                    </div>
-                                </>
-                            ) : (
-                                <WordsCarousel allTopics={userTags} />
-                            )}
+                                ))}
+                            </div>
+                        </>
+                    ) : (
+                        <WordsCarousel allTopics={userTags} />
+                    )}
+                </div>
+                {userTags?.length > 0 && (
+                    <>
+                        <div className="sm:hidden block">
+                            <WordsCarousel allTopics={userTags} />
                         </div>
-                        {userTags?.length > 0 && (
-                            <>
-                                <div className="sm:hidden block">
-                                    <WordsCarousel allTopics={userTags} />
-                                </div>
-                            </>
-                        )}
-                    </section>
+                    </>
+                )}
+            </section>
 
-                </>
-
-            }
         </>
     )
 }

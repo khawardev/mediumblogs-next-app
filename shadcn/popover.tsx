@@ -57,7 +57,7 @@ export function PopoverButton() {
 
             <PopoverContent ref={popoverRef}>
                 <ul className="flex-center flex-col sohne font-bold gap-3  ">
-                    <li className="flex flex-col gap-3">
+                    <li className="flex flex-col gap-4">
                         <Link className="flex items-center gap-1" href={`/profile/${userFromDb?.id}`}>
                             <span className="text-sm">My Profile</span>
                         </Link>
@@ -77,7 +77,7 @@ export function PopoverButton() {
                             }}
                             size={'sm'}
                             variant={'destructive'}
-                            className="gap-1 sohne font-bold rounded-full flex-center"
+                            className="gap-1 sohne font-bold rounded-3xl flex-center"
                         >
                             Sign out <IoIosLogOut size={16} />
                         </Button>
