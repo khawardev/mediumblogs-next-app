@@ -1,6 +1,5 @@
-'use client'
 import { getStorybyId, publishStory } from '@/actions/story';
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { toast } from '@/components/ui/use-toast';
 import TagsInput from "@/components/story/TagsInput"
 import { Button } from "@/components/ui/button"

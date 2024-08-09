@@ -31,9 +31,9 @@ const CommentClapComp = ({ totalCommentClaps, storyId, type, commentId }: ClapCo
 
 
     const clapStoryOrComment = async () => {
-        if (clapByUser >= 20) {
+        if (clapByUser >= 5) {
             toast({
-                title: 'Max 20 claps are allowed',
+                title: 'Max 5 claps are allowed',
             })
             return;
         }

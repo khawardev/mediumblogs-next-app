@@ -12,10 +12,6 @@ import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { IoIosLogOut } from "react-icons/io";
 import { getUser } from "@/actions/user";
-import { CgProfile } from "react-icons/cg";
-import { MdOutlineArticle } from "react-icons/md";
-import { RiPriceTag3Line } from "react-icons/ri";
-import { BookType, SendHorizontal, UserRoundPen } from "lucide-react";
 
 interface DialogButtonProps {
     title: string;

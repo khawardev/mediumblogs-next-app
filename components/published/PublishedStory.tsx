@@ -39,7 +39,7 @@ const PublishedStory = ({ publishedStory, username, userImage, favStatus, noOfCo
                         <CommentComp noOfComments={noOfComments} currentUser={currentUser?.id} storyId={publishedStory?.id} username={currentUser?.name} userImage={currentUser?.image} />
                     </div>
                     <div className='flex-center  space-x-3'>
-                        <FavComp favStatus={favStatus} storyId={publishedStory?.id} />
+                        <FavComp storyId={publishedStory?.id} />
                         <ShareComp pathname={pathname} />
                     </div>
                 </>
