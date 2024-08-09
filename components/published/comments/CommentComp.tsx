@@ -1,15 +1,12 @@
 'use client'
-import { Sheet, SheetTrigger, SheetContent, SheetClose } from "@/components/ui/sheet"
+import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { Textarea } from "@/components/ui/textarea"
 import MultiComments from "@/components/published/comments/MultiComments"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { addStoryComment } from "@/actions/comments"
 import { useToast } from "@/components/ui/use-toast"
-import { NumberofComments } from '@/actions/comments';
-import { MdOutlineErrorOutline } from "react-icons/md"
-import { IoMdArrowForward } from "react-icons/io"
 import { CgSpinner } from "react-icons/cg";
 
 export const date = () => {
@@ -26,15 +23,16 @@ type props = {
     userImage: string,
     storyId: string,
     currentUser: string,
+    noOfComments: number;
 }
 
-export default function Component({ currentUser, username, userImage, storyId }: props) {
+export default function Component({ currentUser, username, userImage, storyId, noOfComments }: props) {
     const { toast } = useToast()
 
     const [content, setContent] = useState<string>('')
     const [loading, setloading] = useState<boolean>(false)
     // const [comment, setcomment] = useState<any>()
-    const [noOfComments, setNoOfComments] = useState<any>(0);
+    // const [noOfComments, setNoOfComments] = useState<any>(0);
     const AddComments = async () => {
         setloading(true)
 
@@ -60,24 +58,8 @@ export default function Component({ currentUser, username, userImage, storyId }:
     }
 
 
-    const loginCheck = () => {
-        toast({
-            title: 'Please Login to continue',
-        })
-
-    }
-
-    useEffect(() => {
-        const fetchData = async () => {
-            setNoOfComments(await NumberofComments(storyId));
-        };
-        fetchData();
-    }, [loading === false]);
-
     return (
         <Sheet>
-
-
             <SheetTrigger asChild>
                 <div className="flex items-center gap-1">
                     <button>
@@ -89,58 +71,44 @@ export default function Component({ currentUser, username, userImage, storyId }:
                     <p className="text-sm text-slate-400 sohne font-bold">{noOfComments}</p>
                 </div>
             </SheetTrigger>
-
-
             <SheetContent side="right" className="overflow-y-auto sohne  w-full bg-background shadow-lg">
-                {!username ?
-
-                    <div >
-                        <div className='  py-56 justify-center items-center flex flex-col gap-3'>
-                            <MdOutlineErrorOutline size={130} className=' mb-3  opacity-10' />
-                            <span className=' sohne font-bold ' > Please Login to continue </span>
-                        </div>
+                <div className="flex h-full flex-col">
+                    <div className="flex items-center justify-between border-b  py-4">
+                        <h3 className="text-lg font-semibold sohne_bold">Responses • {noOfComments}</h3>
                     </div>
 
-                    :
-                    <div className="flex h-full flex-col">
-                        <div className="flex items-center justify-between border-b  py-4">
-                            <h3 className="text-lg font-semibold sohne_bold">Responses • {noOfComments}</h3>
-                        </div>
-
-                        <div className=" space-y-6 py-4  ">
-                            <section>
-                                <section className="flex items-center gap-4">
-                                    <Avatar className="w-10 h-10 border sohne font-bold">
-                                        <AvatarImage src={userImage} />
-                                        <AvatarFallback>AC</AvatarFallback>
-                                    </Avatar>
-                                    {/* {username} */}
-                                    <section>
-                                        <div className="font-bold sohne_bold">{username}</div>
-                                        <div className="text-xs text-muted-foreground sohne font-bold">{date()}</div>
-                                    </section>
+                    <div className=" space-y-6 py-4  ">
+                        <section>
+                            <section className="flex items-center gap-4">
+                                <Avatar className="w-10 h-10 border sohne font-bold">
+                                    <AvatarImage src={userImage} />
+                                    <AvatarFallback>AC</AvatarFallback>
+                                </Avatar>
+                                {/* {username} */}
+                                <section>
+                                    <div className="font-bold sohne_bold">{username}</div>
+                                    <div className="text-xs text-muted-foreground sohne font-bold">{date()}</div>
                                 </section>
-                                <div className=" my-3">
-                                    <Textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="Write your comment..." className="resize-none sohne font-bold" />
-                                </div>
-                                <div className="flex flex-row-reverse gap-1 ">
-                                    <Button onClick={AddComments} className=" sohne font-bold flex-center gap-1 " size={'sm'} variant="green">
-                                        {loading ? <>Respond <CgSpinner className="animate-spin " size={20} /></> : 'Respond'}
-                                    </Button>
-                                    <Button onClick={() => setContent('')} className=" sohne font-bold border-none  " size={'sm'} variant={'outline'}>Cancel</Button>
-                                </div>
                             </section>
+                            <div className=" my-3">
+                                <Textarea value={content} onChange={(e) => setContent(e.target.value)} placeholder="Write your comment..." className="resize-none sohne font-bold" />
+                            </div>
+                            <div className="flex flex-row-reverse gap-1 ">
+                                <Button onClick={AddComments} className=" sohne font-bold flex-center gap-1 " size={'sm'} variant="green">
+                                    {loading ? <>Respond <CgSpinner className="animate-spin " size={20} /></> : 'Respond'}
+                                </Button>
+                                <Button onClick={() => setContent('')} className=" sohne font-bold border-none  " size={'sm'} variant={'outline'}>Cancel</Button>
+                            </div>
+                        </section>
 
-                            <hr />
+                        <hr />
 
-                            <section className="space-y-6  ">
-                                <MultiComments userImage={userImage} username={username} noOfComments={noOfComments} loading={loading} storyId={storyId} />
-                            </section>
+                        <section className="space-y-6  ">
+                            <MultiComments userImage={userImage} username={username} noOfComments={noOfComments} loading={loading} storyId={storyId} />
+                        </section>
 
-                        </div>
                     </div>
-                }
-
+                </div>
             </SheetContent>
         </Sheet >
     )

@@ -5,34 +5,20 @@ import { CgSpinner } from "react-icons/cg";
 import { BsThreeDots } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
 
-const FavComp = ({ storyId }: any) => {
-    const [favStatus, setFavStatus] = useState<any>();
+const FavComp = ({ storyId, favStatus }: any) => {
     const [loading, setloading] = useState<boolean>(false);
-    // setFavStatus(await checkFav(storyId));
-
     const FavStory = async (e: any) => {
         e.preventDefault();
         e.stopPropagation();
         setloading(true)
         await addToFav(storyId);
-        setFavStatus(await checkFav(storyId));
         setloading(false)
     };
-
-    useEffect(() => {
-        const fetchData = async () => {
-            setFavStatus(await checkFav(storyId));
-        };
-        fetchData();
-    }, []);
 
 
     return (
         <>
-            {/* <div className="loader"></div> */}
-
             {loading ? <CgSpinner className="animate-spin" size={20} /> :
-
                 <button className="flex items-center" onClick={(e) => FavStory(e)}>
                     {favStatus ? (
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
