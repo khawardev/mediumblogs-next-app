@@ -7,7 +7,7 @@ import FavComp from "@/components/published/favorite/FavComp";
 import ShareComp from "@/components/published/share/ShareComp";
 import StoryTags from "./StoryTags";
 
-const StoryDetails = ({ story, auther }: any) => {
+const StoryDetails = ({ story, auther, favStatus }: any) => {
     const router = useRouter()
     const result: any = storyCheckRegix(story?.content);
 
@@ -35,7 +35,7 @@ const StoryDetails = ({ story, auther }: any) => {
                     <section className=" sm:flex hidden flex-between gap-2  w-full  text-sm  " >
                         <StoryTags story={story} limit={2} />
                         <div className="flex-center gap-2 ">
-                            <FavComp storyId={story?.id} />
+                            <FavComp favStatus={favStatus} storyId={story?.id} />
                             <ShareComp pathname={`/published/${story?.id}`} />
                         </div>
                     </section>
