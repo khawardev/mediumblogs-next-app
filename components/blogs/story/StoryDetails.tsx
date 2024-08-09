@@ -26,7 +26,7 @@ const StoryDetails = ({ story, auther, favStatus }: any) => {
                                 <AvatarFallback>AC</AvatarFallback>
                             </Avatar>
                             <div className=" leading-4">
-                                <p className=" sohne/[_bold whitespace-nowrap">{auther ? auther?.name : story?.auther?.name}</p>
+                                <p className=" sohne_bold whitespace-nowrap">{auther ? auther?.name : story?.auther?.name}</p>
                                 <p className="sohne font-bold text-sm text-muted-foreground  ">{new Date(story?.createdAt).toDateString().split(' ')?.slice(1, 4).join(' ')}</p>
                             </div>
                         </section>
