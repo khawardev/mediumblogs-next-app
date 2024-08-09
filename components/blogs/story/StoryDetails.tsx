@@ -8,7 +8,7 @@ import ShareComp from "@/components/published/share/ShareComp";
 import StoryTags from "./StoryTags";
 import { checkFav } from "@/actions/favorite";
 
-const StoryDetails = ({ story, auther, favStatus }: any) => {
+const StoryDetails = ({ story, auther }: any) => {
     const router = useRouter()
     const result: any = storyCheckRegix(story?.content);
     const checkFavFunc = async (storyId: string) => {
@@ -22,7 +22,7 @@ const StoryDetails = ({ story, auther, favStatus }: any) => {
                     <div className="sm:space-y-3  space-y-5  " >
                         <section className=" flex  items-center gap-3">
                             <Avatar className="w-10 h-10 border sohne font-bold">
-                                <AvatarImage src={story?.auther?.image} />
+                                <AvatarImage src={auther ? auther?.image : story?.auther?.image} />
                                 <AvatarFallback>AC</AvatarFallback>
                             </Avatar>
                             <div className=" leading-4">

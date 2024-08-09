@@ -7,9 +7,7 @@ import { Plus, SquarePen } from "lucide-react";
 import { checkFav } from "@/actions/favorite";
 
 const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) => {
-
     const [activeTab, setActiveTab] = useState<string>("published");
-
     const handleTabClick = (tab: string) => {
         setActiveTab(tab);
     };
@@ -67,7 +65,7 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
                     ) : (
                         <>
                             {savedStories?.map((story: any, index: number) => (
-                                <StoryDetails auther={story.auther} key={index} story={story.story} />
+                                <StoryDetails auther={story?.auther} key={index} story={story.story} />
                             ))}
                         </>
                     )
