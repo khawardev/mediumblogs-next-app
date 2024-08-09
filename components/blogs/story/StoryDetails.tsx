@@ -22,11 +22,11 @@ const StoryDetails = ({ story, auther, favStatus }: any) => {
                     <div className="sm:space-y-3  space-y-5  " >
                         <section className=" flex  items-center gap-3">
                             <Avatar className="w-10 h-10 border sohne font-bold">
-                                <AvatarImage src={auther ? auther?.image : story?.auther?.image} />
+                                <AvatarImage src={story?.auther?.image} />
                                 <AvatarFallback>AC</AvatarFallback>
                             </Avatar>
                             <div className=" leading-4">
-                                <p className=" sohne_bold whitespace-nowrap">{auther ? auther?.name : story?.auther?.name}</p>
+                                <p className=" sohne/[_bold whitespace-nowrap">{auther ? auther?.name : story?.auther?.name}</p>
                                 <p className="sohne font-bold text-sm text-muted-foreground  ">{new Date(story?.createdAt).toDateString().split(' ')?.slice(1, 4).join(' ')}</p>
                             </div>
                         </section>
