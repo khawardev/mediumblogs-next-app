@@ -32,11 +32,11 @@ export const getStoriesByUserId = async (userId: string, publish: boolean) => {
   let stories;
   try {
     stories = await db.query.story.findMany({
-      where: and(eq(story.userId, userId), eq(story.publish, publish)),
+      where: and(eq(story?.userId, userId), eq(story?.publish, publish)),
       with: { auther: true },
     });
 
-    if (!stories || stories.length === 0) {
+    if (!stories) {
       return { error: "No stories found for this user" };
     }
   } catch (error) {

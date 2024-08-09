@@ -7,12 +7,20 @@ import FavComp from "@/components/published/favorite/FavComp";
 import ShareComp from "@/components/published/share/ShareComp";
 import StoryTags from "./StoryTags";
 import { checkFav } from "@/actions/favorite";
+import { useEffect, useState } from "react";
 
-const StoryDetails = ({ story, auther, favStatus }: any) => {
+const StoryDetails = ({ story, auther }: any) => {
     const router = useRouter()
     const result: any = storyCheckRegix(story?.content);
+    const [favStatus, setFavStatus] = useState<any>(false);
 
-
+    useEffect(() => {
+        const handleFav = async (storyId: string) => {
+            setFavStatus(await checkFav(storyId));
+            return favStatus;
+        };
+        handleFav(story?.id)
+    }, []);
     return (
         <main className="sm:px-5 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75 " onClick={() => router.push(`/published/${story?.id}`)}>
             <main className="flex-between  sm:gap-10 gap-5 " >

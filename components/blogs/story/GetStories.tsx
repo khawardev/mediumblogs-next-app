@@ -5,10 +5,11 @@ import { checkFav } from "@/actions/favorite"
 
 const GetStories = ({ stories }: any) => {
 
-    const handleFav = async (storyId: string) => {
-        const favStatus = await checkFav(storyId);
-        return favStatus;
-    };
+    // const handleFav = async (storyId: string) => {
+    //     const favStatus = await checkFav(storyId);
+    //     return favStatus;
+    // };
+
     return (
         <div>
             {/* {stories?.slice().reverse().map((story: any, index: number) => (
@@ -23,7 +24,7 @@ const GetStories = ({ stories }: any) => {
                 {stories.length > 0 ?
                     stories?.map((story: any, index: number) => (
                         <div key={index}>
-                            <StoryDetails favStatus={handleFav(story?.id)} story={story} />
+                            <StoryDetails story={story} />
                         </div>
                     )) :
                     <>

@@ -13,7 +13,6 @@ const UserEngagement = ({ totalCommentClaps, comment, userImage, username }: any
     const [showReplyComments, setShowReplyComments] = useState<boolean>(false);
     const [userClaps, setUserClaps] = useState<number>();
 
-    console.log(comment, 'comments');
 
 
     useEffect(() => {

@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 
 const SidebarStories = ({ story }: any) => {
-    console.log(story, 'story side bar');
+    // console.log(story, 'story side bar');
 
     // const formattedContent: any = await contentFormat(story?.content, 20);
     const result: any = storyCheckRegix(story?.content);

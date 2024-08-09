@@ -11,10 +11,11 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
     const handleTabClick = (tab: string) => {
         setActiveTab(tab);
     };
-    const handleFav = async (storyId: string) => {
-        const favStatus = await checkFav(storyId);
-        return favStatus;
-    };
+    // const handleFav = async (storyId: string) => {
+    //     const favStatus = await checkFav(storyId);
+    //     return favStatus;
+    // };
+    // favStatus = { handleFav(story?.id) }
     const renderStories = () => {
         switch (activeTab) {
             case "published":
@@ -28,7 +29,7 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
                             {publishedStories?.map((story: any, index: number) => (
                                 <div key={index} className="flex">
                                     <div >
-                                        <StoryDetails favStatus={handleFav(story?.id)} story={story} />
+                                        <StoryDetails story={story} />
                                     </div>
                                     {/* <section className=" w-[15%] bg-yellow-300 flex flex-col">
                                         <Button variant={'green'} className="rounded-none flex-grow">
@@ -68,7 +69,7 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
                     ) : (
                         <>
                             {savedStories?.map((story: any, index: number) => (
-                                <StoryDetails favStatus={handleFav(story?.id)} auther={story?.auther} key={index} story={story.story} />
+                                <StoryDetails auther={story?.auther} key={index} story={story.story} />
                             ))}
                         </>
                     )

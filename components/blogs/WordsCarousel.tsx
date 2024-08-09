@@ -60,22 +60,18 @@ const WordsCarousel = ({ allTopics }: any) => {
                     For you
                 </Link>
                 {allTopics?.map((userTag: any, index: number) => (
-                    <>
-
-
-                        <Link
-                            key={index}
-                            href={`/blogs/?tag=${userTag.value}`}
-                            onClick={() => handleClick(userTag.value)}
-                            className={` ${currentTag === userTag.value ? 'underline opacity-90' : 'opacity-50 '} opacity-50 underline-offset-[22px] sm:decoration-2 decoration-1  sohne transition-all ease-in   px-3  `}
-                            style={{
-                                scrollSnapAlign: "start", // Align each item to start at the beginning of the container
-                                flexShrink: 0, // Prevent items from shrinking
-                            }}
-                        >
-                            {userTag.value}
-                        </Link>
-                    </>
+                    <Link
+                        key={index}
+                        href={`/blogs/?tag=${userTag.value}`}
+                        onClick={() => handleClick(userTag.value)}
+                        className={` ${currentTag === userTag.value ? 'underline opacity-90' : 'opacity-50 '} opacity-50 underline-offset-[22px] sm:decoration-2 decoration-1  sohne transition-all ease-in   px-3  `}
+                        style={{
+                            scrollSnapAlign: "start", // Align each item to start at the beginning of the container
+                            flexShrink: 0, // Prevent items from shrinking
+                        }}
+                    >
+                        {userTag.value}
+                    </Link>
 
                 ))}
             </section>

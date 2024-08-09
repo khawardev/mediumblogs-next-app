@@ -17,7 +17,6 @@ export default function AddNewStory({ storyID, storyContent }: Props) {
     const [markdownContent, setmarkdownContent] = useState('');
     const [saving, setSaving] = useAtom(savingAtom);
     const [data, setData] = useState("");
-    console.log('data --- ', data);
 
     useEffect(() => {
         const convertMarkdown = async () => {

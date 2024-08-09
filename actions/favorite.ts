@@ -1,5 +1,4 @@
 "use server";
-
 import { and, eq } from "drizzle-orm";
 import { getUser } from "./user";
 import db from "@/db/drizzle";
