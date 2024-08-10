@@ -51,25 +51,6 @@ export const CreateStory = async () => {
   redirect(`/p/${newStory[0].id}`);
 };
 
-export const getStoriesByUserId = async (userId: string, publish: boolean) => {
-  if (!userId) {
-    return { error: "User ID is required" };
-  }
-  try {
-    const stories = await db.query.story.findMany({
-      where: and(eq(story?.userId, userId), eq(story?.publish, publish)),
-      with: { auther: true },
-    });
-
-    if (!stories) {
-      return { error: "No stories found for this user" };
-    }
-    return stories;
-  } catch (error) {
-    return { error: "Error retrieving stories" };
-  }
-};
-
 export const getStorybyId = async (id: string, pubish: boolean) => {
   if (!id) {
     return { error: "dont have story" };
@@ -177,7 +158,6 @@ export const getAllStories = async (tag: string) => {
         with: { auther: true },
       });
     }
-    console.log(stories, "getAllStories");
 
     if (!stories?.length) {
       return { error: "Error on getting stories" };
@@ -187,32 +167,7 @@ export const getAllStories = async (tag: string) => {
   }
   return stories;
 };
-// export const getLimitedStories = async (tag: string) => {
-//   let stories;
-//   try {
-//     if (tag) {
-//       stories = await db.query.story.findMany({
-//         where: arrayContains(story.topics, [tag]),
-//         with: { auther: true },
-//       });
-//     } else {
-//       stories = await db.query.story.findMany({
-//         where: eq(story.publish, true),
-//         with: { auther: true },
-//       });
-//     }
-//     console.log(stories, "getLimitedStories"); // Check what is being returned
-//   } catch (error) {
-//     console.error("Error in getLimitedStories:", error); // Log the error if it occurs
-//     return { error: "Error on getting stories" };
-//   }
 
-//   if (!stories?.length) {
-//     return { error: "No stories found in getLimitedStories" }; // More descriptive error message
-//   }
-
-//   return stories;
-// };
 // limited stories
 export const getLimitedStories = async (tag: string) => {
   let stories;
@@ -236,6 +191,26 @@ export const getLimitedStories = async (tag: string) => {
     }
   } catch (error) {
     return { error: "Error on getting stories" };
+  }
+  return stories;
+};
+export const getStoriesByUserId = async (userId: string) => {
+  if (!userId) {
+    return { error: "User ID is required" };
+  }
+
+  let stories;
+  try {
+    stories = await db.query.story.findMany({
+      where: eq(story.userId, userId),
+      with: { auther: true },
+    });
+
+    if (!stories?.length) {
+      return { error: "No published stories found for this user" };
+    }
+  } catch (error) {
+    return { error: "Error fetching stories" };
   }
   return stories;
 };
