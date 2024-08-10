@@ -29,9 +29,8 @@ export const getStoriesByUserId = async (userId: string, publish: boolean) => {
   if (!userId) {
     return { error: "User ID is required" };
   }
-  let stories;
   try {
-    stories = await db.query.story.findMany({
+    const stories = await db.query.story.findMany({
       where: and(eq(story?.userId, userId), eq(story?.publish, publish)),
       with: { auther: true },
     });
@@ -39,10 +38,10 @@ export const getStoriesByUserId = async (userId: string, publish: boolean) => {
     if (!stories) {
       return { error: "No stories found for this user" };
     }
+    return stories;
   } catch (error) {
     return { error: "Error retrieving stories" };
   }
-  return stories;
 };
 
 export const getStorybyId = async (id: string, pubish: boolean) => {
@@ -169,18 +168,14 @@ export const getLimitedStories = async (tag: string) => {
     if (tag) {
       stories = await db.query.story.findMany({
         where: arrayContains(story.topics, [tag]),
-        limit: 3,
-        offset: 0,
         with: { auther: true },
       });
     } else {
       stories = await db.query.story.findMany({
-        limit: 3,
-        offset: 0,
+        where: eq(story?.publish, true),
         with: { auther: true },
       });
     }
-
     if (!stories?.length) {
       return { error: "Error on getting stories" };
     }
@@ -189,3 +184,5 @@ export const getLimitedStories = async (tag: string) => {
   }
   return stories;
 };
+//  limit: 3,
+//  offset: 0,

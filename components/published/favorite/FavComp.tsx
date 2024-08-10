@@ -7,22 +7,13 @@ import { GoDotFill } from "react-icons/go";
 
 const FavComp = ({ storyId, favStatus }: any) => {
     const [loading, setloading] = useState<boolean>(false);
-    // const [favStatus, setfavStatus] = useState<any>();
     const FavStory = async (e: any) => {
+        setloading(true)
         e.preventDefault();
         e.stopPropagation();
-        setloading(true)
         await addToFav(storyId);
         setloading(false)
     };
-    // useEffect(() => {
-    //     const FetchSttus = async () => {
-    //         setfavStatus(await checkFav(storyId))
-    //     }
-    //     FetchSttus();
-    // }, []);
-
-
     return (
         <>
             {loading ? <CgSpinner className="animate-spin" size={20} /> :

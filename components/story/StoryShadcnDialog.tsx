@@ -15,6 +15,7 @@ import { TopicsAtom } from '@/context/atom';
 import { useAtom } from 'jotai';
 // import LoadingIcon from '../loadingIcon';
 import { CgSpinner } from "react-icons/cg";
+import { Skeleton } from '../ui/skeleton';
 
 interface DialogButtonProps {
     title: string;
@@ -69,7 +70,13 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
                     <main className="md:flex md:justify-between  gap-10 overflow-y-auto" >
                         <section className=" w-full  space-y-2" >
                             <p className=" text-xl sohne_bold">Story Preview</p>
-                            <Image className=" w-full border border-gray-400 rounded-lg" src={result?.imageUrl} alt="" width={1000} height={1000} />
+                            <section>
+                                {!result?.imageUrl ?
+                                    <Skeleton className="w-full h-[260px] rounded-lg " />
+                                    :
+                                    <Image className=" w-full border border-gray-400 rounded-lg" src={result?.imageUrl} alt="" width={1000} height={1000} />
+                                }
+                            </section>
                             <div className='line-clamp-1'>
                                 <div className="markdown-body sohne_bold " dangerouslySetInnerHTML={{ __html: result?.heading || '' }} />
                             </div>

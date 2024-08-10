@@ -1,15 +1,8 @@
 import AnimateWrapper from "@/extras/AnimateWrapper"
 import StoryDetails from "./StoryDetails"
 import StoryDetailSkeleton from "@/components/skeletons/StoryDetailSkeleton"
-import { checkFav } from "@/actions/favorite"
 
-const GetStories = ({ stories }: any) => {
-
-    // const handleFav = async (storyId: string) => {
-    //     const favStatus = await checkFav(storyId);
-    //     return favStatus;
-    // };
-
+const GetStories = async ({ stories }: any) => {
     return (
         <div>
             {/* {stories?.slice().reverse().map((story: any, index: number) => (
