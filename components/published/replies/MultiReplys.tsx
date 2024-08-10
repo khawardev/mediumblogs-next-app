@@ -50,7 +50,7 @@ const MultiReplys = ({ replies }: any) => {
                                         {CalculateDaysAgo(reply?.createdAt)} days ago
                                     </div>
                                 </div>
-                                <div className="break-words break-all sohne font-bold">{reply?.content}</div>
+                                <div className="break-words break-all sohne font-bold text-muted-foreground">{reply?.content}</div>
                             </div>
                         </div>
                     );

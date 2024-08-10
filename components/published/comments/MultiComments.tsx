@@ -75,7 +75,7 @@ const MultiComments = ({ noOfComments, storyId, loading, userImage, username }: 
                                             <div className=" sohne font-bold">{comment?.auther?.name}</div>
                                             <div className="text-xs text-muted-foreground sohne font-bold">{CalculateDaysAgo(comment?.createdAt)} days ago</div>
                                         </div>
-                                        <div className="break-words break-all sohne font-bold">{comment?.content}</div>
+                                        <div className="break-words break-all text-muted-foreground sohne font-bold">{comment?.content}</div>
                                         <UserEngagement userImage={userImage} username={username} comment={comment} totalCommentClaps={totalClaps} />
                                     </div>
                                 </div>

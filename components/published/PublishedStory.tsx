@@ -12,7 +12,7 @@ import ShareComp from './share/ShareComp';
 import { usePathname } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
 
-const PublishedStory = ({ publishedStory, username, userImage, favStatus, noOfComments, currentUser, allClaps }: any) => {
+const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favStatus, noOfComments, currentUser, allClaps }: any) => {
     const pathname = usePathname();
     const GetElemntRegix: any = storyCheckRegix(publishedStory?.content);
     const publishedRegix: any = checkPublishedRegix(publishedStory?.content);
@@ -35,7 +35,7 @@ const PublishedStory = ({ publishedStory, username, userImage, favStatus, noOfCo
             <section className='flex-between py-4 sohne'>
                 <>
                     <div className='flex-center space-x-4 '>
-                        <ClapComp allClapsCount={allClaps?.clapCount} currentUser={currentUser?.id} storyId={publishedStory?.id} />
+                        <ClapComp clapByUser={clapByUser} allClapsCount={allClaps?.clapCount} currentUser={currentUser?.id} storyId={publishedStory?.id} />
                         <CommentComp noOfComments={noOfComments} currentUser={currentUser?.id} storyId={publishedStory?.id} username={currentUser?.name} userImage={currentUser?.image} />
                     </div>
                     <div className='flex-center  space-x-3'>

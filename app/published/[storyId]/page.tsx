@@ -1,4 +1,4 @@
-import { getClapsCountByStory } from '@/actions/claps';
+import { getClapsCountByStory, getStoryClapCountByUser } from '@/actions/claps';
 import { NumberofComments } from '@/actions/comments';
 import { checkFav } from '@/actions/favorite';
 import { getStorybyId } from '@/actions/story';
@@ -19,8 +19,8 @@ const Published = async ({ params }: { params: { storyId: string } }) => {
     const favStatus: any = await checkFav(publishedStory?.id);
     const allClaps: any = await getClapsCountByStory(publishedStory?.id);
     const currentUser: any = await getUser();
-
-    return <PublishedStory favStatus={favStatus} noOfComments={noOfComments} allClaps={allClaps} currentUser={currentUser} publishedStory={publishedStory} userImage={userDetail?.image} username={userDetail?.name} />
+    const ClapsCountByUser = await getStoryClapCountByUser(publishedStory?.id);
+    return <PublishedStory clapByUser={ClapsCountByUser?.clapCount} favStatus={favStatus} noOfComments={noOfComments} allClaps={allClaps} currentUser={currentUser} publishedStory={publishedStory} userImage={userDetail?.image} username={userDetail?.name} />
 }
 
 export default Published
