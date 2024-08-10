@@ -66,7 +66,7 @@ const Header = () => {
                 <p className="  md:font-normal font-bold  sohne">Write</p>
               </button>
               <Link href="/blogs" className="flex-center gap-1 text-gray-500 ">
-                <Newspaper size={17} />
+                {/* <Newspaper size={17} /> */}
                 <p className="  md:font-normal font-bold  sohne ">Blogs</p>
               </Link>
               <PopoverButton />

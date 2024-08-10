@@ -5,6 +5,32 @@ import { story, user } from "@/db/schema";
 import { and, arrayContains, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+
+// export const getLimitedStories = async (tag: string) => {
+//   let stories;
+//   try {
+//     if (tag) {
+//       stories = await db.query.story.findMany({
+//         where: arrayContains(story.topics, [tag]),
+//         with: { auther: true },
+//       });
+//     } else {
+//       stories = await db.query.story.findMany({
+//         where: eq(story.publish, true),
+//         with: { auther: true },
+//       });
+//     }
+//     console.log(stories, "getLimitedStories ");
+
+//     if (!stories?.length) {
+//       return { error: "Error on getting stories" };
+//     }
+//   } catch (error) {
+//     return { error: "Error on getting stories" };
+//   }
+//   return stories;
+// };
+
 export const CreateStory = async () => {
   let newStory;
   try {
@@ -151,6 +177,7 @@ export const getAllStories = async (tag: string) => {
         with: { auther: true },
       });
     }
+    console.log(stories, "getAllStories");
 
     if (!stories?.length) {
       return { error: "Error on getting stories" };
@@ -160,7 +187,32 @@ export const getAllStories = async (tag: string) => {
   }
   return stories;
 };
+// export const getLimitedStories = async (tag: string) => {
+//   let stories;
+//   try {
+//     if (tag) {
+//       stories = await db.query.story.findMany({
+//         where: arrayContains(story.topics, [tag]),
+//         with: { auther: true },
+//       });
+//     } else {
+//       stories = await db.query.story.findMany({
+//         where: eq(story.publish, true),
+//         with: { auther: true },
+//       });
+//     }
+//     console.log(stories, "getLimitedStories"); // Check what is being returned
+//   } catch (error) {
+//     console.error("Error in getLimitedStories:", error); // Log the error if it occurs
+//     return { error: "Error on getting stories" };
+//   }
 
+//   if (!stories?.length) {
+//     return { error: "No stories found in getLimitedStories" }; // More descriptive error message
+//   }
+
+//   return stories;
+// };
 // limited stories
 export const getLimitedStories = async (tag: string) => {
   let stories;
@@ -168,11 +220,14 @@ export const getLimitedStories = async (tag: string) => {
     if (tag) {
       stories = await db.query.story.findMany({
         where: arrayContains(story.topics, [tag]),
+        limit: 3,
+        offset: 0,
         with: { auther: true },
       });
     } else {
       stories = await db.query.story.findMany({
-        where: eq(story?.publish, true),
+        limit: 3,
+        offset: 0, // Start from the last story
         with: { auther: true },
       });
     }
@@ -184,5 +239,3 @@ export const getLimitedStories = async (tag: string) => {
   }
   return stories;
 };
-//  limit: 3,
-//  offset: 0,

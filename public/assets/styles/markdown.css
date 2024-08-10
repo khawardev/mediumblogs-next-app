@@ -65,8 +65,8 @@
 }
 /* Base style for the ul element */
 .markdown-body ul {
-  padding: 0; /* Remove default padding */
-  margin: 0; /* Remove default margin */
+  padding: 0;
+  margin: 0;
 }
 
 /* Style for li elements in ul */
@@ -80,7 +80,6 @@
   align-items: center; /* Vertically center the items */
   margin: 0; /* Remove default margin */
   font-size: 1.1em;
-
   color: #333; /* Set the text color */
 }
 
@@ -140,7 +139,6 @@
 .markdown-body blockquote p {
   margin: 0; /* Remove default margin */
   font-size: 1.1em;
-
   color: #333; /* Set the text color */
 }
 
