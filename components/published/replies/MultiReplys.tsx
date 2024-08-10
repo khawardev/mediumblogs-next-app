@@ -13,7 +13,6 @@ export const CalculateDaysAgo = (createdAt: any) => {
 
 const MultiReplys = ({ replies }: any) => {
     const [userDetails, setUserDetails] = useState<any[]>([]);
-
     useEffect(() => {
         const fetchUserDetails = async () => {
             const users = await Promise.all(
@@ -24,7 +23,6 @@ const MultiReplys = ({ replies }: any) => {
             );
             setUserDetails(users);
         };
-
         fetchUserDetails();
     }, [replies]);
 

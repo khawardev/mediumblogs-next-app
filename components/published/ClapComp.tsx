@@ -15,20 +15,9 @@ type ClapCountCompProps = {
 };
 
 const ClapComp = ({ allClapsCount, storyId, currentUser, clapByUser }: ClapCountCompProps) => {
-    // const [clapByUser, setClapByUser] = useState<any>(0);
     const [allClaps, setAllClaps] = useState<any>(allClapsCount);
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     const { toast } = useToast()
-
-
-    // useEffect(() => {
-    //     const fetchClapCount = async () => {
-    //         const ClapsCountByUser = await getStoryClapCountByUser(storyId);
-    //         setClapByUser(ClapsCountByUser?.clapCount);
-    //     };
-    //     fetchClapCount();
-    // }, [allClaps]);
-
 
     const clap = async () => {
         if (!currentUser) {
@@ -51,8 +40,6 @@ const ClapComp = ({ allClapsCount, storyId, currentUser, clapByUser }: ClapCount
             setIsButtonDisabled(false);
 
         } catch (error) {
-            // setAllClaps((prev: any) => prev - 1);
-            // setClapByUser((prev: any) => prev - 1);
             toast({
                 title: 'Error while clapping story or comment or reply',
             })
