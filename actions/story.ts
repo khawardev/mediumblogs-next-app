@@ -209,8 +209,9 @@ export const getStoriesByUserId = async (userId: string, publish: boolean) => {
   let stories;
   try {
     stories = await db.query.story.findMany({
-      where: and(eq(story?.userId, userId), eq(story?.publish, publish)),
+      where: and(eq(story?.userId, userId), eq(story?.publish, true)),
     });
+    console.log(stories, "stories----------===========");
 
     if (!stories?.length) {
       return { error: "No published stories found for this user" };
@@ -222,7 +223,6 @@ export const getStoriesByUserId = async (userId: string, publish: boolean) => {
   } catch (error) {
     return { error: "Error fetching stories" };
   }
-  console.log(stories, "stories");
 
   return stories;
 };

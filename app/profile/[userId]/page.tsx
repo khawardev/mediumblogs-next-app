@@ -4,10 +4,26 @@ import ProfileDetails from "@/components/profile/ProfileDetails";
 
 const page = async ({ params }: { params: { userId: string } }) => {
 
-    const draftStories = await getStoriesByUserId(params?.userId, false);
     const publishedStories = await getStoriesByUserId(params?.userId, true);
+    if (!publishedStories) {
+        return (
+            <>No story found</>
+        )
+    }
+    const draftStories = await getStoriesByUserId(params?.userId, false);
     const savedStories = await getFavStoriesByUserId(params?.userId);
-    console.log(savedStories, 'savedStories Profile Detail ---');
+
+    // const fetchPublishedStories = async (userId: any) => {
+    //     try {
+    //         const publishedStories = await getStoriesByUserId(userId, true);
+    //         return publishedStories;
+    //     } catch (error) {
+    //         console.error('Error fetching published stories:', error);
+    //         return null;
+    //     }
+    // };
+
+
 
     return (
         <>

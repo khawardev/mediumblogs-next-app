@@ -20,7 +20,9 @@ const Published = async ({ params }: { params: { storyId: string } }) => {
     const allClaps: any = await getClapsCountByStory(publishedStory?.id);
     const currentUser: any = await getUser();
     const ClapsCountByUser = await getStoryClapCountByUser(publishedStory?.id);
-    return <PublishedStory clapByUser={ClapsCountByUser?.clapCount} favStatus={favStatus} noOfComments={noOfComments} allClaps={allClaps} currentUser={currentUser} publishedStory={publishedStory} userImage={userDetail?.image} username={userDetail?.name} />
+    return (
+        <PublishedStory clapByUser={ClapsCountByUser?.clapCount} favStatus={favStatus} noOfComments={noOfComments} allClaps={allClaps} currentUser={currentUser} publishedStory={publishedStory} userImage={userDetail?.image} username={userDetail?.name} />
+    )
 }
 
 export default Published

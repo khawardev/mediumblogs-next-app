@@ -1,6 +1,6 @@
 'use client'
 import { addToFav, checkFav } from "@/actions/favorite";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CgSpinner } from "react-icons/cg";
 import { BsThreeDots } from "react-icons/bs";
 import { GoDotFill } from "react-icons/go";
@@ -12,8 +12,13 @@ const FavComp = ({ storyId, favStatus }: any) => {
         e.preventDefault();
         e.stopPropagation();
         await addToFav(storyId);
-        setloading(false)
     };
+
+    useEffect(() => {
+        setloading(false)
+    }, [favStatus]);
+
+
     return (
         <>
             {loading ? <CgSpinner className="animate-spin" size={20} /> :

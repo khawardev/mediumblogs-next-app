@@ -23,8 +23,8 @@ const StoryTags = ({ story, limit }: any) => {
     }, [pathname, searchParams]);
 
     return (
-        <div className="flex-center gap-2">
-            <div className="flex-center gap-3 flex-nowrap">
+        <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3 flex-wrap">
                 {story?.topics?.slice(0, limit).map((tag: any, index: any) => (
                     <Link
                         key={index}
@@ -32,14 +32,14 @@ const StoryTags = ({ story, limit }: any) => {
                         onClick={(e) => handleClick(e, tag)}
                         className={`${currentTag === tag
                             ? 'bg-black text-white'
-                            : 'border bg-gray-100 opacity-65'
-                            } whitespace-nowrap sohne font-bold transition-all ease-in rounded-full py-1 px-4`}
+                            : 'border-black/10 border bg-[#e7e7e7ab] opacity-60'
+                            } sohne font-bold transition-all ease-in rounded-full py-1 px-4`}
                     >
                         {tag}
                     </Link>
                 ))}
                 {story?.topics?.length > limit && (
-                    <p className="py-1 px-4 border sohne font-bold bg-gray-100 rounded-full opacity-65">
+                    <p className="py-1 px-4 border sohne font-bold bg-[#e7e7e7] border-black/10 rounded-full opacity-60">
                         +{story?.topics?.length - limit}
                     </p>
                 )}

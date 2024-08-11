@@ -11,6 +11,7 @@ import FavComp from './favorite/FavComp';
 import ShareComp from './share/ShareComp';
 import { usePathname } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
+import StoryTags from '../blogs/story/StoryTags';
 
 const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favStatus, noOfComments, currentUser, allClaps }: any) => {
     const pathname = usePathname();
@@ -19,8 +20,12 @@ const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favSt
     useEffect(() => {
     }, []);
 
+
+    console.log(publishedStory?.topics, 'publishedStory');
+
+
     return (
-        <div className='mobile_center_contract md:my-14 my-8 text-[#242424]  '>
+        <div className='mobile_center_contract md:my-14 mt-8 text-[#242424]  '>
             <div className="  md:text-[45px] leading-[42px] text-4xl sohne_bold mb-8" dangerouslySetInnerHTML={{ __html: GetElemntRegix?.heading || '' }} />
             <section className='flex items-center justify-start gap-3 sohne mb-8 '>
                 <Button size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border sohne text-md  font-bold rounded-full  bg-[#FFFFFF]'>
@@ -33,20 +38,32 @@ const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favSt
             </section>
             <hr />
             <section className='flex-between py-4 sohne'>
-                <>
-                    <div className='flex-center space-x-4 '>
-                        <ClapComp clapByUser={clapByUser} allClapsCount={allClaps?.clapCount} currentUser={currentUser?.id} storyId={publishedStory?.id} />
-                        <CommentComp noOfComments={noOfComments} currentUser={currentUser?.id} storyId={publishedStory?.id} username={currentUser?.name} userImage={currentUser?.image} />
-                    </div>
-                    <div className='flex-center  space-x-3'>
-                        <FavComp favStatus={favStatus} storyId={publishedStory?.id} />
-                        <ShareComp pathname={pathname} />
-                    </div>
-                </>
+                <div className='flex-center space-x-4 '>
+                    <ClapComp clapByUser={clapByUser} allClapsCount={allClaps?.clapCount} currentUser={currentUser?.id} storyId={publishedStory?.id} />
+                    <CommentComp noOfComments={noOfComments} currentUser={currentUser?.id} storyId={publishedStory?.id} username={currentUser?.name} userImage={currentUser?.image} />
+                </div>
+                <div className='flex-center  space-x-3'>
+                    <FavComp favStatus={favStatus} storyId={publishedStory?.id} />
+                    <ShareComp pathname={pathname} />
+                </div>
             </section>
             <hr />
-            <section className=' my-6'>
+            <section className='my-6'>
                 <div className="markdown-body space-y-8 " dangerouslySetInnerHTML={{ __html: publishedRegix }} />
+            </section>
+
+            <section className='my-6'>
+                <StoryTags story={publishedStory} limit={5} />
+            </section>
+            <section className='flex-between py-4 sohne'>
+                <div className='flex-center space-x-4 '>
+                    <ClapComp clapByUser={clapByUser} allClapsCount={allClaps?.clapCount} currentUser={currentUser?.id} storyId={publishedStory?.id} />
+                    <CommentComp noOfComments={noOfComments} currentUser={currentUser?.id} storyId={publishedStory?.id} username={currentUser?.name} userImage={currentUser?.image} />
+                </div>
+                <div className='flex-center  space-x-3'>
+                    <FavComp favStatus={favStatus} storyId={publishedStory?.id} />
+                    <ShareComp pathname={pathname} />
+                </div>
             </section>
             {/* <div className="markdown-body space-y-5 " dangerouslySetInnerHTML={{ __html: publishedStory?.content }} /> */}
         </div>

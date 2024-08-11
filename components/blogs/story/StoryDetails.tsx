@@ -1,10 +1,15 @@
+'use client'
 import { checkFav } from "@/actions/favorite";
 import StoryInDetails from "./StoryInDetails";
-const StoryDetails = async ({ story }: any) => {
-    // const FavCompp = async (storyId: any) => {
-    //     return await checkFav(storyId);
-    // }
-    const favStatus = await checkFav(story?.id)
+import { useEffect, useState } from "react";
+const StoryDetails = ({ story }: any) => {
+    const [favStatus, setfavStatus] = useState<any>();
+    useEffect(() => {
+        const fetch = async () => {
+            setfavStatus(await checkFav(story?.id));
+        }
+        fetch();
+    }, [story?.id]);
     return (
         <StoryInDetails story={story} favStatus={favStatus} />
     )
