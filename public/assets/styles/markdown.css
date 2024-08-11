@@ -3,9 +3,7 @@
   font-family: "serif_code";
   src: url("../fonts/Medium/source_code_pro_400_normal.woff") format("woff");
 }
-.markdown-body {
-  font-size: 1.1rem;
-}
+
 .markdown-body h1 a,
 .markdown-body h2 a,
 .markdown-body h3 a,
@@ -21,7 +19,10 @@
   color: #2800c8; 
 } */
 .markdown-body p {
-  /* font-size: 1.8em; */
+  /* font-size: 1.1em; */
+}
+.markdown-body {
+  /* font-size: 1.1em; */
 }
 .markdown-body h1 {
   @apply text-3xl leading-[40px] md:text-4xl;
@@ -82,7 +83,7 @@
   display: flex; /* Use flexbox to align items */
   align-items: center; /* Vertically center the items */
   margin: 0; /* Remove default margin */
-  /* font-size: 1.1em; */
+  font-size: 1.1em;
   color: #333; /* Set the text color */
 }
 
@@ -124,8 +125,7 @@
   margin-left: 40px; */
   padding-left: 10px;
   margin-left: 20px;
-
-  /* font-size: 1.1em; */
+  font-size: 1.1em;
 }
 
 /* Base style for the blockquote element */
@@ -152,7 +152,6 @@
   margin: 20px 0; /* Add some margin around the pre element */
   border-radius: 5px; /* Rounded corners */
   overflow-x: auto; /* Horizontal scroll for long code lines */
-
   line-height: 1.5; /* Set line height for readability */
   border: #e6e6e6 solid 1px;
 }
