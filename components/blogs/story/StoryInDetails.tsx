@@ -7,12 +7,12 @@ import FavComp from "@/components/published/favorite/FavComp";
 import ShareComp from "@/components/published/share/ShareComp";
 import StoryTags from "./StoryTags";
 import { useEffect } from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const StoryInDetails = ({ story, favStatus }: any) => {
     const router = useRouter()
     const result: any = storyCheckRegix(story?.content);
-    useEffect(() => {
-    }, []);
+
     return (
         <main className="sm:px-5 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75 " onClick={() => router.push(`/published/${story?.id}`)}>
             <main className="flex-between  sm:gap-10 gap-5 " >
@@ -21,7 +21,8 @@ const StoryInDetails = ({ story, favStatus }: any) => {
                         <section className=" flex  items-center gap-3">
                             <Avatar className="w-10 h-10 border sohne font-bold">
                                 <AvatarImage src={story?.auther?.image} />
-                                <AvatarFallback>AC</AvatarFallback>
+                                <AvatarFallback><Skeleton className="w-10 h-10 rounded-full" /></AvatarFallback>
+
                             </Avatar>
                             <div className=" leading-4">
                                 <p className=" sohne_bold whitespace-nowrap">{story?.auther?.name}</p>

@@ -13,7 +13,6 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
     const handleTabClick = (tab: string) => {
         setActiveTab(tab);
     };
-    console.log(publishedStories, 'publishedStories Profile Detail ---');
 
     const renderStories = () => {
         switch (activeTab) {

@@ -7,6 +7,7 @@ const page = async ({ params }: { params: { userId: string } }) => {
     const draftStories = await getStoriesByUserId(params?.userId, false);
     const publishedStories = await getStoriesByUserId(params?.userId, true);
     const savedStories = await getFavStoriesByUserId(params?.userId);
+    console.log(savedStories, 'savedStories Profile Detail ---');
 
     return (
         <>
