@@ -14,12 +14,12 @@ const Slider = () => {
         const sliderInterval = setInterval(() => {
             setOpacity(0); // Start the fade-out effect
             setTimeout(() => {
-                setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
+                setCurrentIndex((prevIndex) => (prevIndex + 1) % data?.length);
                 setOpacity(1); // Start the fade-in effect
             }, 350); // Adjust the duration to match your transition duration
         }, 3000);
         return () => clearInterval(sliderInterval);
-    }, [currentIndex, data.length]);
+    }, [currentIndex, data?.length]);
 
     return (
         <div  >

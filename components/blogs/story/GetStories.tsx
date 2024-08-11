@@ -14,7 +14,7 @@ const GetStories = async ({ stories }: any) => {
             ))} */}
             <div>
 
-                {stories.length > 0 ?
+                {stories?.length > 0 ?
                     stories?.map((story: any, index: number) => (
                         <div key={index}>
                             <StoryDetails story={story} />

@@ -1,6 +1,6 @@
 "use server";
 import { and, eq } from "drizzle-orm";
-import { getUser } from "./user";
+import { getUser, getUserbyID } from "./user";
 import db from "@/db/drizzle";
 import { save, story } from "@/db/schema";
 import { getStorybyId } from "./story";
@@ -49,20 +49,36 @@ export const getFavStoriesByUserId = async (userId: string) => {
   if (!userId) {
     return { error: "User ID is required" };
   }
+  const userDetails: any = await getUserbyID(userId);
+  if (!userDetails) {
+    return { error: "User not found" };
+  }
 
+  let favEntries;
   try {
-    const favEntries = await db.query.save.findMany({
+    favEntries = await db.query.save.findMany({
       where: eq(save.userId, userId),
-      with: { story: true, auther: true },
+      with: { story: true }, // Assuming 'with' is for eager loading
     });
 
     if (!favEntries.length) {
       return { error: "No favorite stories found for this user" };
     }
 
-    return favEntries;
+    // Add userDetails as author to each story within favEntries
+    favEntries = favEntries.map((fav) => ({
+      ...fav,
+      story: {
+        ...fav.story,
+        auther: userDetails, // Add the userDetails as the author field in each story
+      },
+    }));
+
+    console.log(favEntries, "favEntries");
   } catch (error) {
     console.error("Error retrieving favorite stories:", error);
     return { error: "Error retrieving favorite stories" };
   }
+
+  return favEntries;
 };

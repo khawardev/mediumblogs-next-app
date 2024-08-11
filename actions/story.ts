@@ -1,5 +1,5 @@
 "use server";
-import { getUser } from "./user";
+import { getUser, getUserbyID } from "./user";
 import db from "@/db/drizzle";
 import { story, user } from "@/db/schema";
 import { and, arrayContains, eq } from "drizzle-orm";
@@ -51,14 +51,14 @@ export const CreateStory = async () => {
   redirect(`/p/${newStory[0].id}`);
 };
 
-export const getStorybyId = async (id: string, pubish: boolean) => {
+export const getStorybyId = async (id: string, publish: boolean) => {
   if (!id) {
     return { error: "dont have story" };
   }
   let storydetails;
   try {
     storydetails = await db.query.story.findFirst({
-      where: and(eq(story?.id, id), eq(story?.publish, pubish)),
+      where: and(eq(story?.id, id), eq(story?.publish, publish)),
     });
 
     if (!storydetails) {
@@ -194,23 +194,34 @@ export const getLimitedStories = async (tag: string) => {
   }
   return stories;
 };
-export const getStoriesByUserId = async (userId: string) => {
+export const getStoriesByUserId = async (userId: string, publish: boolean) => {
   if (!userId) {
     return { error: "User ID is required" };
+  }
+
+  const userDetails: any = await getUserbyID(userId);
+
+  if (!userDetails) {
+    return { error: "User not found" };
   }
 
   let stories;
   try {
     stories = await db.query.story.findMany({
-      where: eq(story.userId, userId),
-      with: { auther: true },
+      where: and(eq(story?.userId, userId), eq(story?.publish, publish)),
     });
 
     if (!stories?.length) {
       return { error: "No published stories found for this user" };
     }
+    stories = stories.map((story) => ({
+      ...story,
+      auther: userDetails,
+    }));
   } catch (error) {
     return { error: "Error fetching stories" };
   }
+  console.log(stories, "stories");
+
   return stories;
 };

@@ -1,0 +1,21 @@
+import React from 'react'
+import StoryDetails from '../StoryDetails';
+
+const DraftStories = ({ draftStories }: any) => {
+    return (
+
+        !Array.isArray(draftStories) || draftStories.length === 0 ? (
+            <div className=" flex-center h-[420px]">
+                <p className=" text-3xl opacity-25 sohne_bold"> Draft is Empty </p>
+            </div>
+        ) : (
+            <>
+                {draftStories?.map((story: any, index: number) => (
+                    <StoryDetails key={index} story={story} />
+                ))}
+            </>
+        )
+    );
+}
+
+export default DraftStories

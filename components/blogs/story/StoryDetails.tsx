@@ -1,10 +1,11 @@
 import { checkFav } from "@/actions/favorite";
 import StoryInDetails from "./StoryInDetails";
-
-const StoryDetails = async ({ story, auther }: any) => {
-    const favStatus: any = await checkFav(story?.id);
+const StoryDetails = ({ story }: any) => {
+    const FavCompp = async (storyId: any) => {
+        return await checkFav(storyId);
+    }
     return (
-        <StoryInDetails story={story} auther={auther} favStatus={favStatus} />
+        <StoryInDetails story={story} favStatus={FavCompp(story?.id)} />
     )
 }
 

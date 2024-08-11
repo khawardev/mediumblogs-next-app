@@ -94,7 +94,7 @@ export const storyRelations = relations(story, ({ one, many }) => ({
   auther: one(user, {
     fields: [story.userId],
     references: [user.id],
-  }), // A story belongs to one user
+  }),
   comment: many(comment), // A story can have multiple comments
   clap: many(clap), // A story can have multiple claps
   save: many(save),

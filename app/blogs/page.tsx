@@ -26,7 +26,7 @@ const Blogs = async ({ searchParams }: { searchParams: { tag: string } }) => {
       <section className=" grid md:grid-cols-7 w-full gap-20">
         <main className="md:col-span-5">
           <section className=" mb-[13px] ">
-            {getSelectedTopics.length > 0 ?
+            {getSelectedTopics?.length > 0 ?
               <Topics allTopics={allTopics} userTags={getSelectedTopics} />
               :
               <TopicsSkeleton />
