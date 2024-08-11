@@ -82,6 +82,7 @@ h3 {
   }
   body {
     /* font-family: "sohne"; */
+
     font-family: "bulgery";
     @apply bg-background text-foreground;
   }
