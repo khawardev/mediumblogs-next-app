@@ -3,11 +3,12 @@ import { checkFav } from "@/actions/favorite";
 import StoryInDetails from "./StoryInDetails";
 import useSWR from "swr";
 import StoryDetailSkeleton from "@/components/skeletons/StoryDetailSkeleton";
+import PublishedStoryInDetails from "./PublishedStoryInDetails";
 // import { useEffect, useState } from "react";
 
 const fetcher = async (storyId: string) => checkFav(storyId);
 
-const StoryDetails = ({ story }: any) => {
+const StoryDetails = ({ story, moreFromCreator }: any) => {
     const { data: favStatus } = useSWR(story?.id, fetcher, {
         revalidateOnMount: true,
         revalidateOnFocus: true,
@@ -17,10 +18,12 @@ const StoryDetails = ({ story }: any) => {
 
     if (favStatus === undefined) return <div><StoryDetailSkeleton /></div>;
 
-
     return (
-        <StoryInDetails story={story} favStatus={favStatus} />
-    )
+        moreFromCreator
+            ? <PublishedStoryInDetails story={story} favStatus={favStatus} />
+            : <StoryInDetails story={story} favStatus={favStatus} />
+    );
+
 }
 
 export default StoryDetails

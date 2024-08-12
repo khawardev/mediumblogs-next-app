@@ -12,23 +12,23 @@ import ShareComp from './share/ShareComp';
 import { usePathname } from 'next/navigation';
 import { Skeleton } from '@/components/ui/skeleton';
 import StoryTags from '../blogs/story/StoryTags';
+import { useProfileData } from '@/hooks/getProfileData';
+import StoryDetails from '../blogs/story/StoryDetails';
 
-const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favStatus, noOfComments, currentUser, allClaps }: any) => {
+const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favStatus, noOfComments, currentUser, allClaps, userParams }: any) => {
     const pathname = usePathname();
     const GetElemntRegix: any = storyCheckRegix(publishedStory?.content);
     const publishedRegix: any = checkPublishedRegix(publishedStory?.content);
-    useEffect(() => {
-    }, []);
 
 
+    const { publishedStories } = useProfileData({ userParams });
+    console.log(publishedStories, 'publishedStoriespublishedStories');
 
     return (
         <div className='mobile_center_contract md:my-14 mt-8 text-[#242424]  '>
             <div className="  md:text-[45px] leading-[42px] text-4xl sohne_bold mb-8" dangerouslySetInnerHTML={{ __html: GetElemntRegix?.heading || '' }} />
             <section className='flex items-center justify-start gap-3 sohne mb-8 '>
-                <Button size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border sohne text-md  font-bold rounded-full  bg-[#FFFFFF]'>
-                    <Image className="rounded-full" src={userImage ?? ''} width={50} height={50} alt={username ?? ''} />
-                </Button>
+                <Image className="rounded-full" src={userImage ?? ''} width={40} height={40} alt={username ?? ''} />
                 <div>
                     <p className='  text-gray-800 sohne_bold'>{username}</p>
                     <p className=' text-sm text-gray-500 sohne font-bold'>Published on {' '}{new Date(publishedStory?.createdAt).toDateString().split(' ')?.slice(1, 4).join(' ')}</p>
@@ -63,7 +63,25 @@ const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favSt
                     <ShareComp pathname={pathname} />
                 </div>
             </section>
-            {/* <div className="markdown-body space-y-5 " dangerouslySetInnerHTML={{ __html: publishedStory?.content }} /> */}
+
+            <section className='md:flex flex-center flex-col   items-center md:justify-between gap-3 sohne py-8 border-b '>
+                <Image className="rounded-full" src={userImage ?? ''} width={60} height={60} alt={username ?? ''} />
+                <div>
+                    <p className='  text-gray-800 text-xl sohne_bold'>Written By {username}</p>
+                </div>
+            </section>
+
+            <section className='   py-8 '>
+                <p className=' text-xl sohne_bold'>More from {username}</p>
+                <section className='grid md:grid-cols-2 gap-5 sohne  py-8'>
+                    {Array.isArray(publishedStories) ? publishedStories.map((story: any, index: number) => (
+                        <StoryDetails moreFromCreator={true} key={index} story={story} />
+                    )) : 'null'}
+
+                </section>
+            </section>
+
+
         </div>
     )
 }

@@ -21,7 +21,7 @@ const Published = async ({ params }: { params: { storyId: string } }) => {
     const currentUser: any = await getUser();
     const ClapsCountByUser = await getStoryClapCountByUser(publishedStory?.id);
     return (
-        <PublishedStory clapByUser={ClapsCountByUser?.clapCount} favStatus={favStatus} noOfComments={noOfComments} allClaps={allClaps} currentUser={currentUser} publishedStory={publishedStory} userImage={userDetail?.image} username={userDetail?.name} />
+        <PublishedStory clapByUser={ClapsCountByUser?.clapCount} favStatus={favStatus} noOfComments={noOfComments} allClaps={allClaps} currentUser={currentUser} publishedStory={publishedStory} userParams={userDetail?.id} userImage={userDetail?.image} username={userDetail?.name} />
     )
 }
 
