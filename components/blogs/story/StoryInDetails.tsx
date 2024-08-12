@@ -21,6 +21,7 @@ const StoryInDetails = ({ story, favStatus }: any) => {
                             <Avatar className="w-10 h-10 border sohne font-bold">
                                 <AvatarImage src={story?.auther?.image} />
                                 <AvatarFallback><Skeleton className="w-10 h-10 rounded-full" /></AvatarFallback>
+
                             </Avatar>
                             <div className=" leading-4">
                                 <p className=" sohne_bold whitespace-nowrap">{story?.auther?.name}</p>
@@ -47,7 +48,7 @@ const StoryInDetails = ({ story, favStatus }: any) => {
             <section className=" sm:hidden flex mt-4 flex-between gap-2  w-full    text-sm ">
                 <StoryTags story={story} limit={1} />
                 <div className="flex-center gap-2 ">
-                    <FavComp storyId={story?.id} />
+                    <FavComp favStatus={favStatus} storyId={story?.id} />
                     <ShareComp />
                 </div>
             </section>

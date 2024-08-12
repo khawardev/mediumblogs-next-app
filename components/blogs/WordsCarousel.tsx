@@ -4,8 +4,9 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { Button } from "../ui/button";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaMedium } from "react-icons/fa6";
+import { usePathname, useSearchParams } from "next/navigation";
 
-const WordsCarousel = ({ allTopics }: any) => {
+const WordsCarousel = ({ allTopics, fullUrl, pathname, searchParams }: any) => {
     const sliderRef = useRef<HTMLDivElement>(null);
     const scrollLeft = () => {
         if (sliderRef.current) {
@@ -33,7 +34,6 @@ const WordsCarousel = ({ allTopics }: any) => {
     const handleClick = (tag: any) => {
         setCurrentTag(tag);
     };
-
     return (
         <div className="flex-between  ">
             <button onClick={scrollLeft} className=" sm:block hidden" >
@@ -51,7 +51,7 @@ const WordsCarousel = ({ allTopics }: any) => {
                 <Link
                     href="/blogs"
                     onClick={() => handleClick("For You")}
-                    className={` ${currentTag === "For You" ? 'underline opacity-90' : 'opacity-50 '} flex-center gap-1 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
+                    className={` ${fullUrl === "/blogs?" ? '  opacity-85 text-white bg-black ' : 'opacity-50 '} py-1  rounded-full flex-center gap-1 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
                     style={{
                         scrollSnapAlign: "start",
                         flexShrink: 0,
@@ -64,7 +64,7 @@ const WordsCarousel = ({ allTopics }: any) => {
                         key={index}
                         href={`/blogs/?tag=${userTag.value}`}
                         onClick={() => handleClick(userTag.value)}
-                        className={` ${currentTag === userTag.value ? 'underline opacity-90' : 'opacity-50 '} opacity-50 underline-offset-[22px] sm:decoration-2 decoration-1  sohne transition-all ease-in   px-3  `}
+                        className={` ${pathname === "/blogs" && searchParams.get('tag') === userTag.value ? ' opacity-85 text-white bg-black ' : 'opacity-50'} py-1 rounded-full  underline-offset-[22px] sm:decoration-2 decoration-1  sohne transition-all ease-in   px-3  `}
                         style={{
                             scrollSnapAlign: "start", // Align each item to start at the beginning of the container
                             flexShrink: 0, // Prevent items from shrinking

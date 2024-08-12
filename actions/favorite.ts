@@ -8,16 +8,15 @@ import { revalidatePath } from "next/cache";
 
 export const checkFav = async (storyId: string) => {
   const UserDetails: any = await getUser();
-  let fav;
   try {
-    fav = await db.query.save.findFirst({
+    const fav = await db.query.save.findFirst({
       where: and(eq(save?.userId, UserDetails?.id), eq(save?.storyId, storyId)),
     });
+    console.log(fav, "favfavfavfavfavfavfavfavfavfav");
+    return !!fav;
   } catch (error) {
     return { status: false };
   }
-
-  return !!fav;
 };
 
 export const addToFav = async (storyId: string) => {

@@ -50,13 +50,13 @@ const Topics = ({ userTags, allTopics }: any) => {
                             </div>
                         </>
                     ) : (
-                        <WordsCarousel allTopics={userTags} />
+                        <WordsCarousel fullUrl={fullUrl} pathname={pathname} searchParams={searchParams} allTopics={userTags} />
                     )}
                 </div>
                 {userTags?.length > 0 && (
                     <>
                         <div className="sm:hidden block">
-                            <WordsCarousel allTopics={userTags} />
+                            <WordsCarousel fullUrl={fullUrl} pathname={pathname} searchParams={searchParams} allTopics={userTags} />
                         </div>
                     </>
                 )}

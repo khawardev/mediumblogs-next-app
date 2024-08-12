@@ -24,7 +24,7 @@ const StoryTags = ({ story, limit }: any) => {
 
     return (
         <div className="flex items-center gap-2">
-            <div className="flex items-center gap-3 flex-wrap">
+            <div className="flex items-center gap-3 flex-wrap text-sm">
                 {story?.topics?.slice(0, limit).map((tag: any, index: any) => (
                     <Link
                         key={index}
@@ -39,7 +39,7 @@ const StoryTags = ({ story, limit }: any) => {
                     </Link>
                 ))}
                 {story?.topics?.length > limit && (
-                    <p className="py-1 px-4 border sohne font-bold bg-[#e7e7e7] border-black/10 rounded-full opacity-60">
+                    <p className="py-1 px-4 border text-sm sohne font-bold bg-[#e7e7e7] border-black/10 rounded-full opacity-60">
                         +{story?.topics?.length - limit}
                     </p>
                 )}

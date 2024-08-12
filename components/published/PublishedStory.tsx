@@ -21,8 +21,6 @@ const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favSt
     }, []);
 
 
-    console.log(publishedStory?.topics, 'publishedStory');
-
 
     return (
         <div className='mobile_center_contract md:my-14 mt-8 text-[#242424]  '>
@@ -52,7 +50,7 @@ const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favSt
                 <div className="markdown-body space-y-8 " dangerouslySetInnerHTML={{ __html: publishedRegix }} />
             </section>
 
-            <section className='my-6'>
+            <section className='my-7'>
                 <StoryTags story={publishedStory} limit={5} />
             </section>
             <section className='flex-between py-4 sohne'>

@@ -19,10 +19,10 @@
   color: #2800c8; 
 } */
 .markdown-body p {
-  font-size: 17.6px;
+  font-size: 16.6px;
 }
 .markdown-body {
-  /* font-size: 17.6px; */
+  /* font-size: 16.6px; */
 }
 .markdown-body h1 {
   @apply text-3xl leading-[40px] md:text-4xl;
@@ -83,7 +83,7 @@
   display: flex; /* Use flexbox to align items */
   align-items: center; /* Vertically center the items */
   margin: 0; /* Remove default margin */
-  font-size: 17.6px;
+  font-size: 16.6px;
   color: #333; /* Set the text color */
 }
 
@@ -125,7 +125,7 @@
   margin-left: 40px; */
   padding-left: 10px;
   margin-left: 20px;
-  font-size: 17.6px;
+  font-size: 16.6px;
 }
 
 /* Base style for the blockquote element */
