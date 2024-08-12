@@ -21,7 +21,6 @@ const ProfileDetails = ({ userParams }: any) => {
         setActiveTab(tab);
     };
     const { publishedStories, draftStories, savedStories } = useProfileData({ userParams });
-    console.log(savedStories, 'savedStoriessavedStoriessavedStoriessavedStories');
 
     const renderStories = () => {
         switch (activeTab) {

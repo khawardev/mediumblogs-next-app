@@ -9,6 +9,7 @@ const fetcher = async (storyId: string) => checkFav(storyId);
 
 const StoryDetails = ({ story }: any) => {
     const { data: favStatus } = useSWR(story?.id, fetcher, {
+        revalidateOnMount: true,
         revalidateOnFocus: true,
         revalidateOnReconnect: false,
         dedupingInterval: Number.MAX_SAFE_INTEGER,

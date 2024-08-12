@@ -10,7 +10,7 @@ const SavedStories = ({ savedStories }: any) => {
         ) : (
             <>
                 {savedStories?.map((story: any, index: number) => (
-                    <StoryDetails key={index} story={story} />
+                    <StoryDetails key={index} story={story.story} />
                 ))}
             </>
         )
