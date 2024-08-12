@@ -2,8 +2,6 @@
 import { addToFav, checkFav } from "@/actions/favorite";
 import { useEffect, useState } from "react";
 import { CgSpinner } from "react-icons/cg";
-import { BsThreeDots } from "react-icons/bs";
-import { GoDotFill } from "react-icons/go";
 
 const FavComp = ({ storyId, favStatus }: any) => {
     const [loading, setloading] = useState<boolean>(false);
@@ -13,11 +11,9 @@ const FavComp = ({ storyId, favStatus }: any) => {
         e.stopPropagation();
         await addToFav(storyId);
     };
-
     useEffect(() => {
         setloading(false)
     }, [favStatus]);
-
 
     return (
         <>
