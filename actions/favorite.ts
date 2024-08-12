@@ -12,7 +12,6 @@ export const checkFav = async (storyId: string) => {
     const fav = await db.query.save.findFirst({
       where: and(eq(save?.userId, UserDetails?.id), eq(save?.storyId, storyId)),
     });
-    console.log(fav, "favfavfavfavfavfavfavfavfavfav");
     return !!fav;
   } catch (error) {
     return { status: false };
@@ -57,8 +56,9 @@ export const getFavStoriesByUserId = async (userId: string) => {
   try {
     favEntries = await db.query.save.findMany({
       where: eq(save.userId, userId),
-      with: { story: true }, // Assuming 'with' is for eager loading
+      with: { story: true },
     });
+    console.log(favEntries, "favEntriesfavEntriesfavEntriesfavEntries");
 
     if (!favEntries.length) {
       return { error: "No favorite stories found for this user" };

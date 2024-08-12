@@ -42,7 +42,7 @@ const StoryInDetails = ({ story, favStatus }: any) => {
                     </section>
                 </section>
                 <section className=" w-[50%] flex flex-row-reverse   "  >
-                    <Image className=" rounded border  sohne  " src={result?.imageUrl} quality={100} alt="blog image" width={1000} height={1000} />
+                    <Image className=" rounded border  sohne  " src={result?.imageUrl ? result?.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637'} quality={100} alt="blog image" width={1000} height={1000} />
                 </section>
             </main>
             <section className=" sm:hidden flex mt-4 flex-between gap-2  w-full    text-sm ">

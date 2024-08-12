@@ -8,17 +8,7 @@ import StoryDetailSkeleton from "@/components/skeletons/StoryDetailSkeleton";
 const fetcher = async (storyId: string) => checkFav(storyId);
 
 const StoryDetails = ({ story }: any) => {
-    // const [favStatus, setfavStatus] = useState<any>();
-    // useEffect(() => {
-    //     const fetch = async () => {
-    //         setfavStatus(await checkFav(story?.id));
-    //     }
-    //     fetch();
-    // }, [story?.id]);
-
-    // const favStatus = await checkFav(story?.id);
-    // const { data: favStatus, error } = useSWR([story?.id], fetcher);
-    const { data: favStatus, error } = useSWR(story?.id, fetcher, {
+    const { data: favStatus } = useSWR(story?.id, fetcher, {
         revalidateOnFocus: true,
         revalidateOnReconnect: false,
         dedupingInterval: Number.MAX_SAFE_INTEGER,

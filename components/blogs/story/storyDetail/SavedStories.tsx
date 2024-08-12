@@ -5,7 +5,7 @@ const SavedStories = ({ savedStories }: any) => {
 
         !Array.isArray(savedStories) || savedStories.length === 0 ? (
             <div className=" flex-center h-[420px]">
-                <p className=" text-3xl opacity-25 sohne_bold"> Draft is Empty </p>
+                <p className=" text-3xl opacity-25 sohne_bold"> Saved is Empty </p>
             </div>
         ) : (
             <>

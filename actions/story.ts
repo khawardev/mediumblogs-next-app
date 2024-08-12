@@ -209,9 +209,8 @@ export const getStoriesByUserId = async (userId: string, publish: boolean) => {
   let stories;
   try {
     stories = await db.query.story.findMany({
-      where: and(eq(story?.userId, userId), eq(story?.publish, true)),
+      where: and(eq(story?.userId, userId), eq(story?.publish, publish)),
     });
-    console.log(stories, "stories----------===========");
 
     if (!stories?.length) {
       return { error: "No published stories found for this user" };

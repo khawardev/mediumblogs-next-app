@@ -1,18 +1,27 @@
-'use client';
+'use client'
 import { useState } from "react";
-import StoryDetails from "@/components/blogs/story/StoryDetails";
 import { Button } from "@/components/ui/button";
-import { Plus, SquarePen } from "lucide-react";
-import { checkFav } from "@/actions/favorite";
+import { SquarePen } from "lucide-react";
 import PublishedStories from "../blogs/story/storyDetail/PublishedStories";
 import DraftStories from "../blogs/story/storyDetail/DraftStories";
+import StoryDetailSkeleton from "../skeletons/StoryDetailSkeleton";
+import { Skeleton } from "../ui/skeleton";
+import { useProfileData } from "@/hooks/getProfileData";
 import SavedStories from "../blogs/story/storyDetail/SavedStories";
 
-const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) => {
+type Blogsprops = {
+    draftStories?: any,
+    publishedStories: any,
+    savedStories?: any,
+}
+
+const ProfileDetails = ({ userParams }: any) => {
     const [activeTab, setActiveTab] = useState<string>("published");
     const handleTabClick = (tab: string) => {
         setActiveTab(tab);
     };
+    const { publishedStories, draftStories, savedStories } = useProfileData({ userParams });
+    console.log(savedStories, 'savedStoriessavedStoriessavedStoriessavedStories');
 
     const renderStories = () => {
         switch (activeTab) {
@@ -34,6 +43,7 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
     };
 
     return (
+
         <div className="mobile_center_less_contract md:py-12 py-8">
             <section className="flex-between mb-9">
                 <p className="md:text-5xl text-3xl sohne_bold">Your Stories</p>
@@ -48,7 +58,9 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
                     >
                         Published
                     </button>
-                    <Button size={'iconxs'} className="font-bold text-xs">{publishedStories?.length > 0 ? publishedStories?.length : '0'}</Button>
+                    <Button size={'iconxs'} className="font-bold text-xs">
+                        {Array.isArray(publishedStories) ? publishedStories.length : '--'}
+                    </Button>
                 </section>
                 <section className="flex-center gap-2">
                     <button
@@ -57,7 +69,9 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
                     >
                         Drafts
                     </button>
-                    <Button size={'iconxs'} className="font-bold text-xs">{draftStories?.length > 0 ? draftStories?.length : '0'}</Button>
+                    <Button size={'iconxs'} className="font-bold text-xs">
+                        {Array.isArray(draftStories) ? draftStories.length : '--'}
+                    </Button>
                 </section>
                 <section className="flex-center gap-2">
                     <button
@@ -66,13 +80,26 @@ const ProfileDetails = ({ publishedStories, draftStories, savedStories }: any) =
                     >
                         Saved
                     </button>
-                    <Button size={'iconxs'} className="font-bold text-xs">{savedStories?.length > 0 ? savedStories?.length : '0'}</Button>
+                    <Button size={'iconxs'} className="font-bold text-xs">
+                        {Array.isArray(savedStories) ? savedStories.length : '--'}
+                    </Button>
                 </section>
             </section>
             <hr />
             <section>
-                {renderStories()}
+                {!publishedStories ? (
+                    <div>
+                        <StoryDetailSkeleton />
+                        <StoryDetailSkeleton />
+                        <StoryDetailSkeleton />
+                    </div>
+                ) : (
+                    renderStories()
+                )}
+
+
             </section>
+
 
         </div>
     );
