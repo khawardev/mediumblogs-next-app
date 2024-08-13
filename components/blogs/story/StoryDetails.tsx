@@ -4,6 +4,8 @@ import StoryInDetails from "./StoryInDetails";
 import useSWR from "swr";
 import StoryDetailSkeleton from "@/components/skeletons/StoryDetailSkeleton";
 import PublishedStoryInDetails from "./PublishedStoryInDetails";
+import PublishedDetailSkeleton from "@/components/skeletons/PublishedDetailSkeleton";
+import { Button } from "@/components/ui/button";
 // import { useEffect, useState } from "react";
 
 const fetcher = async (storyId: string) => checkFav(storyId);
@@ -16,12 +18,14 @@ const StoryDetails = ({ story, moreFromCreator }: any) => {
         dedupingInterval: Number.MAX_SAFE_INTEGER,
     });
 
-    if (favStatus === undefined) return <div><StoryDetailSkeleton /></div>;
+    if (favStatus === undefined) return <div> {moreFromCreator ? <PublishedDetailSkeleton /> : <StoryDetailSkeleton />} </div>;
 
     return (
         moreFromCreator
-            ? <PublishedStoryInDetails story={story} favStatus={favStatus} />
-            : <StoryInDetails story={story} favStatus={favStatus} />
+            ?
+            <PublishedStoryInDetails story={story} favStatus={favStatus} />
+            :
+            <StoryInDetails story={story} favStatus={favStatus} />
     );
 
 }

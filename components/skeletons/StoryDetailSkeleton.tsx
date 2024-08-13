@@ -1,5 +1,4 @@
 import { Skeleton } from '@/components/ui/skeleton';
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 
 const StoryDetailSkeleton = () => {
     return (

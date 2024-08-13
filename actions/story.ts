@@ -6,31 +6,6 @@ import { and, arrayContains, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-// export const getLimitedStories = async (tag: string) => {
-//   let stories;
-//   try {
-//     if (tag) {
-//       stories = await db.query.story.findMany({
-//         where: arrayContains(story.topics, [tag]),
-//         with: { auther: true },
-//       });
-//     } else {
-//       stories = await db.query.story.findMany({
-//         where: eq(story.publish, true),
-//         with: { auther: true },
-//       });
-//     }
-//     console.log(stories, "getLimitedStories ");
-
-//     if (!stories?.length) {
-//       return { error: "Error on getting stories" };
-//     }
-//   } catch (error) {
-//     return { error: "Error on getting stories" };
-//   }
-//   return stories;
-// };
-
 export const CreateStory = async () => {
   let newStory;
   try {
@@ -224,4 +199,32 @@ export const getStoriesByUserId = async (userId: string, publish: boolean) => {
   }
 
   return stories;
+};
+
+export const deleteStoryById = async (storyID: string, pathName: string) => {
+  if (!storyID) {
+    return {
+      error: "Story ID is required",
+    };
+  }
+  try {
+    const Story = await db.query.story.findFirst({
+      where: eq(story?.id, storyID),
+    });
+
+    if (!Story) {
+      return {
+        error: "Story not found",
+      };
+    }
+
+    const deletedStory = await db.delete(story).where(eq(story?.id, storyID));
+    revalidatePath(pathName);
+    redirect(pathName);
+    return deletedStory;
+  } catch (error) {
+    return {
+      error: "Error deleting story",
+    };
+  }
 };
