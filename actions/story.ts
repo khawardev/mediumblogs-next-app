@@ -219,9 +219,9 @@ export const deleteStoryById = async (storyID: string, pathName: string) => {
     }
 
     const deletedStory = await db.delete(story).where(eq(story?.id, storyID));
+
     revalidatePath(pathName);
-    redirect(pathName);
-    return deletedStory;
+    return deletedStory.command;
   } catch (error) {
     return {
       error: "Error deleting story",

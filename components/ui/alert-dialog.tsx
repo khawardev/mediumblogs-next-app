@@ -100,11 +100,11 @@ AlertDialogDescription.displayName =
 
 const AlertDialogAction = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Action>,
-  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action> & { variant?: any } // Add variant prop type
->(({ className, variant, ...props }, ref) => (
+  React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Action> // Add variant prop type
+>(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Action
     ref={ref}
-    className={cn(buttonVariants({ variant }), className)} // Pass the variant prop to buttonVariants
+    className={cn("text-sm  font-bold  border px-6 transition-all ease-in  hover:text-destructive-foreground hover:bg-destructive/90", className)} // Pass the variant prop to buttonVariants
     {...props}
   />
 ));

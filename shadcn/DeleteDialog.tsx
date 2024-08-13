@@ -22,10 +22,12 @@ export function DeleteDialog({ storyId }: any) {
 
     const { toast } = useToast()
     const path = usePathname();
-    const deleteStory = async ({ storyID }: any) => {
+    const deleteStory = async (storyID: any) => {
         setloading(true)
         const Delete = await deleteStoryById(storyID, path)
-        if (Delete) {
+
+
+        if (Delete === "DELETE") {
             setloading(false)
             toast({
                 description: 'Story is deleted successfully',
@@ -54,10 +56,9 @@ export function DeleteDialog({ storyId }: any) {
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                     <AlertDialogCancel className="font-bold rounded-md ">Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => deleteStory(storyId)} variant="destructive" className="font-bold rounded-md">
-                        {loading ? <>Deleting <CgSpinner className="animate-spin " size={20} /></> : 'Delete'}
-
-                    </AlertDialogAction>
+                    <Button variant={'destructive'} onClick={() => deleteStory(storyId)} className="flex-center gap-1 font-bold rounded-md ">
+                        {loading ? <> Deleting <CgSpinner className="animate-spin " size={16} /></> : 'Delete'}
+                    </Button>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

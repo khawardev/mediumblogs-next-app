@@ -2,7 +2,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 const StoryDetailSkeleton = () => {
     return (
-        <main className=' sm:px-5  py-8  border-b '>
+        <main className=' sm:px-5  py-8  border-b  w-full'>
             <main className="flex-between items-center   sm:gap-10 gap-5 " >
                 <div className=" w-full">
                     <section className="flex items-center gap-3 mb-5">
