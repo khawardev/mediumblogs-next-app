@@ -7,8 +7,11 @@ import FavComp from "@/components/published/favorite/FavComp";
 import ShareComp from "@/components/published/share/ShareComp";
 import StoryTags from "./StoryTags";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Button } from "@/components/ui/button";
+import { DeleteDialog } from "@/shadcn/DeleteDialog";
+import { PencilLine } from "lucide-react";
 
-const StoryInDetails = ({ story, favStatus }: any) => {
+const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete }: any) => {
     const router = useRouter()
     const result: any = storyCheckRegix(story?.content);
 
@@ -17,16 +20,26 @@ const StoryInDetails = ({ story, favStatus }: any) => {
             <main className="flex-between  sm:gap-10 gap-5 " >
                 <section className=" space-y-5 w-full" >
                     <div className="sm:space-y-3  space-y-5  " >
-                        <section className=" flex  items-center gap-3">
-                            <Avatar className="w-10 h-10 border sohne font-bold">
-                                <AvatarImage src={story?.auther?.image} />
-                                <AvatarFallback><Skeleton className="w-10 h-10 rounded-full" /></AvatarFallback>
+                        <section className=" flex  items-center gap-8">
+                            <section className="flex  items-center gap-3">
+                                <Avatar className="w-10 h-10 border sohne font-bold">
+                                    <AvatarImage src={story?.auther?.image} />
+                                    <AvatarFallback><Skeleton className="w-10 h-10 rounded-full" /></AvatarFallback>
+                                </Avatar>
+                                <div className=" leading-4">
+                                    <p className=" sohne_bold whitespace-nowrap">{story?.auther?.name}</p>
+                                    <p className="sohne font-bold text-sm text-muted-foreground  ">{new Date(story?.createdAt).toDateString().split(' ')?.slice(1, 4).join(' ')}</p>
+                                </div>
+                            </section>
+                            {profilepublishedEditDelete &&
+                                <>
+                                    <div className="   flex items-center gap-2">
+                                        <Button size={'xs'} variant={'outline'} className="sohne font-bold transition-all ease-in rounded-full  px-4 flex-center gap-2 "><PencilLine size={'14'} strokeWidth={2.8} />Edit</Button>
+                                        <DeleteDialog storyId={story?.id} />
+                                    </div>
+                                </>
 
-                            </Avatar>
-                            <div className=" leading-4">
-                                <p className=" sohne_bold whitespace-nowrap">{story?.auther?.name}</p>
-                                <p className="sohne font-bold text-sm text-muted-foreground  ">{new Date(story?.createdAt).toDateString().split(' ')?.slice(1, 4).join(' ')}</p>
-                            </div>
+                            }
                         </section>
                         <section className="sm:space-y-3 space-y-1">
                             <div className="markdown-body  sm:text-2xl text-xl sohne_bold font-bold line-clamp-1 " dangerouslySetInnerHTML={{ __html: result?.heading || '' }} />

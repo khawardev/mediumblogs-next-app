@@ -1,6 +1,4 @@
-import { Button } from '@/components/ui/button';
 import StoryDetails from '../StoryDetails';
-import { DeleteDialog } from '@/shadcn/DeleteDialog';
 
 const PublishedStories = ({ publishedStories }: any) => {
 
@@ -14,19 +12,7 @@ const PublishedStories = ({ publishedStories }: any) => {
         ) : (
             <>
                 {publishedStories?.map((story: any, index: number) => (
-                    <main key={index} className='w-full' >
-                        <div className=" sm:hidden flex items-center gap-3 mt-4">
-                            <Button variant={'outline'} className="sohne  h-[50px] w-full font-bold rounded-md">Edit</Button>
-                            <DeleteDialog />
-                        </div>
-                        <section className='flex gap-2'>
-                            <StoryDetails story={story} />
-                            <div className=" sm:flex hidden  flex-col items-center gap-3 my-2">
-                                <Button variant={'outline'} className="sohne  h-full w-full font-bold rounded-lg">Edit</Button>
-                                <DeleteDialog storyId={story?.id} />
-                            </div>
-                        </section>
-                    </main>
+                    <StoryDetails key={index} profilepublishedEditDelete={true} story={story} />
 
                 ))}
             </>

@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 
 const fetcher = async (storyId: string) => checkFav(storyId);
 
-const StoryDetails = ({ story, moreFromCreator }: any) => {
+const StoryDetails = ({ story, moreFromCreator, profilepublishedEditDelete }: any) => {
     const { data: favStatus } = useSWR(story?.id, fetcher, {
         revalidateOnMount: true,
         revalidateOnFocus: true,
@@ -25,7 +25,7 @@ const StoryDetails = ({ story, moreFromCreator }: any) => {
             ?
             <PublishedStoryInDetails story={story} favStatus={favStatus} />
             :
-            <StoryInDetails story={story} favStatus={favStatus} />
+            <StoryInDetails profilepublishedEditDelete={profilepublishedEditDelete} story={story} favStatus={favStatus} />
     );
 
 }

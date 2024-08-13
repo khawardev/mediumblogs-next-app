@@ -13,9 +13,11 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
+import { Trash, Trash2 } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { useState } from "react"
 import { CgSpinner } from "react-icons/cg";
+import { RiDeleteBin7Line } from "react-icons/ri";
 
 export function DeleteDialog({ storyId }: any) {
     const [loading, setloading] = useState<boolean>(false)
@@ -25,8 +27,6 @@ export function DeleteDialog({ storyId }: any) {
     const deleteStory = async (storyID: any) => {
         setloading(true)
         const Delete = await deleteStoryById(storyID, path)
-
-
         if (Delete === "DELETE") {
             setloading(false)
             toast({
@@ -45,7 +45,10 @@ export function DeleteDialog({ storyId }: any) {
     return (
         <AlertDialog>
             <AlertDialogTrigger asChild>
-                <Button variant={'destructive'} className="sohne h-[50px] w-full font-bold rounded-md">Delete</Button>
+                <Button onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }} variant={'destructive'} size={'xs'} className="sohne font-bold transition-all ease-in rounded-full  px-5 flex-center gap-1 "><Trash size={'14'} strokeWidth={2.8} />Delete</Button>
             </AlertDialogTrigger>
             <AlertDialogContent className=" sohne">
                 <AlertDialogHeader>
