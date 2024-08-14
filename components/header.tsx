@@ -12,10 +12,11 @@ import { FaMedium } from "react-icons/fa6"
 import { Button } from "./ui/button"
 import { useState } from "react"
 import { MdOutlineArticle } from "react-icons/md"
+import SearchArea from "./search/SearchArea"
 
 const Header = () => {
   const { toast } = useToast()
-
+  const [ShowSearch, setShowSearch] = useState(false);
   const { data, status } = useSession()
   const MakeNewStory = async () => {
     const res = await CreateStory();
@@ -25,16 +26,9 @@ const Header = () => {
       })
     }
   }
-  const [inputValue, setInputValue] = useState<string>('');
 
-  const handleKeyPress = (e: any) => {
-    if (e.key === 'Enter') {
-      toast({
-        description: 'This feature will be available soon.',
-      });
-      setInputValue('');
-    }
-  };
+
+
   return (
     <div className=" z-40 fixed   bg-[#FFFFFF] border border-t-0 border-l-0 border-r-0 border-b-black w-full ">
       <div className="mobile_center py-5  flex-between ">
@@ -48,15 +42,11 @@ const Header = () => {
               <input
                 className="sohne border-0 text-sm font-bold focus:outline-none focus:ring-0  bg-gray-100"
                 placeholder="Search"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyPress={handleKeyPress}
+                onClick={() => setShowSearch(true)}
               />
             </section>
           }
         </section>
-
-
         <ul className="flex-center  gap-5   ">
           {status === 'authenticated' ?
             <div className="flex-center md:space-x-7 space-x-4 md:text-[15px] text-sm">
@@ -85,7 +75,17 @@ const Header = () => {
 
         </ul>
       </div>
-
+      {status === 'authenticated' &&
+        <section className=" md:hidden flex  py-[9px] px-3 bg-gray-100 rounded-full  items-center gap-2">
+          <span><CiSearch size={20} /></span>
+          <input
+            className="sohne border-0 text-sm font-bold focus:outline-none focus:ring-0  bg-gray-100"
+            placeholder="Search"
+            onClick={() => setShowSearch(true)}
+          />
+        </section>
+      }
+      {ShowSearch && <SearchArea setShowSearch={setShowSearch} />}
     </div>
   )
 }
