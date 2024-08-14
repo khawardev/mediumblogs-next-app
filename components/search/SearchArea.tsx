@@ -2,18 +2,29 @@
 import "@/public/assets/styles/search.css";
 import { MdClose } from 'react-icons/md';
 import { useState } from 'react';
-import { useToast } from "../ui/use-toast";
+import { searchStoriesByContent } from "@/actions/story";
+import StoryDetails from "../blogs/story/StoryDetails";
+import StoryDetailSkeleton from "../skeletons/StoryDetailSkeleton";
 
 const SearchArea = ({ setShowSearch }: any) => {
     const [inputValue, setInputValue] = useState<string>('');
     const [searchedStories, setSearchedStories] = useState<any[]>([]);
-
-    const handleKeyDown = (e: any) => {
-        const searchText = inputValue.toLowerCase();
+    const [loading, setLoading] = useState(false);
+    const handleKeyDown = async (e: any) => {
+        // const searchText = inputValue.toLowerCase();
         if (e.key === 'Enter') {
-            console.log(searchText, 'inputValue');
-            // setSearchedStories(products.filter((product: any) => product.name.toLowerCase().includes(searchText)));
+            setLoading(true)
+            const result = await searchStoriesByContent(inputValue);
+            console.log(result, 'resultresultresult');
+
             setInputValue('');
+            if ('error' in result) {
+                setLoading(false)
+                console.log(result.error);
+            } else {
+                setSearchedStories(result);
+                setLoading(false)
+            }
         }
     };
 
@@ -31,8 +42,20 @@ const SearchArea = ({ setShowSearch }: any) => {
                 />
                 <MdClose className="cursor-pointer" onClick={() => setShowSearch(false)} />
             </div>
-            <div className="pointer scrollable-div-search">
-
+            <div className="pointer scrollable-div-search mobile_center ">
+                {loading ? <><StoryDetailSkeleton /><StoryDetailSkeleton /></> :
+                    !Array.isArray(searchedStories) || searchedStories.length === 0 ? (
+                        <div className=" flex-center h-[520px]">
+                            <p className=" text-3xl opacity-25 sohne_bold"> Search is Empty </p>
+                        </div>
+                    ) : (
+                        <>
+                            {searchedStories?.map((story: any, index: number) => (
+                                <StoryDetails setShowSearch={setShowSearch} key={index} story={story} />
+                            ))}
+                        </>
+                    )
+                }
             </div>
         </div>
     );

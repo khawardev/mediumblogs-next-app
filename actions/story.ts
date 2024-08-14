@@ -228,3 +228,24 @@ export const deleteStoryById = async (storyID: string, pathName: string) => {
     };
   }
 };
+export const searchStoriesByContent = async (searchText: string) => {
+  if (!searchText) {
+    return { error: "Search text is required" };
+  }
+  try {
+    const stories = await db.query.story.findMany({
+      where: and(eq(story.publish, true)),
+      with: { auther: true },
+    });
+    const filteredStories = stories.filter((story: any) =>
+      story.content.toLowerCase().includes(searchText.toLowerCase())
+    );
+    if (filteredStories.length === 0) {
+      return { error: "No stories match the search text" };
+    }
+
+    return filteredStories; // Return the filtered stories
+  } catch (error) {
+    return { error: "Error searching stories" };
+  }
+};
