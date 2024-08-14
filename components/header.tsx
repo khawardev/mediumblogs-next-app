@@ -13,10 +13,11 @@ import { Button } from "./ui/button"
 import { useState } from "react"
 import { MdOutlineArticle } from "react-icons/md"
 import SearchArea from "./search/SearchArea"
+import { useAtom } from "jotai"
+import { ShowSearchAtom } from "@/context/atom"
 
 const Header = () => {
   const { toast } = useToast()
-  const [ShowSearch, setShowSearch] = useState(false);
   const { data, status } = useSession()
   const MakeNewStory = async () => {
     const res = await CreateStory();
@@ -26,6 +27,7 @@ const Header = () => {
       })
     }
   }
+  const [ShowSearch, setShowSearch] = useAtom(ShowSearchAtom);
 
 
 
@@ -86,7 +88,7 @@ const Header = () => {
             />
           </section>
         }
-        {ShowSearch && <SearchArea setShowSearch={setShowSearch} />}
+        {ShowSearch && <SearchArea />}
       </section>
     </div>
   )

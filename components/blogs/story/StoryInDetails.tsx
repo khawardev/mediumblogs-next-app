@@ -11,14 +11,13 @@ import { Button } from "@/components/ui/button";
 import { DeleteDialog } from "@/shadcn/DeleteDialog";
 import { PencilLine } from "lucide-react";
 
-const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete, setShowSearch }: any) => {
+const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete }: any) => {
     const router = useRouter()
     const result: any = storyCheckRegix(story?.content);
 
     return (
         <main className="sm:px-5 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75 " onClick={() => {
             router.push(`/published/${story?.id}`);
-            setShowSearch(false);
         }}>
             <main className="sm:flex flex-between flex sm:flex-row flex-col-reverse sm:gap-10 gap-5 " >
                 <section className=" space-y-5 w-full" >

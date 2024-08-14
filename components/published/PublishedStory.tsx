@@ -14,8 +14,12 @@ import { Skeleton } from '@/components/ui/skeleton';
 import StoryTags from '../blogs/story/StoryTags';
 import { useProfileData } from '@/hooks/getProfileData';
 import StoryDetails from '../blogs/story/StoryDetails';
+import { useAtom } from 'jotai';
+import { ShowSearchAtom } from '@/context/atom';
 
 const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favStatus, noOfComments, currentUser, allClaps, userParams }: any) => {
+    const [ShowSearch, setShowSearch] = useAtom(ShowSearchAtom);
+    setShowSearch(false)
     const pathname = usePathname();
     const GetElemntRegix: any = storyCheckRegix(publishedStory?.content);
     const publishedRegix: any = checkPublishedRegix(publishedStory?.content);

@@ -4,9 +4,9 @@ import { checkFav } from '@/actions/favorite';
 import { getStorybyId } from '@/actions/story';
 import { getUser, getUserbyID } from '@/actions/user';
 import PublishedStory from '@/components/published/PublishedStory';
-import React from 'react'
 
 const Published = async ({ params }: { params: { storyId: string } }) => {
+
 
     const publishedStory: any = await getStorybyId(params?.storyId, true);
     if (!publishedStory) {

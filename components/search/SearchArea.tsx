@@ -5,8 +5,12 @@ import { useState } from 'react';
 import { searchStoriesByContent } from "@/actions/story";
 import StoryDetails from "../blogs/story/StoryDetails";
 import StoryDetailSkeleton from "../skeletons/StoryDetailSkeleton";
+import { useAtom } from "jotai";
+import { ShowSearchAtom } from "@/context/atom";
 
-const SearchArea = ({ setShowSearch }: any) => {
+const SearchArea = () => {
+    const [ShowSearch, setShowSearch] = useAtom(ShowSearchAtom);
+
     const [inputValue, setInputValue] = useState<string>('');
     const [searchedStories, setSearchedStories] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
@@ -51,7 +55,7 @@ const SearchArea = ({ setShowSearch }: any) => {
                     ) : (
                         <>
                             {searchedStories?.map((story: any, index: number) => (
-                                <StoryDetails setShowSearch={setShowSearch} key={index} story={story} />
+                                <StoryDetails key={index} story={story} />
                             ))}
                         </>
                     )
