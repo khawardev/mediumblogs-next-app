@@ -1,5 +1,6 @@
 'use client'
 import { addToFav, checkFav } from "@/actions/favorite";
+import { getUser } from "@/actions/user";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CgSpinner } from "react-icons/cg";
@@ -7,16 +8,23 @@ import { mutate } from "swr";
 
 const FavComp = ({ storyId, favStatus }: any) => {
     const [loading, setloading] = useState<boolean>(false);
-    const { userParams } = useParams();
+    const [userFromDb, setUsrfromDb] = useState<any>()
+
     const FavStory = async (e: any) => {
         setloading(true)
         e.preventDefault();
         e.stopPropagation();
         await addToFav(storyId);
-        mutate([userParams, false]);
+        mutate(userFromDb?.id);
         mutate(storyId);
     };
     useEffect(() => {
+        const fetchuser = async () => {
+            const userfromDb: any = await getUser();
+            setUsrfromDb(userfromDb);
+        }
+        fetchuser();
+
         setloading(false)
     }, [favStatus]);
 
