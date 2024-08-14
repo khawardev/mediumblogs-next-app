@@ -27,7 +27,7 @@ export default function RootLayout({
           </head>
           <body className={` relative bg-[#FFFFFF]`}>
             <Header />
-            <div className=" pt-[77px]  pb-0">
+            <div className=" md:pt-[77px] pt-[128px]   pb-0">
               {children}
               <Toaster />
             </div>
