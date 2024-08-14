@@ -24,21 +24,23 @@ const ProfileDetails = ({ userParams }: any) => {
         setActiveTab(tab);
     };
     const { publishedStories, draftStories, savedStories } = useProfileData({ userParams });
-    const stories = Array?.isArray(publishedStories) ? publishedStories.sort((a: any, b: any) => new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()) : [];
+    const publishSortedStories = Array?.isArray(publishedStories) ? publishedStories.sort((a: any, b: any) => new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()) : [];
+    const draftSortedStories = Array?.isArray(draftStories) ? draftStories.sort((a: any, b: any) => new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()) : [];
+    const favSortedStories = Array?.isArray(savedStories) ? savedStories.sort((a: any, b: any) => new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()) : [];
 
     const renderStories = () => {
         switch (activeTab) {
             case "published":
                 return (
-                    <PublishedStories publishedStories={stories} />
+                    <PublishedStories publishedStories={publishSortedStories} />
                 )
             case "drafts":
                 return (
-                    <DraftStories draftStories={draftStories} />
+                    <DraftStories draftStories={draftSortedStories} />
                 )
             case "saved":
                 return (
-                    <SavedStories savedStories={savedStories} />
+                    <SavedStories savedStories={favSortedStories} />
                 );
             default:
                 return 'Not available';

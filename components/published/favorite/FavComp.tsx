@@ -1,15 +1,20 @@
 'use client'
 import { addToFav, checkFav } from "@/actions/favorite";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CgSpinner } from "react-icons/cg";
+import { mutate } from "swr";
 
 const FavComp = ({ storyId, favStatus }: any) => {
     const [loading, setloading] = useState<boolean>(false);
+    const { userParams } = useParams();
     const FavStory = async (e: any) => {
         setloading(true)
         e.preventDefault();
         e.stopPropagation();
         await addToFav(storyId);
+        mutate([userParams, false]);
+        mutate(storyId);
     };
     useEffect(() => {
         setloading(false)

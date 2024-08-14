@@ -13,6 +13,7 @@ const PublishedStories = ({ publishedStories }: any) => {
             <>
                 {publishedStories?.map((story: any, index: number) => (
                     <StoryDetails key={index} profilepublishedEditDelete={true} story={story} />
+
                 ))}
             </>
         )
