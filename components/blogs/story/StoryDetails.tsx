@@ -25,7 +25,9 @@ const StoryDetails = ({ story, moreFromCreator, profilepublishedEditDelete }: an
             ?
             <PublishedStoryInDetails story={story} favStatus={favStatus} />
             :
-            <StoryInDetails profilepublishedEditDelete={profilepublishedEditDelete} story={story} favStatus={favStatus} />
+            <>
+                <StoryInDetails profilepublishedEditDelete={profilepublishedEditDelete} story={story} favStatus={favStatus} />
+            </>
     );
 
 }

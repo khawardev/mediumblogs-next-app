@@ -3,7 +3,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 const StoryDetailSkeleton = () => {
     return (
         <main className=' sm:px-5  py-8  border-b  w-full'>
-            <main className="flex-between items-center   sm:gap-10 gap-5 " >
+            <main className="sm:flex flex-between flex sm:flex-row flex-col-reverse   sm:gap-10 gap-5 " >
                 <div className=" w-full">
                     <section className="flex items-center gap-3 mb-5">
                         <Skeleton className="w-10 h-10 rounded-full" />
@@ -29,8 +29,8 @@ const StoryDetailSkeleton = () => {
                         </div>
                     </section>
                 </div>
-                <section className='w-[50%]'>
-                    <Skeleton className=" w-full md:h-48 h-20 rounded" />
+                <section className='sm:w-[50%] w-full'>
+                    <Skeleton className=" w-full h-48  rounded" />
                 </section>
             </main>
             <section className=' sm:hidden flex  flex-between gap-2  w-full  text-sm'>

@@ -17,10 +17,20 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete }: any) =
 
     return (
         <main className="sm:px-5 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75 " onClick={() => router.push(`/published/${story?.id}`)}>
-            <main className="flex-between  sm:gap-10 gap-5 " >
+            <main className="sm:flex flex-between flex sm:flex-row flex-col-reverse sm:gap-10 gap-5 " >
                 <section className=" space-y-5 w-full" >
                     <div className="sm:space-y-3  space-y-5  " >
+                        {profilepublishedEditDelete &&
+                            <>
+                                <div className=" sm:hidden flex items-center gap-2">
+                                    <Button size={'xs'} variant={'outline'} className=" w-full sohne font-bold transition-all ease-in rounded-full  px-4 flex-center gap-2 "><PencilLine size={'14'} strokeWidth={2.8} />Edit</Button>
+                                    <DeleteDialog storyId={story?.id} />
+                                </div>
+                            </>
+
+                        }
                         <section className=" flex  items-center gap-8">
+
                             <section className="flex  items-center gap-3">
                                 <Avatar className="w-10 h-10 border sohne font-bold">
                                     <AvatarImage src={story?.auther?.image} />
@@ -33,7 +43,7 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete }: any) =
                             </section>
                             {profilepublishedEditDelete &&
                                 <>
-                                    <div className="   flex items-center gap-2">
+                                    <div className=" sm:flex hidden items-center gap-2">
                                         <Button size={'xs'} variant={'outline'} className="sohne font-bold transition-all ease-in rounded-full  px-4 flex-center gap-2 "><PencilLine size={'14'} strokeWidth={2.8} />Edit</Button>
                                         <DeleteDialog storyId={story?.id} />
                                     </div>
@@ -46,7 +56,7 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete }: any) =
                             <div className="markdown-body sohne leading-5  text-muted-foreground line-clamp-2" dangerouslySetInnerHTML={{ __html: result?.paragraph || '' }} />
                         </section>
                     </div>
-                    <section className=" sm:flex hidden flex-between gap-2  w-full  text-sm  " >
+                    <section className="  sm:flex hidden  flex-between gap-2  w-full  text-sm  " >
                         <StoryTags story={story} limit={2} />
                         <div className="flex-center gap-2 ">
                             <FavComp favStatus={favStatus} storyId={story?.id} />
@@ -54,8 +64,8 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete }: any) =
                         </div>
                     </section>
                 </section>
-                <section className=" w-[50%] flex flex-row-reverse   "  >
-                    <Image className=" rounded border  sohne  " src={result?.imageUrl ? result?.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637'} quality={100} alt="blog image" width={1000} height={1000} />
+                <section className="  sm:w-[50%] w-full  "  >
+                    <Image className=" rounded-md border  sohne  " src={result?.imageUrl ? result?.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637'} quality={100} alt="blog image" width={1000} height={1000} />
                 </section>
             </main>
             <section className=" sm:hidden flex mt-4 flex-between gap-2  w-full    text-sm ">
