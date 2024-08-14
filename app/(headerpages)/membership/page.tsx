@@ -12,10 +12,10 @@ const Membership = () => {
             <Whymembership />
             <Sayings />
             <Plans />
-                <section className="mobile_center py-28 text-center   ">
-                <p className=" md:text-7xl text-5xl mb-7">Unlock a world of wisdom</p>
-                    <Button className=' sohne  font-bold rounded-full   text-base '>Get started</Button>
-                </section>
+            <section className="mobile_center py-28 text-center   ">
+                <p className=" md:text-6xl text-4xl mb-7">Unlock a world of wisdom</p>
+                <Button className=' sohne  font-bold rounded-full   text-base '>Get started</Button>
+            </section>
 
         </main>
     );

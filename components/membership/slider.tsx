@@ -16,7 +16,7 @@ const Slider = () => {
             setTimeout(() => {
                 setCurrentIndex((prevIndex) => (prevIndex + 1) % data?.length);
                 setOpacity(1); // Start the fade-in effect
-            }, 350); // Adjust the duration to match your transition duration
+            }, 500); // Adjust the duration to match your transition duration
         }, 3000);
         return () => clearInterval(sliderInterval);
     }, [currentIndex, data?.length]);
@@ -26,7 +26,7 @@ const Slider = () => {
             {data?.map((item, slideIndex) => (
                 <div key={slideIndex} style={{
                     opacity: currentIndex === slideIndex ? opacity : 0,
-                    transition: 'opacity 0.2s ease-in-out',
+                    transition: 'opacity 0.8s ease-in-out',
 
                 }} className="select-none ">
                     {currentIndex === slideIndex && (
@@ -34,16 +34,16 @@ const Slider = () => {
                             <Image className=' ' width={1000} height={1000} src={item.imgUrl} alt={item.title} />
                             <section className=' p-6  '>
                                 <div className='flex mb-3'>
-                                    <span className="sohne flex-center gap-1 text-sm  bg-yellow-400 py-[5px] px-3 rounded-full   "><PiStarFourFill size={10} />{item.membershipTag}</span>
+                                    <span className="sohne flex-center gap-1 text-sm  bg-yellow-400 py-[5px] px-3 rounded-full font-bold  "><PiStarFourFill size={10} />{item.membershipTag}</span>
                                 </div>
                                 <div className='lg:h-[170px] h-[200px]'>
-                                    <h2 className=' lg:text-3xl text-3xl py-5 '>{item.title}</h2>
+                                    <h2 className='  text-2xl py-5 '>{item.title}</h2>
                                 </div>
                                 <div className=" flex items-start gap-4 text-sm  ">
                                     <Image width={50} height={50} src={item.authorImg} alt={item.authorName} className="author-img" />
                                     <div >
                                         <p className='sohne_bold text-sm '>{item.authorName}</p>
-                                        <p className='sohne text-sm '>{item.authorProfession}</p>
+                                        <p className='sohne text-muted-foreground text-sm font-bold '>{item.authorProfession}</p>
                                     </div>
                                 </div>
                             </section>

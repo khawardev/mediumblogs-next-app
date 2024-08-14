@@ -8,12 +8,12 @@ import plans from '@/data/plans.json'; // Adjust the path based on your file str
 const Plans = () => {
     return (
         <main className="border border-r-0 border-t-0 border-l-0 border-black">
-            <div className="mobile_center xl:flex gap-36 py-28 lg:space-y-0 space-y-14 ">
-                <p className=" lg:text-6xl text-5xl ">Membership <br /> plans</p>
+            <div className="mobile_center xl:flex gap-36 lg:py-28 py-16 lg:space-y-0 space-y-14 ">
+                <p className=" lg:text-5xl text-4xl ">Membership plans</p>
                 <section className=" xl:w-[60%]  space-y-14 ">
-                    <section className="text-center">
-                        <p className="text-2xl sohne">Be part of a better internet.</p>
-                        <p className="text-2xl sohne">Get 20% off membership for a limited time.</p>
+                    <section className=" text-center">
+                        <p className="text-xl sohne text-muted-foreground">Be part of a better internet.</p>
+                        <p className="text-xl sohne text-muted-foreground">Get 20% off membership for a limited time.</p>
                     </section>
                     <section className="md:flex gap-10 sohne md:space-y-0 space-y-10">
                         {plans?.map((plan, index) => (
