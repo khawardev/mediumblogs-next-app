@@ -24,12 +24,13 @@ const ProfileDetails = ({ userParams }: any) => {
         setActiveTab(tab);
     };
     const { publishedStories, draftStories, savedStories } = useProfileData({ userParams });
+    const stories = Array?.isArray(publishedStories) ? publishedStories.sort((a: any, b: any) => new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()) : [];
 
     const renderStories = () => {
         switch (activeTab) {
             case "published":
                 return (
-                    <PublishedStories publishedStories={publishedStories} />
+                    <PublishedStories publishedStories={stories} />
                 )
             case "drafts":
                 return (
