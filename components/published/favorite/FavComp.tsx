@@ -1,7 +1,6 @@
 'use client'
-import { addToFav, checkFav } from "@/actions/favorite";
+import { addToFav } from "@/actions/favorite";
 import { getUser } from "@/actions/user";
-import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { CgSpinner } from "react-icons/cg";
 import { mutate } from "swr";
@@ -15,8 +14,8 @@ const FavComp = ({ storyId, favStatus }: any) => {
         e.preventDefault();
         e.stopPropagation();
         await addToFav(storyId);
-        mutate(userFromDb?.id);
         mutate(storyId);
+        mutate(userFromDb?.id);
     };
     useEffect(() => {
         const fetchuser = async () => {
@@ -24,7 +23,6 @@ const FavComp = ({ storyId, favStatus }: any) => {
             setUsrfromDb(userfromDb);
         }
         fetchuser();
-
         setloading(false)
     }, [favStatus]);
 
