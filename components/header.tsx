@@ -17,6 +17,7 @@ import { useAtom } from "jotai"
 import { ShowSearchAtom } from "@/context/atom"
 
 const Header = () => {
+  const [ShowSearch, setShowSearch] = useAtom(ShowSearchAtom);
   const { toast } = useToast()
   const { data, status } = useSession()
   const MakeNewStory = async () => {
@@ -27,7 +28,6 @@ const Header = () => {
       })
     }
   }
-  const [ShowSearch, setShowSearch] = useAtom(ShowSearchAtom);
 
 
 
@@ -88,8 +88,8 @@ const Header = () => {
             />
           </section>
         }
-        {ShowSearch && <SearchArea />}
       </section>
+      {ShowSearch && <SearchArea />}
     </div>
   )
 }

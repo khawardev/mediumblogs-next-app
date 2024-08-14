@@ -1,6 +1,7 @@
+'use client'
 import Loading from "@/components/Loading"
-
 const loading = () => {
+
     return (<Loading />)
 }
 
