@@ -46,7 +46,6 @@ export function DeleteDialog({ storyId }: any) {
         <AlertDialog>
             <AlertDialogTrigger asChild>
                 <Button onClick={(e) => {
-                    e.preventDefault();
                     e.stopPropagation();
                 }} variant={'destructive'} size={'xs'} className="sohne font-bold transition-all ease-in rounded-full  px-5 flex-center gap-1 "><Trash size={'14'} strokeWidth={2.8} />Delete</Button>
             </AlertDialogTrigger>

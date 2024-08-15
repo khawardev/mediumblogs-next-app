@@ -16,7 +16,6 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete }: any) =
     const router = useRouter()
     const publishedRegix: any = checkPublishedRegix(story?.content);
     const GetElemntRegix: any = storyCheckRegix(story?.content);
-    console.log(story?.content, 'GetElemntRegixGetElemntRegix');
 
     return (
         <main className="sm:px-5 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75 " onClick={() => {
