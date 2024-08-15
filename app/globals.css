@@ -75,12 +75,7 @@ h2 {
 h3 {
   font-size: 1.6em;
 }
-.overly {
-  @apply fixed inset-0 z-50 bg-[#FFFFFF]/90;
-}
-.delete_dialog {
-  @apply fixed inset-0    left-[50%] top-[50%] z-50 rounded-lg grid border-black sm:w-full w-11/12 max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200;
-}
+
 @layer base {
   * {
     @apply border-border;

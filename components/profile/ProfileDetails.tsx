@@ -10,6 +10,7 @@ import { useProfileData } from "@/hooks/getProfileData";
 import SavedStories from "../blogs/story/storyDetail/SavedStories";
 import { CreateStory } from "@/actions/story";
 import { useToast } from "../ui/use-toast";
+import { DeleteDialog } from "@/shadcn/DeleteDialog";
 
 type Blogsprops = {
     draftStories?: any,
@@ -59,6 +60,7 @@ const ProfileDetails = ({ userParams }: any) => {
         <div className="mobile_center_less_contract md:py-12 py-8">
             <section className="flex-between mb-14">
                 <p className="md:text-5xl text-3xl sohne_bold">Your Stories</p>
+                <DeleteDialog />
                 <button onClick={MakeNewStory} className="flex-center gap-2   text-gray-500 ">
                     <SquarePen strokeWidth={1.25} size={18} />
                     <p className="  md:font-normal font-bold  sohne ">Write</p>
