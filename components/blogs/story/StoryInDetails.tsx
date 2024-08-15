@@ -10,10 +10,13 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { DeleteDialog } from "@/shadcn/DeleteDialog";
 import { PencilLine } from "lucide-react";
+import { checkPublishedRegix } from "@/lib/checkPublishedRegix";
 
 const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete }: any) => {
     const router = useRouter()
-    const result: any = storyCheckRegix(story?.content);
+    const publishedRegix: any = checkPublishedRegix(story?.content);
+    const GetElemntRegix: any = storyCheckRegix(story?.content);
+    console.log(story?.content, 'GetElemntRegixGetElemntRegix');
 
     return (
         <main className="sm:px-5 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75 " onClick={() => {
@@ -54,8 +57,8 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete }: any) =
                             }
                         </section>
                         <section className="sm:space-y-3 space-y-1">
-                            <div className="markdown-body  sm:text-2xl text-xl sohne_bold font-bold line-clamp-1 " dangerouslySetInnerHTML={{ __html: result?.heading || '' }} />
-                            <div className="markdown-body sohne leading-5  text-muted-foreground line-clamp-2" dangerouslySetInnerHTML={{ __html: result?.paragraph || '' }} />
+                            <div className="markdown-body  sm:text-2xl text-xl sohne_bold font-bold line-clamp-1 " dangerouslySetInnerHTML={{ __html: GetElemntRegix?.heading || '' }} />
+                            <div className="markdown-body sohne leading-5  text-muted-foreground line-clamp-2" dangerouslySetInnerHTML={{ __html: GetElemntRegix?.paragraph || '' }} />
                         </section>
                     </div>
                     <section className="  sm:flex hidden     items-center justify-between gap-2  w-full  text-sm  " >
@@ -67,7 +70,7 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete }: any) =
                     </section>
                 </section>
                 <section className="  sm:w-[50%] w-full  "  >
-                    <Image className=" rounded-md border  sohne  " src={result?.imageUrl ? result?.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637'} quality={100} alt="blog image" width={1000} height={1000} />
+                    <Image className=" rounded-md border  sohne  " src={GetElemntRegix?.imageUrl ? GetElemntRegix?.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637'} quality={100} alt="blog image" width={1000} height={1000} />
                 </section>
             </main>
             <section className=" sm:hidden    flex items-center justify-between gap-2  w-full  mt-4  text-sm ">

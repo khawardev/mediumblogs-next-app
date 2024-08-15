@@ -6,7 +6,8 @@ import { handleUploadcare } from "@/lib/uploadcareUpload";
 import '@/public/assets/styles/markdown.css';
 import { useAtom } from "jotai";
 import { savingAtom } from "@/context/atom";
-import { updateStory } from "@/actions/story";
+import { deleteStoryById, updateStory } from "@/actions/story";
+import { usePathname } from "next/navigation";
 
 interface Props {
     storyID: string;
@@ -17,6 +18,8 @@ export default function AddNewStory({ storyID, storyContent }: Props) {
     const [markdownContent, setmarkdownContent] = useState('');
     const [saving, setSaving] = useAtom(savingAtom);
     const [data, setData] = useState("");
+    console.log(markdownContent, 'markdownContentmarkdownContent');
+    const path = usePathname();
 
     useEffect(() => {
         const convertMarkdown = async () => {
@@ -29,13 +32,18 @@ export default function AddNewStory({ storyID, storyContent }: Props) {
     const handleSave = async () => {
         setSaving(true);
         try {
-            const update = await updateStory(storyID, data);
-            setSaving(false);
+            if (markdownContent === '') {
+                await deleteStoryById(storyID, path);
+            } else {
+                await updateStory(storyID, data);
+            }
         } catch (error) {
-            console.log('error in saving')
+            console.log('Error in saving:', error);
+        } finally {
+            setSaving(false);
         }
+    };
 
-    }
 
     return (
         <div>

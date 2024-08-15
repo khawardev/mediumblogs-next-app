@@ -40,38 +40,34 @@ export const storyCheckRegix = (htmlContent: any) => {
     }
   }
 
-  // Extract the first image URL and its next sibling if it's a valid paragraph or heading
+  // Extract the first image and separate it from the text within the same <p> tag
   let firstValidParagraph = null;
   let firstImageUrl = null;
-  const images: any = Array.from(doc.querySelectorAll("p > img"));
-  if (images.length > 0) {
-    firstImageUrl = images[0].src;
+  const paragraphs = Array.from(doc.querySelectorAll("p"));
+  for (const paragraph of paragraphs) {
+    const images = paragraph.querySelectorAll("img");
 
-    const nextSibling = images[0].parentElement?.nextElementSibling;
+    if (images.length > 0) {
+      firstImageUrl = images[0].src;
 
-    if (
-      nextSibling &&
-      (nextSibling.tagName === "P" ||
-        ["H1", "H2", "H3"].includes(nextSibling.tagName))
-    ) {
-      const outerHTML = nextSibling.outerHTML;
-      if (
-        validParagraphFormats.some((format) => outerHTML.startsWith(format)) ||
-        validHeadingFormats.some((format) => outerHTML.startsWith(format))
-      ) {
-        firstValidParagraph = nextSibling.innerHTML;
-      }
-    }
-  }
+      // Separate the text that follows the image within the same <p> tag
+      const textNodes = Array.from(paragraph.childNodes).filter(
+        (node) => node.nodeType === Node.TEXT_NODE && node.textContent?.trim()
+      );
 
-  // If no valid paragraph found after image, extract and validate the first paragraph not containing an image
-  if (!firstValidParagraph) {
-    const paragraphs = Array.from(doc.querySelectorAll("p"));
-    for (const paragraph of paragraphs) {
-      if (paragraph.querySelector("img")) {
-        continue;
+      // Combine text nodes into a single paragraph content
+      if (textNodes.length > 0) {
+        firstValidParagraph = textNodes
+          .map((node) => node.textContent || "") // Provide a fallback empty string in case of null
+          .join(" ");
       }
 
+      // If there's valid paragraph text, break the loop
+      if (firstValidParagraph) {
+        break;
+      }
+    } else {
+      // If the paragraph doesn't contain an image, and no valid paragraph has been found yet, check if it's valid
       const outerHTML = paragraph.outerHTML;
       if (
         validParagraphFormats.some((format) => outerHTML.startsWith(format))
@@ -82,7 +78,6 @@ export const storyCheckRegix = (htmlContent: any) => {
     }
   }
 
-  // Check if valid content exists
   if (!firstValidHeading) {
     return { error: "No valid headings found" };
   }
