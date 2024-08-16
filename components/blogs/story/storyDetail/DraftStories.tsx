@@ -14,7 +14,7 @@ const DraftStories = ({ draftStories }: any) => {
             <>
 
                 {draftStories?.map((story: any, index: number) => (
-                    <StoryDetails key={index} profilepublishedEditDelete={true} story={story} />
+                    <StoryDetails profileDraftLink={'/blogsss'} key={index} profilepublishedEditDelete={true} story={story} />
                 ))}
             </>
         )

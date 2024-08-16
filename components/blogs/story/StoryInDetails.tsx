@@ -12,7 +12,7 @@ import { DeleteDialog } from "@/shadcn/DeleteDialog";
 import { PencilLine } from "lucide-react";
 import { checkPublishedRegix } from "@/lib/checkPublishedRegix";
 
-const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete }: any) => {
+const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete, profileDraftLink }: any) => {
     const router = useRouter()
     const GetElemntRegix: any = storyCheckRegix(story?.content);
 
@@ -20,7 +20,7 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete }: any) =
         <>
 
             <main className="sm:px-5 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75 " onClick={() => {
-                router.push(`/published/${story?.id}`);
+                router.push(profileDraftLink ? profileDraftLink : `/published/${story?.id}`);
             }}>
                 <main className="sm:flex flex-between flex sm:flex-row flex-col-reverse sm:gap-10 gap-5 " >
                     <section className=" space-y-5 w-full" >
