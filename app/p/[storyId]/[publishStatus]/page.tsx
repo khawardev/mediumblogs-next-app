@@ -4,8 +4,11 @@ import NavbarStory from '@/components/story/NavbarStory'
 import AddNewStory from '@/components/story/AddNewStory';
 import React from 'react'
 
-const StoryID = async ({ params }: { params: { storyId: string } }) => {
-    const story: any = await getStorybyId(params?.storyId, false);
+const StoryID = async ({ params }: { params: { storyId: string, publishStatus: any } }) => {
+    console.log(params?.publishStatus, 'publishstatuspublishstatus');
+    console.log(!!params?.publishStatus, '!!!!!!!!publishstatuspublishstatus');
+
+    const story: any = await getStorybyId(params?.storyId, !!params?.publishStatus);
     const user: any = await getUser();
 
     return (

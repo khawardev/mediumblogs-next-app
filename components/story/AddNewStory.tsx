@@ -45,45 +45,45 @@ export default function AddNewStory({ storyID, storyContent }: Props) {
         }
     };
 
-
     return (
         <div>
-
-
-            {/* {storyContent ? (
-                <div className="markdown-body space-y-5" dangerouslySetInnerHTML={{ __html: storyContent }} />
-            ) : ( */}
-            <Editor
-                defaultValue={markdownContent}
-                disableLocalStorage={true}
-                onDebouncedUpdate={handleSave}
-                debounceDuration={3000}
-                onUpdate={(editor) => {
-                    setmarkdownContent(editor?.storage.markdown.getMarkdown());
-                }}
-                handleImageUpload={async (file) => {
-                    const result: any = await handleUploadcare(file);
-                    if (result) {
-                        return result.results[result.results.length - 1].originalFileUrl;
-                    }
-                    return "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637";
-                }}
-                className='w-full  shadow-none border-none rounded-none   '
-            />
-            {/* )} */}
-
-
+            {storyContent ? (
+                <Editor
+                    defaultValue={storyContent}
+                    disableLocalStorage={true}
+                    onDebouncedUpdate={handleSave}
+                    debounceDuration={3000}
+                    onUpdate={(editor) => {
+                        setmarkdownContent(editor?.storage.markdown.getMarkdown());
+                    }}
+                    handleImageUpload={async (file) => {
+                        const result: any = await handleUploadcare(file);
+                        if (result) {
+                            return result.results[result.results.length - 1].originalFileUrl;
+                        }
+                        return "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637";
+                    }}
+                    className='w-full  shadow-none border-none rounded-none   '
+                />
+            ) : (
+                <Editor
+                    defaultValue={markdownContent}
+                    disableLocalStorage={true}
+                    onDebouncedUpdate={handleSave}
+                    debounceDuration={3000}
+                    onUpdate={(editor) => {
+                        setmarkdownContent(editor?.storage.markdown.getMarkdown());
+                    }}
+                    handleImageUpload={async (file) => {
+                        const result: any = await handleUploadcare(file);
+                        if (result) {
+                            return result.results[result.results.length - 1].originalFileUrl;
+                        }
+                        return "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637";
+                    }}
+                    className='w-full  shadow-none border-none rounded-none   '
+                />
+            )}
         </div>
     );
 }
-
-//  <hr className=" my-3" />
-//       <div className="markdown-body space-y-5" dangerouslySetInnerHTML={{ __html: data }} />
-//       <hr className=" my-3" />
-//       <div>
-//         {markdownContent}
-//       </div>
-//       <hr className=" my-3" />
-//       <div>
-//         {data}
-//       </div>

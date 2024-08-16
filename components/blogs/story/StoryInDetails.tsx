@@ -2,7 +2,7 @@
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { storyCheckRegix } from "@/lib/storyCheckRegix";
 import Image from "next/image";
-import { useRouter } from 'next/navigation'
+import { redirect, useRouter } from 'next/navigation'
 import FavComp from "@/components/published/favorite/FavComp";
 import ShareComp from "@/components/published/share/ShareComp";
 import StoryTags from "./StoryTags";
@@ -15,7 +15,11 @@ import { checkPublishedRegix } from "@/lib/checkPublishedRegix";
 const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete, profileDraftLink }: any) => {
     const router = useRouter()
     const GetElemntRegix: any = storyCheckRegix(story?.content);
-
+    const Edit = async (e: any, storyID: any) => {
+        e.stopPropagation();
+        e.preventDefault();
+        redirect(`/p/${storyID}/${true}`);
+    }
     return (
         <>
 
@@ -49,7 +53,7 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete, profileD
                                 {profilepublishedEditDelete &&
                                     <>
                                         <div className=" sm:flex hidden items-center gap-2">
-                                            <Button size={'xs'} variant={'outline'} className="sohne font-bold transition-all ease-in rounded-full  px-4 flex-center gap-2 "><PencilLine size={'14'} strokeWidth={2.8} />Edit</Button>
+                                            <Button onClick={(e) => (Edit(e, story?.id))} size={'xs'} variant={'outline'} className="sohne font-bold transition-all ease-in rounded-full  px-4 flex-center gap-2 "><PencilLine size={'14'} strokeWidth={2.8} />Edit</Button>
                                             <DeleteDialog storyId={story?.id} />
                                         </div>
                                     </>

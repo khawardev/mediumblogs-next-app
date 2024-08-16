@@ -23,7 +23,7 @@ export const CreateStory = async () => {
     };
   }
 
-  redirect(`/p/${newStory[0].id}`);
+  redirect(`/p/${newStory[0].id}/${false}`);
 };
 
 export const getStorybyId = async (id: string, publish: boolean) => {
@@ -77,7 +77,7 @@ export const updateStory = async (storyID: string, content: any) => {
     };
   }
 
-  revalidatePath(`/p/${storyID}`);
+  revalidatePath(`/p/${storyID}/${true}`);
 
   return { result: updatedStory };
 };
