@@ -16,26 +16,22 @@ const ModalComp = ({ isModalOpen, storyId, setIsModalOpen }: any) => {
     const deleteStory = async (e: any, storyID: any) => {
         e.stopPropagation();
         e.preventDefault();
-
-
         setloading(true)
         const Delete = await deleteStoryById(storyID, path)
         const userfromDb: any = await getUser();
         mutate(userfromDb?.id);
         if (Delete === "DELETE") {
             setloading(false)
-            setIsModalOpen(false);
             toast({
                 description: 'Story is deleted successfully',
             });
-
+            setIsModalOpen(false);
         } else {
             setloading(false)
-            setIsModalOpen(false);
             toast({
                 description: 'Error deleting story',
             });
-
+            setIsModalOpen(false);
         }
     }
     return (

@@ -13,16 +13,12 @@ const FavComp = ({ storyId, favStatus }: any) => {
         setloading(true)
         e.preventDefault();
         e.stopPropagation();
+        const userfromDb: any = await getUser();
         await addToFav(storyId);
-        mutate(userFromDb?.id);
+        mutate(userfromDb?.id);
         mutate(storyId);
     };
     useEffect(() => {
-        const fetchuser = async () => {
-            const userfromDb: any = await getUser();
-            setUsrfromDb(userfromDb);
-        }
-        fetchuser();
         setloading(false)
     }, [favStatus]);
 

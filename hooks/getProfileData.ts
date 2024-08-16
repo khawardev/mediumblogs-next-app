@@ -17,7 +17,7 @@ export const useProfileData = ({ userParams }: any) => {
     {
       revalidateOnFocus: true,
       revalidateOnMount: true,
-      dedupingInterval: Number.MAX_SAFE_INTEGER,
+      // dedupingInterval: Number.MAX_SAFE_INTEGER,
     }
   );
   const { data: draftStories, error: draftError } = useSWR(
@@ -26,7 +26,7 @@ export const useProfileData = ({ userParams }: any) => {
     {
       revalidateOnFocus: true,
       revalidateOnMount: true,
-      dedupingInterval: Number.MAX_SAFE_INTEGER,
+      // dedupingInterval: Number.MAX_SAFE_INTEGER,
     }
   );
   const { data: savedStories, error: savedError } = useSWR(
@@ -35,7 +35,7 @@ export const useProfileData = ({ userParams }: any) => {
     {
       revalidateOnFocus: true,
       revalidateOnMount: true,
-      dedupingInterval: Number.MAX_SAFE_INTEGER,
+      // dedupingInterval: Number.MAX_SAFE_INTEGER,
     }
   );
 
