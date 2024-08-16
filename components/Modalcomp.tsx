@@ -17,9 +17,10 @@ const ModalComp = ({ isModalOpen, storyId, setIsModalOpen }: any) => {
         e.stopPropagation();
         e.preventDefault();
         setloading(true)
-        const Delete = await deleteStoryById(storyID, path)
         const userfromDb: any = await getUser();
-        mutate(userfromDb?.id);
+        const Delete = await deleteStoryById(storyID, path)
+        mutate(userfromDb?.id, false);
+        mutate(userfromDb?.id, true);
         if (Delete === "DELETE") {
             setloading(false)
             toast({

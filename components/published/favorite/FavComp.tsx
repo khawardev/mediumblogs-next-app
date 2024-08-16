@@ -7,7 +7,6 @@ import { mutate } from "swr";
 
 const FavComp = ({ storyId, favStatus }: any) => {
     const [loading, setloading] = useState<boolean>(false);
-    const [userFromDb, setUsrfromDb] = useState<any>()
 
     const FavStory = async (e: any) => {
         setloading(true)
