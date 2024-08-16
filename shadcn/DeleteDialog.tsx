@@ -26,7 +26,7 @@ export function DeleteDialog({ storyId }: any) {
             >
                 <Trash size={'14'} strokeWidth={2.8} /> Delete
             </Button>
-            <ModalComp storyId={storyId} isModalOpen={isModalOpen} handleModal={handleModal} />
+            <ModalComp setIsModalOpen={setIsModalOpen} storyId={storyId} isModalOpen={isModalOpen} />
         </>
     );
 }

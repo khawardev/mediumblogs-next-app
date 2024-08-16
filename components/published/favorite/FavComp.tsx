@@ -14,8 +14,8 @@ const FavComp = ({ storyId, favStatus }: any) => {
         e.preventDefault();
         e.stopPropagation();
         await addToFav(storyId);
-        mutate(storyId);
         mutate(userFromDb?.id);
+        mutate(storyId);
     };
     useEffect(() => {
         const fetchuser = async () => {

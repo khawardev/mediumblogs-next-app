@@ -14,7 +14,6 @@ import { checkPublishedRegix } from "@/lib/checkPublishedRegix";
 
 const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete }: any) => {
     const router = useRouter()
-    const publishedRegix: any = checkPublishedRegix(story?.content);
     const GetElemntRegix: any = storyCheckRegix(story?.content);
 
     return (
