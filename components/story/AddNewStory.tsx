@@ -32,11 +32,12 @@ export default function AddNewStory({ storyID, storyContent }: Props) {
     const handleSave = async () => {
         setSaving(true);
         try {
-            if (markdownContent === '') {
-                await deleteStoryById(storyID, path);
-            } else {
-                await updateStory(storyID, data);
-            }
+            // if (markdownContent === '') {
+            //     await deleteStoryById(storyID, path);
+            // } else {
+            //     await updateStory(storyID, data);
+            // }
+            await updateStory(storyID, data);
         } catch (error) {
             console.log('Error in saving:', error);
         } finally {

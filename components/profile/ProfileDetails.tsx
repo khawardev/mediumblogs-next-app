@@ -28,6 +28,8 @@ const ProfileDetails = ({ userParams }: any) => {
     const publishSortedStories = Array?.isArray(publishedStories) ? publishedStories.sort((a: any, b: any) => new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()) : [];
     const draftSortedStories = Array?.isArray(draftStories) ? draftStories.sort((a: any, b: any) => new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()) : [];
     const favSortedStories = Array?.isArray(savedStories) ? savedStories.sort((a: any, b: any) => new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()) : [];
+    console.log(publishedStories, 'publishedStories');
+    console.log(draftStories, 'draftStories');
 
     const renderStories = () => {
         switch (activeTab) {
@@ -60,7 +62,7 @@ const ProfileDetails = ({ userParams }: any) => {
         <div className="mobile_center_less_contract md:py-12 py-8">
             <section className="flex-between mb-14">
                 <p className="md:text-5xl text-3xl sohne_bold">Your Stories</p>
-                <DeleteDialog />
+
                 <button onClick={MakeNewStory} className="flex-center gap-2   text-gray-500 ">
                     <SquarePen strokeWidth={1.25} size={18} />
                     <p className="  md:font-normal font-bold  sohne ">Write</p>

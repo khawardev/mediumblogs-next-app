@@ -9,6 +9,8 @@ export function DeleteDialog({ storyId }: any) {
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
     const handleModal = (e: any) => {
+        e.stopPropagation();
+        e.preventDefault();
         setIsModalOpen((prev) => !prev);
     };
 
@@ -16,9 +18,7 @@ export function DeleteDialog({ storyId }: any) {
         <>
             <Button
                 onClick={(e) => {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    setIsModalOpen(true);
+                    handleModal(e)
                 }}
                 variant={'destructive'}
                 size={'xs'}
