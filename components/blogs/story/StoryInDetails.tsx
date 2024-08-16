@@ -2,7 +2,7 @@
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
 import { storyCheckRegix } from "@/lib/storyCheckRegix";
 import Image from "next/image";
-import { redirect, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import FavComp from "@/components/published/favorite/FavComp";
 import ShareComp from "@/components/published/share/ShareComp";
 import StoryTags from "./StoryTags";
@@ -18,7 +18,7 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete, profileD
     const Edit = async (e: any, storyID: any) => {
         e.stopPropagation();
         e.preventDefault();
-        redirect(`/p/${storyID}/${true}`);
+        router.push(`/p/${storyID}/${true}`);
     }
     return (
         <>

@@ -8,7 +8,7 @@ const StoryID = async ({ params }: { params: { storyId: string, publishStatus: a
     console.log(params?.publishStatus, 'publishstatuspublishstatus');
     console.log(!!params?.publishStatus, '!!!!!!!!publishstatuspublishstatus');
 
-    const story: any = await getStorybyId(params?.storyId, !!params?.publishStatus);
+    const story: any = await getStorybyId(params?.storyId, false);
     const user: any = await getUser();
 
     return (
