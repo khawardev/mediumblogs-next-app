@@ -10,12 +10,6 @@ import SavedStories from "../blogs/story/storyDetail/SavedStories";
 import { CreateStory } from "@/actions/story";
 import { useToast } from "../ui/use-toast";
 
-type Blogsprops = {
-    draftStories?: any,
-    publishedStories: any,
-    savedStories?: any,
-}
-
 const ProfileDetails = ({ userParams }: any) => {
     const { toast } = useToast()
     const [activeTab, setActiveTab] = useState<string>("published");
