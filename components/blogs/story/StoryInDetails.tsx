@@ -32,7 +32,7 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete, profileD
                             {profilepublishedEditDelete &&
                                 <>
                                     <div className=" sm:hidden flex items-center gap-2">
-                                        <Button size={'xs'} variant={'outline'} className=" w-full sohne font-bold transition-all ease-in rounded-full  px-4 flex-center gap-2 "><PencilLine size={'14'} strokeWidth={2.8} />Edit</Button>
+                                        <Button onClick={(e) => (Edit(e, story?.id))} size={'xs'} variant={'outline'} className=" w-full sohne font-bold transition-all ease-in rounded-full  px-4 flex-center gap-2 "><PencilLine size={'14'} strokeWidth={2.8} />Edit</Button>
                                         <DeleteDialog storyId={story?.id} />
                                     </div>
                                 </>
