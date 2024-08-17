@@ -1,9 +1,9 @@
-import React from 'react'
 import StoryDetails from '../StoryDetails';
 import { Button } from '@/components/ui/button';
 import { DeleteDialog } from '@/shadcn/DeleteDialog';
 
 const DraftStories = ({ draftStories }: any) => {
+
     return (
 
         !Array.isArray(draftStories) || draftStories.length === 0 ? (
@@ -14,7 +14,7 @@ const DraftStories = ({ draftStories }: any) => {
             <>
 
                 {draftStories?.map((story: any, index: number) => (
-                    <StoryDetails profileDraftLink={'/blogsss'} key={index} profilepublishedEditDelete={true} story={story} />
+                    <StoryDetails profileDraftLink={'draft'} key={index} profilepublishedEditDelete={true} story={story} />
                 ))}
             </>
         )

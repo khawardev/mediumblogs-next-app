@@ -18,14 +18,14 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete, profileD
     const Edit = async (e: any, storyID: any) => {
         e.stopPropagation();
         e.preventDefault();
-        router.push(`/p/${storyID}/${true}`);
+        { profileDraftLink ? router.push(`/p/${storyID}/${false}`) : router.push(`/p/${storyID}/${true}`) }
     }
     return (
         <>
 
-            <main className="sm:px-5 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75 " onClick={() => {
-                router.push(profileDraftLink ? profileDraftLink : `/published/${story?.id}`);
-            }}>
+            <main className="sm:px-5 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75 "
+                onClick={() => { !profileDraftLink && router.push(`/published/${story?.id}`) }}
+            >
                 <main className="sm:flex flex-between flex sm:flex-row flex-col-reverse sm:gap-10 gap-5 " >
                     <section className=" space-y-5 w-full" >
                         <div className="sm:space-y-3  space-y-5  " >

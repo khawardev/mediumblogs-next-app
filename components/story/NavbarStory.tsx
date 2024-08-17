@@ -7,7 +7,7 @@ import { useAtom } from "jotai";
 import { StoryShadcnDialog } from "@/components/story/StoryShadcnDialog";
 import { CgSpinner } from "react-icons/cg";
 
-const NavbarStory = ({ storyID, currentUserName, storyContent }: { storyID: string, currentUserName: string, storyContent: string }) => {
+const NavbarStory = ({ storyID, currentUserName, storyContent, publishStatus }: { storyID: string, currentUserName: string, storyContent: string, publishStatus: boolean }) => {
   const [saving, setSaving] = useAtom(savingAtom);
   const [Showtags, setShowtags] = useState(false);
 
@@ -28,9 +28,9 @@ const NavbarStory = ({ storyID, currentUserName, storyContent }: { storyID: stri
           }
           </p>
         </section>
-
-        <StoryShadcnDialog storyContent={storyContent} storyID={storyID} username={currentUserName} setShowtags={setShowtags} title="Publish" className=" h-9 px-5 py-2  border hover:border-[#1A8917]  hover:text-white hover:bg-[#1A8917]   sohne_bold" />
-
+        {publishStatus === true &&
+          <StoryShadcnDialog storyContent={storyContent} storyID={storyID} username={currentUserName} setShowtags={setShowtags} title="Publish" className=" h-9 px-5 py-2  border hover:border-[#1A8917]  hover:text-white hover:bg-[#1A8917]   sohne_bold" />
+        }
       </section>
 
 

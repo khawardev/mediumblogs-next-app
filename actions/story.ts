@@ -45,7 +45,11 @@ export const getStorybyId = async (id: string, publish: boolean) => {
   return storydetails;
 };
 
-export const updateStory = async (storyID: string, content: any) => {
+export const updateStory = async (
+  storyID: string,
+  content: any,
+  publishStatus: boolean
+) => {
   if (!storyID) {
     return {
       error: "Please Fill all fields",
@@ -77,7 +81,7 @@ export const updateStory = async (storyID: string, content: any) => {
     };
   }
 
-  revalidatePath(`/p/${storyID}/${true}`);
+  revalidatePath(`/p/${storyID}/${publishStatus}`);
 
   return { result: updatedStory };
 };
