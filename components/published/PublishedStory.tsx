@@ -17,7 +17,9 @@ import StoryDetails from '../blogs/story/StoryDetails';
 
 
 const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favStatus, noOfComments, currentUser, allClaps, userParams }: any) => {
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
     const pathname = usePathname();
     const GetElemntRegix: any = storyCheckRegix(publishedStory?.content);
     const publishedRegix: any = checkPublishedRegix(publishedStory?.content);

@@ -9,7 +9,7 @@ const Loading = () => {
         setShowSearch(false)
     }, []);
     return (
-        <main className='absolute z-50 bg-[#FFFFFF] h-[88vh] w-full flex-center'>
+        <main className='absolute z-50 bg-[#FFFFFF] md:h-[89.5vh] h-[81.5vh] w-full flex-center'>
             <Mediumsvg clasName="animate-pulse  " size={30} />
         </main>
     )
