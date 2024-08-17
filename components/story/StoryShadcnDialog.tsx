@@ -99,7 +99,7 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
                             <Button disabled={!topics?.length} onClick={publishStoryFunc} variant="green" size="sm" className="  sohne font-bold  tracking-wider" >
                                 {publishing ? <div className=" flex-center gap-2">
                                     Publishing
-                                    <CgSpinner className="animate-spin" size={20} />
+                                    <CgSpinner className="animate-spin" size={16} />
                                 </div> : 'Publish Now'
                                 }
                             </Button>

@@ -22,13 +22,13 @@ const NavbarStory = ({ storyID, currentUserName, storyContent, publishStatus }: 
           <p className=" text-sm sohne font-bold  ">{saving ?
             <div className=" flex-center gap-2">
               Saving
-              <CgSpinner className="animate-spin" size={20} />
+              <CgSpinner className="animate-spin" size={16} />
             </div> :
             'Saved'
           }
           </p>
         </section>
-        {publishStatus === true &&
+        {publishStatus !== true &&
           <StoryShadcnDialog storyContent={storyContent} storyID={storyID} username={currentUserName} setShowtags={setShowtags} title="Publish" className=" h-9 px-5 py-2  border hover:border-[#1A8917]  hover:text-white hover:bg-[#1A8917]   sohne_bold" />
         }
       </section>

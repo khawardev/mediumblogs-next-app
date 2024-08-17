@@ -95,7 +95,7 @@ export default function Component({ currentUser, username, userImage, storyId, n
                             </div>
                             <div className="flex flex-row-reverse gap-1 ">
                                 <Button onClick={AddComments} className=" sohne font-bold flex-center gap-1 " size={'sm'} variant="green">
-                                    {loading ? <>Respond <CgSpinner className="animate-spin " size={20} /></> : 'Respond'}
+                                    {loading ? <>Respond <CgSpinner className="animate-spin " size={16} /></> : 'Respond'}
                                 </Button>
                                 <Button onClick={() => setContent('')} className=" sohne font-bold border-none  " size={'sm'} variant={'outline'}>Cancel</Button>
                             </div>

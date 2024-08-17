@@ -65,7 +65,7 @@ const ReplyArea = ({ commentId, setShowReplyArea, userImage, username, storyId }
             </div>
             <div className="flex flex-row-reverse gap-1 ">
                 <Button onClick={AddReplies} className="flex-center gap-1 sohne font-bold" size={'sm'} variant="green">
-                    {replySaving ? <>Respond <CgSpinner className="animate-spin" size={20} /></> : 'Respond'}
+                    {replySaving ? <>Respond <CgSpinner className="animate-spin" size={16} /></> : 'Respond'}
                 </Button>
                 <Button onClick={() => { setShowReplyArea(false); setContent('') }} className=" d border-none sohne font-bold " size={'sm'} variant={'outline'}>Cancel</Button>
             </div>

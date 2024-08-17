@@ -56,7 +56,7 @@ const MultiComments = ({ noOfComments, storyId, loading, userImage, username }: 
                 :
                 !comments ?
                     <div className="md:py-40 py-32 flex items-center justify-center">
-                        <CgSpinner className="animate-spin" size={24} />
+                        <CgSpinner className="animate-spin" size={20} />
                     </div>
                     :
                     <>
