@@ -23,7 +23,7 @@ const FavComp = ({ storyId, favStatus }: any) => {
 
     return (
         <>
-            {loading ? <CgSpinner className="animate-spin" size={16} /> :
+            {loading ? <CgSpinner className="animate-spin" size={20} /> :
                 <button className="flex items-center" onClick={(e) => FavStory(e)}>
                     {favStatus ? (
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
