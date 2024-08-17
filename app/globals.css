@@ -1,15 +1,6 @@
 @import url("../public/assets/styles/dots.css");
 @import url("../public/assets/styles/story.css");
 
-/* @font-face {
-  font-family: "sohne";
-  src: url("../public/assets/fonts/TestSöhne-Leicht.otf");
-} */
-
-/* @font-face {
-  font-family: "sohne_bold";
-  src: url("../public/assets/fonts/TestSöhne-Dreiviertelfett.otf");
-} */
 @font-face {
   font-family: "sohne_bold";
   src: url("../public/assets/fonts/Medium/sohne_Extrabold.woff") format("woff");
@@ -31,33 +22,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.divider {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  margin: 20px 0;
-}
-
-.divider::before,
-.divider::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px solid #cacaca91;
-}
-
-.divider::before {
-  margin-right: 10px;
-}
-
-.divider::after {
-  margin-left: 10px;
-}
-
-.divider span {
-  padding: 0 10px;
-  font-weight: bold;
-}
 
 .sohne_bold {
   font-family: "sohne_bold";

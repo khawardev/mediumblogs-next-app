@@ -22,6 +22,7 @@ const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favSt
     const GetElemntRegix: any = storyCheckRegix(publishedStory?.content);
     const publishedRegix: any = checkPublishedRegix(publishedStory?.content);
     const { publishSortedStories } = useProfileData({ userParams });
+    console.log(publishedStory?.content, 'publishedStory?.contentpublishedStory?.content');
 
     return (
         <div className='mobile_center_contract md:my-14 mt-8 text-[#242424]  '>

@@ -32,7 +32,7 @@ const Header = () => {
 
 
   return (
-    <div className=" z-40 fixed   bg-[#FFFFFF] border border-t-0 border-l-0 border-r-0 border-b-black w-full ">
+    <div className=" z-40 fixed   bg-[#FFFFFF] border border-t-0 border-l-0 border-r-0  border-b-black w-full ">
       <div className="mobile_center md:py-5 pt-5  flex-between ">
         <section className=" flex-center space-x-7">
           <Link href={'/'} >

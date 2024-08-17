@@ -36,7 +36,7 @@ const Slider = () => {
                                 <div className='flex mb-3'>
                                     <span className="sohne flex-center gap-1 text-sm  bg-yellow-400 py-[5px] px-3 rounded-full font-bold  "><PiStarFourFill size={10} />{item.membershipTag}</span>
                                 </div>
-                                <div className='lg:h-[170px] h-[200px]'>
+                                <div className='lg:h-[200px] h-[230px]'>
                                     <h2 className='  text-2xl py-5 '>{item.title}</h2>
                                 </div>
                                 <div className=" flex items-start gap-4 text-sm  ">
