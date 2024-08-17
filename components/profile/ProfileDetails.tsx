@@ -5,12 +5,10 @@ import { SquarePen } from "lucide-react";
 import PublishedStories from "../blogs/story/storyDetail/PublishedStories";
 import DraftStories from "../blogs/story/storyDetail/DraftStories";
 import StoryDetailSkeleton from "../skeletons/StoryDetailSkeleton";
-import { Skeleton } from "../ui/skeleton";
 import { useProfileData } from "@/hooks/getProfileData";
 import SavedStories from "../blogs/story/storyDetail/SavedStories";
 import { CreateStory } from "@/actions/story";
 import { useToast } from "../ui/use-toast";
-import { DeleteDialog } from "@/shadcn/DeleteDialog";
 
 type Blogsprops = {
     draftStories?: any,
@@ -24,6 +22,7 @@ const ProfileDetails = ({ userParams }: any) => {
     const handleTabClick = (tab: string) => {
         setActiveTab(tab);
     };
+
     const { publishedStories, draftStories, savedStories, isLoading } = useProfileData({ userParams });
     const publishSortedStories = Array?.isArray(publishedStories) ? publishedStories.sort((a: any, b: any) => new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()) : [];
     const draftSortedStories = Array?.isArray(draftStories) ? draftStories.sort((a: any, b: any) => new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()) : [];

@@ -7,6 +7,8 @@ import '@/public/assets/styles/markdown.css';
 import { useAtom } from "jotai";
 import { savingAtom } from "@/context/atom";
 import { deleteStoryById, updateStory } from "@/actions/story";
+import { getUser } from "@/actions/user";
+import { mutate } from "swr";
 
 interface Props {
     storyID: string;
@@ -35,7 +37,10 @@ export default function AddNewStory({ storyID, HtmlToMarkdown, publishStatus }: 
             // } else {
             //     await updateStory(storyID, data);
             // }
+            const userfromDb: any = await getUser();
             await updateStory(storyID, htmlData, publishStatus);
+            mutate(userfromDb?.id, false);
+            mutate(userfromDb?.id, true);
         } catch (error) {
             console.log('Error in saving:', error);
         } finally {
@@ -49,7 +54,7 @@ export default function AddNewStory({ storyID, HtmlToMarkdown, publishStatus }: 
                 defaultValue={markdownContent}
                 disableLocalStorage={true}
                 onDebouncedUpdate={handleSave}
-                debounceDuration={3000}
+                debounceDuration={2000}
                 onUpdate={(editor) => {
                     setmarkdownContent(editor?.storage.markdown.getMarkdown());
                 }}
