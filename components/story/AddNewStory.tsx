@@ -39,8 +39,8 @@ export default function AddNewStory({ storyID, HtmlToMarkdown, publishStatus }: 
             // }
             const userfromDb: any = await getUser();
             await updateStory(storyID, htmlData, publishStatus);
-            mutate(userfromDb?.id, false);
-            mutate(userfromDb?.id, true);
+            await mutate([userfromDb?.id, false]);
+            await mutate([userfromDb?.id, true]);
         } catch (error) {
             console.log('Error in saving:', error);
         } finally {

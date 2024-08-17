@@ -3,10 +3,10 @@ import { getStoriesByUserId } from "@/actions/story";
 import ProfileDetails from "@/components/profile/ProfileDetails";
 
 const page = ({ params }: { params: { userId: string } }) => {
+
+
     return (
-        <>
-            <ProfileDetails userParams={params?.userId} />
-        </>
+        <ProfileDetails userParams={params?.userId} />
     )
 }
 

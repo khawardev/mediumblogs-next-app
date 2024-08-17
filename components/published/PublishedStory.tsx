@@ -21,8 +21,7 @@ const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favSt
     const pathname = usePathname();
     const GetElemntRegix: any = storyCheckRegix(publishedStory?.content);
     const publishedRegix: any = checkPublishedRegix(publishedStory?.content);
-    const { publishedStories } = useProfileData({ userParams });
-
+    const { publishSortedStories } = useProfileData({ userParams });
 
     return (
         <div className='mobile_center_contract md:my-14 mt-8 text-[#242424]  '>
@@ -74,7 +73,7 @@ const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favSt
             <section className='   py-8 '>
                 <p className=' text-xl sohne_bold'>More from {username}</p>
                 <section className='grid md:grid-cols-2 gap-5 sohne  py-8'>
-                    {Array.isArray(publishedStories) && publishedStories.map((story: any, index: number) => (
+                    {Array.isArray(publishSortedStories) && publishSortedStories.map((story: any, index: number) => (
                         <StoryDetails moreFromCreator={true} key={index} story={story} />
                     ))}
 

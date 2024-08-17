@@ -16,11 +16,11 @@ const ProfileDetails = ({ userParams }: any) => {
     const handleTabClick = (tab: string) => {
         setActiveTab(tab);
     };
+    const { publishedStories, draftStories, savedStories,
+        publishSortedStories, draftSortedStories, favSortedStories, isLoading, } = useProfileData({ userParams });
 
-    const { publishedStories, draftStories, savedStories, isLoading } = useProfileData({ userParams });
-    const publishSortedStories = Array?.isArray(publishedStories) ? publishedStories.sort((a: any, b: any) => new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()) : [];
-    const draftSortedStories = Array?.isArray(draftStories) ? draftStories.sort((a: any, b: any) => new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()) : [];
-    const favSortedStories = Array?.isArray(savedStories) ? savedStories.sort((a: any, b: any) => new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()) : [];
+
+
 
 
     const renderStories = () => {

@@ -13,8 +13,6 @@ import SidebarSkeleton from "@/components/skeletons/SidebarSkeleton";
 import { checkFav } from "@/actions/favorite";
 
 const Blogs = async ({ searchParams }: { searchParams: { tag: string } }) => {
-
-
   const getSelectedTopics = await SelectedTopics();
   const fetchedStories = await getAllStories(searchParams?.tag);
   const limitedStories = await getLimitedStories(searchParams?.tag);

@@ -1,5 +1,7 @@
 import useSWR from "swr";
+
 import { getStoriesByUserId } from "@/actions/story";
+
 import { getFavStoriesByUserId } from "@/actions/favorite";
 
 const getpublishedfetcher = async ([userId, publish]: any) => {
@@ -16,8 +18,7 @@ export const useProfileData = ({ userParams }: any) => {
     getpublishedfetcher,
     {
       revalidateOnFocus: true,
-      revalidateOnMount: true,
-      // dedupingInterval: Number.MAX_SAFE_INTEGER,
+      revalidateOnMount: true, // dedupingInterval: Number.MAX_SAFE_INTEGER,
     }
   );
   const { data: draftStories, error: draftError } = useSWR(
@@ -25,8 +26,7 @@ export const useProfileData = ({ userParams }: any) => {
     getpublishedfetcher,
     {
       revalidateOnFocus: true,
-      revalidateOnMount: true,
-      // dedupingInterval: Number.MAX_SAFE_INTEGER,
+      revalidateOnMount: true, // dedupingInterval: Number.MAX_SAFE_INTEGER,
     }
   );
   const { data: savedStories, error: savedError } = useSWR(
@@ -34,15 +34,37 @@ export const useProfileData = ({ userParams }: any) => {
     getFavStoriesfetcher,
     {
       revalidateOnFocus: true,
-      revalidateOnMount: true,
-      // dedupingInterval: Number.MAX_SAFE_INTEGER,
+      revalidateOnMount: true, // dedupingInterval: Number.MAX_SAFE_INTEGER,
     }
   );
 
-  const isLoading =
-    (!publishedStories && !publishedError) ||
-    (!draftStories && !draftError) ||
-    (!savedStories && !savedError);
+  const publishSortedStories = Array?.isArray(publishedStories)
+    ? publishedStories.sort(
+        (a: any, b: any) =>
+          new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()
+      )
+    : [];
+  const draftSortedStories = Array?.isArray(draftStories)
+    ? draftStories.sort(
+        (a: any, b: any) =>
+          new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()
+      )
+    : [];
+  const favSortedStories = Array?.isArray(savedStories)
+    ? savedStories.sort(
+        (a: any, b: any) =>
+          new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()
+      )
+    : [];
 
-  return { publishedStories, draftStories, savedStories, isLoading };
+  const isLoading = !publishedStories || !draftStories || !savedStories;
+  return {
+    publishedStories,
+    draftStories,
+    savedStories,
+    publishSortedStories,
+    draftSortedStories,
+    favSortedStories,
+    isLoading,
+  };
 };

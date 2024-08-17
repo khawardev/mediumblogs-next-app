@@ -40,6 +40,7 @@ export const addToFav = async (storyId: string) => {
   } catch (error) {
     return { error: "Not added in Favorite" };
   }
+  revalidatePath(`/profile/${UserDetails?.id}`);
   revalidatePath(`/published/${storyId}`);
 };
 
