@@ -25,6 +25,7 @@ export default function AddNewStory({ storyID, HtmlToMarkdown, publishStatus }: 
     const [markdownContent, setmarkdownContent] = useState(HtmlToMarkdown);
     const [htmlData, setHtmlData] = useState("");
     const [saving, setSaving] = useAtom(savingAtom);
+
     useEffect(() => {
         const convertMarkdownToHtml = async () => {
             const html = await MarkdownToHtml(markdownContent);
@@ -37,7 +38,6 @@ export default function AddNewStory({ storyID, HtmlToMarkdown, publishStatus }: 
     const handleSave = async () => {
 
         markdownContent !== '' && setSaving(true);
-        // setSaving(true);
         try {
             const userfromDb: any = await getUser();
             if (markdownContent !== '') {
@@ -45,8 +45,6 @@ export default function AddNewStory({ storyID, HtmlToMarkdown, publishStatus }: 
                 mutate([userfromDb?.id, false]);
                 mutate([userfromDb?.id, true]);
             }
-            // await updateStory(storyID, htmlData, publishStatus, pathname);
-
         } catch (error) {
             console.log('Error in saving:', error);
         } finally {

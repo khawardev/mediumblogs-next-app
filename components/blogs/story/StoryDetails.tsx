@@ -5,8 +5,6 @@ import useSWR from "swr";
 import StoryDetailSkeleton from "@/components/skeletons/StoryDetailSkeleton";
 import PublishedStoryInDetails from "./PublishedStoryInDetails";
 import PublishedDetailSkeleton from "@/components/skeletons/PublishedDetailSkeleton";
-import { Button } from "@/components/ui/button";
-// import { useEffect, useState } from "react";
 
 const fetcher = async (storyId: string) => checkFav(storyId);
 

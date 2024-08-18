@@ -8,13 +8,13 @@ import PublishedStory from '@/components/published/PublishedStory';
 const page = async ({ params }: { params: { storyId: string } }) => {
 
     const currentLoginUser: any = await getUser();
-
     const userbyStory: any = await getUserByStoryId(params?.storyId, true);
     const publishedStory: any = await getStorybyId(params?.storyId, true, userbyStory?.id);
     const noOfComments: any = await NumberofComments(publishedStory?.id);
     const favStatus: any = await checkFav(publishedStory?.id);
     const allClaps: any = await getClapsCountByStory(publishedStory?.id);
     const clapsCountByUser = await getStoryClapCountByUser(publishedStory?.id);
+    console.log(publishedStory, 'publishedStorypublishedStory');
 
     return (
         <PublishedStory

@@ -40,41 +40,27 @@ export const storyCheckRegix = (htmlContent: any) => {
     }
   }
 
-  // Extract the first image and separate it from the text within the same <p> tag
-  let firstValidParagraph = null;
+  // Extract the first image
   let firstImageUrl = null;
+  const images = doc.querySelectorAll("img");
+  if (images.length > 0) {
+    firstImageUrl = images[0].src;
+  }
+
+  // Extract the first valid paragraph
+  let firstValidParagraph = null;
   const paragraphs = Array.from(doc.querySelectorAll("p"));
   for (const paragraph of paragraphs) {
-    const images = paragraph.querySelectorAll("img");
+    const textNodes = Array.from(paragraph.childNodes).filter(
+      (node) => node.nodeType === Node.TEXT_NODE && node.textContent?.trim()
+    );
 
-    if (images.length > 0) {
-      firstImageUrl = images[0].src;
-
-      // Separate the text that follows the image within the same <p> tag
-      const textNodes = Array.from(paragraph.childNodes).filter(
-        (node) => node.nodeType === Node.TEXT_NODE && node.textContent?.trim()
-      );
-
+    if (textNodes.length > 0) {
       // Combine text nodes into a single paragraph content
-      if (textNodes.length > 0) {
-        firstValidParagraph = textNodes
-          .map((node) => node.textContent || "") // Provide a fallback empty string in case of null
-          .join(" ");
-      }
-
-      // If there's valid paragraph text, break the loop
-      if (firstValidParagraph) {
-        break;
-      }
-    } else {
-      // If the paragraph doesn't contain an image, and no valid paragraph has been found yet, check if it's valid
-      const outerHTML = paragraph.outerHTML;
-      if (
-        validParagraphFormats.some((format) => outerHTML.startsWith(format))
-      ) {
-        firstValidParagraph = paragraph.innerHTML;
-        break;
-      }
+      firstValidParagraph = textNodes
+        .map((node) => node.textContent || "") // Provide a fallback empty string in case of null
+        .join(" ");
+      break;
     }
   }
 
