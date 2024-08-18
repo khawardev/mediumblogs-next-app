@@ -39,7 +39,6 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete, profileD
 
                             }
                             <section className=" flex  items-center gap-8">
-
                                 <section className="flex  items-center gap-3">
                                     <Avatar className="w-10 h-10 border sohne font-bold">
                                         <AvatarImage src={story?.auther?.image} />

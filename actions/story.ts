@@ -25,16 +25,50 @@ export const CreateStory = async () => {
 
   redirect(`/p/${newStory[0].id}/${false}`);
 };
+export const getAllStories = async (tag: string) => {
+  let stories;
+  try {
+    if (tag) {
+      stories = await db.query.story.findMany({
+        where: arrayContains(story.topics, [tag]),
+        with: { auther: true },
+      });
+    } else {
+      stories = await db.query.story.findMany({
+        where: eq(story.publish, true),
+        with: { auther: true },
+      });
+    }
 
-export const getStorybyId = async (id: string, publish: boolean) => {
+    if (!stories?.length) {
+      return { error: "Error on getting stories" };
+    }
+  } catch (error) {
+    return { error: "Error on getting stories" };
+  }
+  return stories;
+};
+export const getStorybyId = async (
+  id: string,
+  publish: boolean,
+  published?: any
+) => {
   if (!id) {
     return { error: "dont have story" };
   }
   let storydetails;
   try {
-    storydetails = await db.query.story.findFirst({
-      where: and(eq(story?.id, id), eq(story?.publish, publish)),
-    });
+    if (published === "published") {
+      storydetails = await db.query.story.findFirst({
+        where: eq(story?.id, id),
+        with: { auther: true },
+      });
+    } else {
+      storydetails = await db.query.story.findFirst({
+        where: and(eq(story?.id, id), eq(story?.publish, publish)),
+        with: { auther: true },
+      });
+    }
 
     if (!storydetails) {
       return { error: "story not found" };
@@ -48,7 +82,8 @@ export const getStorybyId = async (id: string, publish: boolean) => {
 export const updateStory = async (
   storyID: string,
   content: any,
-  publishStatus: boolean
+  publishStatus: boolean,
+  patname: any
 ) => {
   if (!storyID) {
     return {
@@ -81,8 +116,7 @@ export const updateStory = async (
     };
   }
 
-  revalidatePath(`/p/${storyID}/${publishStatus}`);
-
+  revalidatePath(patname);
   return { result: updatedStory };
 };
 
@@ -121,30 +155,6 @@ export const publishStory = async (storyID: string, topics: string[]) => {
   }
 
   redirect(`/published/${updatedStory?.[0].id}`);
-};
-
-export const getAllStories = async (tag: string) => {
-  let stories;
-  try {
-    if (tag) {
-      stories = await db.query.story.findMany({
-        where: arrayContains(story.topics, [tag]),
-        with: { auther: true },
-      });
-    } else {
-      stories = await db.query.story.findMany({
-        where: eq(story.publish, true),
-        with: { auther: true },
-      });
-    }
-
-    if (!stories?.length) {
-      return { error: "Error on getting stories" };
-    }
-  } catch (error) {
-    return { error: "Error on getting stories" };
-  }
-  return stories;
 };
 
 // limited stories

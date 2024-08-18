@@ -16,7 +16,7 @@ import { useProfileData } from '@/hooks/getProfileData';
 import StoryDetails from '../blogs/story/StoryDetails';
 
 
-const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favStatus, noOfComments, currentUser, allClaps, userParams }: any) => {
+const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, currentUser, allClaps, userParams }: any) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
@@ -24,15 +24,13 @@ const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favSt
     const GetElemntRegix: any = storyCheckRegix(publishedStory?.content);
     const publishedRegix: any = checkPublishedRegix(publishedStory?.content);
     const { publishSortedStories } = useProfileData({ userParams });
-    console.log(publishedStory?.content, 'publishedStory?.contentpublishedStory?.content');
-
     return (
         <div className='mobile_center_contract md:my-14 mt-8 text-[#242424]  '>
             <div className="  md:text-[45px] leading-[42px] text-4xl sohne_bold mb-8" dangerouslySetInnerHTML={{ __html: GetElemntRegix?.heading || '' }} />
             <section className='flex items-center justify-start gap-3 sohne mb-8 '>
-                <Image className="rounded-full" src={userImage ?? ''} width={40} height={40} alt={username ?? ''} />
+                <Image className="rounded-full" src={publishedStory?.auther?.image} width={40} height={40} alt={publishedStory?.auther?.name} />
                 <div>
-                    <p className='  text-gray-800 sohne_bold'>{username}</p>
+                    <p className='  text-gray-800 sohne_bold'>{publishedStory?.auther?.name}</p>
                     <p className=' text-sm text-gray-500 sohne font-bold'>Published on {' '}{new Date(publishedStory?.createdAt).toDateString().split(' ')?.slice(1, 4).join(' ')}</p>
                 </div>
             </section>
@@ -67,19 +65,18 @@ const PublishedStory = ({ clapByUser, publishedStory, username, userImage, favSt
             </section>
 
             <section className='md:flex flex-center flex-col   items-center md:justify-between gap-3 sohne py-8 border-b '>
-                <Image className="rounded-full" src={userImage ?? ''} width={60} height={60} alt={username ?? ''} />
+                <Image className="rounded-full" src={publishedStory?.auther?.image ?? ''} width={60} height={60} alt={publishedStory?.auther?.name ?? ''} />
                 <div>
-                    <p className='  text-gray-800 text-xl sohne_bold'>Written By {username}</p>
+                    <p className='  text-gray-800 text-xl sohne_bold'>Written By {publishedStory?.auther?.name}</p>
                 </div>
             </section>
 
             <section className='   py-8 '>
-                <p className=' text-xl sohne_bold'>More from {username}</p>
+                <p className=' text-xl sohne_bold'>More from {publishedStory?.auther?.name}</p>
                 <section className='grid md:grid-cols-2 gap-5 sohne  py-8'>
                     {Array.isArray(publishSortedStories) && publishSortedStories.map((story: any, index: number) => (
                         <StoryDetails moreFromCreator={true} key={index} story={story} />
                     ))}
-
                 </section>
             </section>
 

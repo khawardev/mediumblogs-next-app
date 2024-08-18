@@ -13,7 +13,7 @@ const getFavStoriesfetcher = async (userId: any) => {
 };
 
 export const useProfileData = ({ userParams }: any) => {
-  const { data: publishedStories, error: publishedError } = useSWR(
+  const { data: publishedStories } = useSWR(
     [userParams, true],
     getpublishedfetcher,
     {
@@ -21,7 +21,7 @@ export const useProfileData = ({ userParams }: any) => {
       revalidateOnMount: true, // dedupingInterval: Number.MAX_SAFE_INTEGER,
     }
   );
-  const { data: draftStories, error: draftError } = useSWR(
+  const { data: draftStories } = useSWR(
     [userParams, false],
     getpublishedfetcher,
     {
@@ -29,14 +29,10 @@ export const useProfileData = ({ userParams }: any) => {
       revalidateOnMount: true, // dedupingInterval: Number.MAX_SAFE_INTEGER,
     }
   );
-  const { data: savedStories, error: savedError } = useSWR(
-    userParams,
-    getFavStoriesfetcher,
-    {
-      revalidateOnFocus: true,
-      revalidateOnMount: true, // dedupingInterval: Number.MAX_SAFE_INTEGER,
-    }
-  );
+  const { data: savedStories } = useSWR(userParams, getFavStoriesfetcher, {
+    revalidateOnFocus: true,
+    revalidateOnMount: true, // dedupingInterval: Number.MAX_SAFE_INTEGER,
+  });
 
   const publishSortedStories = Array?.isArray(publishedStories)
     ? publishedStories.sort(
