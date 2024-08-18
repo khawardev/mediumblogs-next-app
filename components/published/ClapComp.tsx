@@ -7,20 +7,20 @@ import ClapIcons from "@/components/ClapIcons";
 type ClapCountCompProps = {
     clapByUser?: any;
     storyId: any;
-    currentUser?: string,
+    currentLoginUser?: string,
     allClapsCount: string,
     // commentId?: string,
     // type?: string,
 
 };
 
-const ClapComp = ({ allClapsCount, storyId, currentUser, clapByUser }: ClapCountCompProps) => {
+const ClapComp = ({ allClapsCount, storyId, currentLoginUser, clapByUser }: ClapCountCompProps) => {
     const [allClaps, setAllClaps] = useState<any>(allClapsCount);
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     const { toast } = useToast()
 
     const clap = async () => {
-        if (!currentUser) {
+        if (!currentLoginUser) {
             toast({
                 title: 'Please Login to continue',
             })

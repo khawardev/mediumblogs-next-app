@@ -16,7 +16,7 @@ import { useProfileData } from '@/hooks/getProfileData';
 import StoryDetails from '../blogs/story/StoryDetails';
 
 
-const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, currentUser, allClaps, userParams }: any) => {
+const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, currentLoginUser, allClaps, userParams }: any) => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
@@ -37,8 +37,8 @@ const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, c
             <hr />
             <section className='flex-between py-4 sohne'>
                 <div className='flex-center space-x-4 '>
-                    <ClapComp clapByUser={clapByUser} allClapsCount={allClaps?.clapCount} currentUser={currentUser?.id} storyId={publishedStory?.id} />
-                    <CommentComp noOfComments={noOfComments} currentUser={currentUser?.id} storyId={publishedStory?.id} username={currentUser?.name} userImage={currentUser?.image} />
+                    <ClapComp clapByUser={clapByUser} allClapsCount={allClaps?.clapCount} currentLoginUser={currentLoginUser?.id} storyId={publishedStory?.id} />
+                    <CommentComp noOfComments={noOfComments} currentLoginUser={currentLoginUser?.id} storyId={publishedStory?.id} username={currentLoginUser?.name} userImage={currentLoginUser?.image} />
                 </div>
                 <div className='flex-center  space-x-3'>
                     <FavComp favStatus={favStatus} storyId={publishedStory?.id} />
@@ -55,8 +55,8 @@ const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, c
             </section>
             <section className='flex-between py-4 sohne'>
                 <div className='flex-center space-x-4 '>
-                    <ClapComp clapByUser={clapByUser} allClapsCount={allClaps?.clapCount} currentUser={currentUser?.id} storyId={publishedStory?.id} />
-                    <CommentComp noOfComments={noOfComments} currentUser={currentUser?.id} storyId={publishedStory?.id} username={currentUser?.name} userImage={currentUser?.image} />
+                    <ClapComp clapByUser={clapByUser} allClapsCount={allClaps?.clapCount} currentLoginUser={currentLoginUser?.id} storyId={publishedStory?.id} />
+                    <CommentComp noOfComments={noOfComments} currentLoginUser={currentLoginUser?.id} storyId={publishedStory?.id} username={currentLoginUser?.name} userImage={currentLoginUser?.image} />
                 </div>
                 <div className='flex-center  space-x-3'>
                     <FavComp favStatus={favStatus} storyId={publishedStory?.id} />

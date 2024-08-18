@@ -5,6 +5,7 @@ import { story, user } from "@/db/schema";
 import { and, arrayContains, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { cache } from "react";
 
 export const CreateStory = async () => {
   let newStory;
@@ -48,31 +49,39 @@ export const getAllStories = async (tag: string) => {
   }
   return stories;
 };
-export const getStorybyId = async (id: string, publish?: boolean) => {
-  if (!id) {
-    return { error: "dont have story" };
+export const getStorybyId = async (
+  storyId: any,
+  publish: boolean,
+  UserID?: any
+) => {
+  if (!storyId) {
+    return { error: "Don't have a story ID" };
   }
-  let storydetails;
+  let storyDetails;
   try {
-    if (publish) {
-      storydetails = await db.query.story.findFirst({
-        where: and(eq(story?.id, id), eq(story?.publish, publish)),
+    if (UserID) {
+      storyDetails = await db.query.story.findFirst({
+        where: and(
+          eq(story?.id, storyId),
+          eq(story?.publish, publish),
+          eq(story?.userId, UserID)
+        ),
         with: { auther: true },
       });
     } else {
-      storydetails = await db.query.story.findFirst({
-        where: eq(story?.id, id),
+      storyDetails = await db.query.story.findFirst({
+        where: and(eq(story?.id, storyId), eq(story?.publish, publish)),
         with: { auther: true },
       });
     }
 
-    if (!storydetails) {
-      return { error: "story not found" };
+    if (!storyDetails) {
+      return { error: "Story not found" };
     }
   } catch (error) {
-    return { error: "story not found" };
+    return { error: "An error occurred while fetching the story" };
   }
-  return storydetails;
+  return storyDetails;
 };
 
 export const updateStory = async (
@@ -258,4 +267,30 @@ export const searchStoriesByContent = async (searchText: string) => {
   } catch (error) {
     return { error: "Error searching stories" };
   }
+};
+
+export const getUserByStoryId = async (
+  storyId: string,
+  publishStatus: boolean
+) => {
+  if (!storyId) {
+    return { error: "Story ID is required" };
+  }
+
+  let storyDetails;
+  try {
+    // Fetch the story with the given storyId and publish status
+    storyDetails = await db.query.story.findFirst({
+      where: and(eq(story.id, storyId), eq(story.publish, publishStatus)),
+      with: { auther: true }, // Assuming 'auther' is the relation to the user in your schema
+    });
+
+    if (!storyDetails) {
+      return { error: "Story not found or not published" };
+    }
+  } catch (error) {
+    return { error: "An error occurred while fetching the story" };
+  }
+
+  return storyDetails.auther; // Return the user details (auther)
 };

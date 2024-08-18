@@ -22,10 +22,17 @@ const StoryTags = ({ story, limit }: any) => {
         setCurrentTag(tagParam || "");
     }, [pathname, searchParams]);
 
+    // Sort tags to put the current tag first
+    const sortedTags = (story?.topics || []).sort((a: string, b: string) => {
+        if (a === currentTag) return -1;
+        if (b === currentTag) return 1;
+        return 0;
+    }).slice(0, limit);
+
     return (
         <div className="flex items-center gap-2">
             <div className="flex items-center gap-3 flex-wrap text-sm">
-                {story?.topics?.slice(0, limit).map((tag: any, index: any) => (
+                {sortedTags.map((tag: any, index: any) => (
                     <Link
                         key={index}
                         href={`/blogs/?tag=${tag}`}
@@ -33,8 +40,7 @@ const StoryTags = ({ story, limit }: any) => {
                         className={`${currentTag === tag
                             ? 'bg-black text-white'
                             : 'border-black/10 border bg-[#e7e7e7ab] opacity-60'
-                            } sohne font-bold transition-all ease-in rounded-full py-1 px-4`}
-                    >
+                            } sohne font-bold transition-all ease-in rounded-full py-1 px-4`}>
                         {tag}
                     </Link>
                 ))}

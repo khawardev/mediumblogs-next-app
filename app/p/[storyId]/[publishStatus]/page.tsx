@@ -1,4 +1,4 @@
-import { getStorybyId } from '@/actions/story';
+import { getStorybyId, getUserByStoryId } from '@/actions/story';
 import { getUser } from '@/actions/user';
 import NavbarStory from '@/components/story/NavbarStory'
 import AddNewStory from '@/components/story/AddNewStory';

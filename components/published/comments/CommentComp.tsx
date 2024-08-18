@@ -22,11 +22,11 @@ type props = {
     username: string,
     userImage: string,
     storyId: string,
-    currentUser: string,
+    currentLoginUser: string,
     noOfComments: number;
 }
 
-export default function Component({ currentUser, username, userImage, storyId, noOfComments }: props) {
+export default function Component({ currentLoginUser, username, userImage, storyId, noOfComments }: props) {
     const { toast } = useToast()
 
     const [content, setContent] = useState<string>('')

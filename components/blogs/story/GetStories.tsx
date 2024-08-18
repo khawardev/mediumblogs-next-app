@@ -1,45 +1,12 @@
-import AnimateWrapper from "@/extras/AnimateWrapper"
 import StoryDetails from "./StoryDetails"
-import StoryDetailSkeleton from "@/components/skeletons/StoryDetailSkeleton"
-
 const GetStories = async ({ stories }: any) => {
     return (
         <div>
-            {/* {stories?.slice().reverse().map((story: any, index: number) => (
+            {stories?.map((story: any, index: number) => (
                 <div key={index}>
-                    <AnimateWrapper transition={{ duration: 0.6, delay: story.id * .12 }} >
-                        <StoryDetails story={story} />
-                    </AnimateWrapper>
+                    <StoryDetails story={story} />
                 </div>
-            ))} */}
-            <div>
-
-                {stories?.length > 0 ?
-                    stories?.map((story: any, index: number) => (
-                        <div key={index}>
-                            <StoryDetails story={story} />
-                        </div>
-                    )) :
-                    <>
-                        <StoryDetailSkeleton />
-                        <StoryDetailSkeleton />
-                        <StoryDetailSkeleton />
-                        <StoryDetailSkeleton />
-                        <StoryDetailSkeleton />
-                    </>
-                }
-
-
-
-
-
-
-
-
-
-            </div>
-
-
+            ))}
         </div>
     )
 }
