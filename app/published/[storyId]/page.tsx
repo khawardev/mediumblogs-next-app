@@ -14,7 +14,6 @@ const page = async ({ params }: { params: { storyId: string } }) => {
     const favStatus: any = await checkFav(publishedStory?.id);
     const allClaps: any = await getClapsCountByStory(publishedStory?.id);
     const clapsCountByUser = await getStoryClapCountByUser(publishedStory?.id);
-    console.log(publishedStory, 'publishedStorypublishedStory');
 
     return (
         <PublishedStory
