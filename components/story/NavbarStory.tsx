@@ -28,9 +28,9 @@ const NavbarStory = ({ storyID, currentUserName, storyContent, publishStatus }: 
           }
           </p>
         </section>
-        {publishStatus === false &&
-          <StoryShadcnDialog storyContent={storyContent} storyID={storyID} username={currentUserName} setShowtags={setShowtags} title="Publish" className=" h-9 px-5 py-2  border hover:border-[#1A8917]  hover:text-white hover:bg-[#1A8917]   sohne font-bold" />
-        }
+        <StoryShadcnDialog storyContent={storyContent} storyID={storyID} username={currentUserName} setShowtags={setShowtags} title="Publish" className=" h-9 px-5 py-2  border hover:border-[#1A8917]  hover:text-white hover:bg-[#1A8917]   sohne font-bold" />
+        {/* {publishStatus === false &&
+        } */}
       </section>
 
     </main>
