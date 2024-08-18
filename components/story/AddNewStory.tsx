@@ -22,7 +22,7 @@ export default function AddNewStory({ storyID, HtmlToMarkdown, publishStatus }: 
         window.scrollTo(0, 0);
     }, [])
     const pathname = usePathname();
-    const [markdownContent, setmarkdownContent] = useState(HtmlToMarkdown || '');
+    const [markdownContent, setmarkdownContent] = useState(HtmlToMarkdown);
     const [htmlData, setHtmlData] = useState("");
     const [saving, setSaving] = useAtom(savingAtom);
     useEffect(() => {
@@ -35,17 +35,18 @@ export default function AddNewStory({ storyID, HtmlToMarkdown, publishStatus }: 
 
 
     const handleSave = async () => {
-        setSaving(true);
+
+        markdownContent !== '' && setSaving(true);
+        // setSaving(true);
         try {
-            // if (markdownContent === '') {
-            //     await deleteStoryById(storyID, path);
-            // } else {
-            //     await updateStory(storyID, data);
-            // }
             const userfromDb: any = await getUser();
-            await updateStory(storyID, htmlData, publishStatus, pathname);
-            mutate([userfromDb?.id, false]);
-            mutate([userfromDb?.id, true]);
+            if (markdownContent !== '') {
+                await updateStory(storyID, htmlData, publishStatus, pathname);
+                mutate([userfromDb?.id, false]);
+                mutate([userfromDb?.id, true]);
+            }
+            // await updateStory(storyID, htmlData, publishStatus, pathname);
+
         } catch (error) {
             console.log('Error in saving:', error);
         } finally {
