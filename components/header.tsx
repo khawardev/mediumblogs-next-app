@@ -1,17 +1,12 @@
 'use client'
 import { DialogButton } from "@/shadcn/Authdialog"
 import { PopoverButton } from "@/shadcn/popover"
-import { Newspaper, SquarePen } from "lucide-react"
+import { SquarePen } from "lucide-react"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
 import { CiSearch } from "react-icons/ci";
-import { GoBell } from "react-icons/go";
 import { CreateStory } from "@/actions/story"
 import { useToast } from "@/components/ui/use-toast"
-import { FaMedium } from "react-icons/fa6"
-import { Button } from "./ui/button"
-import { useState } from "react"
-import { MdOutlineArticle } from "react-icons/md"
 import SearchArea from "./search/SearchArea"
 import { useAtom } from "jotai"
 import { ShowSearchAtom } from "@/context/atom"
@@ -57,7 +52,6 @@ const Header = ({ headerClasses }: any) => {
                 <p className="  md:font-normal font-bold  sohne">Write</p>
               </button>
               <Link href="/blogs" className="flex-center gap-1 text-gray-500 ">
-                {/* <Newspaper size={17} /> */}
                 <p className="  md:font-normal font-bold  sohne ">Blogs</p>
               </Link>
               <PopoverButton />
@@ -72,7 +66,6 @@ const Header = ({ headerClasses }: any) => {
               </div>
             </li>
           }
-
 
         </ul>
       </div>

@@ -1,9 +1,9 @@
 'use client'
+import '@/public/assets/styles/markdown.css';
 import MarkdownToHtml from "@/lib/markdownToHtml";
 import { Editor } from "novel-lightweight";
 import { useEffect, useState } from "react";
 import { handleUploadcare } from "@/lib/uploadcareUpload";
-import '@/public/assets/styles/markdown.css';
 import { useAtom } from "jotai";
 import { savingAtom } from "@/context/atom";
 import { updateStory } from "@/actions/story";
@@ -18,9 +18,6 @@ interface Props {
 }
 
 export default function AddNewStory({ storyID, HtmlToMarkdown, publishStatus }: Props) {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [])
     const pathname = usePathname();
     const [markdownContent, setmarkdownContent] = useState(HtmlToMarkdown);
     const [htmlData, setHtmlData] = useState("");

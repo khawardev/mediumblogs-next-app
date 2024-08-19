@@ -10,7 +10,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { DeleteDialog } from "@/shadcn/DeleteDialog";
 import { PencilLine } from "lucide-react";
-import { checkPublishedRegix } from "@/lib/checkPublishedRegix";
 
 const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete, profileDraftLink }: any) => {
     const router = useRouter()

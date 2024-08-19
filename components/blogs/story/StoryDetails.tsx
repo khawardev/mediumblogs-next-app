@@ -7,8 +7,8 @@ import PublishedStoryInDetails from "./PublishedStoryInDetails";
 import PublishedDetailSkeleton from "@/components/skeletons/PublishedDetailSkeleton";
 
 const fetcher = async (storyId: string) => checkFav(storyId);
-
 const StoryDetails = ({ story, moreFromCreator, profilepublishedEditDelete, profileDraftLink }: any) => {
+
     const { data: favStatus } = useSWR(story?.id, fetcher, {
         revalidateOnMount: true,
         revalidateOnFocus: true,
@@ -17,15 +17,9 @@ const StoryDetails = ({ story, moreFromCreator, profilepublishedEditDelete, prof
     });
 
     if (favStatus === undefined) return <div> {moreFromCreator ? <PublishedDetailSkeleton /> : <StoryDetailSkeleton />} </div>;
-
     return (
-        moreFromCreator
-            ?
-            <PublishedStoryInDetails story={story} favStatus={favStatus} />
-            :
-            <>
-                <StoryInDetails profileDraftLink={profileDraftLink} profilepublishedEditDelete={profilepublishedEditDelete} story={story} favStatus={favStatus} />
-            </>
+        moreFromCreator ? <PublishedStoryInDetails story={story} favStatus={favStatus} />
+            : <StoryInDetails profileDraftLink={profileDraftLink} profilepublishedEditDelete={profilepublishedEditDelete} story={story} favStatus={favStatus} />
     );
 
 }

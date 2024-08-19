@@ -1,7 +1,7 @@
 'use client'
 import { storyCheckRegix } from "@/lib/storyCheckRegix";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 const SidebarStories = ({ story }: any) => {
     const result: any = storyCheckRegix(story?.content);

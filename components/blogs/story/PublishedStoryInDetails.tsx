@@ -7,7 +7,6 @@ import FavComp from "@/components/published/favorite/FavComp";
 import ShareComp from "@/components/published/share/ShareComp";
 import StoryTags from "./StoryTags";
 import { Skeleton } from "@/components/ui/skeleton";
-
 const PublishedStoryInDetails = ({ story, favStatus }: any) => {
     const router = useRouter()
     const result: any = storyCheckRegix(story?.content);

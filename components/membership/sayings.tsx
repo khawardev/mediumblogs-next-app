@@ -1,5 +1,5 @@
 import Image from "next/image"
-import data from '@/data/sayings.json'; // Adjust the path based on your file structure
+import data from '@/data/sayings.json';
 
 const Sayings = () => {
     return (

@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button"
 import "@/public/assets/styles/story.css"
 import { IoArrowForwardOutline } from "react-icons/io5";
 const about = () => {

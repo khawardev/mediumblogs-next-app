@@ -1,25 +1,19 @@
 'use client'
-import Image from 'next/image';
-import { Button } from '../ui/button';
 import '@/public/assets/styles/markdown.css'
+import Image from 'next/image';
 import { storyCheckRegix } from '@/lib/storyCheckRegix';
 import { checkPublishedRegix } from '@/lib/checkPublishedRegix';
 import ClapComp from './ClapComp'
-import { useEffect } from 'react';
 import CommentComp from '@/components/published/comments/CommentComp';
 import FavComp from './favorite/FavComp';
 import ShareComp from './share/ShareComp';
 import { usePathname } from 'next/navigation';
-import { Skeleton } from '@/components/ui/skeleton';
 import StoryTags from '../blogs/story/StoryTags';
 import { useProfileData } from '@/hooks/getProfileData';
 import StoryDetails from '../blogs/story/StoryDetails';
 
 
 const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, currentLoginUser, allClaps, userParams }: any) => {
-    // useEffect(() => {
-    //     window.scrollTo(0, 0);
-    // }, [])
     const pathname = usePathname();
     const GetElemntRegix: any = storyCheckRegix(publishedStory?.content);
     const publishedRegix: any = checkPublishedRegix(publishedStory?.content);

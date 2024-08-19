@@ -1,11 +1,10 @@
 "use server";
 import { getUser, getUserbyID } from "./user";
 import db from "@/db/drizzle";
-import { story, user } from "@/db/schema";
+import { story } from "@/db/schema";
 import { and, arrayContains, eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { cache } from "react";
 
 export const CreateStory = async () => {
   let newStory;

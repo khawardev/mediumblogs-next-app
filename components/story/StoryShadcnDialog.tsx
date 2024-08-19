@@ -1,4 +1,4 @@
-import { getStorybyId, publishStory } from '@/actions/story';
+import { publishStory } from '@/actions/story';
 import { useState } from 'react'
 import { toast } from '@/components/ui/use-toast';
 import TagsInput from "@/components/story/TagsInput"
@@ -13,7 +13,6 @@ import Image from "next/image"
 import { storyCheckRegix } from '@/lib/storyCheckRegix';
 import { TopicsAtom } from '@/context/atom';
 import { useAtom } from 'jotai';
-// import LoadingIcon from '../loadingIcon';
 import { CgSpinner } from "react-icons/cg";
 import { Skeleton } from '../ui/skeleton';
 

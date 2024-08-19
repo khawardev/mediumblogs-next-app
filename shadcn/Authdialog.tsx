@@ -4,12 +4,10 @@ import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/Authdialog"
-import Link from "next/link"
 import Mediumicon from '@/public/medium-icon.svg'
 import Image from "next/image"
 import { signIn } from "next-auth/react"

@@ -1,6 +1,6 @@
 "use client";
-import { getStoryClapCountByUser, updateClapStoryCount } from "@/actions/claps";
-import { useEffect, useState } from "react";
+import { updateClapStoryCount } from "@/actions/claps";
+import { useState } from "react";
 import { useToast } from "../ui/use-toast";
 import ClapIcons from "@/components/ClapIcons";
 
@@ -9,8 +9,6 @@ type ClapCountCompProps = {
     storyId: any;
     currentLoginUser?: string,
     allClapsCount: string,
-    // commentId?: string,
-    // type?: string,
 
 };
 

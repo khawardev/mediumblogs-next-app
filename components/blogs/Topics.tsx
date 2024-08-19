@@ -1,19 +1,14 @@
 'use client'
 import AddTagsDialog from "@/shadcn/tagsDialog";
-import { Plus } from "lucide-react";
-import { useSession } from "next-auth/react";
 import { Link } from 'next-view-transitions'
 import WordsCarousel from "./WordsCarousel";
-import { useState } from "react";
-import { FaMedium } from "react-icons/fa6";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 const Topics = ({ userTags, allTopics }: any) => {
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const queryString = searchParams.toString();
     const fullUrl = `${pathname}?${queryString}`;
-
     return (
         <>
             <section className=" flex items-center justify-start gap-3 relative text-sm  font-bold">
@@ -45,7 +40,6 @@ const Topics = ({ userTags, allTopics }: any) => {
                                     >
                                         {userTag.value}
                                     </Link>
-
                                 ))}
                             </div>
                         </>
@@ -67,10 +61,3 @@ const Topics = ({ userTags, allTopics }: any) => {
 }
 
 export default Topics
-
-// :
-// <>
-//     <section>
-//         <WordsCarousel allTopics={allTopics} />
-//     </section>
-// </>

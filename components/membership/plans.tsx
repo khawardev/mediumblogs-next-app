@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 import { MdOutlineCheck } from "react-icons/md";
 import { PiStarFourFill } from "react-icons/pi";
 import { FaShieldHeart } from "react-icons/fa6";
-import plans from '@/data/plans.json'; // Adjust the path based on your file structure
+import plans from '@/data/plans.json';
 
 const Plans = () => {
     return (

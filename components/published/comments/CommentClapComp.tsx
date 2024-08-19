@@ -1,5 +1,5 @@
 "use client";
-import { ClapCountByUser, getCommentClapCountByUser, updateCommentOrReplyCount } from "@/actions/claps";
+import { getCommentClapCountByUser, updateCommentOrReplyCount } from "@/actions/claps";
 import { useEffect, useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import ClapIcons from "@/components/ClapIcons";
@@ -45,8 +45,6 @@ const CommentClapComp = ({ totalCommentClaps, storyId, type, commentId }: ClapCo
             setIsButtonDisabled(false);
 
         } catch (error) {
-            // setAllClaps((prev: any) => prev - 1);
-            // setClapByUser((prev: any) => prev - 1);
             toast({
                 title: 'Error while clapping story',
             })

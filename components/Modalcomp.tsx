@@ -39,7 +39,6 @@ const ModalComp = ({ isModalOpen, storyId, setIsModalOpen }: any) => {
         <>
             {isModalOpen && (
                 <>
-
                     <div className={`fixed sohne  z-50 inset-0 bg-[#FFFFFF]/90 `} >
                         <div className="flex items-center justify-center h-2/3 ">
                             <div className="bg-[#FFFFFF]  left-[50%] top-[60%] z-50 p-6 rounded-lg border border-black  shadow-lg sm:w-1/3 w-11/12 transition-opacity ease-in-out duration-1000">

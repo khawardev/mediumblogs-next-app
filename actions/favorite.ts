@@ -2,7 +2,7 @@
 import { and, eq } from "drizzle-orm";
 import { getUser, getUserbyID } from "./user";
 import db from "@/db/drizzle";
-import { save, story } from "@/db/schema";
+import { save } from "@/db/schema";
 import { getStorybyId } from "./story";
 import { revalidatePath } from "next/cache";
 

@@ -2,7 +2,6 @@ import useSWR from "swr";
 import { getAllStories, getLimitedStories } from "@/actions/story";
 import { getAllTopics, SelectedTopics } from "@/actions/topics";
 
-// Fetcher function to handle different types of data requests
 const fetcher = (url: string, tag: string) => {
   if (url.includes("getAllStories")) return getAllStories(tag);
   if (url.includes("getLimitedStories")) return getLimitedStories(tag);

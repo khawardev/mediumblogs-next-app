@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react"
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
 import { MultiSelect } from "react-multi-select-component";
 import { Plus } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"

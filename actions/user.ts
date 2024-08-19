@@ -1,7 +1,7 @@
 "use server";
 import db from "@/db/drizzle";
 import { user } from "@/db/schema";
-import { authOption, getAuthSession } from "@/lib/auth";
+import { authOption } from "@/lib/auth";
 import { eq } from "drizzle-orm";
 import { getServerSession } from "next-auth";
 export const getUser = async () => {

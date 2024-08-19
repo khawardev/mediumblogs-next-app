@@ -1,7 +1,6 @@
 'use client'
 import ModalComp from "@/components/Modalcomp";
 import { Button } from "@/components/ui/button";
-import { useToast } from "@/components/ui/use-toast";
 import { Trash } from "lucide-react";
 import { useState } from "react";
 

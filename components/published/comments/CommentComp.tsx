@@ -26,13 +26,10 @@ type props = {
     noOfComments: number;
 }
 
-export default function Component({ currentLoginUser, username, userImage, storyId, noOfComments }: props) {
+export default function Component({ username, userImage, storyId, noOfComments }: props) {
     const { toast } = useToast()
-
     const [content, setContent] = useState<string>('')
     const [loading, setloading] = useState<boolean>(false)
-    // const [comment, setcomment] = useState<any>()
-    // const [noOfComments, setNoOfComments] = useState<any>(0);
     const AddComments = async () => {
         setloading(true)
 
@@ -45,7 +42,6 @@ export default function Component({ currentLoginUser, username, userImage, story
                 return;
             } else {
                 setContent('')
-                // setcomment(comment)
                 setloading(false)
                 toast({
                     title: 'comment added',
@@ -84,7 +80,6 @@ export default function Component({ currentLoginUser, username, userImage, story
                                     <AvatarImage src={userImage} />
                                     <AvatarFallback>AC</AvatarFallback>
                                 </Avatar>
-                                {/* {username} */}
                                 <section>
                                     <div className="font-bold sohne_bold">{username}</div>
                                     <div className="text-xs text-muted-foreground sohne font-bold">{date()}</div>
@@ -100,13 +95,10 @@ export default function Component({ currentLoginUser, username, userImage, story
                                 <Button onClick={() => setContent('')} className=" sohne font-bold border-none  " size={'sm'} variant={'outline'}>Cancel</Button>
                             </div>
                         </section>
-
                         <hr />
-
                         <section className="space-y-6  ">
                             <MultiComments userImage={userImage} username={username} noOfComments={noOfComments} loading={loading} storyId={storyId} />
                         </section>
-
                     </div>
                 </div>
             </SheetContent>

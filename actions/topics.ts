@@ -3,7 +3,7 @@
 import db from "@/db/drizzle";
 import { story, topics } from "@/db/schema";
 import { getUser } from "./user";
-import { arrayContains, eq } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { redirect } from "next/navigation";
 
 export const getAllTopics = async () => {

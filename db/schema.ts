@@ -8,7 +8,7 @@ import {
 } from "drizzle-orm/pg-core";
 import { AdapterAccount } from "next-auth/adapters";
 import crypto from "crypto";
-import { Many, relations, sql } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 
 export const user = pgTable("user", {
   id: text("id")

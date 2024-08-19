@@ -1,19 +1,13 @@
 import { useEffect, useState } from 'react'
-import ClapCountComp from '../ClapComp';
 import { ClapCountByUser } from '@/actions/claps';
 import CommentClapComp from '@/components/published/comments/CommentClapComp';
-
 import ReplyArea from './ReplyArea';
 import MultiReplys from './MultiReplys';
-
-
 
 const UserEngagement = ({ totalCommentClaps, comment, userImage, username }: any) => {
     const [showReplyArea, setShowReplyArea] = useState<boolean>(false);
     const [showReplyComments, setShowReplyComments] = useState<boolean>(false);
     const [userClaps, setUserClaps] = useState<number>();
-
-
 
     useEffect(() => {
         const fetchClapCountByUser = async () => {
@@ -27,8 +21,6 @@ const UserEngagement = ({ totalCommentClaps, comment, userImage, username }: any
 
         fetchClapCountByUser();
     }, [comment]);
-
-
 
     return (
         <>
@@ -52,7 +44,6 @@ const UserEngagement = ({ totalCommentClaps, comment, userImage, username }: any
                     <ReplyArea setShowReplyArea={setShowReplyArea} commentId={comment?.id} username={username} storyId={comment?.storyId} userImage={userImage} />
                 }
                 {showReplyComments && <MultiReplys commentId={comment} replies={comment?.reply} />}
-
 
             </section>
         </>

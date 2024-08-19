@@ -1,11 +1,8 @@
-
-import { Button } from "@/components/ui/button"
 import {
     Card,
 } from "@/components/ui/card"
 
-
-export function CardWithForm({children}:{children:React.ReactNode}) {
+export function CardWithForm({ children }: { children: React.ReactNode }) {
     return (
         <Card className="w-full" >
             {children}

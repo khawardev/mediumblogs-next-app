@@ -1,14 +1,12 @@
 import { getClapsCountByStory, getStoryClapCountByUser } from '@/actions/claps';
 import { NumberofComments } from '@/actions/comments';
 import { checkFav } from '@/actions/favorite';
-import { getStorybyId, getUserByStoryId } from '@/actions/story';
-import { getUser, getUserbyID } from '@/actions/user';
+import { getStorybyId } from '@/actions/story';
+import { getUser } from '@/actions/user';
 import PublishedStory from '@/components/published/PublishedStory';
 
 const page = async ({ params }: { params: { storyId: string } }) => {
-
     const currentLoginUser: any = await getUser();
-    // const userbyStory: any = await getUserByStoryId(params?.storyId, true);
     const publishedStory: any = await getStorybyId(params?.storyId, true);
     const noOfComments: any = await NumberofComments(publishedStory?.id);
     const favStatus: any = await checkFav(publishedStory?.id);

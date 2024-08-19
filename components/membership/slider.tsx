@@ -1,7 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
-import data from '@/data/membership.json'; // Adjust the path based on your file structure
+import data from '@/data/membership.json';
 import { useState, useEffect } from 'react';
 import { PiStarFourFill } from "react-icons/pi";
 import Image from 'next/image';

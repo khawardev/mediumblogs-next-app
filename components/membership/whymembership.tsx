@@ -1,5 +1,4 @@
-import data from '@/data/whymembership.json'; // Adjust the path based on your file structure
-
+import data from '@/data/whymembership.json';
 const Whymembership = () => {
     return (
         <main className="border border-r-0 border-t-0 border-l-0 border-black">

@@ -1,10 +1,6 @@
 import { useRef, useState } from "react";
 import { Link } from 'next-view-transitions'
-import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import { Button } from "../ui/button";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { FaMedium } from "react-icons/fa6";
-import { usePathname, useSearchParams } from "next/navigation";
 
 const WordsCarousel = ({ allTopics, fullUrl, pathname, searchParams }: any) => {
     const sliderRef = useRef<HTMLDivElement>(null);
@@ -24,13 +20,7 @@ const WordsCarousel = ({ allTopics, fullUrl, pathname, searchParams }: any) => {
             });
         }
     };
-    // const [currentTag, setCurrentTag] = useState('');
-    // const handleClick = (tag: any) => {
-    //     setCurrentTag((prevTag) => (prevTag === tag ? '' : tag));
-    // };
-
     const [currentTag, setCurrentTag] = useState("For You");
-
     const handleClick = (tag: any) => {
         setCurrentTag(tag);
     };

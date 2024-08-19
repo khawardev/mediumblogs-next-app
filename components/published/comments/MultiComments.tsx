@@ -7,7 +7,6 @@ import { CgSpinner } from "react-icons/cg";
 import { useAtom } from "jotai";
 import { savingReplyAtom } from "@/context/atom";
 
-
 export const CalculateDaysAgo = (createdAt: any) => {
     const currentDate = new Date();
     const createdDate = new Date(createdAt);

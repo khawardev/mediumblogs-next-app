@@ -1,7 +1,4 @@
-import { Button } from '@/components/ui/button'
-import Link from 'next/link'
 import { BsMedium } from 'react-icons/bs'
-
 export default function NotFound() {
     return (
         <div className=' mobile_center text-center space-y-5 sm:h-[81.9vh] h-[70vh] flex-center flex-col'>

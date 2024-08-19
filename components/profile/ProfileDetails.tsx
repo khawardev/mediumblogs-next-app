@@ -16,12 +16,7 @@ const ProfileDetails = ({ userParams }: any) => {
     const handleTabClick = (tab: string) => {
         setActiveTab(tab);
     };
-    const { publishedStories, draftStories, savedStories,
-        publishSortedStories, draftSortedStories, favSortedStories, isLoading, } = useProfileData({ userParams });
-
-
-
-
+    const { publishedStories, draftStories, savedStories, publishSortedStories, draftSortedStories, favSortedStories, isLoading, } = useProfileData({ userParams });
 
     const renderStories = () => {
         switch (activeTab) {
@@ -100,6 +95,7 @@ const ProfileDetails = ({ userParams }: any) => {
             <section>
                 {isLoading ? (
                     <div>
+                        <StoryDetailSkeleton />
                         <StoryDetailSkeleton />
                         <StoryDetailSkeleton />
                         <StoryDetailSkeleton />
