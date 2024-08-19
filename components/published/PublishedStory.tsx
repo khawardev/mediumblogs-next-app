@@ -49,7 +49,7 @@ const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, c
             <section className='my-7'>
                 <StoryTags story={publishedStory} limit={5} />
             </section>
-            <section className='flex-between py-4 sohne'>
+            <section className='flex-between py-8 sohne'>
                 <div className='flex-center space-x-4 '>
                     <ClapComp clapByUser={clapByUser} allClapsCount={allClaps?.clapCount} currentLoginUser={currentLoginUser?.id} storyId={publishedStory?.id} />
                     <CommentComp noOfComments={noOfComments} currentLoginUser={currentLoginUser?.id} storyId={publishedStory?.id} username={currentLoginUser?.name} userImage={currentLoginUser?.image} />
@@ -60,15 +60,19 @@ const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, c
                 </div>
             </section>
 
-            <section className='md:flex flex-center flex-col   items-center md:justify-between gap-3 sohne py-8 border-b '>
+            {/* <section className='md:flex flex-center flex-col   items-center md:justify-between gap-3 sohne py-8 border-b '>
                 <Image className="rounded-full" src={publishedStory?.auther?.image ?? ''} width={60} height={60} alt={publishedStory?.auther?.name ?? ''} />
                 <div>
                     <p className='  text-gray-800 text-xl sohne_bold'>Written By {publishedStory?.auther?.name}</p>
                 </div>
-            </section>
-
+            </section> */}
+            <hr />
             <section className='   py-8 '>
-                <p className=' text-xl sohne_bold'>More from {publishedStory?.auther?.name}</p>
+                <section className=' flex-between'>
+
+                    <p className=' text-xl sohne_bold'>More from {publishedStory?.auther?.name}</p>
+                    {/* <Image className="rounded-full" src={publishedStory?.auther?.image ?? ''} width={40} height={40} alt={publishedStory?.auther?.name ?? ''} /> */}
+                </section>
                 <section className='grid md:grid-cols-2 gap-5 sohne  py-8'>
                     {Array.isArray(publishSortedStories) && publishSortedStories.map((story: any, index: number) => (
                         <StoryDetails moreFromCreator={true} key={index} story={story} />
