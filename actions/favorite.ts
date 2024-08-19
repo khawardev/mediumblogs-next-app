@@ -59,7 +59,6 @@ export const getFavStoriesByUserId = async (userId: string) => {
       where: eq(save.userId, userId),
       with: { story: true },
     });
-    console.log(favEntries, "favEntriesfavEntriesfavEntriesfavEntries");
 
     if (!favEntries.length) {
       return { error: "No favorite stories found for this user" };
@@ -73,10 +72,7 @@ export const getFavStoriesByUserId = async (userId: string) => {
         auther: userDetails, // Add the userDetails as the author field in each story
       },
     }));
-
-    console.log(favEntries, "favEntries");
   } catch (error) {
-    console.error("Error retrieving favorite stories:", error);
     return { error: "Error retrieving favorite stories" };
   }
 

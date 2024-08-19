@@ -50,30 +50,34 @@ export const getAllStories = async (tag: string) => {
   return stories;
 };
 export const getStorybyId = async (
-  storyId: any,
+  storyId: string,
   publish: boolean,
   UserID?: any
 ) => {
   if (!storyId) {
     return { error: "Don't have a story ID" };
   }
+
   let storyDetails;
   try {
-    if (UserID) {
-      storyDetails = await db.query.story.findFirst({
-        where: and(
-          eq(story?.id, storyId),
-          eq(story?.publish, publish),
-          eq(story?.userId, UserID)
-        ),
-        with: { auther: true },
-      });
-    } else {
-      storyDetails = await db.query.story.findFirst({
-        where: and(eq(story?.id, storyId), eq(story?.publish, publish)),
-        with: { auther: true },
-      });
-    }
+    storyDetails = await db.query.story.findFirst({
+      where: and(eq(story?.id, storyId), eq(story?.publish, publish)),
+      with: { auther: true },
+    });
+    // if (UserID) {
+    //   storyDetails = await db.query.story.findFirst({
+    //     where: and(
+    //       eq(story?.id, storyId),
+    //       eq(story?.publish, publish),
+    //     ),
+    //     with: { auther: true },
+    //   });
+    // } else {
+    //   storyDetails = await db.query.story.findFirst({
+    //     where: and(eq(story?.id, storyId), eq(story?.publish, publish)),
+    //     with: { auther: true },
+    //   });
+    // }
 
     if (!storyDetails) {
       return { error: "Story not found" };

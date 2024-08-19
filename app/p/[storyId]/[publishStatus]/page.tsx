@@ -6,18 +6,21 @@ import HtmlToMarkdown from '@/lib/HtmlToMarkdown';
 
 
 const StoryID = async ({ params }: { params: { storyId: string, publishStatus: any } }) => {
-    const story: any = await getStorybyId(params?.storyId, params?.publishStatus);
+    const publishStatus = JSON.parse(params?.publishStatus);
+    const story: any = await getStorybyId(params?.storyId, publishStatus);
     const user: any = await getUser();
-
     let htmlToMarkdownContent;
     if (story?.content) {
         htmlToMarkdownContent = await HtmlToMarkdown(story.content);
     }
+    console.log(story, 'storystorystorystory ------------------==========');
+    console.log(params?.publishStatus, 'storystorystorystory ------------------==========');
+    console.log(publishStatus, 'storystorystorystory ------------------==========');
 
     return (
-        <div className="sm:w-6/12 m-auto">
+        <div className="sm:w-6/12 mx-auto">
             <div className='sm:px-0 px-4'>
-                <NavbarStory publishStatus={params?.publishStatus} storyContent={story?.content || ''} storyID={params?.storyId} currentUserName={user?.name || ''} />
+                <NavbarStory publishStatus={publishStatus} storyContent={story?.content || ''} storyID={params?.storyId} currentUserName={user?.name || ''} />
             </div>
             <AddNewStory publishStatus={params?.publishStatus} HtmlToMarkdown={htmlToMarkdownContent || ''} storyID={params?.storyId} />
         </div>

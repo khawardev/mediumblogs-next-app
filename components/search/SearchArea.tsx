@@ -1,6 +1,6 @@
 'use client';
 import "@/public/assets/styles/search.css";
-import { MdClose } from 'react-icons/md';
+import { MdClose, MdOutlineErrorOutline } from 'react-icons/md';
 import { useState } from 'react';
 import { searchStoriesByContent } from "@/actions/story";
 import StoryDetails from "../blogs/story/StoryDetails";
@@ -19,8 +19,6 @@ const SearchArea = () => {
         if (e.key === 'Enter') {
             setLoading(true)
             const result = await searchStoriesByContent(inputValue);
-            console.log(result, 'resultresultresult');
-
             setInputValue('');
             if ('error' in result) {
                 setLoading(false)
@@ -50,7 +48,10 @@ const SearchArea = () => {
                 {loading ? <><StoryDetailSkeleton /><StoryDetailSkeleton /></> :
                     !Array.isArray(searchedStories) || searchedStories.length === 0 ? (
                         <div className=" flex-center h-[520px]">
-                            <p className=" text-3xl opacity-25 sohne_bold"> Search is Empty </p>
+                            <div className=" flex-center flex-col">
+                                <MdOutlineErrorOutline size={90} className=' opacity-10' />
+                                <p className=" md:text-3xl text-2xl opacity-20 sohne_bold"> Search is Empty </p>
+                            </div>
                         </div>
                     ) : (
                         <>

@@ -15,9 +15,6 @@ const NavbarStory = ({ storyID, currentUserName, storyContent, publishStatus }: 
     <main className="  pt-10  sohne  " >
       <section className="flex-between gap-4 font-bold    ">
         <section className="flex-center  gap-4 ">
-          <Link href={'/'} >
-            <Mediumsvg clasName="" size={25} />
-          </Link>
           <p className=" text-sm sm:block hidden ">Draft in {currentUserName}</p>
           <p className=" text-sm sohne font-bold  ">{saving ?
             <div className=" flex-center gap-2">
@@ -28,9 +25,9 @@ const NavbarStory = ({ storyID, currentUserName, storyContent, publishStatus }: 
           }
           </p>
         </section>
-        <StoryShadcnDialog storyContent={storyContent} storyID={storyID} username={currentUserName} setShowtags={setShowtags} title="Publish" className=" h-9 px-5 py-2  border hover:border-[#1A8917]  hover:text-white hover:bg-[#1A8917]   sohne font-bold" />
-        {/* {publishStatus === false &&
-        } */}
+        {publishStatus === false &&
+          <StoryShadcnDialog storyContent={storyContent} storyID={storyID} username={currentUserName} setShowtags={setShowtags} title="Publish" className=" h-9 px-5 py-2  border hover:border-[#1A8917]  hover:text-white hover:bg-[#1A8917]   sohne font-bold" />
+        }
       </section>
 
     </main>
