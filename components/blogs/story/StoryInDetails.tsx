@@ -75,7 +75,7 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete, profileD
                         </section>
                     </section>
                     <section className="  sm:w-[50%] w-full  "  >
-                        <Image className=" rounded-md   sohne  " src={GetElemntRegix?.imageUrl ? GetElemntRegix?.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637'} quality={100} alt="blog image" width={1000} height={1000} />
+                        <Image className=" rounded-lg   sohne  " src={GetElemntRegix?.imageUrl ? GetElemntRegix?.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637'} quality={100} alt="blog image" width={1000} height={1000} />
                     </section>
                 </main>
                 <section className=" sm:hidden    flex items-center justify-between gap-2  w-full  mt-4  text-sm ">

@@ -18,7 +18,7 @@ const PublishedStoryInDetails = ({ story, favStatus }: any) => {
         <main className=" flex flex-col justify-between cursor-pointer pb-4 border-b  " onClick={() => router.push(`/published/${story?.id}`)}>
             <main>
                 <section   >
-                    <Image className=" rounded-md   sohne w-full  md:h-[190px]" src={result?.imageUrl ? result?.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637'} quality={100} alt="blog image" width={1000} height={1000} />
+                    <Image className=" rounded-lg   sohne w-full  md:h-[190px]" src={result?.imageUrl ? result?.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637'} quality={100} alt="blog image" width={1000} height={1000} />
                 </section>
                 <section className=" mt-4 w-full" >
                     <div className="sm:space-y-3  space-y-5  " >
