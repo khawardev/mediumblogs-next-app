@@ -19,6 +19,10 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete, profileD
         e.preventDefault();
         { profileDraftLink ? router.push(`/p/${storyID}/${false}`) : router.push(`/p/${storyID}/${true}`) }
     }
+
+    console.log(story, ' ========= fav story in detail =========');
+
+
     return (
         <>
 

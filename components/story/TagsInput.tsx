@@ -29,11 +29,11 @@ const TagsInput = ({ publishing }: any) => {
     const handleDelete = (index: any) => {
         setTopics(prev => prev.filter((_, i) => i !== index));
     };
+    console.log(topics, 'topicstopicstopics ===========');
 
 
     return (
-        <div className=" ">
-
+        <div>
             <input
                 disabled={publishing}
                 type="text"

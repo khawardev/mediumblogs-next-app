@@ -48,11 +48,7 @@ export const getAllStories = async (tag: string) => {
   }
   return stories;
 };
-export const getStorybyId = async (
-  storyId: string,
-  publish: boolean,
-  UserID?: any
-) => {
+export const getStorybyId = async (storyId: string, publish: boolean) => {
   if (!storyId) {
     return { error: "Don't have a story ID" };
   }
@@ -63,21 +59,6 @@ export const getStorybyId = async (
       where: and(eq(story?.id, storyId), eq(story?.publish, publish)),
       with: { auther: true },
     });
-    // if (UserID) {
-    //   storyDetails = await db.query.story.findFirst({
-    //     where: and(
-    //       eq(story?.id, storyId),
-    //       eq(story?.publish, publish),
-    //     ),
-    //     with: { auther: true },
-    //   });
-    // } else {
-    //   storyDetails = await db.query.story.findFirst({
-    //     where: and(eq(story?.id, storyId), eq(story?.publish, publish)),
-    //     with: { auther: true },
-    //   });
-    // }
-
     if (!storyDetails) {
       return { error: "Story not found" };
     }
@@ -197,25 +178,26 @@ export const getStoriesByUserId = async (userId: string, publish: boolean) => {
     return { error: "User ID is required" };
   }
 
-  const userDetails: any = await getUserbyID(userId);
+  // const userDetails: any = await getUserbyID(userId);
 
-  if (!userDetails) {
-    return { error: "User not found" };
-  }
+  // if (!userDetails) {
+  //   return { error: "User not found" };
+  // }
 
   let stories;
   try {
     stories = await db.query.story.findMany({
       where: and(eq(story?.userId, userId), eq(story?.publish, publish)),
+      with: { auther: true },
     });
 
     if (!stories?.length) {
       return { error: "No published stories found for this user" };
     }
-    stories = stories.map((story) => ({
-      ...story,
-      auther: userDetails,
-    }));
+    // stories = stories.map((story) => ({
+    //   ...story,
+    //   auther: userDetails,
+    // }));
   } catch (error) {
     return { error: "Error fetching stories" };
   }

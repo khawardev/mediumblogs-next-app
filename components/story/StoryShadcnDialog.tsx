@@ -45,7 +45,7 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
                 });
             }
             setPublishing(false)
-            setTopics([''])
+            setTopics([])
         } catch (error) {
             console.log('error in publishing the story')
         }
@@ -55,7 +55,6 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
     return (
         <section >
             <Dialog>
-
                 {!result?.error &&
                     <>
                         <DialogTrigger asChild>
@@ -63,8 +62,6 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
                         </DialogTrigger>
                     </>
                 }
-
-
                 <DialogContent className="sohne">
                     <main className="md:flex md:justify-between  gap-10 overflow-y-auto" >
                         <section className=" w-full  space-y-2" >
@@ -95,7 +92,7 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
                             <TagsInput publishing={publishing} />
 
                             <DialogDescription className="md:block hidden ">Learn more about what happens to your post when you publish.</DialogDescription>
-                            <Button disabled={!topics?.length} onClick={publishStoryFunc} variant="green" size="sm" className="  sohne font-bold  tracking-wider" >
+                            <Button disabled={!topics?.length || publishing} onClick={publishStoryFunc} variant="green" size="sm" className="  sohne font-bold  tracking-wider" >
                                 {publishing ? <div className=" flex-center gap-2">
                                     Publishing
                                     <CgSpinner className="animate-spin" size={16} />
