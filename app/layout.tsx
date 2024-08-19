@@ -25,9 +25,10 @@ export default function RootLayout({
           <head>
             <ThemeModeScript />
           </head>
-          <body className={` relative bg-[#FFFFFF]`}>
-            <Header />
-            <div className=" md:pt-[77px] pt-[128px]   pb-0">
+          <body className={`flex flex-col min-h-screen   relative bg-[#FFFFFF]`}>
+            <Header headerClasses={'z-40 fixed'} />
+            <Header headerClasses={''} />
+            <div className="flex-grow flex ">
               {children}
               <Toaster />
             </div>

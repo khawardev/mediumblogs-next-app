@@ -53,7 +53,7 @@ const ProfileDetails = ({ userParams }: any) => {
 
         <div className="mobile_center_less_contract md:py-12 py-8">
             <section className="flex-between mb-14">
-                <p className="md:text-5xl text-3xl sohne_bold">Your Stories</p>
+                <p className="md:text-5xl text-3xl sohne_bold">My Profile</p>
 
                 <button onClick={MakeNewStory} className="flex-center gap-2   text-gray-500 ">
                     <SquarePen strokeWidth={1.25} size={18} />

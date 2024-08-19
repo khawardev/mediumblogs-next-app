@@ -8,7 +8,7 @@ const Whymembership = () => {
                 <section className=" lg:w-1/2 lg:space-y-24 space-y-20">
                     {data?.map((item, Index) => (
                         <section key={Index}>
-                            <p className="text-3xl mb-4">{item.title}</p>
+                            <p className=" font-bold text-gray-800 md:text-3xl text-2xl mb-4">{item.title}</p>
                             <p className=" sohne   lg:text-lg text-base  text-muted-foreground">{item.desc}</p>
                         </section>
                     ))}

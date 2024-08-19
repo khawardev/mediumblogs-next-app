@@ -16,7 +16,7 @@ export default function Home() {
   const { status } = useSession()
   const words = ["ideas", "concepts", "theories"];
   return (
-    <main className="flex-between md:h-[615px] h-[560px] mobile_right">
+    <main className="mobile_right flex-between  ">
       <section>
         <section className={` ${vollkorn.className} lg:text-[110px]  md:text-8xl text-7xl  text-[#242424] leading-[0.9] tracking-tight`}>
           Human <br /> stories & <br className=" sm:hidden block" /> <FlipWords words={words} />
@@ -39,16 +39,8 @@ export default function Home() {
         }
 
       </section>
-      <section className="  lg:flex hidden ">
+      <section className="lg:flex hidden ">
         <Globe />
-        {/* <Image
-          alt="medium hero image"
-          src={"https://miro.medium.com/v2/format:webp/4*SdjkdS98aKH76I8eD0_qjw.png"}
-          width={450}
-          height={450}
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA..."
-        /> */}
       </section>
     </main>
 
