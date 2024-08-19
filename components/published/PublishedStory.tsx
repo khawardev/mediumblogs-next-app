@@ -11,9 +11,14 @@ import { usePathname } from 'next/navigation';
 import StoryTags from '../blogs/story/StoryTags';
 import { useProfileData } from '@/hooks/getProfileData';
 import StoryDetails from '../blogs/story/StoryDetails';
+import { useEffect } from 'react';
 
 
 const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, currentLoginUser, allClaps, userParams }: any) => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [publishedStory]);
+
     const pathname = usePathname();
     const GetElemntRegix: any = storyCheckRegix(publishedStory?.content);
     const publishedRegix: any = checkPublishedRegix(publishedStory?.content);
