@@ -20,7 +20,6 @@ const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, c
     const { publishSortedStories } = useProfileData({ userParams });
     console.log(publishedRegix, 'publishedRegixpublishedRegix =========');
 
-
     return (
         <div className='mobile_center_contract md:my-14 mt-8 text-[#242424]  '>
             <div className="  md:text-[45px] leading-[42px] text-4xl sohne_bold mb-8" dangerouslySetInnerHTML={{ __html: GetElemntRegix?.heading || '' }} />
