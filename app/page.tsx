@@ -16,7 +16,7 @@ export default function Home() {
   const { status } = useSession()
   const words = ["ideas", "concepts", "theories"];
   return (
-    <main className="mobile_right flex-between md:h-auto  h-[75vh]   ">
+    <main className="mobile_right flex-between md:h-auto  h-[74vh]   ">
       <section>
         <section className={` ${vollkorn.className} lg:text-[110px]  md:text-8xl text-7xl  text-[#242424] leading-[0.9] tracking-tight`}>
           Human <br /> stories & <br className=" sm:hidden block" /> <FlipWords words={words} />
