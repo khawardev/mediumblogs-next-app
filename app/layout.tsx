@@ -17,7 +17,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <ViewTransitions>
       <html lang="en" >
@@ -25,10 +24,10 @@ export default function RootLayout({
           <head>
             <ThemeModeScript />
           </head>
-          <body className={`flex flex-col min-h-screen   relative bg-[#FFFFFF]`}>
+          <body className={`flex flex-col min-h-screen relative bg-[#FFFFFF]`}>
             <Header headerClasses={'z-40 fixed'} />
             <Header headerClasses={''} />
-            <div className="md:flex-grow md:flex ">
+            <div className="md:flex-grow md:flex">
               {children}
               <Toaster />
             </div>

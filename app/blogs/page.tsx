@@ -12,7 +12,7 @@ const Blogs = async ({ searchParams }: { searchParams: { tag: string } }) => {
   const stories = Array?.isArray(fetchedStories) ? fetchedStories.sort((a: any, b: any) => new Date(b?.createdAt).getTime() - new Date(a?.createdAt).getTime()) : [];
 
   return (
-    <div className=" mobile_center_less_contract md:py-12 py-8 ">
+    <div className=" mobile_center_less_contract md:py-12 py-6 ">
       <section className=" grid md:grid-cols-7 w-full gap-20">
         <main className="md:col-span-5">
           <section className=" mb-[13px] ">

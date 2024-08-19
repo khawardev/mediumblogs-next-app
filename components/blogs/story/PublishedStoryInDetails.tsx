@@ -10,12 +10,15 @@ import { Skeleton } from "@/components/ui/skeleton";
 const PublishedStoryInDetails = ({ story, favStatus }: any) => {
     const router = useRouter()
     const result: any = storyCheckRegix(story?.content);
+    const name = story?.auther?.name;
+    let userName = name.toLowerCase().replace(/\b\w/g, (char: string) => char.toUpperCase());
+
 
     return (
-        <main className=" flex flex-col justify-between cursor-pointer pb-4  " onClick={() => router.push(`/published/${story?.id}`)}>
+        <main className=" flex flex-col justify-between cursor-pointer pb-4 border-b  " onClick={() => router.push(`/published/${story?.id}`)}>
             <main>
                 <section   >
-                    <Image className=" rounded-md border  sohne w-full  md:h-[190px]" src={result?.imageUrl ? result?.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637'} quality={100} alt="blog image" width={1000} height={1000} />
+                    <Image className=" rounded-md   sohne w-full  md:h-[190px]" src={result?.imageUrl ? result?.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637'} quality={100} alt="blog image" width={1000} height={1000} />
                 </section>
                 <section className=" mt-4 w-full" >
                     <div className="sm:space-y-3  space-y-5  " >
@@ -25,7 +28,7 @@ const PublishedStoryInDetails = ({ story, favStatus }: any) => {
                                 <AvatarFallback><Skeleton className="w-10 h-10 rounded-full" /></AvatarFallback>
                             </Avatar>
                             <div className=" leading-4">
-                                <p className=" sohne_bold whitespace-nowrap">{story?.auther?.name}</p>
+                                <p className=" sohne_bold whitespace-nowrap">{userName}</p>
                                 <p className="sohne font-bold text-sm text-muted-foreground  ">{new Date(story?.createdAt).toDateString().split(' ')?.slice(1, 4).join(' ')}</p>
                             </div>
                         </section>

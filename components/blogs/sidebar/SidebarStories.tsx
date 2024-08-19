@@ -18,7 +18,7 @@ const SidebarStories = ({ story }: any) => {
                     width={200}
                     height={200}
                 />
-                <div className="">
+                <div>
                     <div className="markdown-body  text-lg sohne_bold font-bold line-clamp-1 " dangerouslySetInnerHTML={{ __html: result?.heading || '' }} />
                     <div className="markdown-body sohne text-muted-foreground line-clamp-2" dangerouslySetInnerHTML={{ __html: result?.paragraph || '' }} />
                 </div>

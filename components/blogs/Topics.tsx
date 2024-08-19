@@ -19,7 +19,7 @@ const Topics = ({ userTags, allTopics }: any) => {
                             <div className="flex justify-start space-x-1">
                                 <Link
                                     href="/blogs"
-                                    className={` ${fullUrl === "/blogs?" ? 'underline opacity-90 ' : 'opacity-50 '} flex-center gap-1 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
+                                    className={` ${fullUrl === "/blogs?" ? 'underline opacity-90  ' : 'opacity-50 '} flex-center gap-1 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
                                     style={{
                                         scrollSnapAlign: "start",
                                         flexShrink: 0,

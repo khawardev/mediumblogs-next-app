@@ -8,7 +8,7 @@ const Sidebar = ({ limitedStories }: any) => {
         <div className=" select-none">
             {limitedStories?.length >= 0 && <>
                 <h3 className="font-semibold text-xl sohne_bold mb-5">Staff Picks</h3>
-                <div className=" space-y-4 mb-4">
+                <div className=" space-y-4 mb-4 ">
                     {limitedStories?.map((story: any, index: number) => (
                         <SidebarStories key={index} story={story} />
                     ))}

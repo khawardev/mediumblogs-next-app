@@ -41,7 +41,7 @@ const WordsCarousel = ({ allTopics, fullUrl, pathname, searchParams }: any) => {
                 <Link
                     href="/blogs"
                     onClick={() => handleClick("For You")}
-                    className={` ${fullUrl === "/blogs?" ? '  opacity-85 text-white bg-black ' : 'opacity-50 '} py-1  rounded-full flex-center gap-1 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
+                    className={` ${fullUrl === "/blogs?" ? 'opacity-85 text-white bg-black shadow-xl' : 'opacity-50 '} py-1  rounded-full flex-center gap-1 underline-offset-[19px] sm:decoration-2 decoration-1  sohne transition-all ease-in px-3`}
                     style={{
                         scrollSnapAlign: "start",
                         flexShrink: 0,
@@ -54,7 +54,7 @@ const WordsCarousel = ({ allTopics, fullUrl, pathname, searchParams }: any) => {
                         key={index}
                         href={`/blogs/?tag=${userTag.value}`}
                         onClick={() => handleClick(userTag.value)}
-                        className={` ${pathname === "/blogs" && searchParams.get('tag') === userTag.value ? ' opacity-85 text-white bg-black ' : 'opacity-50'} py-1 rounded-full  underline-offset-[22px] sm:decoration-2 decoration-1  sohne transition-all ease-in   px-3  `}
+                        className={` ${pathname === "/blogs" && searchParams.get('tag') === userTag.value ? ' opacity-85 text-white bg-black shadow-xl ' : 'opacity-50 '} py-1 rounded-full  underline-offset-[22px] sm:decoration-2 decoration-1  sohne transition-all ease-in   px-3  `}
                         style={{
                             scrollSnapAlign: "start", // Align each item to start at the beginning of the container
                             flexShrink: 0, // Prevent items from shrinking

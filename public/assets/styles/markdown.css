@@ -179,7 +179,7 @@
 /* Style for the image inside a p element */
 .markdown-body p img {
   border-radius: 7px; /* Make the image rounded */
-  border: #6c757d46 solid 1px;
+  /* border: #6c757d46 solid 1px; */
   width: 100%;
   height: auto; /* Maintain the aspect ratio */
   display: block; /* Remove the inline nature of the image */

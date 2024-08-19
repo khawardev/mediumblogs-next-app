@@ -20,13 +20,13 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete, profileD
         { profileDraftLink ? router.push(`/p/${storyID}/${false}`) : router.push(`/p/${storyID}/${true}`) }
     }
 
-    console.log(story, ' ========= fav story in detail =========');
+    const name = story?.auther?.name;
+    let userName = name.toLowerCase().replace(/\b\w/g, (char: string) => char.toUpperCase());
 
 
     return (
         <>
-
-            <main className="sm:px-5 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75 "
+            <main className="sm:px-5 cursor-pointer py-8  border-b sm:hover:bg-gray-100 transition-all  duration-75  select-none"
                 onClick={() => { !profileDraftLink && router.push(`/published/${story?.id}`) }}
             >
                 <main className="sm:flex flex-between flex sm:flex-row flex-col-reverse sm:gap-10 gap-5 " >
@@ -48,7 +48,7 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete, profileD
                                         <AvatarFallback><Skeleton className="w-10 h-10 rounded-full" /></AvatarFallback>
                                     </Avatar>
                                     <div className=" leading-4">
-                                        <p className=" sohne_bold whitespace-nowrap">{story?.auther?.name}</p>
+                                        <p className=" sohne_bold whitespace-nowrap">{userName}</p>
                                         <p className="sohne font-bold text-sm text-muted-foreground  ">{new Date(story?.createdAt).toDateString().split(' ')?.slice(1, 4).join(' ')}</p>
                                     </div>
                                 </section>
@@ -59,7 +59,6 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete, profileD
                                             <DeleteDialog storyId={story?.id} />
                                         </div>
                                     </>
-
                                 }
                             </section>
                             <section className="sm:space-y-3 space-y-1">
@@ -76,7 +75,7 @@ const StoryInDetails = ({ story, favStatus, profilepublishedEditDelete, profileD
                         </section>
                     </section>
                     <section className="  sm:w-[50%] w-full  "  >
-                        <Image className=" rounded-md border  sohne  " src={GetElemntRegix?.imageUrl ? GetElemntRegix?.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637'} quality={100} alt="blog image" width={1000} height={1000} />
+                        <Image className=" rounded-md   sohne  " src={GetElemntRegix?.imageUrl ? GetElemntRegix?.imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637'} quality={100} alt="blog image" width={1000} height={1000} />
                     </section>
                 </main>
                 <section className=" sm:hidden    flex items-center justify-between gap-2  w-full  mt-4  text-sm ">

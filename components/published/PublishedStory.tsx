@@ -18,15 +18,19 @@ const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, c
     const GetElemntRegix: any = storyCheckRegix(publishedStory?.content);
     const publishedRegix: any = checkPublishedRegix(publishedStory?.content);
     const { publishSortedStories } = useProfileData({ userParams });
-    console.log(publishedRegix, 'publishedRegixpublishedRegix =========');
+    const filteredPublishedStories = publishSortedStories.filter((story: any) => story.id !== publishedStory.id);
+
+    const name = publishedStory?.auther?.name;
+    let userName = name.toLowerCase().replace(/\b\w/g, (char: string) => char.toUpperCase());
+
 
     return (
         <div className='mobile_center_contract md:my-14 mt-8 text-[#242424]  '>
             <div className="  md:text-[45px] leading-[42px] text-4xl sohne_bold mb-8" dangerouslySetInnerHTML={{ __html: GetElemntRegix?.heading || '' }} />
             <section className='flex items-center justify-start gap-3 sohne mb-8 '>
-                <Image className="rounded-full" src={publishedStory?.auther?.image} width={40} height={40} alt={publishedStory?.auther?.name} />
+                <Image className="rounded-full" src={publishedStory?.auther?.image} width={40} height={40} alt={userName} />
                 <div>
-                    <p className='  text-gray-800 sohne_bold'>{publishedStory?.auther?.name}</p>
+                    <p className='  text-gray-800 sohne_bold'>{userName}</p>
                     <p className=' text-sm text-gray-500 sohne font-bold'>Published on {' '}{new Date(publishedStory?.createdAt).toDateString().split(' ')?.slice(1, 4).join(' ')}</p>
                 </div>
             </section>
@@ -70,11 +74,11 @@ const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, c
             <section className='   py-8 '>
                 <section className=' flex-between'>
 
-                    <p className=' text-xl sohne_bold'>More from {publishedStory?.auther?.name}</p>
+                    <p className=' text-xl sohne_bold'>More from {userName}</p>
                     {/* <Image className="rounded-full" src={publishedStory?.auther?.image ?? ''} width={40} height={40} alt={publishedStory?.auther?.name ?? ''} /> */}
                 </section>
                 <section className='grid md:grid-cols-2 gap-5 sohne  py-8'>
-                    {Array.isArray(publishSortedStories) && publishSortedStories.map((story: any, index: number) => (
+                    {Array.isArray(filteredPublishedStories) && filteredPublishedStories.map((story: any, index: number) => (
                         <StoryDetails moreFromCreator={true} key={index} story={story} />
                     ))}
                 </section>
