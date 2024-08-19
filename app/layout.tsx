@@ -28,7 +28,7 @@ export default function RootLayout({
           <body className={`flex flex-col min-h-screen   relative bg-[#FFFFFF]`}>
             <Header headerClasses={'z-40 fixed'} />
             <Header headerClasses={''} />
-            <div className="flex-grow flex ">
+            <div className="md:flex-grow md:flex ">
               {children}
               <Toaster />
             </div>

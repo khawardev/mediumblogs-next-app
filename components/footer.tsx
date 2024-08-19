@@ -22,7 +22,6 @@ const Footer = () => {
             <Link className="sohne font-bold text-sm" href="">Terms</Link>
           </div>
           <div className="flex flex-row-reverse  w-full">
-
             <div className=" select-none flex-center gap-1">
               <p className=" sohne_bold  font-bold"><span className=" text-muted-foreground">By</span> Khawar Sultan</p>
               <Image src={'https://attic.sh/r44qhgzfghw52b64th6ixln2hfbx'} alt='s' width={30} height={100} />

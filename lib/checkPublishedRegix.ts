@@ -10,30 +10,43 @@ export const checkPublishedRegix = (htmlContent: string) => {
     doc.body.removeChild(firstChild);
   }
 
-  // Locate the <img> tag and ensure it is followed by a <p> tag
-  const imgTag = doc.querySelector("img");
-  if (imgTag) {
+  // Locate all <img> tags in the content
+  const imgTags = doc.querySelectorAll("img");
+
+  imgTags.forEach((imgTag) => {
     const imgParent = imgTag.parentElement;
 
+    // If the <img> is not already wrapped in a <p>, wrap it
     if (imgParent && imgParent.tagName !== "P") {
-      // If the <img> is not already wrapped in a <p>, wrap it
       const pTag = doc.createElement("p");
       imgTag.before(pTag);
       pTag.appendChild(imgTag);
     }
 
-    // Ensure that the text after the image is in a separate <p> tag
-    const nextSibling: any = imgTag.nextSibling;
-    if (nextSibling && nextSibling.nodeType === Node.TEXT_NODE) {
-      const textContent = nextSibling.textContent.trim();
-      if (textContent) {
-        const newPTag: any = doc.createElement("p");
-        newPTag.textContent = textContent;
-        imgTag.parentNode?.insertBefore(newPTag, nextSibling);
-        nextSibling.remove();
+    // Move any siblings after the <img> tag into a new <p> tag
+    let nextSibling = imgTag.nextSibling;
+
+    // Collect all content until the next <img> or the end of the parent element
+    const contentToMove: Node[] = [];
+    while (nextSibling) {
+      if (
+        nextSibling.nodeType === Node.ELEMENT_NODE &&
+        (nextSibling as Element).tagName === "IMG"
+      ) {
+        break;
       }
+      contentToMove.push(nextSibling);
+      nextSibling = nextSibling.nextSibling;
     }
-  }
+
+    if (contentToMove.length > 0) {
+      const newPTag = doc.createElement("p");
+      contentToMove.forEach((node) => {
+        newPTag.appendChild(node);
+      });
+      imgTag.parentNode?.insertBefore(newPTag, imgTag.nextSibling);
+    }
+  });
 
   // Return the modified HTML as a string
   return doc.body.innerHTML;
