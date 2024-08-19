@@ -75,21 +75,22 @@ const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, c
                     <p className='  text-gray-800 text-xl sohne_bold'>Written By {publishedStory?.auther?.name}</p>
                 </div>
             </section> */}
-            <hr />
-            <section className='   py-8 '>
-                <section className=' flex-between'>
-
-                    <p className=' text-xl sohne_bold'>More from {userName}</p>
-                    {/* <Image className="rounded-full" src={publishedStory?.auther?.image ?? ''} width={40} height={40} alt={publishedStory?.auther?.name ?? ''} /> */}
-                </section>
-                <section className='grid md:grid-cols-2 gap-5 sohne  py-8'>
-                    {Array.isArray(filteredPublishedStories) && filteredPublishedStories.map((story: any, index: number) => (
-                        <StoryDetails moreFromCreator={true} key={index} story={story} />
-                    ))}
-                </section>
-            </section>
-
-
+            {filteredPublishedStories.length > 0 &&
+                <>
+                    <hr />
+                    <section className='   py-8 '>
+                        <section className=' flex-between'>
+                            <p className=' text-xl sohne_bold'>More from {userName}</p>
+                            {/* <Image className="rounded-full" src={publishedStory?.auther?.image ?? ''} width={40} height={40} alt={publishedStory?.auther?.name ?? ''} /> */}
+                        </section>
+                        <section className='grid md:grid-cols-2 gap-5 sohne  py-8'>
+                            {Array.isArray(filteredPublishedStories) && filteredPublishedStories.map((story: any, index: number) => (
+                                <StoryDetails moreFromCreator={true} key={index} story={story} />
+                            ))}
+                        </section>
+                    </section>
+                </>
+            }
         </div>
     )
 }
