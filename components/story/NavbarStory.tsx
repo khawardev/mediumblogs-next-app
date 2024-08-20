@@ -10,12 +10,13 @@ import { CgSpinner } from "react-icons/cg";
 const NavbarStory = ({ storyID, currentUserName, storyContent, publishStatus }: { storyID: string, currentUserName: string, storyContent: string, publishStatus: boolean }) => {
   const [saving, setSaving] = useAtom(savingAtom);
   const [Showtags, setShowtags] = useState(false);
+  const userName = currentUserName.toLowerCase().replace(/\b\w/g, (char: string) => char.toUpperCase());;
 
   return (
     <main className="  pt-10  sohne  " >
       <section className="flex-between gap-4 font-bold    ">
         <section className="flex-center  gap-4 ">
-          <p className=" text-sm sm:block hidden ">Draft in {currentUserName}</p>
+          <p className=" text-sm sm:block hidden ">Draft in <span className=''>{userName}</span>&lsquo;s Profile</p>
           <p className=" text-sm sohne font-bold  ">{saving ?
             <div className=" flex-center gap-2">
               Saving
