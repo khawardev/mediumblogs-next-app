@@ -16,12 +16,12 @@ export default function Home() {
   const { status } = useSession()
   const words = ["ideas", "concepts", "theories"];
   return (
-    <main className={`mobile_right flex-between md:h-auto ${status === 'authenticated' ? 'h-[74vh]' : 'h-[79vh]'}  `}   >
+    <main className={`mobile_right flex-between md:h-auto  ${status === 'authenticated' ? 'h-[74vh]' : 'h-[79vh]'}  `}   >
       <section>
         <section className={` ${vollkorn.className} lg:text-[110px]  md:text-8xl text-7xl  text-[#242424] leading-[0.9] tracking-tight`}>
           Human <br /> stories & <br className=" sm:hidden block" /> <FlipWords words={words} />
         </section>
-        <p className="sohne font-bold text-[#242424] md:text-2xl text-xl mb-10 md:mt-0 mt-6">
+        <p className="sohne font-bold text-[#242424]  md:text-2xl text-xl mb-10 md:mt-0 mt-6">
           A place to read, write, and deepen your understanding
         </p>
         {status === 'authenticated' ?

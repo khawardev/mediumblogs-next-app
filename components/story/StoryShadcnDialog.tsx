@@ -29,6 +29,7 @@ interface DialogButtonProps {
 
 
 export function StoryShadcnDialog({ className, title, storyID, username, storyContent, setShowtags }: DialogButtonProps) {
+    const userName = username.toLowerCase().replace(/\b\w/g, (char: string) => char.toUpperCase());;
 
     const result: any = storyCheckRegix(storyContent);
     const [topics, setTopics] = useAtom(TopicsAtom);
@@ -55,7 +56,9 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
     return (
         <section >
             <Dialog>
-                {!result?.error &&
+                {result?.error ? <><p className=' text-sm sohne font-bold text-muted-foreground'>Please Add heading First</p></> :
+
+
                     <>
                         <DialogTrigger asChild>
                             <Button size={'sm'} className={className} variant={'outline'}  >{title}</Button>
@@ -87,7 +90,7 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
                         </section>
                         <section className=" w-full  space-y-2" >
                             <hr className=" md:hidden block" />
-                            <p className=" text-base sohne font-bold ">Publishing to: <span className="sohne_bold">{username}</span></p>
+                            <p className=" text-base sohne font-bold "><span className=' text-sm text-muted-foreground'>Publishing to:</span> <span className="sohne_bold">{userName}</span></p>
                             <DialogDescription>Add or change topics (up to 5) so readers know what your story is about</DialogDescription>
                             <TagsInput publishing={publishing} />
 
