@@ -34,7 +34,7 @@ export default function Home() {
           </>
           :
           <>
-            <DialogButton size={'lg'} title='Start Reading' className={'sohne  font-bold rounded-full text-lg '} content='Create an account to start writing.' />
+            <DialogButton size={'lg'} title='Start Reading' className={'sohne  font-bold rounded-full text-lg '} content='Create an account to' />
           </>
         }
 
