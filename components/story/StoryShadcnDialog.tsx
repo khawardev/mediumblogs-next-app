@@ -56,7 +56,7 @@ export function StoryShadcnDialog({ className, title, storyID, username, storyCo
     return (
         <section >
             <Dialog>
-                {result?.error ? <><p className=' text-sm sohne font-bold text-muted-foreground'>Please Add heading First</p></> :
+                {result?.error ? <><p className=' text-sm sohne font-bold text-muted-foreground'>Please add heading First</p></> :
 
 
                     <>
