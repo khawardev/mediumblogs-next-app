@@ -54,13 +54,15 @@ export function PopoverButton() {
             <PopoverContent ref={popoverRef}>
                 <ul className="flex-center flex-col sohne font-bold gap-3  ">
                     <li className="flex flex-col gap-4">
-                        <Link className="flex items-center gap-1" href={`/profile/${userFromDb?.id}`}>
-                            <span className="text-sm">My Profile</span>
-                        </Link>
-                        <Link className="flex items-center gap-1" href="/about">
+                        {status === 'authenticated' &&
+                            <Link className="flex items-center gap-1" href={`/profile/${userFromDb?.id}`}>
+                                <span className="text-sm">My Profile</span>
+                            </Link>
+                        }
+                        <Link className={`flex items-center gap-1 ${status !== 'authenticated' && 'border py-2 px-4 flex-center rounded-full'} `} href="/about">
                             <span className="text-sm">Our Story</span>
                         </Link>
-                        <Link className="flex items-center gap-1" href="/membership">
+                        <Link className={`flex items-center gap-1 ${status !== 'authenticated' && 'border py-2 px-4 flex-center rounded-full'} `} href="/membership">
                             <span className="text-sm">Membership</span>
                         </Link>
                     </li>

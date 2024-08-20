@@ -25,8 +25,8 @@ const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, c
     const { publishSortedStories } = useProfileData({ userParams });
     const filteredPublishedStories = publishSortedStories.filter((story: any) => story.id !== publishedStory.id);
 
-    const name = publishedStory?.auther?.name;
-    let userName = name.toLowerCase().replace(/\b\w/g, (char: string) => char.toUpperCase());
+    const userName = publishedStory?.auther?.name.toLowerCase().replace(/\b\w/g, (char: string) => char.toUpperCase());;
+    const currentLoginUserName = currentLoginUser?.name.toLowerCase().replace(/\b\w/g, (char: string) => char.toUpperCase());
 
 
     return (
@@ -43,7 +43,7 @@ const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, c
             <section className='flex-between py-4 sohne'>
                 <div className='flex-center space-x-4 '>
                     <ClapComp clapByUser={clapByUser} allClapsCount={allClaps?.clapCount} currentLoginUser={currentLoginUser?.id} storyId={publishedStory?.id} />
-                    <CommentComp noOfComments={noOfComments} currentLoginUser={currentLoginUser?.id} storyId={publishedStory?.id} username={currentLoginUser?.name} userImage={currentLoginUser?.image} />
+                    <CommentComp noOfComments={noOfComments} currentLoginUser={currentLoginUser?.id} storyId={publishedStory?.id} username={currentLoginUserName} userImage={currentLoginUser?.image} />
                 </div>
                 <div className='flex-center  space-x-3'>
                     <FavComp favStatus={favStatus} storyId={publishedStory?.id} />
@@ -61,7 +61,7 @@ const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, c
             <section className='flex-between py-8 sohne'>
                 <div className='flex-center space-x-4 '>
                     <ClapComp clapByUser={clapByUser} allClapsCount={allClaps?.clapCount} currentLoginUser={currentLoginUser?.id} storyId={publishedStory?.id} />
-                    <CommentComp noOfComments={noOfComments} currentLoginUser={currentLoginUser?.id} storyId={publishedStory?.id} username={currentLoginUser?.name} userImage={currentLoginUser?.image} />
+                    <CommentComp noOfComments={noOfComments} currentLoginUser={currentLoginUser?.id} storyId={publishedStory?.id} username={currentLoginUserName} userImage={currentLoginUser?.image} />
                 </div>
                 <div className='flex-center  space-x-3'>
                     <FavComp favStatus={favStatus} storyId={publishedStory?.id} />
