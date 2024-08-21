@@ -23,7 +23,7 @@ const Footer = () => {
           </div>
           <div className="flex-between md:flex-row-reverse  md:w-full">
             <div className=" select-none flex-center  gap-1">
-              <p className=" sohne_bold  font-bold"><span className=" text-muted-foreground">By</span> Khawar Sultan</p>
+              <p className=" sohne_bold  font-bold"><span className=" text-muted-foreground">By</span> <Link className='underline' target="_blank" href={'https://khawarsultan.vercel.app/'} >Khawar Sultan</Link> </p>
               <Image className=" sm:block hidden " src={'https://attic.sh/r44qhgzfghw52b64th6ixln2hfbx'} alt='s' width={30} height={100} />
             </div>
             <Image className=" sm:hidden block  " src={'https://attic.sh/r44qhgzfghw52b64th6ixln2hfbx'} alt='s' width={30} height={100} />
