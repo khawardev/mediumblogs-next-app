@@ -42,18 +42,18 @@ const About = () => {
                 {status === 'authenticated' ?
                     <>
                         <Link href={'/blogs'}>
-                            <Button variant={'green'} className={`lg:py-24 py-14 w-full lg:px-12 px-4 lg:text-6xl text-3xl rounded-none flex-between bg-[#181817] text-primary-foreground border-t-white border border-l-0 border-r-0  hover:bg-white hover:text-black transition-all ease-in border-b-0 ${vollkorn.className}`}>
-                                Start reading <IoArrowForwardOutline />
+                            <Button className={`lg:py-24 py-14 w-full lg:px-12 px-4 lg:text-6xl text-3xl rounded-none flex-between bg-[#181817] text-primary-foreground border-t-white border border-l-0 border-r-0  hover:bg-[#1A8917]  transition-all ease-in border-b-0  ${vollkorn.className}`}>
+                                Start reading
                             </Button>
                         </Link>
                         <Link href={'/blogs'}>
-                            <Button variant={'green'} className={`lg:py-24 py-14 w-full lg:px-12 px-4 lg:text-6xl text-3xl rounded-none flex-between bg-[#181817] text-primary-foreground border-t-white border border-l-0 border-r-0  hover:bg-white hover:text-black transition-all ease-in border-b-0 ${vollkorn.className}`}>
-                                Start writing <IoArrowForwardOutline />
+                            <Button className={`lg:py-24 py-14 w-full lg:px-12 px-4 lg:text-6xl text-3xl rounded-none flex-between bg-[#181817] text-primary-foreground border-t-white border border-l-0 border-r-0  hover:bg-[#1A8917]  transition-all ease-in border-b-0 ${vollkorn.className}`}>
+                                Start writing
                             </Button>
                         </Link>
                         <Link href={'/blogs'}>
-                            <Button variant={'green'} className={`lg:py-24 py-14 w-full lg:px-12 px-4 lg:text-6xl text-3xl rounded-none flex-between bg-[#181817] text-primary-foreground border-t-white border border-l-0 border-r-0  hover:bg-white hover:text-black transition-all ease-in border-b-0 ${vollkorn.className}`}>
-                                Become member <IoArrowForwardOutline />
+                            <Button className={`lg:py-24 py-14 w-full lg:px-12 px-4 lg:text-6xl text-3xl rounded-none flex-between bg-[#181817] text-primary-foreground border-t-white border border-l-0 border-r-0  hover:bg-[#1A8917]  transition-all ease-in border-b-0 ${vollkorn.className}`}>
+                                Become member
                             </Button>
                         </Link>
                     </>
