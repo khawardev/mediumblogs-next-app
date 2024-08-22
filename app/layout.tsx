@@ -24,7 +24,7 @@ export default function RootLayout({
           <head>
             <ThemeModeScript />
           </head>
-          <body className={`min-h-screen grid grid-rows-[auto,1fr,auto] bg-[#FFFFFF]`}>
+          <body className={`min-h-screen md:grid md:grid-rows-[auto,1fr,auto] bg-[#FFFFFF]`}>
             <Header headerClasses={'z-40 fixed'} />
             <Header headerClasses={''} />
             <div className="relative">
