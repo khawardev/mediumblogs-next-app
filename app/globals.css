@@ -43,7 +43,9 @@ h3 {
 .bulger {
   font-family: "bulgery";
 }
-
+.about_button {
+  @apply lg:py-24 py-14 w-full lg:px-12 px-4 lg:text-6xl text-3xl rounded-none flex-between bg-[#181817] text-primary-foreground border-t-white border border-l-0 border-r-0 border-b-0  hover:bg-white hover:text-black transition-all ease-in;
+}
 @layer base {
   * {
     --scroll-behavior: smooth !important;

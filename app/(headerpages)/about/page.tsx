@@ -1,4 +1,5 @@
 'use client'
+import "@/public/assets/styles/story.css"
 import { IoArrowForwardOutline } from "react-icons/io5";
 import { Vollkorn } from 'next/font/google'
 import { DialogButton } from "@/shadcn/Authdialog";
@@ -41,26 +42,26 @@ const About = () => {
                 {status === 'authenticated' ?
                     <>
                         <Link href={'/blogs'}>
-                            <Button size={"sm"} variant={'green'} className={`lg:py-24 py-14 w-full lg:px-12 px-4 lg:text-6xl text-3xl rounded-none flex-between bg-[#181817] text-primary-foreground border-t-white border border-l-0 border-r-0 border-b-0  hover:bg-white hover:text-black transition-all ease-in ${vollkorn.className}`}>
+                            <Button size={"sm"} variant={'green'} className={`about_button ${vollkorn.className}`}>
                                 Start reading <IoArrowForwardOutline />
                             </Button>
                         </Link>
                         <Link href={'/blogs'}>
-                            <Button size={"sm"} variant={'green'} className={`lg:py-24 py-14 w-full lg:px-12 px-4 lg:text-6xl text-3xl rounded-none flex-between bg-[#181817] text-primary-foreground border-t-white border border-l-0 border-r-0 border-b-0  hover:bg-white hover:text-black transition-all ease-in ${vollkorn.className}`}>
+                            <Button size={"sm"} variant={'green'} className={`about_button ${vollkorn.className}`}>
                                 Start writing <IoArrowForwardOutline />
                             </Button>
                         </Link>
                         <Link href={'/blogs'}>
-                            <Button size={"sm"} variant={'green'} className={`lg:py-24 py-14 w-full lg:px-12 px-4 lg:text-6xl text-3xl rounded-none flex-between bg-[#181817] text-primary-foreground border-t-white border border-l-0 border-r-0 border-b-0  hover:bg-white hover:text-black transition-all ease-in border-b-0 ${vollkorn.className}`}>
+                            <Button size={"sm"} variant={'green'} className={`about_button border-b-0 ${vollkorn.className}`}>
                                 Become member <IoArrowForwardOutline />
                             </Button>
                         </Link>
                     </>
                     :
                     <>
-                        <DialogButton title='Start reading' className={`lg:py-24 py-14 w-full lg:px-12 px-4 lg:text-6xl text-3xl rounded-none flex-between bg-[#181817] text-primary-foreground border-t-white border border-l-0 border-r-0 border-b-0  hover:bg-white hover:text-black transition-all ease-in ${vollkorn.className}`} content='Create an account to' />
-                        <DialogButton title='Start writing' className={`lg:py-24 py-14 w-full lg:px-12 px-4 lg:text-6xl text-3xl rounded-none flex-between bg-[#181817] text-primary-foreground border-t-white border border-l-0 border-r-0 border-b-0  hover:bg-white hover:text-black transition-all ease-in ${vollkorn.className}`} content='Create an account to' />
-                        <DialogButton title='Become member ' className={`lg:py-24 py-14 w-full lg:px-12 px-4 lg:text-6xl text-3xl rounded-none flex-between bg-[#181817] text-primary-foreground border-t-white border border-l-0 border-r-0 border-b-0  hover:bg-white hover:text-black transition-all ease-in border-b-0 ${vollkorn.className}`} content='Create an account to' />
+                        <DialogButton title='Start reading' className={`about_button ${vollkorn.className}`} content='Create an account to' />
+                        <DialogButton title='Start writing' className={`about_button ${vollkorn.className}`} content='Create an account to' />
+                        <DialogButton title='Become member ' className={`about_button border-b-0 ${vollkorn.className}`} content='Create an account to' />
                     </>
                 }
             </section>
