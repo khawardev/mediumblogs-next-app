@@ -1,12 +1,28 @@
+'use client'
 import "@/public/assets/styles/story.css"
 import { IoArrowForwardOutline } from "react-icons/io5";
-const about = () => {
+import { Vollkorn } from 'next/font/google'
+import { DialogButton } from "@/shadcn/Authdialog";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { useSession } from "next-auth/react";
+
+const vollkorn = Vollkorn({
+    subsets: ['latin'],
+    display: 'swap',
+    variable: "--font-vollkorn",
+})
+
+
+const About = () => {
+    const { status } = useSession()
+
     return (
         <main className=" ">
             <section className="bg_dots">
                 <section className="mobile_center">
                     <section className="space-y-10 md:py-32 py-20  xl:w-1/2 md:w-[60%] text-white">
-                        <p className="xl:text-8xl md:text-7xl text-4xl   leading-[0.9] tracking-tight">Everyone has a <br /> story to tell.</p>
+                        <p className={`xl:text-8xl md:text-7xl text-4xl   leading-[0.9] tracking-tight  ${vollkorn.className}`}>Everyone has a <br /> story to tell.</p>
                         <p className=" md:text-2xl text-lg">Medium is a home for human stories and ideas. Here, anyone can share insightful perspectives, useful knowledge, and life wisdom with the world—without building a mailing list or a following first. The internet is noisy and chaotic; Medium is quiet yet full of insight. It’s simple, beautiful, collaborative, and helps you find the right audience for whatever you have to say.</p>
                         <p className=" md:text-2xl text-lg">We believe that what you read and write matters. Words can divide or empower us, inspire or discourage us. In a world where the most sensational and surface-level stories often win, we’re building a system that rewards depth, nuance, and time well spent. A space for thoughtful conversation more than drive-by takes, and substance over packaging.</p>
                         <p className=" text-yellow-400  md:text-2xl text-lg">Ultimately, our goal is to deepen our collective understanding of the world through the power of writing.</p>
@@ -22,13 +38,35 @@ const about = () => {
                 <span></span>
                 <span></span>
             </section>
-            <section className=" bg-[#181817]  ">
-                <button className="about_button    ">Start reading <IoArrowForwardOutline /> </button>
-                <button className="about_button">Start writing <IoArrowForwardOutline /> </button>
-                <button className="about_button   border-b-0 ">Become member <IoArrowForwardOutline /></button>
+            <section className="bg-[#181817]">
+                {status === 'authenticated' ?
+                    <>
+                        <Link href={'/blogs'}>
+                            <Button size={"sm"} variant={'green'} className={`about_button ${vollkorn.className}`}>
+                                Start reading <IoArrowForwardOutline />
+                            </Button>
+                        </Link>
+                        <Link href={'/blogs'}>
+                            <Button size={"sm"} variant={'green'} className={`about_button ${vollkorn.className}`}>
+                                Start writing <IoArrowForwardOutline />
+                            </Button>
+                        </Link>
+                        <Link href={'/blogs'}>
+                            <Button size={"sm"} variant={'green'} className={`about_button border-b-0 ${vollkorn.className}`}>
+                                Become member <IoArrowForwardOutline />
+                            </Button>
+                        </Link>
+                    </>
+                    :
+                    <>
+                        <DialogButton title='Start reading' className={`about_button ${vollkorn.className}`} content='Create an account to' />
+                        <DialogButton title='Start writing' className={`about_button ${vollkorn.className}`} content='Create an account to' />
+                        <DialogButton title='Become member ' className={`about_button border-b-0 ${vollkorn.className}`} content='Create an account to' />
+                    </>
+                }
             </section>
         </main>
     )
 }
 
-export default about
+export default About

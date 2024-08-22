@@ -1,13 +1,19 @@
+'use client'
 import { CardWithForm } from "@/shadcn/card"
 import { Button } from "../ui/button";
 import { MdOutlineCheck } from "react-icons/md";
 import { PiStarFourFill } from "react-icons/pi";
 import { FaShieldHeart } from "react-icons/fa6";
 import plans from '@/data/plans.json';
+import { DialogButton } from "@/shadcn/Authdialog";
+import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 const Plans = () => {
+    const { status } = useSession()
+
     return (
-        <main className="border border-r-0 border-t-0 border-l-0 border-black">
+        <main className="border border-r-0 border-t-0 border-l-0 border-black ">
             <div className="mobile_center xl:flex gap-36 lg:py-28 py-16 lg:space-y-0 space-y-14 ">
                 <p className=" lg:text-5xl text-4xl ">Membership plans</p>
                 <section className=" xl:w-[60%]  space-y-14 ">
@@ -31,9 +37,20 @@ const Plans = () => {
                                             <p className="text-2xl sohne_bold">{plan.title}</p>
                                             <p className="text-lg">{plan.pkg}</p>
                                         </div>
-                                        <Button size={"sm"} variant={"green"} className="sohne_bold">
-                                            Get Started
-                                        </Button>
+                                        {status === 'authenticated' ?
+                                            <>
+                                                <Link href={'/blogs'}>
+                                                    <Button size={"sm"} variant={'green'} className="w-full sohne  font-bold rounded-full ">
+                                                        Get Started
+                                                    </Button>
+                                                </Link>
+                                            </>
+                                            :
+                                            <>
+                                                <DialogButton size={"sm"} title='Get started' className={'sohne  font-bold rounded-full  '} content='Create an account to' />
+                                            </>
+                                        }
+
                                     </div>
                                     <ul className="flex flex-col items-start space-y-4 text-gray-700">
                                         {plan.pros?.map((pro, i) => (

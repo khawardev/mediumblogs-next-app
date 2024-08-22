@@ -14,7 +14,7 @@
   @apply lg:w-9/12 sm:w-11/12 mx-auto sm:px-0 px-4;
 }
 .glassmorphism {
-  @apply rounded-xl    bg-[#FFFFFF]/30 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-5;
+  @apply bg-[#FFFFFF]/80 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur;
 }
 .about_button {
   @apply lg:py-24 py-14 w-full lg:px-12 px-4 lg:text-6xl text-3xl rounded-none flex-between bg-[#181817] text-primary-foreground border-t-white border border-l-0 border-r-0 border-b-0  hover:bg-white hover:text-black transition-all ease-in;

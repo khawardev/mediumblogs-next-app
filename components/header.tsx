@@ -10,11 +10,15 @@ import { useToast } from "@/components/ui/use-toast"
 import SearchArea from "./search/SearchArea"
 import { useAtom } from "jotai"
 import { ShowSearchAtom } from "@/context/atom"
+import Image from "next/image"
+
 
 const Header = ({ headerClasses }: any) => {
   const [ShowSearch, setShowSearch] = useAtom(ShowSearchAtom);
   const { toast } = useToast()
-  const { data, status } = useSession()
+  const { data } = useSession()
+  const { status } = useSession()
+
   const MakeNewStory = async () => {
     const res = await CreateStory();
     if (res?.error) {
@@ -46,7 +50,6 @@ const Header = ({ headerClasses }: any) => {
         <ul className="flex-center  gap-5   ">
           {status === 'authenticated' ?
             <div className="flex-center md:space-x-7 space-x-4 md:text-[15px] text-sm">
-
               <button onClick={MakeNewStory} className="flex-center gap-1   text-gray-500 ">
                 <SquarePen strokeWidth={1.25} size={18} />
                 <p className="  md:font-normal font-bold  sohne">Write</p>
@@ -60,7 +63,7 @@ const Header = ({ headerClasses }: any) => {
             <li className="flex-center sohne  md:gap-7 gap-3">
               <Link className="md:block hidden  font-bold text-sm" href="/about">Our story</Link>
               <Link className="md:block hidden   font-bold text-sm" href="/membership">Membership</Link>
-              <DialogButton className='flex-center gap-1 font-bold rounded-full ' title='Sign in' content='Create an account to' />
+              <DialogButton className='flex-center md:flex hidden  gap-1 font-bold rounded-full ' title='Sign in' content='Create an account to' />
               <div className=" md:hidden block">
                 <PopoverButton />
               </div>

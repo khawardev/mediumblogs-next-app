@@ -12,6 +12,7 @@ import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { IoIosLogOut } from "react-icons/io";
 import { getUser } from "@/actions/user";
+import { DialogButton } from "./Authdialog";
 
 interface DialogButtonProps {
     title: string;
@@ -33,52 +34,55 @@ export function PopoverButton() {
 
     return (
         <Popover>
-            {status === 'authenticated' ?
-                <>
-                    {data && data.user &&
-                        <PopoverTrigger asChild>
-                            <button className=' whitespace-nowrap  flex-center gap-4  border sohne text-md  font-bold rounded-full  bg-[#FFFFFF]'>
-                                <Image className="rounded-full" src={data.user.image ?? ''} width={35} height={35} alt={data.user.name ?? ''} />
-                            </button>
-                        </PopoverTrigger>
-                    }
-                </>
+            {status === 'authenticated' && data && data?.user ?
+                <PopoverTrigger asChild>
+                    <button className=' text-sm  sohne font-bold flex-between border sohne text-md   rounded-full  bg-[#FFFFFF]'>
+                        {data && data?.user &&
+                            <Image className="rounded-full" src={data?.user.image ?? ''} width={35} height={35} alt={data?.user.name ?? ''} />
+                        }
+                    </button>
+                </PopoverTrigger>
                 :
                 <PopoverTrigger asChild>
-                    <Button variant={'outline'} size={'icon'} className=' whitespace-nowrap  flex-center gap-4  border border-black sohne text-md  font-bold rounded-full  bg-[#FFFFFF]'>
-                        <BiMenu />
+                    <Button variant={'outline'} size={'icon'} className='   '>
+                        <BiMenu size={'18'} />
                     </Button>
                 </PopoverTrigger>
             }
-
             <PopoverContent ref={popoverRef}>
                 <ul className="flex-center flex-col sohne font-bold gap-3  ">
-                    <li className="flex flex-col gap-4">
+                    <li className="flex flex-col gap-3">
                         {status === 'authenticated' &&
                             <Link className="flex items-center gap-1" href={`/profile/${userFromDb?.id}`}>
                                 <span className="text-sm">My Profile</span>
                             </Link>
                         }
-                        <Link className={`flex items-center gap-1 ${status !== 'authenticated' && 'border py-2 px-4 flex-center rounded-full'} `} href="/about">
+                        <Link className={`flex items-center gap-1  `} href="/about">
                             <span className="text-sm">Our Story</span>
                         </Link>
-                        <Link className={`flex items-center gap-1 ${status !== 'authenticated' && 'border py-2 px-4 flex-center rounded-full'} `} href="/membership">
+                        <Link className={`flex items-center gap-1  `} href="/membership">
                             <span className="text-sm">Membership</span>
                         </Link>
-                    </li>
 
+                    </li>
+                    {status !== 'authenticated' &&
+                        <DialogButton size={'sm'} className='gap-1 sohne font-bold rounded-3xl flex-center ' title='Sign in' content='Create an account to' />
+                    }
                     {status === 'authenticated' &&
-                        <Button
-                            onClick={(e) => {
-                                e.preventDefault();
-                                signOut();
-                            }}
-                            size={'sm'}
-                            variant={'destructive'}
-                            className="gap-1 sohne font-bold rounded-3xl flex-center"
-                        >
-                            Sign out <IoIosLogOut size={16} />
-                        </Button>
+                        <section className=" flex-center gap-1">
+                            <Button
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    signOut();
+                                }}
+                                size={'sm'}
+                                variant={'destructive'}
+                                className="gap-1 sohne font-bold rounded-3xl flex-center"
+                            >
+                                Sign out <IoIosLogOut size={16} />
+                            </Button>
+                        </section>
+
                     }
 
 

@@ -44,6 +44,8 @@ h3 {
 }
 @layer base {
   * {
+    --scroll-behavior: smooth !important;
+    scroll-behavior: smooth !important;
     @apply border-border;
   }
   body {
