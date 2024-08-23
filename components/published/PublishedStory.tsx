@@ -30,7 +30,7 @@ const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, c
 
 
     return (
-        <div className='mobile_center_contract md:my-14 mt-8 text-[#242424]  '>
+        <div className='mobile_center_contract flex flex-col md:my-14 mt-8 text-[#242424]  '>
             <div className="  md:text-[45px] leading-[42px] text-4xl sohne_bold mb-8" dangerouslySetInnerHTML={{ __html: GetElemntRegix?.heading || '' }} />
             <section className='flex items-center justify-start gap-3 sohne mb-8 '>
                 <Image className="rounded-full" src={publishedStory?.auther?.image} width={40} height={40} alt={userName} />

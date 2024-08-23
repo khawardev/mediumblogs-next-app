@@ -18,7 +18,7 @@ const About = () => {
     const { status } = useSession()
 
     return (
-        <main className=" ">
+        <main className=" flex flex-col ">
             <section className="bg_dots">
                 <section className="mobile_center">
                     <section className="space-y-10 md:py-32 py-20  xl:w-1/2 md:w-[60%] text-white">

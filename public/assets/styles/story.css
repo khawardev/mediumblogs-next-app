@@ -1,17 +1,17 @@
 .mobile_center {
-  @apply sm:w-10/12 m-auto sm:px-0 px-4;
+  @apply sm:w-10/12 w-full m-auto sm:px-0 px-4;
 }
 .mobile_right {
-  @apply sm:w-11/12  ml-auto  sm:px-0 px-4;
+  @apply sm:w-11/12 w-full  ml-auto  sm:px-0 px-4;
 }
 .mobile_right_center {
-  @apply md:w-11/12   md:ml-auto md:px-0 px-4;
+  @apply md:w-11/12 w-full   md:ml-auto md:px-0 px-4;
 }
 .mobile_center_contract {
-  @apply lg:w-5/12 sm:w-7/12 mx-auto sm:px-0 px-4;
+  @apply lg:w-5/12 sm:w-7/12 w-full mx-auto sm:px-0 px-4;
 }
 .mobile_center_less_contract {
-  @apply lg:w-9/12 sm:w-11/12 mx-auto sm:px-0 px-4;
+  @apply lg:w-9/12 sm:w-11/12 w-full mx-auto sm:px-0 px-4;
 }
 .glassmorphism {
   @apply bg-[#FFFFFF]/80 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur;

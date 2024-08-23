@@ -14,7 +14,7 @@ const StoryID = async ({ params }: { params: { storyId: string, publishStatus: a
         htmlToMarkdownContent = await HtmlToMarkdown(story.content);
     }
     return (
-        <div className="sm:w-6/12 mx-auto">
+        <div className="sm:w-6/12 w-full mx-auto ">
             <div className='sm:px-0 px-4'>
                 <NavbarStory publishStatus={publishStatus} storyContent={story?.content || ''} storyID={params?.storyId} currentUserName={user?.name || ''} />
             </div>

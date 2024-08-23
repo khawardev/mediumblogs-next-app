@@ -24,14 +24,17 @@ export default function RootLayout({
           <head>
             <ThemeModeScript />
           </head>
-          <body className={`min-h-screen  bg-[#FFFFFF]`}>
+          <body className={`min-h-screen flex flex-col flex-between  w-full  bg-[#FFFFFF]`}>
             <Header headerClasses={'z-40 fixed'} />
             <Header headerClasses={''} />
-            <div className="">
+            <div className=" flex-grow w-full flex  ">
               {children}
               <Toaster />
             </div>
-            <Footer />
+            <div className=" w-full">
+
+              <Footer />
+            </div>
           </body>
         </AuthProvider >
       </html>
