@@ -16,7 +16,7 @@ export const useProfileData = ({ userParams }: any) => {
     getpublishedfetcher,
     {
       revalidateOnFocus: true,
-      revalidateOnMount: true, // dedupingInterval: Number.MAX_SAFE_INTEGER,
+      revalidateOnMount: true, 
     }
   );
   const { data: draftStories } = useSWR(
@@ -24,12 +24,12 @@ export const useProfileData = ({ userParams }: any) => {
     getpublishedfetcher,
     {
       revalidateOnFocus: true,
-      revalidateOnMount: true, // dedupingInterval: Number.MAX_SAFE_INTEGER,
+      revalidateOnMount: true, 
     }
   );
   const { data: savedStories } = useSWR(userParams, getFavStoriesfetcher, {
     revalidateOnFocus: true,
-    revalidateOnMount: true, // dedupingInterval: Number.MAX_SAFE_INTEGER,
+    revalidateOnMount: true, 
   });
 
   const publishSortedStories = Array?.isArray(publishedStories)

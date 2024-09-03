@@ -52,7 +52,7 @@ const PublishedStory = ({ clapByUser, publishedStory, favStatus, noOfComments, c
             </section>
             <hr />
             <section className='my-6'>
-                <div className="markdown-body space-y-8 " dangerouslySetInnerHTML={{ __html: publishedRegix }} />
+                <div className="markdown-body space-y-8   " dangerouslySetInnerHTML={{ __html: publishedRegix }} />
             </section>
 
             <section className='my-7'>

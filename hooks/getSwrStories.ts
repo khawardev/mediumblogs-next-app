@@ -13,25 +13,21 @@ export const useSwrStories = ({ tag }: any) => {
   const { data: limitedStories } = useSWR(["getLimitedStories", tag], fetcher, {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
-    dedupingInterval: Number.MAX_SAFE_INTEGER, // Cache indefinitely
   });
 
   const { data: allTopics } = useSWR("getAllTopics", fetcher, {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
-    dedupingInterval: Number.MAX_SAFE_INTEGER, // Cache indefinitely
   });
 
   const { data: getSelectedTopics } = useSWR("SelectedTopics", fetcher, {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
-    dedupingInterval: Number.MAX_SAFE_INTEGER, // Cache indefinitely
   });
 
   const { data: stories } = useSWR(["getAllStories", tag], fetcher, {
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
-    dedupingInterval: Number.MAX_SAFE_INTEGER, // Cache indefinitely
   });
 
   return { limitedStories, allTopics, getSelectedTopics, stories };

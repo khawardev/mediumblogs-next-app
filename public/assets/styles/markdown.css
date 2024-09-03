@@ -20,6 +20,7 @@
 } */
 .markdown-body p {
   font-size: 16.6px;
+  line-height: 1.75rem;
 }
 .markdown-body {
   /* font-size: 16.6px; */
@@ -61,7 +62,7 @@
 
 .markdown-body code {
   border-radius: 0.3rem; /* rounded-md */
-  background-color: #f5f5f5; /* bg-stone-200 */
+  background-color: #e8e8e8c7; /* bg-stone-200 */
   padding: 0.15rem 0.375rem;
   font-family: "JetBrains Mono", monospace;
   font-weight: 500; /* font-medium */
@@ -133,7 +134,7 @@
   border-left: 4px solid #161616; /* Add a left border to indicate the quote */
   margin: 20px 0; /* Add some margin around the blockquote */
   padding: 10px 20px; /* Add padding inside the blockquote */
-  background-color: #f9f9f9; /* Light background color */
+  background-color: #f5f5f5; /* Light background color */
   color: #555; /* Text color */
 }
 
