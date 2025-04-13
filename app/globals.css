@@ -6,13 +6,14 @@
   src: url("../public/assets/fonts/Medium/sohne_Extrabold.woff") format("woff");
 }
 @font-face {
-  font-family: "bulgery";
-  src: url("../public/assets/fonts/Medium/bulgerybold.woff2") format("woff");
-}
-@font-face {
   font-family: "sohne";
   src: url("../public/assets/fonts/Medium/sohne_normal.woff") format("woff");
 }
+@font-face {
+  font-family: "bulgery";
+  src: url("../public/assets/fonts/Medium/bulgerybold.woff2") format("woff");
+}
+
 @font-face {
   font-family: "serif_pro";
   src: url("../public/assets/fonts/Medium/source_serif_pro_400_normal.woff")

@@ -66,14 +66,6 @@ export const verificationToken = pgTable(
   })
 );
 
-export const userRelations = relations(user, ({ many }) => ({
-  stories: many(story), // A user can have many stories
-  comment: many(comment), // A user can have many comment
-  reply: many(reply), // A user can have many replys to comments
-  clap: many(clap),
-  save: many(save),
-}));
-
 // story
 export const story = pgTable("story", {
   id: text("id")
@@ -89,16 +81,6 @@ export const story = pgTable("story", {
   publish: boolean("publish").default(false),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
-
-export const storyRelations = relations(story, ({ one, many }) => ({
-  auther: one(user, {
-    fields: [story.userId],
-    references: [user.id],
-  }),
-  comment: many(comment), // A story can have multiple comments
-  clap: many(clap), // A story can have multiple claps
-  save: many(save),
-}));
 
 // comments
 export const comment = pgTable("comment", {
@@ -212,6 +194,23 @@ export const save = pgTable("save", {
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
 
+export const userRelations = relations(user, ({ many }) => ({
+  stories: many(story), // A user can have many stories
+  comment: many(comment), // A user can have many comment
+  reply: many(reply), // A user can have many replys to comments
+  clap: many(clap),
+  save: many(save),
+}));
+
+export const storyRelations = relations(story, ({ one, many }) => ({
+  auther: one(user, {
+    fields: [story.userId],
+    references: [user.id],
+  }),
+  comment: many(comment), // A story can have multiple comments
+  clap: many(clap), // A story can have multiple claps
+  save: many(save),
+}));
 export const saveRelations = relations(save, ({ one, many }) => ({
   auther: one(user, {
     fields: [save.userId],
