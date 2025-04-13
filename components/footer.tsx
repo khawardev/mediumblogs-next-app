@@ -20,8 +20,12 @@ const Footer = () => {
             <Link className="sohne font-bold text-sm " href="membership">Membership</Link>
           </div>
         )}
-        <div className="flex-between md:flex-row-reverse  md:w-full">
-          <div className=" select-none flex-center  gap-1">
+          <div className="flex items-center md:flex-row-reverse  gap-2 md:w-full">
+          <div className=" select-none flex-center  gap-2">
+              <p className=" sohne_bold  font-bold"><span className=" text-muted-foreground"></span> <Link className='underline' target="_blank" href={'https://github.com/khawardev/mediumblogs-next-app'} >Github</Link> </p>
+              <Image className=" sm:block hidden rounded-full " src={'https://cdn.pixabay.com/photo/2022/01/30/13/33/github-6980894_960_720.png'} alt='s' width={25} height={100} />
+          </div>
+          <div className=" select-none flex-center ">
             <p className=" sohne_bold  font-bold"><span className=" text-muted-foreground">By</span> <Link className='underline' target="_blank" href={'https://khawarsultan.vercel.app/'} >Khawar Sultan</Link> </p>
             <Image className=" sm:block hidden " src={'https://attic.sh/r44qhgzfghw52b64th6ixln2hfbx'} alt='s' width={30} height={100} />
           </div>
